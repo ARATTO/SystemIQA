@@ -17,9 +17,6 @@ class CreateRolTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
 
-            $table->string('carnet_id');
-            $table->foreign('carnet_id')->references('carnet')->on('users')->onDelete('cascade');
-
             $table->timestamps();
         });
     }
