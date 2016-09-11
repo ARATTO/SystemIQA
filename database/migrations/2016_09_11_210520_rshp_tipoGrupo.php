@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RshpUser extends Migration
+class RshpTipoGrupo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class RshpUser extends Migration
     public function up()
     {
         //
-        Schema::table('users', function (Blueprint $table) {
-
-          $table->integer('rol_id')->unsigned(); //Codigo de rol
-          $table->foreign('rol_id')->references('id')->on('rols')->onDelete('cascade');
-
+        Schema::table('tipo_grupos', function(Blueprint $table){
+          $table->string('grupo_id');
+          $table->foreign('grupo_id')->references('codigo')->on('grupos')->onDelete('cascade');
         });
     }
 
@@ -29,8 +27,8 @@ class RshpUser extends Migration
     public function down()
     {
         //
-        Schema::table('users', function (Blueprint $table) {
-          $table->dropForeign(['rol_id']);
+        Schema::table('tipo_grupos', function(Blueprint $table){
+          $table->dropForeign(['grupo_id']);
         });
     }
 }

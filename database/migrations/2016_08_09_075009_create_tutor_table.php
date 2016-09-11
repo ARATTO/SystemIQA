@@ -13,7 +13,7 @@ class CreateTutorTable extends Migration
     public function up()
     {
         Schema::create('tutores', function (Blueprint $table) {
-            $table->string('codigo')->primary();
+            $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
             $table->string('telefono');
