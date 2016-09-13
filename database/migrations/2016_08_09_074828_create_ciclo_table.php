@@ -14,6 +14,8 @@ class CreateCicloTable extends Migration
     {
         Schema::create('ciclos', function (Blueprint $table) {
             $table->string('codigo')->primary();
+            $table->string('ciclo_academico');
+            $table->integer('anio_academico');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->timestamps();

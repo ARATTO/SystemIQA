@@ -16,7 +16,9 @@ class CreateMateriaTable extends Migration
             $table->string('codigo')->primary();
             $table->string('nombre');
             $table->integer('unidades_valorativas');
-            
+            $table->integer('matricula');
+            $table->integer('numero_retiros');
+
             $table->timestamps();
         });
     }
