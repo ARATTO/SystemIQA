@@ -17,8 +17,8 @@ class RshpGrupoTutoria extends Migration
             $table->integer('tutor_id')->unsigned();
             $table->foreign('tutor_id')->references('id')->on('tutores')->onDelete('cascade');
 
-            $table->string('estudiante_id');
-            $table->foreign('estudiante_id')->references('carnet')->on('estudiantes')->onDelete('cascade');
+            $table->integer('estudiante_id')->unsigned();
+            $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
         });
     }
 

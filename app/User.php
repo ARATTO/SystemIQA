@@ -14,6 +14,7 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $fillable = [
+        'id',
         'carnet',
         'nombre',
         'apellido',
@@ -36,6 +37,10 @@ class User extends Authenticatable
     }
 
     public function tutores(){
-      return $this->hasMany('App\Tutor');
+      return $this->belongsTo('App\Tutor');
+    }
+
+    public function materias(){
+      return $this->belongsToMany('App\Materia')->withTimestamps();
     }
 }

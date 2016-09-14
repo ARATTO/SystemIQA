@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RshpGrupo extends Migration
+class RshpCicloMateria extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,16 @@ class RshpGrupo extends Migration
     public function up()
     {
         //
-        Schema::table('grupos', function(Blueprint $table){
+        Schema::create('ciclo_materia' , function (Blueprint $table){
+          $table->increments('id');
+
           $table->integer('materia_id')->unsigned();
           $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
+
+          $table->integer('ciclo_id')->unsigned();
+          $table->foreign('ciclo_id')->references('id')->on('ciclos')->onDelete('cascade');
+
+          $table->timestamps();
         });
     }
 
@@ -27,8 +34,6 @@ class RshpGrupo extends Migration
     public function down()
     {
         //
-        Schema::table('grupos', function(Blueprint $table){
-          $table->dropForeign(['materia_id']);
-        });
+        Schema::drop('ciclo_materia');
     }
 }

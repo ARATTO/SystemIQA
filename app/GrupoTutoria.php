@@ -16,10 +16,10 @@ class GrupoTutoria extends Model
     ];
 
     public function tutor(){
-      return $this->belongsTo('App\GrupoTutoria');
+      return $this->hasMany('App\Tutor');
     }
 
     public function estudiante(){
-      return $this->belongsTo('App\GrupoTutoria');
+      return $this->hasMany('App\Estudiante');
     }
 }

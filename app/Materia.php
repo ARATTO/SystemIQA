@@ -10,6 +10,7 @@ class Materia extends Model
     protected $table = 'materias';
 
     protected $fillable = [
+        'id',
         'codigo',
         'nombre',
         'unidades_valorativas',
@@ -18,13 +19,23 @@ class Materia extends Model
     ];
 
     public function evaluaciones(){
-      return $this->hasMany('App\Evaluacion');
+      return $this->belongsTo('App\Evaluacion');
     }
 
     public function grupos(){
-      return $this->hasMany('App\Grupo');
+      return $this->belongsTo('App\Grupo');
     }
 
-    
+    public function users(){
+      return $this->belongsToMany('App\Materia')->withTimestamps();
+    }
+
+    public function ciclos(){
+      return $this->belongsToMany('App\Ciclo')->withTimestamps();
+    }
+
+    public function carreras(){
+      return $this->belongsToMany('App\Carrera')->withTimestamps();
+    }
 
 }

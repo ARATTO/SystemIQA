@@ -14,4 +14,12 @@ class Carrera extends Model
         'nombre',
         'descripcion',
     ];
+
+    public function estudiantes(){
+      return $this->belongsToMany('App\Estudiante')->withTimestamps();
+    }
+
+    public function materias(){
+      return $this->belongsToMany('App\Materia')->withTimestamps();
+    }
 }

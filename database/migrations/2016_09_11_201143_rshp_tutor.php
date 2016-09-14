@@ -15,8 +15,8 @@ class RshpTutor extends Migration
       //
       Schema::table('tutores', function (Blueprint $table) {
 
-        $table->string('usuario_id'); //Codigo de tutores
-        $table->foreign('usuario_id')->references('carnet')->on('users')->onDelete('cascade');
+        $table->integer('usuario_id')->unsigned(); //Codigo de tutores
+        $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
       });
 
     }

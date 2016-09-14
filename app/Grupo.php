@@ -16,10 +16,10 @@ class Grupo extends Model
     ];
 
     public function materia(){
-      return $this->belongsTo('App\Materia');
+      return $this->hasMany('App\Materia');
     }
 
     public function tipo_grupos(){
-      return $this->hasMany('App\TipoGrupo');
+      return $this->belongsTo('App\TipoGrupo');
     }
 }

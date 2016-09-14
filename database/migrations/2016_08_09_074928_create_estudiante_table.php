@@ -13,7 +13,8 @@ class CreateEstudianteTable extends Migration
     public function up()
     {
         Schema::create('estudiantes', function (Blueprint $table) {
-            $table->string('carnet')->primary();
+            $table->increments('id');
+            $table->string('carnet')->unique();
             $table->string('nombre');
             $table->string('apellido');
             $table->integer('materias_ganadas');

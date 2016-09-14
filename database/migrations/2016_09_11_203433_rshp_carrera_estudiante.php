@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RshpCarreraMateria extends Migration
+class RshpCarreraEstudiante extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class RshpCarreraMateria extends Migration
     public function up()
     {
         //
-        Schema::create('carrera_materia', function(Blueprint $table){
+        Schema::create('carrera_estudiante' , function (Blueprint $table){
           $table->increments('id');
+
+          $table->integer('estudiante_id')->unsigned();
+          $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
 
           $table->integer('carrera_id')->unsigned();
           $table->foreign('carrera_id')->references('id')->on('carreras')->onDelete('cascade');
-
-          $table->integer('materia_id')->unsigned();
-          $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
 
           $table->timestamps();
         });
@@ -34,6 +34,6 @@ class RshpCarreraMateria extends Migration
     public function down()
     {
         //
-        Schema::drop('carrera_materia');
+        Schema::drop('carrera_estudiante');
     }
 }
