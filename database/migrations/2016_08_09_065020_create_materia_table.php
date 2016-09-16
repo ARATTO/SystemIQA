@@ -13,10 +13,13 @@ class CreateMateriaTable extends Migration
     public function up()
     {
         Schema::create('materias', function (Blueprint $table) {
-            $table->string('codigo')->primary();
+            $table->increments('id');
+            $table->string('codigo')->unique();
             $table->string('nombre');
             $table->integer('unidades_valorativas');
-            
+            $table->integer('matricula');
+            $table->integer('numero_retiros');
+
             $table->timestamps();
         });
     }

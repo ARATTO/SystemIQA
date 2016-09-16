@@ -16,12 +16,13 @@ class RshpCarreraMateria extends Migration
         Schema::create('carrera_materia', function(Blueprint $table){
           $table->increments('id');
 
-          $table->string('carrera_id');
-          $table->foreign('carrera_id')->references('codigo')->on('carreras')->onDelete('cascade');
+          $table->integer('carrera_id')->unsigned();
+          $table->foreign('carrera_id')->references('id')->on('carreras')->onDelete('cascade');
 
-          $table->string('materia_id');
-          $table->foreign('materia_id')->references('codigo')->on('materias')->onDelete('cascade');
+          $table->integer('materia_id')->unsigned();
+          $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
 
+          $table->timestamps();
         });
     }
 

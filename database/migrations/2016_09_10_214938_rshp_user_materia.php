@@ -13,14 +13,14 @@ class RshpUserMateria extends Migration
     public function up()
     {
         //
-        Schema::create('user_materia', function (Blueprint $table) {
+        Schema::create('materia_user', function (Blueprint $table) {
           $table->increments('id');
 
-          $table->string('materia_id'); //Codigo de materia
-          $table->foreign('materia_id')->references('codigo')->on('materias')->onDelete('cascade');
+          $table->integer('materia_id')->unsigned(); //Codigo de materia
+          $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
 
-          $table->string('usuario_id'); //Codigo de usuario
-          $table->foreign('usuario_id')->references('carnet')->on('users')->onDelete('cascade');
+          $table->integer('user_id')->unsigned(); //Codigo de usuario
+          $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
           $table->timestamps();
         });
@@ -35,6 +35,6 @@ class RshpUserMateria extends Migration
      */
     public function down()
     {
-      Schema::drop('user_materia');
+      Schema::drop('materia_user');
     }
 }

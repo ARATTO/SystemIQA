@@ -14,7 +14,7 @@ class CreateEvaluacionTable extends Migration
     {
         Schema::create('evaluaciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date');
+            $table->date('fecha_evaluacion');
             $table->float('nota');
             $table->float('porcentaje');
             $table->text('descripcion');
