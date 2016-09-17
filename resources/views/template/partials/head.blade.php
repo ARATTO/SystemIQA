@@ -30,6 +30,7 @@ folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">
 <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/sistemalaravel.css">
 <script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
 <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>

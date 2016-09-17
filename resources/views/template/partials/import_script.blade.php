@@ -48,4 +48,15 @@
 <!-- javascript del sistema laravel -->
 
 <script src="dist/js/systemiqa.js"></script>
- 
+<!-- This is only necessary if you do Flash::overlay('...') -->
+
+
+
+
+<!-- This is only necessary if you do Flash::overlay('...') -->
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+ <script>
+    $('#flash-overlay-modal').modal();
+</script>

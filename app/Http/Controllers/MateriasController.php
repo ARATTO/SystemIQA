@@ -34,7 +34,8 @@ class MateriasController extends Controller
     	$mat->save();
         $mat->carreras()->sync($request->ids); //Para tablas de muchos a muchos
 
-    	Flash::success("Materia registrada exitosamente.");
+    	Flash::success("La asignatura : ".$mat->nombre." se ha registrado exitosamente."  );
+         
     	return redirect()->route('home');
     }
 
@@ -61,6 +62,8 @@ class MateriasController extends Controller
         $mat->save();
 
         $mat->carreras()->sync($request->ids);
+        Flash::success("La asignatura:  ".$mat->nombre." se ha modificado exitosamente.");
+
         return redirect()->route('home');
     }
 
@@ -86,7 +89,8 @@ class MateriasController extends Controller
         $mat = Materia::find($id);
         $mat->delete();
         
-        Flash::error("La materia:  ".$mat->nombre." se ha eliminado exitosamente.");
+        Flash::success("La asignatura:  ".$mat->nombre." se ha eliminado exitosamente.");
+    
         return redirect()->route('home');
 
     }
