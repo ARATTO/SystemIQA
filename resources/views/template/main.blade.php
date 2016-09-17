@@ -7,13 +7,16 @@
 	@include('template.partials.nav')
 
 	<section>
-
+		
+		
 		@yield('content')
-
+		
 	</section>
 
 
 	@include('template.partials.import_script')
+
+	@yield('js')
 
 </body>
 </html>

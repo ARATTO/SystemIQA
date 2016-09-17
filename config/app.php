@@ -167,6 +167,8 @@ return [
         /*Providers instalados*/
         Collective\Html\HtmlServiceProvider::class,
 
+        /*provider para flash*/
+        Laracasts\Flash\FlashServiceProvider::class,
     ],
 
     /*
