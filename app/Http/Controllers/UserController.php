@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
+use App\Rol;
 use Laracast\Flash\Flash;
 
 class UserController extends Controller
@@ -17,8 +18,17 @@ class UserController extends Controller
      */
     public function index()
     {
+
           $users = User::orderBy('id','ASC')->paginate(5);
-          return view('users.index')->with('users',$users);
+
+          $rols = Rol::all();
+
+          return view('users.index')->with(['users'=>$users,'rols'=>$rols]);
+
+
+          //return view('viewName')->with(['var1'=>value1,'var2'=>value2,'var3'=>'value3']);
+          /*$user = User::all();*/
+          //dd($rols);
     }
 
     /**
@@ -39,7 +49,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User($request->all());
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        flash("se ha registrado ". $user->name." de forma exitosa");
+        return redirect()->route('users.index');
     }
 
     /**
