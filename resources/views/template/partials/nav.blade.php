@@ -96,10 +96,21 @@
             <i class="fa fa-dashboard"></i> <span>Panel de control</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="javascript:void(0);" onclick="cargarformulario(1);" ><i class="fa fa-circle-o"></i>Agregar usuario </a></li>
+            <li class="active"><a href="{{ url('login') }}"  ><i class="fa fa-circle-o"></i>Agregar usuario </a></li>
+            <li class="active"><a href="javascript:void(0);" onclick="cargarlistado(1);" ><i class="fa fa-circle-o"></i>Listado Usuarios</a></li>
 
           </ul>
         </li>
+
+        <li class="treeview">
+              <a href="#">
+                <i class="fa fa-fw fa-user-plus"></i> <span>Datos</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="javascript:void(0);" onclick="cargarformulario(2);"><i class="fa fa-circle-o"></i>Cargar Datos Us. </a></li>
+                
+              </ul>
+            </li>
 
 
 

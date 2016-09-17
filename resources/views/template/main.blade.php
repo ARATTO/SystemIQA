@@ -12,7 +12,6 @@
 
 	</section>
 
-
 	@include('template.partials.import_script')
 
 </body>

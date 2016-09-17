@@ -40,4 +40,4 @@
 <script src="dist/js/demo.js"></script>
 
 <!-- javascript del sistema laravel -->
-<script src="js/sistemalaravel.js"></script>
+<script src="dist/js/sistemalaravel.js"></script>

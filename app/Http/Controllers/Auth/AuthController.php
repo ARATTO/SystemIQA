@@ -75,8 +75,8 @@ class AuthController extends Controller
     }
 
     //return view()->with("msjerror","credenciales incorrectas");
-    //return view("home");
     return view("home");
+    //return view("formularios.form_cargar_datos_usuarios");
 
     }
 
