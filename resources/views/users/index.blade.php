@@ -6,6 +6,13 @@
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper" style="min-height:2000px !important;">
+        @if (session()->has('flash_notification.message'))
+        <div class="alert alert-{{ session('flash_notification.level') }}">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          {!! session('flash_notification.message') !!}
+        </div>
+      @endif
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
@@ -13,8 +20,7 @@
             <small> panel</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i>Usuarios</a></li>
-            <li class="active">Ver</li>
+            <li><a href="{{ url('/users') }}"><i class="active fa fa-dashboard"></i>Usuarios</a></li>
           </ol>
         </section>
 
@@ -54,10 +60,10 @@
 
 
                   <td>
-                    <a href="" class="btn btn-warning">
+                    <a href=" {{ route('users.edit' , $user->id) }} " class="btn btn-warning">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
-                    <a href="" class="btn btn-danger">
+                    <a href=" {{ route('users.destroy' , $user->id) }} " class="btn btn-danger">
                       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </a>
                   </td>

@@ -97,7 +97,7 @@
           </a>
           <ul class="treeview-menu">
 
-            <li><a href=" {{url('/home')}} "><i class="fa fa-circle-o"></i>Algo principal </a></li>
+            <li><a href=" {{ url('/home') }} "><i class="fa fa-circle-o"></i>Algo principal </a></li>
           </ul>
         </li>
 
@@ -107,8 +107,8 @@
             <i class="fa fa-dashboard"></i> <span>USUARIOS</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href=" {{url('/users')}} "><i class="fa fa-circle-o"></i>Ver</a></li>
-            <li><a href=" {{url('/users/create')}} "><i class="fa fa-circle-o"></i>Agregar</a></li>
+            <li><a href=" {{ url('/users') }} "><i class="fa fa-circle-o"></i>Ver</a></li>
+            <li><a href=" {{ url('users/create') }} "><i class="fa fa-circle-o"></i>Agregar</a></li>
           </ul>
         </li>
 

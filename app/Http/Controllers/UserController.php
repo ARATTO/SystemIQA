@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use App\Rol;
-use Laracast\Flash\Flash;
+use Laracasts\Flash\Flash;
 
 class UserController extends Controller
 {
@@ -19,10 +19,10 @@ class UserController extends Controller
     public function index()
     {
 
-          $users = User::orderBy('id','ASC')->paginate(5);
+          $users = User::orderBy('id','ASC')->paginate(6);
 
           $rols = Rol::all();
-
+          //flash()->overlay('Modal Message', 'Modal Title');
           return view('users.index')->with(['users'=>$users,'rols'=>$rols]);
 
     }
@@ -36,6 +36,8 @@ class UserController extends Controller
     {
         $rols = Rol::all();
 
+        //Flash::success("se ha registrado de forma exitosa");
+
         return view('users.create')->with(['rols'=>$rols]);
     }
 
@@ -47,12 +49,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $user = new User($request->all());
         $user->password = bcrypt($request->password);
         $user->save();
 
-        flash("se ha registrado ". $user->name." de forma exitosa");
+        Flash::info("se ha registrado ".$user->nombre." de forma exitosa");
+        //flash('Welcome Aboard!');
+        //flash()->overlay('Modal Message', 'Modal Title');
         return redirect()->route('users.index');
 
         //dd($request->all());
@@ -77,7 +81,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+
+      $user = User::find($id);
+      //$user->password = $user->bycrypt($);
+      $rols = Rol::all();
+      //Flash::success("se ha registrado de forma exitosa");
+
+      return view('users.edit')->with(['user'=>$user,'rols'=>$rols]);
+
     }
 
     /**
@@ -89,7 +100,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->fill($request->all());
+        $user->save();
+
+        Flash::warning("Se ha EDITADO ".$user->nombre." de forma exitosa");
+        return redirect()->route('users.index');
     }
 
     /**
@@ -100,6 +116,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $user = User::find($id);
+        $user->delete();
+
+        Flash::error("Se ha ELIMINADO usuario ".$user->nombre." de forma exitosa");
+        return redirect()->route('users.index');
+
+        //dd($id);
     }
 }

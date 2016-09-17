@@ -7,7 +7,7 @@
 	@include('template.partials.nav')
 
 	<section>
-		@include('flash::message')
+		
 		@yield('content')
 
 	</section>

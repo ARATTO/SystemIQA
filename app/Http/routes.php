@@ -35,10 +35,15 @@ Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
-
-Route::resource('users','UserController@index');
+//MOTTO
+Route::resource('users','UserController');
 Route::get('users/create','UserController@create');
-Route::post('users/store', ['as' => 'users.store', 'uses' => 'UserController@store']);
+Route::get('users/{id}/destroy', [
+  'as' => 'users.destroy',
+  'uses' => 'UserController@destroy'
+]);
+
+//FIN MOTTO
 /*
 Route::get('users', [
   'as' => 'users/index',

@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Usuarios | Nuevo')
+@section('title', 'Usuarios | Editar ' . $user->nombre)
 
 @section('content')
 
@@ -10,11 +10,11 @@
         <section class="content-header">
           <h1>
             Usuarios
-            <small> Nuevo</small>
+            <small> Editar {{$user->nombre}}</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="{{ url('/users') }}"><i class="fa fa-dashboard"></i>Usuarios</a></li>
-            <li class="active">Nuevo</li>
+            <li class="active">Editar {{$user->nombre}}</li>
           </ol>
         </section>
 
@@ -23,43 +23,37 @@
         <section class="content"  id="contenido_principal">
 
 
-          {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
+          {!! Form::open(['route' => ['users.update', $user], 'method' => 'PUT']) !!}
 
             <div class="form-group">
               {!! form::label('carnet','Carnet') !!}
-              {!! form::text('carnet', null, ['class' => 'form-control', 'placeholder'=> 'Carnet de Usuario', 'required']) !!}
+              {!! form::text('carnet', $user->carnet, ['class' => 'form-control', 'placeholder'=> 'Carnet de Usuario', 'required']) !!}
             </div>
 
             <div class="form-group">
           			{!! form::label('nombre','Nombres') !!}
-          			{!! form::text('nombre', null, ['class' => 'form-control', 'placeholder'=> 'Nombres', 'required']) !!}
+          			{!! form::text('nombre', $user->nombre, ['class' => 'form-control', 'placeholder'=> 'Nombres', 'required']) !!}
           	</div>
 
             <div class="form-group">
           			{!! form::label('apellido','Apellidos') !!}
-          			{!! form::text('apellido', null, ['class' => 'form-control', 'placeholder'=> 'Apellidos', 'required']) !!}
+          			{!! form::text('apellido', $user->apellido, ['class' => 'form-control', 'placeholder'=> 'Apellidos', 'required']) !!}
           	</div>
 
         		<div class="form-group">
         			{!! form::label('email','Correo Electronico') !!}
-        			{!! form::email('email', null, ['class' => 'form-control', 'placeholder'=> 'ejemplo@gmail.com', 'required']) !!}
+        			{!! form::email('email', $user->email, ['class' => 'form-control', 'placeholder'=> 'ejemplo@gmail.com', 'required']) !!}
         		</div>
 
         		<div class="form-group">
-        			{!! form::label('password','Contraseña') !!}
-        			{!! form::password('password',  ['class' => 'form-control', 'placeholder'=> '*********', 'required']) !!}
-        		</div>
-
-            <div class="form-group">
-        			{!! form::label('passwordConf','Confirmar Contraseña') !!}
-        			{!! form::password('passwordConf',  ['class' => 'form-control', 'placeholder'=> '*********', 'required']) !!}
-        		</div>
-
-        		<div class="form-group">
-        			{!! form::label('type', 'tipo') !!}
+        			{!! form::label('rol_id', 'Rol de Usuario') !!}
               <select name="rol_id" id="rol_id" class="form-control selectpicker">
                 @foreach($rols as $rol)
-                    <option> {{$rol->id}} </option>
+                    @if($rol->id == $user->rol_id)
+                      <option selected value= {{$rol->id}} > {{$rol->nombre}} </option>
+                    @else
+                      <option value= {{$rol->id}} > {{$rol->nombre}} </option>
+                    @endif
                 @endforeach
               </select>
 

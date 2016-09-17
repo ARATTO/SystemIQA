@@ -1,3 +1,5 @@
+
+
 <script src=" {{ asset('jquery/jquery-3.1.0.js') }}" ></script>
 <script src=" {{ asset('plugins/bootstrap/js/bootstrap.js') }}" ></script>
 
@@ -41,3 +43,10 @@
 
 <!-- javascript del sistema laravel -->
 <script src="{{ asset('js/sistemalaravel.js') }}"></script>
+
+<script src="{{ asset('code.jquery.com/jquery.js') }}"></script>
+<script src="{{ asset('maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js') }}"></script>
+
+ <script>
+    $('#flash-overlay-modal').modal();
+</script>
