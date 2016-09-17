@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers;
 
-use App\User;
+use App\Estudiante;
 use Storage;
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Excel;
@@ -23,7 +24,8 @@ class FormulariosController extends Controller
 
 	public function cargar_datos_usuarios(Request $request)
 	{
-       $archivo = $request->file('archivo');
+       
+	   $archivo = $request->file('archivo');
        $nombre_original=$archivo->getClientOriginalName();
 	   $extension=$archivo->getClientOriginalExtension();
        $r1=Storage::disk('archivos')->put($nombre_original,  \File::get($archivo) );
@@ -34,22 +36,24 @@ class FormulariosController extends Controller
             Excel::selectSheetsByIndex(0)->load($ruta, function($hoja) {
 		        
 		        $hoja->each(function($fila) {
-			        $usersemails=User::where("email","=",$fila->email)->first();
-			        if(count( $usersemails)==0){
-			        	$userscarnet=User::where("carnet","=",$fila->carnet)->first();
-			        	if(count( $userscarnet)==0){
-				      	$usuario=new User;
-				      	$usuario->carnet= $fila->carnet;
-				        $usuario->nombre= $fila->nombre;
-				        $usuario->apellido= $fila->apellido;
-				        $usuario->password= bcrypt($fila->password);
-				        $usuario->email= $fila->email;
-				        $usuario->telefono= $fila->telefono; //este campo llamado telefono se debe agregar en la base de datos c
-				        $usuario->rol_id= $fila->rol_id;
+			        $carnetestudiante=Estudiante::where("carnet","=",$fila->car)->first();
+			        if(count( $carnetestudiante)==0){
+			        	
+				      	$estudiante=new Estudiante;
+				      	$estudiante->carnet= $fila->car;
+				        $estudiante->nombre= $fila->nom;
+				        $estudiante->apellido= $fila->apell;
+				        $estudiante->materias_ganadas= $fila->mateg;
+				        $estudiante->materias_reprobadas= $fila->matr;
+				        $estudiante->CUM= $fila->cum; //este campo llamado telefono se debe agregar en la base de datos c
+				        $estudiante->anio_ingreso= $fila->anio;
+				        $estudiante->promedio_ciclo= $fila->prom;
 		                
-		                $usuario->save();
+		                $estudiante->save();
+
+		                $estudiante->carreras()->attach($fila->carrera);
 	                }
-	            }
+	            
 		     
 		        });
 
@@ -64,4 +68,6 @@ class FormulariosController extends Controller
        }
 
 	}
+
+
 }
