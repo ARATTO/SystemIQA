@@ -1,8 +1,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>@yield('title', 'Default')| panel de administacion</title>
+<title>@yield('title', 'SYSTEMIQA')</title>
+<link rel="shortcut icon" type="image/x-icon" href="dist/img/eternos.ico" />
 <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
-
+<link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <!-- Bootstrap 3.3.5 -->
@@ -14,8 +15,9 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
-     folder instead of downloading all of them to reduce the load. -->
+folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="dist/css/bootstrap-chosen.css">
 <!-- iCheck -->
 <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
 <!-- Morris chart -->
@@ -28,8 +30,9 @@
 <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">
 <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
- <link rel="stylesheet" href="css/sistemalaravel.css">
+<link rel="stylesheet" href="css/sistemalaravel.css">
+<script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+<script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

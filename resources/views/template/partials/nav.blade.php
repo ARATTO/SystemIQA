@@ -64,6 +64,7 @@
       </div>
     </nav>
   </header>
+  
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -91,6 +92,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MENÚ</li>
+        
+
         <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Panel de control</span> <i class="fa fa-angle-left pull-right"></i>
@@ -101,11 +104,34 @@
           </ul>
         </li>
 
+        <!--  Panel de Materias  -Elias   -->
+        <li class="active treeview" id="lista_elias">
+          <a href="#">
+            <i class="glyphicon glyphicon-book"></i>
+            <span>Asignaturas</span> 
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active">
+              <a href="javascript:void(0);" onclick="cargarformulario(15);" >
+                <i class="fa fa-circle-o"></i>Ver Materias
+              </a>
+            </li>
+          </ul>
+          <ul class="treeview-menu">
+            <li class="active">
+              <a href="javascript:void(0);" onclick="cargarformulario(16);" >
+                <i class="fa fa-circle-o"></i>Agregar asignatura
+              </a>
+            </li>
+          </ul>
 
-
-
-
+        </li> 
+        <!--  Fin Panel de Materias      -->
+ 
       </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
+
+ <!--</div> -->
