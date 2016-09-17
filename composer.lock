@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5995f0977ff30ddbce918b6d1846d912",
-    "content-hash": "8d5f9919d91f300d7430130100034364",
+    "hash": "e1e185f6a0ef2d8f6765c24adae810c2",
+    "content-hash": "4a664aa00a83bc33bcec16ffae0d4872",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -162,50 +162,6 @@
             "time": "2015-11-06 14:35:42"
         },
         {
-            "name": "genealabs/bones-flash",
-            "version": "0.2.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GeneaLabs/bones-flash.git",
-                "reference": "cd7f0e57eaf062c884d1b55300efb29262b1e0df"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GeneaLabs/bones-flash/zipball/cd7f0e57eaf062c884d1b55300efb29262b1e0df",
-                "reference": "cd7f0e57eaf062c884d1b55300efb29262b1e0df",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/session": "*",
-                "illuminate/support": "*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpspec/phpspec": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/migrations"
-                ],
-                "psr-4": {
-                    "GeneaLabs\\Bones\\Flash\\": "src/GeneaLabs/Bones/Flash/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "GeneaLabs, LLC",
-                    "email": "info@genealabs.com"
-                }
-            ],
-            "description": "Flash notification module for Laravel.",
-            "time": "2016-07-23 23:07:21"
-        },
-        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -349,6 +305,49 @@
                 "tokenizer"
             ],
             "time": "2015-12-05 17:17:57"
+        },
+        {
+            "name": "laracasts/flash",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/flash.git",
+                "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/flash/zipball/03eec812fd6ae948664ff51b4320785f6d15ee5d",
+                "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Laracasts\\Flash": "src/"
+                },
+                "files": [
+                    "src/Laracasts/Flash/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Easy flash notifications",
+            "time": "2016-07-11 20:46:02"
         },
         {
             "name": "laravel/framework",
@@ -1980,6 +1979,50 @@
                 "fixtures"
             ],
             "time": "2016-04-29 12:21:54"
+        },
+        {
+            "name": "genealabs/bones-flash",
+            "version": "0.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeneaLabs/bones-flash.git",
+                "reference": "cd7f0e57eaf062c884d1b55300efb29262b1e0df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeneaLabs/bones-flash/zipball/cd7f0e57eaf062c884d1b55300efb29262b1e0df",
+                "reference": "cd7f0e57eaf062c884d1b55300efb29262b1e0df",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/session": "*",
+                "illuminate/support": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-4": {
+                    "GeneaLabs\\Bones\\Flash\\": "src/GeneaLabs/Bones/Flash/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "GeneaLabs, LLC",
+                    "email": "info@genealabs.com"
+                }
+            ],
+            "description": "Flash notification module for Laravel.",
+            "time": "2016-07-23 23:07:21"
         },
         {
             "name": "hamcrest/hamcrest-php",

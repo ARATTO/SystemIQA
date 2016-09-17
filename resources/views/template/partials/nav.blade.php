@@ -4,9 +4,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>I</b>QA</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Plu</b>SIS</span>
+      <span class="logo-lg"><b>System</b>IQA</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -21,15 +21,15 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
               <span class="hidden-xs">Usuario Plusis</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                 <p>
-                 Usuario Plusis
+                 Usuario SystemIQA
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -71,10 +71,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Usuario:Plusis</p>
+          <p>Usuario:SystemIQA</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -96,13 +96,21 @@
             <i class="fa fa-dashboard"></i> <span>Panel de control</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="javascript:void(0);" onclick="cargarformulario(1);" ><i class="fa fa-circle-o"></i>Agregar usuario </a></li>
 
+            <li><a href=" {{url('/home')}} "><i class="fa fa-circle-o"></i>Algo principal </a></li>
           </ul>
         </li>
 
-
-
+        <!--MOTTO-->
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>USUARIOS</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=" {{url('/users')}} "><i class="fa fa-circle-o"></i>Ver</a></li>
+            <li><a href=" {{url('/users/create')}} "><i class="fa fa-circle-o"></i>Agregar</a></li>
+          </ul>
+        </li>
 
 
       </ul>
