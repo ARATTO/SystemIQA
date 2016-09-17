@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Usuarios | Crear')
+@section('title', 'Usuarios | Nuevo')
 
 @section('content')
 
@@ -10,12 +10,11 @@
         <section class="content-header">
           <h1>
             Usuarios
-            <small> Crear</small>
+            <small> Nuevo</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Usuarios</a></li>
-            <li><a href="#"><i class="fa fa-dashboard"></i>Crear</a></li>
-            <li class="active">Crear</li>
+            <li class="active">Nuevo</li>
           </ol>
         </section>
 
@@ -25,24 +24,44 @@
 
 
           {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
-        		<div class="form-group">
-        			{!! form::label('name','Nombre') !!}
-        			{!! form::text('name', null, ['class' => 'form-control', 'placeholder'=> 'Nombre completo', 'required']) !!}
-        		</div>
+
+            <div class="form-group">
+              {!! form::label('carnet','Carnet') !!}
+              {!! form::text('carnet', null, ['class' => 'form-control', 'placeholder'=> 'Carnet de Usuario', 'required']) !!}
+            </div>
+
+            <div class="form-group">
+          			{!! form::label('nombre','Nombres') !!}
+          			{!! form::text('nombre', null, ['class' => 'form-control', 'placeholder'=> 'Nombres', 'required']) !!}
+          	</div>
+
+            <div class="form-group">
+          			{!! form::label('apellido','Apellidos') !!}
+          			{!! form::text('apellido', null, ['class' => 'form-control', 'placeholder'=> 'Apellidos', 'required']) !!}
+          	</div>
 
         		<div class="form-group">
         			{!! form::label('email','Correo Electronico') !!}
-        			{!! form::email('email', null, ['class' => 'form-control', 'placeholder'=> 'ejemplo@outlook.com', 'required']) !!}
+        			{!! form::email('email', null, ['class' => 'form-control', 'placeholder'=> 'ejemplo@gmail.com', 'required']) !!}
         		</div>
 
         		<div class="form-group">
         			{!! form::label('password','Contraseña') !!}
-        			{!! form::password('password',  ['class' => 'form-control', 'placeholder'=> '-----------', 'required']) !!}
+        			{!! form::password('password',  ['class' => 'form-control', 'placeholder'=> '*********', 'required']) !!}
+        		</div>
+
+            <div class="form-group">
+        			{!! form::label('passwordConf','Confirmar Contraseña') !!}
+        			{!! form::password('passwordConf',  ['class' => 'form-control', 'placeholder'=> '*********', 'required']) !!}
         		</div>
 
         		<div class="form-group">
         			{!! form::label('type', 'tipo') !!}
-        			{!! form::select('type', ['member' => 'Miembro', 'admin' => 'Administrador'], null, ['class' => 'form-control']) !!}
+              <select name="rol_id" id="rol_id" class="form-control selectpicker">
+                @foreach($rols as $rol)
+                    <option> {{$rol->id}} </option>
+                @endforeach
+              </select>
 
         		</div>
 

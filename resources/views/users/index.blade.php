@@ -23,7 +23,7 @@
         <section class="content"  id="contenido_principal">
 
 
-          <a href="" class="btn btn-info">Registrar nuevo usuario</a><hr>
+          <a href=" {{url('/users/create')}} " class="btn btn-info">Registrar nuevo usuario</a><hr>
 
           <table class="table table-striped" >
             <thead>
@@ -40,7 +40,7 @@
                 <tr>
                   <td>{{$user->id}} </td>
                   <td>{{$user->carnet}} </td>
-                  <td>{{$user->name}} </td>
+                  <td>{{$user->nombre}} </td>
                   <td>{{$user->apellido}} </td>
                   <td>{{$user->email}} </td>
 

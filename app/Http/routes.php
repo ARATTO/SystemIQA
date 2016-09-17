@@ -37,7 +37,8 @@ Route::get('home', 'HomeController@index');
 
 
 Route::resource('users','UserController@index');
-Route::resource('users/create','UserController@create');
+Route::get('users/create','UserController@create');
+Route::post('users/store', ['as' => 'users.store', 'uses' => 'UserController@store']);
 /*
 Route::get('users', [
   'as' => 'users/index',

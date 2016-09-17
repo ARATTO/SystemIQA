@@ -25,10 +25,6 @@ class UserController extends Controller
 
           return view('users.index')->with(['users'=>$users,'rols'=>$rols]);
 
-
-          //return view('viewName')->with(['var1'=>value1,'var2'=>value2,'var3'=>'value3']);
-          /*$user = User::all();*/
-          //dd($rols);
     }
 
     /**
@@ -38,7 +34,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $rols = Rol::all();
+
+        return view('users.create')->with(['rols'=>$rols]);
     }
 
     /**
@@ -49,12 +47,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        
         $user = new User($request->all());
         $user->password = bcrypt($request->password);
         $user->save();
 
         flash("se ha registrado ". $user->name." de forma exitosa");
         return redirect()->route('users.index');
+
+        //dd($request->all());
     }
 
     /**
