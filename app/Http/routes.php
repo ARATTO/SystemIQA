@@ -34,3 +34,12 @@ Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
+
+Route::get('create','TutoresController@create');
+Route::get('index/{page?}','TutoresController@index');
+
+Route::group(['prefix'=>'admin'], function(){
+
+	Route::resource('tutor','TutoresController');
+
+});
