@@ -114,6 +114,7 @@
 
             <li class="active"><a href="{{url('/elejirCarrera')}} "><i class="fa fa-circle-o"></i>Ingresar porcentaje de notas</a></li>
 
+            <li class="active"><a href="{{url('/verPorcentajes')}} "><i class="fa fa-circle-o"></i>Ver porcentaje de las notas</a></li>
           </ul>
         </li>
 

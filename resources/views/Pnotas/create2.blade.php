@@ -213,7 +213,9 @@
 
 @section('js')
   <script type="text/javascript">
-      function mostrar(){
+      function mostrar($id){
+
+        
         var v = document.getElementById('numeroDeEvaluaciones').value;
          
         if (v<3 || v>10) {
@@ -227,10 +229,6 @@
       
       };
       
-
-      $('.datepicker').datepicker({
-        startDate: '-3d'
-    });
 
 
   </script>

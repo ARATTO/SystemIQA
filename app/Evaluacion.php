@@ -15,9 +15,15 @@ class Evaluacion extends Model
         'nota',
         'porcentaje',
         'descripcion',
+        'materia_id'
     ];
 
-    public function materia(){
+    /*public function materia(){
       return $this->hasMany('App\Materia');
+    }*/
+
+
+    public function materia(){
+      return $this->belongsTo('App\Materia');
     }
 }

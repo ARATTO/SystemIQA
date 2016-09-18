@@ -32,7 +32,7 @@
 					<td>{{$evaluacion->id}} </td>
 					<td>{{$evaluacion->porcentaje}} </td>
 					<td>{{$evaluacion->descripcion}} </td>
-					<td>{{$evaluacion->materia_id}} </td>
+					<td>{{$evaluacion->materia->nombre}} </td>
 					<td> 
 						<a href=" {{route('Pnotas.edit',$evaluacion->materia_id)}}" class="btn btn-warning"> <font color="black" size="2"> <b>Editar</b> </font>  </a>  
 						<a href=" {{route('Pnotas.destroy',$evaluacion->materia_id)}}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger"><font color="black" size="2"> <b>Eliminar	</b>  </font></a>  

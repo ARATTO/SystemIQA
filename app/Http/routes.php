@@ -24,7 +24,7 @@ Route::get('home', function () {
 });*/
 
 /*Route::group(['prefix' => 'mat'], function(){
-	Route::resource('Pnotas', 'PorcentajeNotasController');
+	
 	Route::get('Pnotas/{id}/destroy',[
 		'uses' => 'PorcentajeNotasController@destroy', //uses va por default para que reconosca la ruta
 		'as' => 'mat.Pnotas.destroy'
@@ -32,8 +32,17 @@ Route::get('home', function () {
 
 });*/
 
+
+
+/*RUTAS RODRIGO*/
 Route::get('elejirCarrera', 'PorcentajeNotasController@create');
 Route::post('guardar', 'PorcentajeNotasController@show');
+
+
+Route::get('pruebaEditar', [
+	'uses' => 'PorcentajeNotasController@pruebaEditar',
+	'as' => 'Pnotas.pruebaEditar'	
+	]);
 
 Route::post('store',[
 		'uses' => 'PorcentajeNotasController@store', //uses va por default para que reconosca la ruta
@@ -51,7 +60,7 @@ Route::get('verPorcentajes/{id}/destroy',[
 		]);
 
 
-Route::get('editar/{Pnotas}/edit',[
+Route::get('editar/{pnotas}/edit',[
 		'uses' => 'PorcentajeNotasController@edit', //uses va por default para que reconosca la ruta
 		'as' => 'Pnotas.edit'
 		]);
@@ -60,6 +69,8 @@ Route::put('cambiar/{Pnotas}',[
 		'uses' => 'PorcentajeNotasController@update', //uses va por default para que reconosca la ruta
 		'as' => 'Pnotas.update'
 		]);
+
+/*RUTAS RODRIGO*/
 
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
