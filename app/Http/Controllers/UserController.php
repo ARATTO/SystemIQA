@@ -16,11 +16,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
-          $users = User::orderBy('id','ASC')->paginate(6);
-
+          $users = User::carnet($request->carnet)->orderBy('id','DESC')->paginate(6);
           $rols = Rol::all();
           //flash()->overlay('Modal Message', 'Modal Title');
           return view('users.index')->with(['users'=>$users,'rols'=>$rols]);
@@ -104,7 +103,7 @@ class UserController extends Controller
         $user->fill($request->all());
         $user->save();
 
-        Flash::warning("Se ha EDITADO ".$user->nombre." de forma exitosa");
+        Flash::success("Se ha EDITADO ".$user->nombre." de forma exitosa");
         return redirect()->route('users.index');
     }
 

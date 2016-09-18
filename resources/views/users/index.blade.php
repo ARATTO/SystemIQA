@@ -27,57 +27,85 @@
 
         <!-- contenido principal -->
         <section class="content"  id="contenido_principal">
+          <!--BUSQUEDA-->
 
 
-          <a href=" {{url('/users/create')}} " class="btn btn-info">Registrar nuevo usuario</a><hr>
+            <div class="form-group">
+              <div class="row">
+                <div class="navbar-form pull-lefth col-xs-4">
+                  <div class="input-group">
+                    <a href=" {{url('/users/create')}} " class="form-control btn btn-primary">Registrar nuevo usuario</a>
+                  </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+                <div class="navbar-form pull-right">
+                  <div class="col-lg-12">
+                    <div class="input-group">
 
-          <table class="table table-striped" >
-            <thead>
-              <th>ID</th>
-              <th>Carnet</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Correo</th>
-              <th>Tipo</th>
-              <th>Accion</th>
-            </thead>
-            <tbody>
-              @foreach($users as $user)
-                <tr>
-                  <td>{{$user->id}} </td>
-                  <td>{{$user->carnet}} </td>
-                  <td>{{$user->nombre}} </td>
-                  <td>{{$user->apellido}} </td>
-                  <td>{{$user->email}} </td>
+                      {{Form::model(Request::all(), ['route' => 'users.index' , 'method' => 'GET']) }}
+                        {!! form::text('carnet', null, ['class' => 'form-control', 'placeholder'=> 'Buscar Usuarios', 'required']) !!}
+                        <button type="submit" class="glyphicon glyphicon-search btn btn-info"></button>
+                      {!! Form::close() !!}
 
-                  <td>
-                    @foreach($rols as $rol)
-                      @if($user->rol_id == $rol->id)
-                        <span class="label label-primary"> {{$rol->nombre}} </span>
-                      @endif
-                    @endforeach
-                  </td>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+                </div><!-- /.col-lg-6 -->
+              </div><!-- /.row -->
+            </div>
 
 
-                  <td>
-                    <a href=" {{ route('users.edit' , $user->id) }} " class="btn btn-warning">
-                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    </a>
-                    <a href=" {{ route('users.destroy' , $user->id) }} " class="btn btn-danger">
-                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </a>
-                  </td>
+          <!--FIN BUSQUEDA-->
+          <hr>
+          <div class="box box-primary">
 
-                </tr>
-              @endforeach
+          <div class="box-body" style="overflow-x: auto;">
+            <table class="table table-striped" >
+              <thead>
+                <th>ID</th>
+                <th>Carnet</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Tipo</th>
+                <th>Accion</th>
+              </thead>
+              <tbody>
+                @foreach($users as $user)
+                  <tr>
+                    <td>{{$user->id}} </td>
+                    <td>{{$user->carnet}} </td>
+                    <td>{{$user->nombre}} </td>
+                    <td>{{$user->apellido}} </td>
+                    <td>{{$user->email}} </td>
 
-            </tbody>
-          </table>
+                    <td>
+                      @foreach($rols as $rol)
+                        @if($user->rol_id == $rol->id)
+                          <span class="label label-primary"> {{$rol->nombre}} </span>
+                        @endif
+                      @endforeach
+                    </td>
 
-          {!! $users->render() !!}
+
+                    <td>
+                      <a href=" {{ route('users.edit' , $user->id) }} " class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                      </a>
+                      <a href=" {{ route('users.destroy' , $user->id) }} " class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                      </a>
+                    </td>
+
+                  </tr>
+                @endforeach
+
+              </tbody>
+            </table>
+
+            {!! $users->appends(Request::all())->render() !!}
 
 
 
-        </section>
-
+          </section>
+        </div>
+        </div>
 @endsection

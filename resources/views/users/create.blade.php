@@ -22,58 +22,125 @@
         <!-- contenido principal -->
         <section class="content"  id="contenido_principal">
 
+          <div class="box box-primary">
 
-          {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
+            <div class="box-body">
 
-            <div class="form-group">
-              {!! form::label('carnet','Carnet') !!}
-              {!! form::text('carnet', null, ['class' => 'form-control', 'placeholder'=> 'Carnet de Usuario', 'required']) !!}
-            </div>
+              <div class="col-xs-12">
+                <div class="panel panel-info">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading">Formulario Nuevo Usuario</div>
 
-            <div class="form-group">
-          			{!! form::label('nombre','Nombres') !!}
-          			{!! form::text('nombre', null, ['class' => 'form-control', 'placeholder'=> 'Nombres', 'required']) !!}
-          	</div>
+                  <!-- Table -->
+                  <table class="table">
 
-            <div class="form-group">
-          			{!! form::label('apellido','Apellidos') !!}
-          			{!! form::text('apellido', null, ['class' => 'form-control', 'placeholder'=> 'Apellidos', 'required']) !!}
-          	</div>
+                    <div class="col-xs-12">
+                        {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
+                          <br>
+                          <hr>
+                          <div class="row">
+                            <div class="col-xs-6">
+                              <div class="input-group col-xs-12">
+                                <div class="form-group">
+                                  {!! form::label('carnet','Carnet') !!}
+                                  {!! form::text('carnet', null, ['class' => 'form-control', 'placeholder'=> 'Carnet de Usuario', 'required']) !!}
+                                </div>
+                              </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                          </div>
+                          <br>
+                          <div class="row">
+                            <div class="col-xs-6">
+                              <div class="input-group col-xs-12">
+                                <div class="form-group">
+                                    {!! form::label('nombre','Nombres') !!}
+                                    {!! form::text('nombre', null, ['class' => 'form-control', 'placeholder'=> 'Nombres', 'required']) !!}
+                                </div>
+                              </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                            <div class="col-xs-6">
+                              <div class="input-group col-xs-12">
+                                <div class="form-group">
+                                    {!! form::label('apellido','Apellidos') !!}
+                                    {!! form::text('apellido', null, ['class' => 'form-control', 'placeholder'=> 'Apellidos', 'required']) !!}
+                                </div>
+                              </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                          </div><!-- /.row -->
+                          <br>
+                          <hr>
+                          <div class="row">
+                            <div class="col-xs-6">
+                              <div class="input-group col-xs-12">
+                                <div class="form-group">
+                                  {!! form::label('email','Correo Electronico') !!}
+                                  {!! form::email('email', null, ['class' => 'form-control', 'placeholder'=> 'ejemplo@gmail.com', 'required']) !!}
+                                </div>
+                              </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                          </div>
+                          <br>
+                          <div class="row">
+                            <div class="col-xs-6">
+                              <div class="input-group col-xs-12">
+                                <div class="form-group">
+                                  {!! form::label('rol_id', 'Tipo de Usuario') !!}
+                                  <select name="rol_id" id="rol_id" class="form-control selectpicker">
+                                    @foreach($rols as $rol)
+                                        <option value= {{$rol->id}} > {{$rol->nombre}} </option>
+                                    @endforeach
+                                  </select>
+                                </div>
+                              </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                          </div>
+                          <br>
+                          <hr>
+                          <div class="row">
+                            <div class="col-xs-6">
+                              <div class="input-group col-xs-12">
+                                <div class="form-group">
+                                  {!! form::label('password','Contraseña') !!}
+                                  {!! form::password('password',  ['class' => 'form-control', 'placeholder'=> '*********', 'required']) !!}
+                                </div>
+                              </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                            <div class="col-xs-6">
+                              <div class="input-group col-xs-12">
+                                <div class="form-group">
+                                  {!! form::label('passwordConf','Confirmar Contraseña') !!}
+                                  {!! form::password('passwordConf',  ['class' => 'form-control', 'placeholder'=> '*********', 'required']) !!}
+                                </div>
+                              </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                          </div><!-- /.row -->
+                          <br>
 
-        		<div class="form-group">
-        			{!! form::label('email','Correo Electronico') !!}
-        			{!! form::email('email', null, ['class' => 'form-control', 'placeholder'=> 'ejemplo@gmail.com', 'required']) !!}
-        		</div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-xs-12">
+                              <div class="input-group col-xs-12">
+                                <div class="form-group">
+                                  <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                    <div class="btn-group" role="group">
+                                      {!! form::submit('REGISTRAR USUARIO', ['class'=> 'btn btn-primary']) !!}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                          </div>
+                          <br>
 
-        		<div class="form-group">
-        			{!! form::label('password','Contraseña') !!}
-        			{!! form::password('password',  ['class' => 'form-control', 'placeholder'=> '*********', 'required']) !!}
-        		</div>
+                        {!! form::close() !!}
 
-            <div class="form-group">
-        			{!! form::label('passwordConf','Confirmar Contraseña') !!}
-        			{!! form::password('passwordConf',  ['class' => 'form-control', 'placeholder'=> '*********', 'required']) !!}
-        		</div>
+                    </div>
+                  </table>
+                </div>
 
-        		<div class="form-group">
-        			{!! form::label('type', 'tipo') !!}
-              <select name="rol_id" id="rol_id" class="form-control selectpicker">
-                @foreach($rols as $rol)
-                    <option> {{$rol->id}} </option>
-                @endforeach
-              </select>
+              </div>
 
-        		</div>
-
-        		<div class="form-group">
-
-        			{!! form::submit('Registrar', ['class'=> 'btn-primary']) !!}
-
-        		</div>
-
-        	{!! form::close() !!}
-
-
+          </div>
         </section>
 
 
