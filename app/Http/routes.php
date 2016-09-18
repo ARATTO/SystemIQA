@@ -35,15 +35,12 @@ Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
-Route::get('create','TutoresController@create');
-Route::get('index/{page?}','TutoresController@index');
+//Route::get('create','TutoresController@create');
+//Route::get('index/{page?}','TutoresController@index');
 
-Route::group(['prefix'=>'admin'], function(){
+Route::resource('tutor','TutoresController');
 
-	Route::resource('tutor','TutoresController');
-	Route::get('tutor/{id}/destroy',[
+Route::get('tutor/{id}/destroy',[
 		'uses' => 'TutoresController@destroy',
 		'as' => 'admin.tutor.destroy'
-	]);
-
-});
+]);

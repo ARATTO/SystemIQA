@@ -1,7 +1,7 @@
 function cargarformulario(arg){
 //funcion que carga todos los formularios del sistema
 
-		if(arg==1){ var url = "create"; }
+		if(arg==102){ var url = "create"; }
 
 
 		$("#contenido_principal").html($("#cargador_empresa").html());

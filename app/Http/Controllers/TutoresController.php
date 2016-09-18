@@ -14,21 +14,22 @@ class TutoresController extends Controller
 {
 	public function index()
 	{
-		$tutors = Tutor::orderBy('id', 'ASC')->paginate(5);
+		$tutors = Tutor::orderBy('id', 'ASC')->paginate(20);
 
-		return view('admin.tutor.index')->with('tutors', $tutors);
+		return view('tutor.index')->with('tutors', $tutors);
 	}
 
     //
 	public function create()
 	{
-		return view('admin.tutor.create');
+		return view('tutor.create');
 	}
 
 	public function store(Request $request)
 	{
 		$tutor = new Tutor($request->all());
 		$tutor -> save(); 
+		dd('Usuario creado');
 	}	
 
 	public function destroy($id)
@@ -36,8 +37,8 @@ class TutoresController extends Controller
 		$tutor = Tutor::find($id);
 		$tutor->delete();
 
-		Flash::warning('El tutor ' . $tutor->nombre . $tutor->apellido . ' ha sido borrado exitosamente');
-		return redirect()->route('admin.tutor.index');
+		Flash::error('El tutor ' . $tutor->nombre . $tutor->apellido . ' ha sido borrado exitosamente');
+		return redirect()->route('tutor.index');
 	}
 
 }
