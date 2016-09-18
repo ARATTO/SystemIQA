@@ -28,8 +28,16 @@ class TutoresController extends Controller
 	public function store(Request $request)
 	{
 		$tutor = new Tutor($request->all());
-		$tutor -> save();
-		dd('Usuario creado');
+		$tutor -> save(); 
 	}	
+
+	public function destroy($id)
+	{
+		$tutor = Tutor::find($id);
+		$tutor->delete();
+
+		Flash::warning('El tutor ' . $tutor->nombre . $tutor->apellido . ' ha sido borrado exitosamente');
+		return redirect()->route('admin.tutor.index');
+	}
 
 }

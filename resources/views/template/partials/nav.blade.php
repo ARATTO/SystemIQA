@@ -100,7 +100,7 @@
 
           </ul>
           <ul class="treeview-menu">
-            <li class="active"><a href="javascript:void(0);" onclick="cargarformulario(1);" ><i class="fa fa-circle-o"></i>Ver tutores </a></li>
+            <li class="active"><a href="javascript:void(0);" onclick="cargarlistado(1);" ><i class="fa fa-circle-o"></i>Ver tutores </a></li>
 
           </ul>
         </li>

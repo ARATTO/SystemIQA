@@ -41,5 +41,9 @@ Route::get('index/{page?}','TutoresController@index');
 Route::group(['prefix'=>'admin'], function(){
 
 	Route::resource('tutor','TutoresController');
+	Route::get('tutor/{id}/destroy',[
+		'uses' => 'TutoresController@destroy',
+		'as' => 'admin.tutor.destroy'
+	]);
 
 });
