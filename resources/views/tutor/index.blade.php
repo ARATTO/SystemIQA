@@ -54,7 +54,8 @@
 				<td>{{ $tutor->apellido }}</td>
 				<td>{{ $tutor->telefono }}</td>
 				<td>{{ $tutor->usuario_id }}</td>
-				<td><a href="{{ route('admin.tutor.destroy', $tutor->id) }}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a> <a href="" class="btn btn-warning"></a></td>
+				<td><a href="{{ route('tutor.destroy', $tutor->id) }}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a> 
+				<a href="{{ route('tutor.edit', $tutor->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a></td>
 			</tr>
 		@endforeach
 	</tbody>

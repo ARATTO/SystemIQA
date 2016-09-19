@@ -41,4 +41,23 @@ class TutoresController extends Controller
 		return redirect()->route('tutor.index');
 	}
 
+	public function edit($id)
+	{
+		$tutor = Tutor::find($id);
+		return view('tutor.edit')->with('tutor', $tutor);
+	}
+
+	public function update(Request $request, $id)
+	{
+
+		$tutor = Tutor::find($id);
+		/*$tutor->nombre = $request->nombre;
+		$tutor->apellido = $request->apellido;
+		$tutor->telefono = $request->telefono;*/
+		$tutor->fill($request->all());
+		$tutor->save();
+		Flash::warning('El usuario fue actualizado.');
+		return redirect()->route('tutor.index');
+	}
+
 }
