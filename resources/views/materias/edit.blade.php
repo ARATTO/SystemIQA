@@ -1,13 +1,45 @@
-	<div id="contenedor_formulario" class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">@yield('title_panel','Modificar Asignatura')</h3>
-      </div>
-        @include('flash::message')
+@extends('template.main')
+
+@section('title', 'Asignaturas | Nuevo')
+
+@section('content')
+
+ <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper" style="min-height:2000px !important;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Asignatura
+            <small> Nuevo</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{{ route('materias.index')}}"><i class="fa fa-dashboard"></i>Asignatura</a></li>
+            <li class="active">Nuevo</li>
+          </ol>
+        </section>
+
+        <!--     -->
+
+        <!-- contenido principal -->
+        <section class="content"  id="contenido_principal">
+
+          <div class="box box-primary">
+
+            <div class="box-body">
+
+              <div class="col-xs-12">
+                <div class="panel panel-info">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading">Formulario Editar Asignatura</div>
+                  </div>
+
+                  <!-- Aqui se mostrara el mensaje -->
+                  @include('template.partials.mensaje')
+                    <div class="col-xs-12">
+                    <!--          Formulario            -->
       <div class="panel-body">
 
-        @section('title', 'Control')
-
-        {!! Form::open(['route' => ['materias.materias.update',$mat->id],'method'=>'PUT'])!!}
+        {!! Form::open(['route' => ['materias.update',$mat->id],'method'=>'PUT'])!!}
         <div class="form-group">
           {!! Form::label('codigo','Código') !!}
           {!! Form::text('codigo', $mat->codigo,['class'=>'form-control','placeholder'=>'QUR-115','required'])!!}
@@ -43,19 +75,12 @@
 
         {!! Form::close()!!}
       </div>
-      <script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
-      <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
-      <script>
 
-      $(document).ready(function(){
-        document.title.attr
-        document.title="Editar Asignatura ";
+                    <!--          FIN Formulario            -->
+                      </div>
 
-      });
+              </div>
 
-      $(".select-carrera").chosen({
-        placeholder_text_multiple: ' Seleccione las carreras en las que se imparte esta asignatura',
-        no_results_text:' No se encontraron carreras'
-      });
-      </script>
-</div>
+          </div>
+
+@endsection

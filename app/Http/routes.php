@@ -35,10 +35,9 @@ Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
-Route::group(['prefix'=>'materias'], function(){
-	Route::resource('materias','MateriasController');
-});
+
+Route::resource('materias','MateriasController');
 
 Route::get('home',  ['as' => 'home', 'uses' => 'HomeController@index']);
-Route::get('materias_pivote/{id}',	['as'=>'materias_pivote','uses'=>'MateriasController@otra_funcion']);
-Route::get('eliminar_materia/{id}',['as'=>'eliminar_materia','uses'=>'MateriasController@eliminar']);
+Route::get('materias/filtrar/{id}',	['as'=>'materias.filtrar','uses'=>'MateriasController@filtrarMaterias']);
+Route::get('materias/destroy/{id}',['as'=>'materias.destroy','uses'=>'MateriasController@eliminar']);

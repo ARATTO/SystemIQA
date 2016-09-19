@@ -1,12 +1,44 @@
-<div id="contenedor_formulario" class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">@yield('title_panel','Asignaturas')</h3>
-      </div>
-        @include('flash::message')
-      <div class="panel-body">
+@extends('template.main')
 
-        @section('title', 'Control')
-        
+@section('title', 'Asignaturas | Nuevo')
+
+@section('content')
+
+ <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper" style="min-height:2000px !important;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Asignatura
+            <small> Listado</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{{ route('materias.index')}}"><i class="fa fa-dashboard"></i>Asignatura</a></li>
+            <li class="active">Lista</li>
+          </ol>
+        </section>
+
+        <!--     -->
+
+        <!-- contenido principal -->
+        <section class="content"  id="contenido_principal">
+
+          <div class="box box-primary">
+
+            <div class="box-body">
+
+              <div class="col-xs-12">
+                <div class="panel panel-info">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading">Formulario Nueva Asignatura</div>
+                  </div>
+
+                  <!-- Aqui se mostrara el mensaje -->
+                  @include('template.partials.mensaje')
+                    <div class="col-xs-12">
+                    <!--          Formulario            -->
+      	<div class="panel-body">
+
         <div >
         	{!! Form::label('codigo','Carrera Universitaria: ') !!} &nbsp;&nbsp;&nbsp;
             {!! Form::select(
@@ -17,74 +49,44 @@
 
         </div>
         <hr>
-<table class="table table-hover">
-	<thead>
-		<th>Código</th>
-		<th>Nombre</th>
-		<th>Unidades Valorativas</th>
-		<th>Estudiantes Matriculados</th>
-		<th>Estudiantes Retirados</th>
-	</thead>
-	<tbody>
-			
-		@foreach ($mats as $mat) 
-		<tr>
-			
-			<td>{{ $mat->codigo }}</td>
-			<td>{{ $mat->nombre }}</td>
-			<td>{{ $mat->unidades_valorativas }}</td>
-			<td>{{ $mat->matricula }}</td>
-			<td>{{ $mat->numero_retiros }}</td>
-			
-			<td>
-				<a href="javascript:void(0);" onclick="cargarformulario2(17,{{$mat->id}});"class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-				<a href="{{route('eliminar_materia',$mat)}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
-			</td>
+		<table class="table table-hover">
+			<thead>
+				<th>Código</th>
+				<th>Nombre</th>
+				<th>Unidades Valorativas</th>
+				<th>Estudiantes Matriculados</th>
+				<th>Estudiantes Retirados</th>
+			</thead>
+			<tbody>
+					
+				@foreach ($mats as $mat) 
+				<tr>
+					
+					<td>{{ $mat->codigo }}</td>
+					<td>{{ $mat->nombre }}</td>
+					<td>{{ $mat->unidades_valorativas }}</td>
+					<td>{{ $mat->matricula }}</td>
+					<td>{{ $mat->numero_retiros }}</td>
+					
+					<td>
+						<a href=" {{route('materias.edit',$mat)}}"class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+						<a href="{{route('materias.destroy',$mat)}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+					</td>
 
-		</tr>
-	@endforeach
+				</tr>
+			@endforeach
 
-	</tbody>
+			</tbody>
 
-</table>
-{{$mats->render()}}
-</div>
-<script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
-<script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
+		</table>
+			{{$mats->render()}}
+		</div>
 
-<script	>
+			<!--          FIN Formulario            -->
+                      </div>
 
-      $(document).ready(function(){
-        document.title.attr
-        document.title="Listado de Asignaturas";
-      });
+              </div>
 
+          </div>
 
-$('.select-carrera').chosen({
-
-        placeholder_text_single:'Seleccione una carrera'
-      });
-
-
-      $('#codigo').change(function(){     
-      	
-      	if($('#codigo').val()){
-      		
-			var url = "materias_pivote/"+$('#codigo').val(); 
-			
-	      	}else{
-	      		var url = "materias/materias"; 
-	      	}
-
-			$("#contenido_principal").html($("#cargador_empresa").html());
-
-			$.get(url,function(resul)
-				{
-					$("#contenido_principal").html(resul);})
-
-        });
-
-
-		  
-      </script>
-</div>
+@endsection

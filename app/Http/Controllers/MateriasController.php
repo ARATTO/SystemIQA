@@ -36,7 +36,7 @@ class MateriasController extends Controller
 
     	Flash::success("La asignatura : ".$mat->nombre." se ha registrado exitosamente."  );
          
-    	return redirect()->route('home');
+    	return redirect()->route('materias.create');
     }
 
 
@@ -64,16 +64,22 @@ class MateriasController extends Controller
         $mat->carreras()->sync($request->ids);
         Flash::success("La asignatura:  ".$mat->nombre." se ha modificado exitosamente.");
 
-        return redirect()->route('home');
+        return redirect()->route('materias.index');
     }
 
     public function destroy($id){
 
-        //Este metodo es el eliminar de abajo  problemas con las rutas
+        $mat = Materia::find($id);
+        $mat->delete();
+        
+        Flash::success("La asignatura:  ".$mat->nombre." se ha eliminado exitosamente.");
+    
+        return redirect()->route('materias.index');
+
     }
 
 
-    public function otra_funcion($id){
+    public function filtrarMaterias($id){
         $carrera=Carrera::find($id);
         $mats=$carrera->materias()->paginate(3);
         $carreras = Carrera::orderBy('id')->lists('nombre','id');
@@ -86,13 +92,12 @@ class MateriasController extends Controller
 
     public function eliminar($id){
         
-        $mat = Materia::find($id);
+         $mat = Materia::find($id);
         $mat->delete();
         
         Flash::success("La asignatura:  ".$mat->nombre." se ha eliminado exitosamente.");
     
-        return redirect()->route('home');
-
+        return redirect()->route('materias.index');
     }
 
 }
