@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Crear porcentaje de notas')
+@section('title', 'Editar porcentaje')
 
 @section('content')
 
@@ -11,45 +11,55 @@
         <section class="content-header">
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Inicio</a></li>
+           
             <li class="active">Dashboard</li>
           </ol>
         </section>
 
 
-        {!! Form::open(['action' => 'PorcentajeNotasController@store' ]) !!}
-
-        <div style="display:none">
-            {{ form::text('IdCarrera', $carrera->id , null, ['class' => 'form-control ']) }}  
-        </div>
-        
-
+        {!! Form::open(['route' => array('Pnotas.update', $mis_materias),  'method' => 'PUT']) !!}      
 
          @include('flash::message')
 
         <div id="panel" class="panel panel-primary">
           <div class="panel-heading">
               <div>
-                <h3>{{'Crear porcentaje de notas de '.$carrera->nombre}}</h3>
+                <h3>{{'Editar porcentaje de notas'}}</h3>
               </div>
         
           </div>
 
 
+          <div id ="valoresEvaluacion" style='display:none;' class="panel-body">
+
+          @foreach($evaluaciones as $eva)
+            {!! form::label('NEID', 'evaluaciones') !!}
+            {!! form::text('NEID',  $eva->id, ['class' => 'form-control']) !!}
+          @endforeach
+          
+           {!! form::label('NERE', 'evaluaciones') !!}
+           {!! form::text('NERE',  $numeroEvaluaciones, ['class' => 'form-control']) !!}
+
+            {!! form::label('IDMAT', 'evaluaciones') !!}
+           {!! form::text('IDMAT',  $mis_materias->id, ['class' => 'form-control']) !!}
+        </div> 
+
+
          <div class="panel-body">
-              {!! form::label('id', 'Materias') !!}
-              {!! form::select('id', $mis_materias, null, ['class' => 'form-control ', 'placeholder'=> 'Seleccione una materia', 'required']) !!}
+              {!! form::label('nombreMateria', 'Materias') !!}
+              {!! form::text('nombreMateria', $mis_materias->nombre, ['class' => 'form-control ','required', 'disabled'=> 'false']) !!}
         </div>  
 
 
          <div id ="NumeroEvaluaciones"  class="panel-body">
               {!! form::label('numeroDeEvaluaciones', 'Numero de evaluaciones') !!}
-            <input name="numeroDeEvaluacones" type="number" id="numeroDeEvaluaciones" value="3"  class="form-control"  placeholder="5" />
+            <input name="numeroDeEvaluacones" type="number" id="numeroDeEvaluaciones" value="{{$numeroEvaluaciones}}" disabled="false"  class="form-control" />
 
         </div> 
 
 
         <div class="form-group">
-            <input type="button" value="Añadir" onclick="mostrar()" class="btn-primary"> 
+            <input type="button" value="Añadir" onclick="mostrar()" class="btn-primary" > 
         </div>
 
 
@@ -162,7 +172,7 @@
 
             
         <div class="panel-body">
-               {!! form::submit('Guardar', ['class'=> 'btn-primary' ]) !!}  
+               {!! form::submit('Editar', ['class'=> 'btn-primary' ]) !!}  
          </div>
               
 
@@ -179,6 +189,7 @@
         <!-- contenido principal -->
         <section class="content"  id="contenido_principal">
 
+@endsection
         
       
 
@@ -210,14 +221,9 @@
 
     </div><!-- ./wrapper -->
 
-    
-@endsection
-
 @section('js')
   <script type="text/javascript">
-      function mostrar($id){
-
-        
+      function mostrar(){
         var v = document.getElementById('numeroDeEvaluaciones').value;
          
         if (v<3 || v>10) {
@@ -230,8 +236,17 @@
 
       
       };
-      
 
+
+  window.onload=function() {
+
+      mostrar();
+
+      document.getElementById('numeroEvaluaciones').disabled = true;
+
+     //alert('funciono');
+
+    }
 
   </script>
 

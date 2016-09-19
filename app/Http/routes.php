@@ -39,36 +39,45 @@ Route::get('elejirCarrera', 'PorcentajeNotasController@create');
 Route::post('guardar', 'PorcentajeNotasController@show');
 
 
-Route::get('pruebaEditar', [
-	'uses' => 'PorcentajeNotasController@pruebaEditar',
-	'as' => 'Pnotas.pruebaEditar'	
-	]);
-
 Route::post('store',[
-		'uses' => 'PorcentajeNotasController@store', //uses va por default para que reconosca la ruta
+		'uses' => 'PorcentajeNotasController@store', 
 		'as' => 'Pnotas.create2'
 		]);
 
 Route::get('verPorcentajes',[
-		'uses' => 'PorcentajeNotasController@index', //uses va por default para que reconosca la ruta
+		'uses' => 'PorcentajeNotasController@index',
 		'as' => 'Pnotas.index'
 		]);
 
 Route::get('verPorcentajes/{id}/destroy',[
-		'uses' => 'PorcentajeNotasController@destroy', //uses va por default para que reconosca la ruta
+		'uses' => 'PorcentajeNotasController@destroy',
 		'as' => 'Pnotas.destroy'
 		]);
 
 
 Route::get('editar/{pnotas}/edit',[
-		'uses' => 'PorcentajeNotasController@edit', //uses va por default para que reconosca la ruta
+		'uses' => 'PorcentajeNotasController@edit', 
 		'as' => 'Pnotas.edit'
 		]);
 
 Route::put('cambiar/{Pnotas}',[
-		'uses' => 'PorcentajeNotasController@update', //uses va por default para que reconosca la ruta
+		'uses' => 'PorcentajeNotasController@update', 
 		'as' => 'Pnotas.update'
 		]);
+
+
+
+/*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
+
+Route::get('ingresarNotas/seleccionar', 'IngresarNotasController@create');
+Route::post('guardarNota', 'IngresarNotasController@show');
+
+Route::post('ingresarNotas/crearNotas',[
+		'uses' => 'IngresarNotasController@store', 
+		'as' => 'notasAlumnos.create2'
+		]);
+
+
 
 /*RUTAS RODRIGO*/
 

@@ -8,15 +8,14 @@
 
 	<section>
 		
-		
 		@yield('content')
-		
+
 	</section>
 
 
 	@include('template.partials.import_script')
+	@include('template.partials.load')
 
-	@yield('js')
-
+	@yield('js')	
 </body>
 </html>

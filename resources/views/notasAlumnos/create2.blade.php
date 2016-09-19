@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Crear porcentaje de notas')
+@section('title', 'Inserar notas')
 
 @section('content')
 
@@ -16,51 +16,51 @@
         </section>
 
 
-        {!! Form::open(['action' => 'PorcentajeNotasController@show', $carreras]) !!}
+        {!! Form::open(['action' => 'IngresarNotasController@store' ]) !!}
+       
 
 
+         @include('flash::message')
 
         <div id="panel" class="panel panel-primary">
           <div class="panel-heading">
               <div>
-                <h3>Seleccionar Carrera</h3>
+                <h3>{{'Ingresar Notas '}}</h3>
               </div>
         
           </div>
 
-          <div class="panel-body">
 
-              {!! form::label('nombre', 'Carrera') !!}
-              {!! form::select('id', $carreras, null, ['class' => 'form-control select-category', 'placeholder' => 'Seleccione una carrera', 'required']) !!}
-          </div>  
+         <div class="panel-body">
 
-   
+            
 
-            <div class="form-group">
+        </div>  
+
+
+
+
+        
+
+            
+        <div class="panel-body">
+               {!! form::submit('Guardar', ['class'=> 'btn-primary' ]) !!}  
+         </div>
               
-              {!! form::submit('Siguiente', ['class'=> 'btn-primary']) !!}
 
         </div>
           
-          </div>
-        </div>
+    </div>
 
-          
-
-
-
+        {!! Form::close() !!}
 
         <div class="form-group">
 
 
-        {!! Form::close() !!}
 
         <!-- contenido principal -->
         <section class="content"  id="contenido_principal">
 
-
-        
-      
 
 
         </section>
@@ -90,5 +90,31 @@
 
     </div><!-- ./wrapper -->
 
-
 @endsection
+
+@section('js')
+  <script type="text/javascript">
+      function mostrar($id){
+
+        
+        var v = document.getElementById('numeroDeEvaluaciones').value;
+         
+        if (v<3 || v>10) {
+          
+            alert("El numero minimo de evaluaciones es 3 y el maximo 10");
+        }else{
+            for (paso = 1; paso <=v; paso++) {
+            document.getElementById(paso).style.display = 'block';
+          }
+
+           alert("evaluaciones agregadas");
+        }
+
+      
+      }
+      
+
+
+  </script>
+
+@endsection('js')
