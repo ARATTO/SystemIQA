@@ -51,8 +51,10 @@
     $('#flash-overlay-modal').modal();
 </script>
 
+
 <script type="text/javascript">
 	function alerta($texto) {
 		alert($texto);
 	}
 </script>
+

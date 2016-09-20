@@ -18,13 +18,14 @@ class Materia extends Model
         'numero_retiros',
     ];
 
+
     /*public function evaluaciones(){
       return $this->belongsTo('App\Evaluacion');
     }*/
 
     public function evaluaciones(){
       return $this->hasMany('App\Evaluacion');
-    }
+
 
     public function grupos(){
       return $this->belongsTo('App\Grupo');
