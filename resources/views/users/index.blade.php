@@ -90,7 +90,7 @@
                       <a href=" {{ route('users.edit' , $user->id) }} " class="btn btn-warning">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                       </a>
-                      <a href=" {{ route('users.destroy' , $user->id) }} " class="btn btn-danger">
+                      <a href=" {{ route('users.destroy' , $user->id) }} " class="btn btn-danger" onclick="return confirm('¿Deseas Eliminar este Usuario?')">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                       </a>
                     </td>
