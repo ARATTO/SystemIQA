@@ -122,20 +122,13 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active">
-              <a href="{{route('materias.index')}}" >
-                <i class="fa fa-circle-o"></i>Ver Materias
-              </a>
+            <li class="active"><a href="{{route('materias.index')}}" >
+                <i class="fa fa-circle-o"></i>Listado Asignaturas</a>
+            </li>
+            <li class="active"><a href="{{route('materias.create')}}"  >
+                <i class="fa fa-circle-o"></i>Agregar Asignatura</a>
             </li>
           </ul>
-          <ul class="treeview-menu">
-            <li class="active">
-              <a href="{{route('materias.create')}}"  >
-                <i class="fa fa-circle-o"></i>Agregar asignatura
-              </a>
-            </li>
-          </ul>
-
         </li> 
         <!--  Fin Panel de Materias      -->
 

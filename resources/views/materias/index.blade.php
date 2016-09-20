@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Asignaturas | Nuevo')
+@section('title', 'Asignaturas | Listado')
 
 @section('content')
 
@@ -30,7 +30,7 @@
               <div class="col-xs-12">
                 <div class="panel panel-info">
                   <!-- Default panel contents -->
-                  <div class="panel-heading">Formulario Nueva Asignatura</div>
+                  <div class="panel-heading">Listado de Asignaturas</div>
                   </div>
 
                   <!-- Aqui se mostrara el mensaje -->
@@ -40,9 +40,9 @@
       	<div class="panel-body">
 
         <div >
-        	{!! Form::label('codigo','Carrera Universitaria: ') !!} &nbsp;&nbsp;&nbsp;
+        	{!! Form::label('codigo-mat','Carrera Universitaria: ') !!} &nbsp;&nbsp;&nbsp;
             {!! Form::select(
-            	'codigo',
+            	'codigo-mat',
             	$carreras,
      			$car,//Seleccion de la carrera para filtro
      			['class'=>'select-carrera','placeholder'=>'Todas las carrera','required']) !!}
@@ -70,7 +70,7 @@
 					
 					<td>
 						<a href=" {{route('materias.edit',$mat)}}"class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-						<a href="{{route('materias.destroy',$mat)}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+						<a href="{{route('materias.destroy',$mat)}}" onclick="return confirm('¿Deseas Eliminar esta Asignatura?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
 					</td>
 
 				</tr>

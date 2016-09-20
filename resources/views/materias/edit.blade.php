@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Asignaturas | Nuevo')
+@section('title', 'Asignaturas | Editar')
 
 @section('content')
 
@@ -42,7 +42,7 @@
         {!! Form::open(['route' => ['materias.update',$mat->id],'method'=>'PUT'])!!}
         <div class="form-group">
           {!! Form::label('codigo','Código') !!}
-          {!! Form::text('codigo', $mat->codigo,['class'=>'form-control','placeholder'=>'QUR-115','required'])!!}
+          {!! Form::text('codigo', $mat->codigo,['class'=>'form-control','placeholder'=>'QUR-115','pattern'=>'[A-Za-z]{3}-[0-9]{3}','title'=>'QUR-115','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('nombre','Nombre') !!}

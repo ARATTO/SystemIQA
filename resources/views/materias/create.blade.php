@@ -43,7 +43,7 @@
           {!! Form::open(['route' => 'materias.store','method'=>'POST'])!!}
           <div class="form-group">
             {!! Form::label('codigo','Código') !!}
-            {!! Form::text('codigo',null,['class'=>'form-control','placeholder'=>'QUR-115','required'])!!}
+            {!! Form::text('codigo',null,['class'=>'form-control','placeholder'=>'QUR-115','pattern'=>'[A-Za-z]{3}-[0-9]{3}','title'=>'QUR-115','required'])!!}
           </div>
           <div class="form-group">
             {!! Form::label('nombre','Nombre') !!}
@@ -70,7 +70,7 @@
             {!! Form::number('numero_retiros',0,['class'=>'form-control','min'=>0,'max'=>10000,'required']) !!}
           </div>
           
-          
+         
           <div class="form-group">
             {!! Form::submit('Registrar',['class'=>'btn btn-primary' ]) !!}
           </div>
