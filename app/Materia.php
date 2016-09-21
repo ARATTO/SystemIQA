@@ -20,9 +20,11 @@ class Materia extends Model
 
 
 
+
     public function evaluaciones(){
       return $this->hasMany('App\Evaluacion');
     }
+
 
     public function grupos(){
       return $this->belongsTo('App\Grupo');

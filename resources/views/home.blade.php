@@ -21,6 +21,5 @@
         <!-- contenido principal -->
         <section class="content"  id="contenido_principal">
 
-
         </section>
 @endsection

@@ -23,7 +23,6 @@ class User extends Authenticatable
 
         'rol_id',
         'created_at',
-
     ];
 
     /**
@@ -49,7 +48,7 @@ class User extends Authenticatable
     }
 
 
-    public function scopeCarnet($query, $carnet){
+   public function scopeCarnet($query, $carnet){
           return $query->where('carnet', 'LIKE' , '%'.$carnet.'%');
     }
 

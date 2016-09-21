@@ -170,7 +170,6 @@ return [
 
         /*provider para flash*/
         Laracasts\Flash\FlashServiceProvider::class,
-
     ],
 
     /*

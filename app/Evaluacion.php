@@ -18,6 +18,11 @@ class Evaluacion extends Model
         'materia_id',
     ];
 
+    /*public function materia(){
+      return $this->hasMany('App\Materia');
+    }*/
+
+
 
     public function materia(){
       return $this->belongsTo('App\Materia');
@@ -28,3 +33,4 @@ class Evaluacion extends Model
     }
 
 }
+

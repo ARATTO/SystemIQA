@@ -22,7 +22,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{Auth::user()->nombre }}</span>
+              <span class="hidden-xs">{{ Auth::user()->nombre }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -30,7 +30,7 @@
                 <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                 <p>
                  Usuario SystemIQA
-                  <small>Miembro desde {{Auth::user()->created_at}}</small>
+                  <small>Miembro desde {{ Auth::user()->created_at }} </small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -114,8 +114,9 @@
           </ul>
         </li>
 
-        <!--RODRIGO-->
-          <li class="active treeview">
+
+              <!--RODRIGO-->
+        <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Porcentaje de las notas</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
