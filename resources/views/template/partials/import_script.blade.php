@@ -41,10 +41,14 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 
 <!-- javascript del sistema laravel -->
+
+
+<script src="dist/js/sistemalaravel.js"></script>
 <script src="{{ asset('js/sistemalaravel.js') }}"></script>
 
 <script src="{{ asset('code.jquery.com/jquery.js') }}"></script>
 <script src="{{ asset('maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js') }}"></script>
+
 <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
 <!-- script de materias  **Elias -->
 <script src="{{ asset('dist/js/materias.js') }}"></script>
@@ -52,9 +56,11 @@
 <script src="{{ asset('dist/js/bootbox.js') }}"></script>
 
 
+
  <script>
     $('#flash-overlay-modal').modal();
 </script>
+
 
 <!-- javascript de formularios de elias -->
  <script>
@@ -64,7 +70,7 @@ $('#codigo-mat').change(function(){
         	jAlert('hi');
 
        $url= "{{route('materias.index')}}"+"/filtrar/"+$("#codigo-mat").val();  
-       window.location.href=$url;//."/filtrar/".$url;
+       		window.location.href=$url;//."/filtrar/".$url;
           }else{
           window.location.href="{{route('materias.index')}}";
           }
@@ -72,3 +78,4 @@ $('#codigo-mat').change(function(){
  </script>
 
 <!--  FIN javascript de formularios de elias -->
+

@@ -28,12 +28,11 @@ Route::get('home', function () {
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
- 
+
 // Registration routes...
-Route::get('register', 'Auth\AuthController@getRegister');
-Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
+
 
 
 Route::resource('materias','MateriasController');
@@ -41,3 +40,32 @@ Route::resource('materias','MateriasController');
 Route::get('home',  ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('materias/filtrar/{id}',	['as'=>'materias.filtrar','uses'=>'MateriasController@filtrarMaterias']);
 Route::get('materias/destroy/{id}',['as'=>'materias.destroy','uses'=>'MateriasController@eliminar']);
+
+//LOBOS
+Route::get('cargar_usuarios', 'FormulariosController@form_cargar_datos_usuarios');
+Route::post('cargar_datos_usuarios', 'FormulariosController@cargar_datos_usuarios');
+// FIN LOBOS
+
+
+//MOTTO
+Route::resource('users','UserController');
+Route::get('users/create','UserController@create');
+Route::get('users/{id}/destroy', [
+  'as' => 'users.destroy',
+  'uses' => 'UserController@destroy'
+]);
+//FIN MOTTO
+/*
+Route::get('users', [
+  'as' => 'users/index',
+  'uses' => 'UserController@index'
+]);
+
+Route::group(['prefix' => 'admin'], function(){
+
+	Route::resource('users','UsersController');
+
+});
+*/
+
+
