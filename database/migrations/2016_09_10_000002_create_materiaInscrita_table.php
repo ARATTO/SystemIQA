@@ -15,6 +15,7 @@ class CreateMateriaInscritaTable extends Migration
       Schema::create('materias_inscritas', function (Blueprint $table) {
           $table->increments('id');
           $table->string('cursada');
+          $table->float('nota_final');
           $table->timestamps();
       });
     }
