@@ -7,12 +7,12 @@
 	@include('template.partials.nav')
 
 	<section>
-
+		
 		@yield('content')
 
 	</section>
 
 	@include('template.partials.import_script')
-
+	@include('template.partials.load')
 </body>
 </html>

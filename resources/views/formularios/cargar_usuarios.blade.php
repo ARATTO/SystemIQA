@@ -1,6 +1,30 @@
+@extends('template.main')
+
+@section('title', 'Usuarios | Nuevo')
+
+@section('content')
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper" style="min-height:2000px !important;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Usuarios
+            <small> Nuevo</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{{ url('/users') }}"><i class="fa fa-dashboard"></i>Usuarios</a></li>
+            <li class="active">Nuevo</li>
+          </ol>
+        </section>
 
 
-<div>
+        <!-- contenido principal -->
+        <section class="content"  id="contenido_principal">
+
+          
+
+          <div>
     
       <div class="box box-primary">
                       <div class="box-header">
@@ -33,6 +57,15 @@
       </form>
 
       </div>
+      
+        </section>
+
+
+
+@endsection
+
+
+
 
   
 

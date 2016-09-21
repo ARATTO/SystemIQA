@@ -27,4 +27,8 @@ class Estudiante extends Model
     public function carreras(){
       return $this->belongsToMany('App\Carrera')->withTimestamps();
     }
+
+    public function materiaInscrita(){
+      return $this->hasMany('App\MateriaInscrita');
+    }
 }

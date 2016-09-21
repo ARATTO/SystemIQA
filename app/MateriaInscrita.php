@@ -1,0 +1,29 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class MateriaInscrita extends Model
+{
+  //
+  protected $table = 'materias_inscritas';
+
+  protected $fillable = [
+      'id',
+      'cursada',
+  ];
+
+  public function notas(){
+    return $this->hasMany('App\Nota');
+  }
+
+  public function estudiante(){
+    return $this->belongsTo('App\Estudiante');
+  }
+
+  public function materia(){
+    return $this->belongsTo('App\Materia');
+  }
+
+}

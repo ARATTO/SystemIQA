@@ -10,10 +10,10 @@ use Excel;
 
 class FormulariosController extends Controller
 {
-	/*public function __construct()
+	public function __construct()
 	{
 		$this->middleware('auth');
-	}*/
+	}
 
 
     public function form_cargar_datos_usuarios(){
@@ -45,13 +45,27 @@ class FormulariosController extends Controller
 				        $estudiante->apellido= $fila->apell;
 				        $estudiante->materias_ganadas= $fila->mateg;
 				        $estudiante->materias_reprobadas= $fila->matr;
-				        $estudiante->CUM= $fila->cum; //este campo llamado telefono se debe agregar en la base de datos c
+				        $estudiante->CUM= $fila->cum;
 				        $estudiante->anio_ingreso= $fila->anio;
 				        $estudiante->promedio_ciclo= $fila->prom;
 		                
 		                $estudiante->save();
 
-		                $estudiante->carreras()->attach($fila->carrera);
+		                
+
+		                $estudiante->carreras()->attach($fila->carr);
+
+		                $carrera=new Carrera();
+		                //$carrera=Carrera::where("id","=",$fila->carr)->first();
+
+		                dd($carrera);
+
+		                $materia=new Materia();
+		                $materia=Materia::where("codigo","=",$fila->codmat)->first();
+
+		                
+		                $carrera->materias()->attach($materia->id);
+
 	                }
 	            
 		     
