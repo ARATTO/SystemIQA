@@ -35,7 +35,7 @@
             <div class="panel-body">
                 <div>
                   {!! form::label('nombre', 'Carrera') !!}
-                  {!! form::select('id', $carrera, null, ['class' => 'form-control', 'name'=>'materiaElejida', 'id'=>'materiaElejida', 'placeholder'=>'seleccione una carrera' , 'required']) !!}  
+                  {!! form::select('id', $carrera, null, ['class' => 'form-control', 'name'=>'CarreraElejida', 'id'=>'CarreraElejida', 'placeholder'=>'seleccione una carrera' , 'required']) !!}  
                 </div>
 
                 <hr>
@@ -55,12 +55,12 @@
                               
 
                 <hr>
-               <div id="48" class="form-grup" style="display:none">
+               <div id="2" class="form-grup" style="display:none">
                    {!! form::label('nombre', 'Materia Quimica') !!}
                   <select name="materiasQuimica" id="materiasQuimica" class="form-control selectpicker">
                     @foreach($materias as $materia)
                         @foreach ($materia->carreras as $v)
-                            @if($v->id == 48)
+                            @if($v->id == 2)
                               <option  id="valor" value= {{$materia->id}} > {{$materia->nombre}} </option>
                             @endif  
                         @endforeach
@@ -116,19 +116,20 @@
 
   function cambio(){
 
-    return document.getElementById('materiaElejida').value;
+    return document.getElementById('CarreraElejida').value;
   }
 
 
-    $("#materiaElejida").change(
+    $("#CarreraElejida").change(
             function(){
-                //alert( document.getElementById('materiaElejida').value );
-                if(document.getElementById('materiaElejida').value == 1){
-                  document.getElementById(1).style.display = 'block'; 
-                  document.getElementById(48).style.display = 'none';  
+               // alert( document.getElementById('CarreraElejida').value );
+
+                if(document.getElementById('CarreraElejida').value == 1){
+                  document.getElementById(2).style.display = 'block'; 
+                  document.getElementById(1).style.display = 'none';  
                 }else{
-                  document.getElementById(1).style.display = 'none'; 
-                  document.getElementById(48).style.display = 'block';  
+                  document.getElementById(2).style.display = 'none'; 
+                  document.getElementById(1).style.display = 'block';  
                 }
              
 

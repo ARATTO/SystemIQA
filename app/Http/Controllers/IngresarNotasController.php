@@ -20,7 +20,6 @@ class IngresarNotasController extends Controller
             $materias->carreras;
         });
 
-         $arreglo = [];     
           	
          
         $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
@@ -35,22 +34,42 @@ class IngresarNotasController extends Controller
 
     public function show(Request $request){
 
-    	 $evaluacion = Evaluacion::orderBy('id','ASC');
+        $carreraElejida = $request->carreraElejida;
 
-        $evaluacion->each(function($evaluacion){
+
+        $evaluacion = Evaluacion::orderBy('id','ASC')->paginate(10);
+
+       $evaluacion->each(function($evaluacion){
             $evaluacion->materia;
-       		dd($evaluacion->materia);
+            //dd($evaluacion);
         });
 
+
+        $materiaSeleccionada;
+
+            if($request->CarreraElejida == 1){
+                $materiaSeleccionada = $request->materiasQuimica;        
+
+            }else{
+                $materiaSeleccionada = $request->materiasAlimento;
+
+            }
         
-    	return view('notasAlumnos.create2');
+        //dd($materiaSeleccionada);
+        return view('notasAlumnos.create2')
+        ->with('evaluacion',$evaluacion)
+        ->with('materiaSeleccionada',$materiaSeleccionada);    
+    	
     }
+
+
+
 
     //funcion de guardado
     public function store(PorcentajeNotasRequest $request){
 
 
-
+        return redirect()->route('Pnotas.index');
     }
 
 

@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Inserar notas')
+@section('title', 'Insertar notas')
 
 @section('content')
 
@@ -33,8 +33,27 @@
 
          <div class="panel-body">
 
-            
+            <table class="table table-striped" > 
 
+              <thead>
+
+                @foreach($evaluacion as $porcentaje)
+
+                  @if($porcentaje->materia->id == $materiaSeleccionada)
+           
+                        <th>{{$porcentaje->porcentaje}} </th>
+                  @endif
+            
+                @endforeach
+              </thead>
+              <tbody>
+                
+              </tbody>
+              
+
+            </table>
+
+            {!! form::select('id', $evaluacion, null, ['class' => 'form-control', 'name'=>'CarreraElejidaElejida', 'id'=>'CarreraElejida', 'placeholder'=>'seleccione una carrera' , 'required']) !!}  
         </div>  
 
 
