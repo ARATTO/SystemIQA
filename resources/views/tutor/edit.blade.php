@@ -13,7 +13,7 @@
             <small> Editar</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="{{ url('/users') }}"><i class="fa fa-dashboard"></i>Tutor</a></li>
+            <li><a href="{{ url('tutor') }}"><i class="fa fa-dashboard"></i>Tutor</a></li>
             <li class="active">Editar</li>
           </ol>
         </section>
@@ -42,18 +42,18 @@
                       {!! Form::open(['route' => ['tutor.update', $tutor], 'method' => 'PUT']) !!}
 
   <div class="form-group">
-    {!! Form::label('name', 'Nombre') !!}
-    {!! Form::text('name', $tutor->nombre, ['class' => 'form-control', 'placeholder' => 'Nombres', 'required']) !!}
+    {!! Form::label('nombre', 'Nombre') !!}
+    {!! Form::text('nombre', $tutor->nombre, ['class' => 'form-control', 'placeholder' => 'Nombres', 'required']) !!}
   </div>
 
   <div class="form-group">
-    {!! Form::label('name', 'Apellido') !!}
-    {!! Form::text('name', $tutor->apellido, ['class' => 'form-control', 'placeholder' => 'Apellidos', 'required']) !!}
+    {!! Form::label('apellido', 'Apellido') !!}
+    {!! Form::text('apellido', $tutor->apellido, ['class' => 'form-control', 'placeholder' => 'Apellidos', 'required']) !!}
   </div>
 
    <div class="form-group">
-    {!! Form::label('name', 'Telefono') !!}
-    {!! Form::text('name', $tutor->telefono, ['class' => 'form-control', 'placeholder' => 'Numero de telefono', 'required']) !!}
+    {!! Form::label('telefono', 'Telefono') !!}
+    {!! Form::text('telefono', $tutor->telefono, ['class' => 'form-control', 'placeholder' => 'Numero de telefono', 'required']) !!}
   </div>
 
   <div class = "form_group">

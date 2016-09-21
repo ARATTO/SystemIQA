@@ -14,7 +14,7 @@ class TutoresController extends Controller
 {
 	public function index()
 	{
-		$tutors = Tutor::orderBy('id', 'ASC')->paginate(20);
+		$tutors = Tutor::orderBy('id', 'ASC')->paginate(4);
 
 		return view('tutor.index')->with('tutors', $tutors);
 	}
@@ -44,20 +44,29 @@ class TutoresController extends Controller
 	public function edit($id)
 	{
 		$tutor = Tutor::find($id);
+
 		return view('tutor.edit')->with('tutor', $tutor);
+
 	}
 
 	public function update(Request $request, $id)
 	{
-
 		$tutor = Tutor::find($id);
-		/*$tutor->nombre = $request->nombre;
+
+		$tutor->nombre = $request->nombre;
 		$tutor->apellido = $request->apellido;
-		$tutor->telefono = $request->telefono;*/
-		$tutor->fill($request->all());
+		$tutor->telefono = $request->telefono;
+
+		
+		//$tutor->fill($request->all());
 		$tutor->save();
-		Flash::warning('El usuario fue actualizado.');
+		Flash::warning('El usuario con id ' . $tutor->id . ' fue actualizado.');
 		return redirect()->route('tutor.index');
+	}
+
+	public function show($id)
+	{
+
 	}
 
 }

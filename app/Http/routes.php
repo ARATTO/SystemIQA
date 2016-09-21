@@ -38,9 +38,12 @@ Route::get('home', 'HomeController@index');
 //Route::get('create','TutoresController@create');
 //Route::get('index/{page?}','TutoresController@index');
 
+
+//Rutas Alam Lopez
 Route::resource('tutor','TutoresController');
 
 Route::get('tutor/{id}/destroy',[
 		'uses' => 'TutoresController@destroy',
-		'as' => 'admin.tutor.destroy'
+		'as' => 'tutor.destroy'
 ]);
+//Fin Rutas Alam Lopez

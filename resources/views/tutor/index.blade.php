@@ -20,7 +20,7 @@
             <small> panel</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="{{ url('/users') }}"><i class="active fa fa-dashboard"></i>Tutores</a></li>
+            <li><a href="{{ url('/tutor') }}"><i class="active fa fa-dashboard"></i>Tutores</a></li>
           </ol>
         </section>
 
