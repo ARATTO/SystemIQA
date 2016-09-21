@@ -19,7 +19,7 @@ class Materia extends Model
     ];
 
     public function evaluaciones(){
-      return $this->belongsTo('App\Evaluacion');
+      return $this->hasMany('App\Evaluacion');
     }
 
     public function grupos(){
@@ -36,6 +36,10 @@ class Materia extends Model
 
     public function carreras(){
       return $this->belongsToMany('App\Carrera')->withTimestamps();
+    }
+
+    public function materiaInscrita(){
+      return $this->hasMany('App\MateriaInscrita');
     }
 
 }

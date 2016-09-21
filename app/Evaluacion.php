@@ -18,6 +18,10 @@ class Evaluacion extends Model
     ];
 
     public function materia(){
-      return $this->hasMany('App\Materia');
+      return $this->belongsTo('App\Materia');
+    }
+
+    public function notas(){
+      return $this->hasMany('App\Nota');
     }
 }

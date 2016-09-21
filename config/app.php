@@ -128,6 +128,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        'Maatwebsite\Excel\ExcelServiceProvider',
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -167,6 +168,7 @@ return [
 
         /*Providers instalados*/
         Collective\Html\HtmlServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
     ],
 
@@ -183,6 +185,8 @@ return [
 
     'aliases' => [
 
+
+        'Excel' => 'Maatwebsite\Excel\Facades\Excel',
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -219,6 +223,9 @@ return [
 
         'Form'=> Collective\Html\FormFacade::class,
         'Html'=> Collective\Html\HtmlFacade::class,
+
+        'Flash'=> Laracasts\Flash\Flash::class,
+
     ],
 
 ];
