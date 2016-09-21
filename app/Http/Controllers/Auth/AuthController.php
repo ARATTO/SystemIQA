@@ -25,7 +25,7 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
+    protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -74,9 +74,8 @@ class AuthController extends Controller
         return view("home");
     }
 
-    //return view()->with("msjerror","credenciales incorrectas");
+    return view("login")->with("msjerror","credenciales incorrectas");
     //return view("home");
-    return view("home");
 
     }
 
@@ -132,7 +131,7 @@ protected function getLogout()
 
         Session::flush();
 
-        return redirect('login');
+        return redirect()->route('login');;
     }
 
 

@@ -22,7 +22,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-              <span class="hidden-xs">Usuario Plusis</span>
+              <span class="hidden-xs">{{Auth::user()->nombre }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -30,28 +30,30 @@
                 <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                 <p>
                  Usuario SystemIQA
-                  <small>Member since Nov. 2012</small>
+                  <small>Miembro desde {{Auth::user()->created_at}}</small>
                 </p>
               </li>
               <!-- Menu Body -->
+              <!--
               <li class="user-body">
                 <div class="col-xs-4 text-center">
-                  <a href="#">Followers</a>
+                  <a href="#">Estadisticas</a>
                 </div>
                 <div class="col-xs-4 text-center">
-                  <a href="#">Sales</a>
+                  <a href="#">Perfil</a>
                 </div>
                 <div class="col-xs-4 text-center">
-                  <a href="#">Friends</a>
+                  <a href="#">Recientes</a>
                 </div>
               </li>
+            -->
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
                   <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="logout" class="btn btn-default btn-flat">Salir</a>
+                  <a href="logout" class="btn btn-danger btn-flat">Salir</a>
                 </div>
               </li>
             </ul>
@@ -112,9 +114,8 @@
           </ul>
         </li>
 
-
-      <!--RODRIGO-->
-        <li class="active treeview">
+        <!--RODRIGO-->
+          <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Porcentaje de las notas</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
