@@ -67,7 +67,7 @@
 $('#codigo-mat').change(function(){     
         if($('#codigo-mat').val()){
 
-        	jAlert('hi');
+        	
 
        $url= "{{route('materias.index')}}"+"/filtrar/"+$("#codigo-mat").val();  
        		window.location.href=$url;//."/filtrar/".$url;

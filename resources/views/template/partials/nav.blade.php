@@ -18,12 +18,14 @@
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
 
-          <!-- User Account: style can be found in dropdown.less -->
+          <!-- User Account: style can be found in dropdown.less
+           /*Auth::user()->created_at */
+          /* Auth::user()->nombre */ -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
 
-              <span class="hidden-xs">{{ Auth::user()->nombre }}</span>
+              <span class="hidden-xs">{{Auth::user()->nombre}}</span>
 
             </a>
             <ul class="dropdown-menu">
@@ -33,7 +35,7 @@
                 <p>
                  Usuario SystemIQA
 
-                  <small>Miembro desde {{ Auth::user()->created_at }} </small>
+                  <small>Miembro desde {{Auth::user()->created_at}} </small>
 
                 </p>
               </li>
@@ -57,7 +59,7 @@
                   <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="logout" class="btn btn-danger btn-flat">Salir</a>
+                  <a href="{{route('logout')}}" class="btn btn-danger btn-flat">Salir</a>
                 </div>
               </li>
             </ul>

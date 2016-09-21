@@ -34,13 +34,14 @@ Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
 
-
+//rutas Elias
 Route::resource('materias','MateriasController');
-
+Route::resource('carreras','CarrerasController');
 Route::get('home',  ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('materias/filtrar/{id}',	['as'=>'materias.filtrar','uses'=>'MateriasController@filtrarMaterias']);
 Route::get('materias/destroy/{id}',['as'=>'materias.destroy','uses'=>'MateriasController@eliminar']);
 
+//FIN rutas Elias
 //LOBOS
 Route::get('cargar_usuarios', 'FormulariosController@form_cargar_datos_usuarios');
 Route::post('cargar_datos_usuarios', 'FormulariosController@cargar_datos_usuarios');
