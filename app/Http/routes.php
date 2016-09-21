@@ -34,8 +34,7 @@ Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
-
+//LOBOS
 Route::get('cargar_usuarios', 'FormulariosController@form_cargar_datos_usuarios');
 Route::post('cargar_datos_usuarios', 'FormulariosController@cargar_datos_usuarios');
-Route::get('listado_usuarios/{page?}', 'ListadoController@listado_usuarios');
-
+// FIN LOBOS

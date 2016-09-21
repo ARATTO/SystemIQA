@@ -97,7 +97,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="{{ url('login') }}"  ><i class="fa fa-circle-o"></i>Agregar usuario </a></li>
-            <li class="active"><a href="javascript:void(0);" onclick="cargarlistado(1);" ><i class="fa fa-circle-o"></i>Listado Usuarios</a></li>
+            
 
           </ul>
         </li>
