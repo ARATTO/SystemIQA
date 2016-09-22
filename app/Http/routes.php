@@ -70,7 +70,11 @@ Route::put('cambiar/{Pnotas}',[
 
 /*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
 
-Route::get('ingresarNotas/seleccionar', 'IngresarNotasController@create');
+Route::get('ingresarNotas/seleccionar', [
+	'uses' => 'IngresarNotasController@create',
+	'as' => 'notasAlumnos.create'
+	]);
+
 Route::post('guardarNota', 'IngresarNotasController@show');
 
 Route::post('ingresarNotas/crearNotas',[

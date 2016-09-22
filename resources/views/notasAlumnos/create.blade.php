@@ -17,7 +17,7 @@
 
 
         {!! Form::open(['action' => 'IngresarNotasController@show', $materias]) !!}
-
+       @include('flash::message')
 
           <!-- contenido principal -->
           <section class="content"  id="contenido_principal">
@@ -31,7 +31,7 @@
                 </div>
           
             </div>
-
+         
             <div class="panel-body">
                 <div>
                   {!! form::label('nombre', 'Carrera') !!}
