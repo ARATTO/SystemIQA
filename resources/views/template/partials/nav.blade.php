@@ -21,13 +21,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+              <img src="{{ asset('dist/img/eternos.jpg') }}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ Auth::user()->nombre }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                <img src="{{ asset('dist/img/eternos.jpg') }}" class="img-circle" alt="User Image">
                 <p>
                  Usuario SystemIQA
                   <small>Miembro desde {{ Auth::user()->created_at }} </small>
@@ -53,7 +53,7 @@
                   <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="logout" class="btn btn-danger btn-flat">Salir</a>
+                  <a href="{{ url('/logout') }}" class="btn btn-danger btn-flat">SALIR</a>
                 </div>
               </li>
             </ul>
@@ -73,11 +73,11 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+          <img src="{{ asset('dist/img/eternos.jpg') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Usuario:SystemIQA</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <p>{{ Auth::user()->nombre }}</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> En linea</a>
         </div>
       </div>
       <!-- search form -->
