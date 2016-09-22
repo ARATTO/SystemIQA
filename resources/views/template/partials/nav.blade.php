@@ -25,7 +25,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
 
-              <span class="hidden-xs">{{Auth::user()->nombre}}</span>
+              <span class="hidden-xs">{{Auth::user()->nombre}}</span> 
 
             </a>
             <ul class="dropdown-menu">
@@ -136,6 +136,23 @@
             </li>
             <!-- FIN  LOBOS -->
 
+          <!--  Panel de Grupos  -Elias   -->
+        <li class="active treeview" id="lista_elias">
+          <a href="#">
+            <i class="glyphicon glyphicon-list-alt"></i>
+            <span>Grupos</span> 
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{route('grupos.index')}}" >
+                <i class="fa fa-circle-o"></i>Listado Grupos</a>
+            </li>
+            <li class="active"><a href="{{route('grupos.create')}}"  >
+                <i class="fa fa-circle-o"></i>Agregar Grupo</a>
+            </li>
+          </ul>
+        </li> 
+        <!--  Fin Panel de Grupos      -->
 
          <!--  Panel de Materias  -Elias   -->
         <li class="active treeview" id="lista_elias">
@@ -154,6 +171,24 @@
           </ul>
         </li> 
         <!--  Fin Panel de Materias      -->
+
+         <!--  Panel de Carreras  -Elias   -->
+        <li class="active treeview" id="lista_elias">
+          <a href="#">
+            <i class="glyphicon glyphicon-education"></i>
+            <span>Carreras Universitarias</span> 
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{route('carreras.index')}}" >
+                <i class="fa fa-circle-o"></i>Listado Carreras</a>
+            </li>
+            <li class="active"><a href="{{route('carreras.create')}}"  >
+                <i class="fa fa-circle-o"></i>Agregar Carrera</a>
+            </li>
+          </ul>
+        </li> 
+        <!--  Fin Panel de Carreras      -->
 
 
       </ul>

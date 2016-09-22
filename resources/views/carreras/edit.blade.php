@@ -1,6 +1,6 @@
 @extends('template.main')
-
-@section('title', 'Asignaturas | Editar')
+ 
+@section('title', 'Carrera | Editar')
 
 @section('content')
 
@@ -9,12 +9,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Asignatura
-            <small> Nuevo</small>
+            Carrera
+            <small> Nueva</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="{{ route('materias.index')}}"><i class="fa fa-dashboard"></i>Asignatura</a></li>
-            <li class="active">Nuevo</li>
+            <li><a href="{{ route('carreras.index')}}"><i class="fa fa-dashboard"></i>Carrera</a></li>
+            <li class="active">Nueva</li>
           </ol>
         </section>
 
@@ -30,7 +30,7 @@
               <div class="col-xs-12">
                 <div class="panel panel-info">
                   <!-- Default panel contents -->
-                  <div class="panel-heading">Formulario Editar Asignatura</div>
+                  <div class="panel-heading">Formulario Editar Carrera</div>
                   </div>
 
                   <!-- Aqui se mostrara el mensaje -->
@@ -43,7 +43,7 @@
           {!! Form::open(['route' => ['carreras.update',$carrera->id],'method'=>'PUT'])!!}
           <div class="form-group">
             {!! Form::label('codigo','Código') !!}
-            {!! Form::text('codigo',$carrera->codigo,['class'=>'form-control','placeholder'=>'QUR-115','pattern'=>'[A-Za-z]{3}-[0-9]{3}','title'=>'QUR-115','required'])!!}
+            {!! Form::text('codigo',$carrera->codigo,['class'=>'form-control','placeholder'=>'I10506','pattern'=>'[A-Za-z]{1}[0-9]{5}','title'=>'I10506','required'])!!}
           </div>
           <div class="form-group">
             {!! Form::label('nombre','Nombre') !!}
@@ -51,7 +51,7 @@
           </div>
         <div class="form-group">
             {!! Form::label('descripcion','Nombre') !!}
-            {!! Form::text('descripcion',$carrera->descripcion,['class'=>'form-control','placeholder'=>'Materia que se fundamenta en los principios... ','required'])!!}  
+            {!! Form::textarea('descripcion',$carrera->descripcion,['class'=>'form-control','placeholder'=>'Materia que se fundamenta en los principios... ','required'])!!}  
           </div>
          
         

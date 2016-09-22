@@ -30,7 +30,7 @@ class CarrerasController extends Controller
     	$car = new Carrera($request->all());
     	$car->save();
     	Flash::success("La carrera : ".$car->nombre." se ha registrado exitosamente."  ); 
-    	return redirect()->route('carreras.create');
+    	return redirect()->route('carreras.index');
     }
 
 
@@ -66,14 +66,4 @@ class CarrerasController extends Controller
 
     }
 
-
-    public function eliminar($id){
-        
-       $car = Carrera::find($id);
-        $car->delete();
-        
-        Flash::success("La carrera:  ".$car->nombre." se ha eliminado exitosamente.");
-    
-        return redirect()->route('carreras.index');
-    }
 }

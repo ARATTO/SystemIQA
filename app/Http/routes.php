@@ -35,13 +35,20 @@ Route::get('home', 'HomeController@index');
 
 
 //rutas Elias
+			//--Materias
 Route::resource('materias','MateriasController');
-Route::resource('carreras','CarrerasController');
-Route::get('home',  ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('materias/filtrar/{id}',	['as'=>'materias.filtrar','uses'=>'MateriasController@filtrarMaterias']);
 Route::get('materias/destroy/{id}',['as'=>'materias.destroy','uses'=>'MateriasController@eliminar']);
 
+			//--Carreras
+Route::resource('carreras','CarrerasController');
+Route::get('carreras/destroy/{id}',['as'=>'carreras.destroy','uses'=>'CarrerasController@destroy']);
+
+			//--Grupos
+Route::resource('grupos','GruposController');
+Route::get('grupos/destroy/{id}',['as'=>'grupos.destroy','uses'=>'GruposController@destroy']);
 //FIN rutas Elias
+
 //LOBOS
 Route::get('cargar_usuarios', 'FormulariosController@form_cargar_datos_usuarios');
 Route::post('cargar_datos_usuarios', 'FormulariosController@cargar_datos_usuarios');

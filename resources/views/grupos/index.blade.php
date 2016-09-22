@@ -1,7 +1,7 @@
 @extends('template.main')
 
-@section('title', 'Carrera | Listado')
- 
+@section('title', 'Grupo | Listado')
+
 @section('content')
 
  <!-- Content Wrapper. Contains page content -->
@@ -9,11 +9,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Carrera
+            Grupos
             <small> Listado</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="{{ route('carreras.index')}}"><i class="fa fa-dashboard"></i>Carrera</a></li>
+            <li><a href="{{ route('grupos.index')}}"><i class="fa fa-dashboard"></i>Grupos</a></li>
             <li class="active">Lista</li>
           </ol>
         </section>
@@ -30,7 +30,7 @@
               <div class="col-xs-12">
                 <div class="panel panel-info">
                   <!-- Default panel contents -->
-                  <div class="panel-heading">Listado de Carreras</div>
+                  <div class="panel-heading">Listado de Grupos</div>
                   </div>
 
                   <!-- Aqui se mostrara el mensaje -->
@@ -43,22 +43,26 @@
 		<table class="table table-hover">
 			<thead>
 				<th>Código</th>
-				<th>Nombre</th>
-				<th>Descripcion</th>
+				<th>Asignatura</th>
+				<th>Tipo</th>
+        <th>Horario</th>
+        <th>Cantidad de estudiantes</th>
+
 			</thead>
 			<tbody>
 					
-				@foreach ($carreras as $car) 
+				@foreach ($grupos as $grupo) 
 				<tr>
 					
-					<td>{{ $car->codigo }}</td>
-					<td>{{ $car->nombre }}</td>
-					<td>{{ $car->descripcion }}</td>
-
+					<td>{{ $grupo->codigo }}</td>
+					<td>{{ $grupo->materia->nombre}}</td>
+					<td>{{ $grupo->tipo_grupo->nombre }}</td>
+          <td>{{ $grupo->horario }}</td>
+          <td>{{ $grupo->cantidad_estudiante }}</td>
 					
 					<td>
-						<a href=" {{route('carreras.edit',$car)}}"class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-						<a href="{{route('carreras.destroy',$car)}}" onclick="return confirm('¿Deseas Eliminar esta carrera?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+						<a href=" {{route('grupos.edit',$grupo->id)}}"class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+						<a href="{{route('grupos.destroy',$grupo->id)}}" onclick="return confirm('¿Deseas Eliminar este grupo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
 					</td>
 
 				</tr>
@@ -67,7 +71,7 @@
 			</tbody>
 
 		</table>
-			{{$carreras->render()}}
+			{{$grupos->render()}}
 		</div>
 
 			<!--          FIN Formulario            -->

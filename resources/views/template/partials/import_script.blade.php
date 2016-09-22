@@ -54,6 +54,7 @@
 <script src="{{ asset('dist/js/materias.js') }}"></script>
 <!-- script de mensajes de confirmacion **Elias -->
 <script src="{{ asset('dist/js/bootbox.js') }}"></script>
+<!-- script de time picker **Elias -->
 
 
 
@@ -64,6 +65,7 @@
 
 <!-- javascript de formularios de elias -->
  <script>
+
 $('#codigo-mat').change(function(){     
         if($('#codigo-mat').val()){
 
@@ -75,7 +77,8 @@ $('#codigo-mat').change(function(){
           window.location.href="{{route('materias.index')}}";
           }
         });
+
+
  </script>
 
 <!--  FIN javascript de formularios de elias -->
-
