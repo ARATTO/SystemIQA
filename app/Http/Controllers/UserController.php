@@ -20,7 +20,7 @@ class UserController extends Controller
    	{
    		$this->middleware('auth');
    	}
-    
+
     public function index(Request $request)
     {
 
@@ -54,8 +54,24 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
+        //Imagen
+        if($request->file('foto'))
+        {
+          $Foto = $request->file('foto');
+          $nombreFoto = 'systemiqa' . time() . '.' . $Foto->getClientOriginalExtension();
+          $path = public_path() . "/dist/img/systemiqa/fotosPerfil";
+          $Foto->move($path, $nombreFoto);
+        }else{
+          //Foto por Default
+          $nombreFoto = 'eternoslimpio.jpg';
+        }
+
         $user = new User($request->all());
+
+        //Fin Imagen
+
         $user->password = bcrypt($request->password);
+        $user->foto = $nombreFoto;
         $user->save();
 
         Flash::info("se ha registrado ".$user->nombre." de forma exitosa");

@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Panel | Control')
+@section('title')
 
 @section('content')
 
@@ -22,7 +22,7 @@
         <section class="content"  id="contenido_principal">
 
 
-          
+
 
 
 

@@ -2,7 +2,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href=" {{ url('/home') }} " class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>I</b>QA</span>
       <!-- logo for regular state and mobile devices -->
@@ -21,15 +21,15 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('dist/img/eternos.jpg') }}" class="user-image" alt="User Image">
+              <img src="{{ asset('dist/img/systemiqa/fotosPerfil/' . Auth::user()->foto)}}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ Auth::user()->nombre }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{ asset('dist/img/eternos.jpg') }}" class="img-circle" alt="User Image">
+                <img src="{{ asset('dist/img/systemiqa/fotosPerfil/' . Auth::user()->foto)}}" class="img-circle" alt="User Image">
                 <p>
-                 Usuario SystemIQA
+                 {{ Auth::user()->nombre }}{{ ' ' . Auth::user()->apellido }}
                   <small>Miembro desde {{ Auth::user()->created_at }} </small>
                 </p>
               </li>
@@ -73,7 +73,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('dist/img/eternos.jpg') }}" class="img-circle" alt="User Image">
+          <img src="{{ asset('dist/img/systemiqa/fotosPerfil/' . Auth::user()->foto)}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->nombre }}</p>
@@ -93,15 +93,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MENÚ</li>
-        <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Panel de control</span> <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
 
-            <li><a href=" {{ url('/home') }} "><i class="fa fa-circle-o"></i>Algo principal </a></li>
-          </ul>
-        </li>
 
         <!--MOTTO-->
         <li class="active treeview">
