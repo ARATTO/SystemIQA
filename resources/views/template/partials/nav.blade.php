@@ -133,7 +133,7 @@
             <i class="fa fa-dashboard"></i> <span>Ingresar notas</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href=" {{ url('/ingresarNotas/seleccionar') }} "><i class="fa fa-circle-o"></i>Agregar porcentaje</a></li>
+            <li><a href=" {{ url('/ingresarNotas/seleccionar') }} "><i class="fa fa-circle-o"></i>Agregar notas</a></li>
           </ul>
         </li>
 
