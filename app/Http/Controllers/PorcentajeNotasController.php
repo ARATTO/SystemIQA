@@ -14,6 +14,12 @@ use App\Http\Requests\PorcentajeNotasRequest;
 class PorcentajeNotasController extends Controller
 {
 
+        
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create(){
 
         $carreras = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
