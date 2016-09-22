@@ -36,7 +36,7 @@
             <table class="table table-striped" > 
 
               <thead>
-
+                <th>Nombre</th>
                 @foreach($evaluacion as $porcentaje)
 
                   @if($porcentaje->materia->id == $materiaSeleccionada)
@@ -47,19 +47,27 @@
                 @endforeach
               </thead>
               <tbody>
+                @for($i=0; $i<3; $i++)
+                  <tr>
+                    <td> Rodrigo Daniel</td>
+                     @foreach($evaluacion as $porcentaje)
+
+                      @if($porcentaje->materia->id == $materiaSeleccionada)
+           
+                       <td><input type="number" name="{{$i. $porcentaje->descripcion}}" value="0.0" min="0.0" max="10"></td> 
+                      @endif
+            
+                    @endforeach
+
+                  </tr>
+                @endfor
                 
               </tbody>
               
 
             </table>
 
-            {!! form::select('id', $evaluacion, null, ['class' => 'form-control', 'name'=>'CarreraElejidaElejida', 'id'=>'CarreraElejida', 'placeholder'=>'seleccione una carrera' , 'required']) !!}  
         </div>  
-
-
-
-
-        
 
             
         <div class="panel-body">

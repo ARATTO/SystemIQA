@@ -125,11 +125,11 @@
                // alert( document.getElementById('CarreraElejida').value );
 
                 if(document.getElementById('CarreraElejida').value == 1){
-                  document.getElementById(2).style.display = 'block'; 
-                  document.getElementById(1).style.display = 'none';  
+                  document.getElementById(1).style.display = 'block'; 
+                  document.getElementById(2).style.display = 'none';  
                 }else{
-                  document.getElementById(2).style.display = 'none'; 
-                  document.getElementById(1).style.display = 'block';  
+                  document.getElementById(1).style.display = 'none'; 
+                  document.getElementById(2).style.display = 'block';  
                 }
              
 

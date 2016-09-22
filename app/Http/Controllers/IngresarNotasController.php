@@ -47,15 +47,15 @@ class IngresarNotasController extends Controller
 
         $materiaSeleccionada;
 
-            if($request->CarreraElejida == 1){
-                $materiaSeleccionada = $request->materiasQuimica;        
-
+            if($request->CarreraElejida == 2){
+                $materiaSeleccionada = $request->materiasQuimica; 
             }else{
-                $materiaSeleccionada = $request->materiasAlimento;
-
+                $materiaSeleccionada = $request->materiasAlimentos;
+               
             }
-        
-        //dd($materiaSeleccionada);
+
+        //dd($request);
+        // dd($materiaSeleccionada);
         return view('notasAlumnos.create2')
         ->with('evaluacion',$evaluacion)
         ->with('materiaSeleccionada',$materiaSeleccionada);    
@@ -66,8 +66,9 @@ class IngresarNotasController extends Controller
 
 
     //funcion de guardado
-    public function store(PorcentajeNotasRequest $request){
+    public function store(Request $request){
 
+        dd($request);
 
         return redirect()->route('Pnotas.index');
     }
@@ -225,37 +226,5 @@ class IngresarNotasController extends Controller
         return redirect()->route('Pnotas.index');
    } 
 
-
-       public function pruebaEditar(){
-
-                $mis_materias = Materia::find(4);
-                
-                //return redirect()->route('Pnotas.pruebaEditar');
-                $numeroEvaluaciones = 0;
-
-                $evaluacion = Evaluacion::where('materia_id', '=', 4)->get();
-
-                $evaluacion->each(
-                    function($evaluacion){
-                        $evaluacion->materia;
-                        }
-
-                    //dd($evaluacion);                
-                );
-
-                foreach ($evaluacion as $ev) {
-                    $numeroEvaluaciones+=1;
-                }
-
-
-               //dd($evaluacion );
-
-                return view('Pnotas.edit')
-               ->with('evaluaciones',$evaluacion)
-               ->with('numeroEvaluaciones',$numeroEvaluaciones)
-               ->with('mis_materias',$mis_materias); 
-
-
-        }
 
 }
