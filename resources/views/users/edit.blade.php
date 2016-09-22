@@ -35,8 +35,9 @@
                   <table class="table">
 
                     <div class="col-xs-12">
-                        {!! Form::open(['route' => ['users.update', $user], 'method' => 'PUT']) !!}
+                        {!! Form::open(['route' => ['users.update', $user], 'method' => 'PUT', 'files' => true]) !!}
                         <br>
+                        <hr>
                         <div class="row">
                           <div class="col-xs-6">
                             <div class="input-group col-xs-12">
@@ -46,7 +47,15 @@
                               </div>
                             </div><!-- /input-group -->
                           </div><!-- /.col-lg-6 -->
-                        </div>
+                          <div class="col-xs-6">
+                            <div class="input-group col-xs-12">
+                              <div class="form-group">
+                                  {!! form::label('foto','Foto de Perfil') !!}
+                                  <input class="form-control" name="foto" type="file" id="foto" value="{{$user->foto}}">
+                              </div>
+                            </div><!-- /input-group -->
+                          </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
                         <br>
                         <div class="row">
                           <div class="col-xs-6">

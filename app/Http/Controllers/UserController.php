@@ -121,7 +121,23 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
+        $Fvieja = $user->foto;
+
         $user->fill($request->all());
+
+        if($request->file('foto') != null)
+        {
+          $Foto = $request->file('foto');
+          $nombreFoto = 'systemiqa' . time() . '.' . $Foto->getClientOriginalExtension();
+          $path = public_path() . "/dist/img/systemiqa/fotosPerfil";
+          $Foto->move($path, $nombreFoto);
+
+          unlink($path."/".$Fvieja); //Borra archivo viejo
+
+          $user->foto = $nombreFoto;
+        }else{
+          $user->foto = $Fvieja; //Guarda vieja foto
+        }
         $user->save();
 
         Flash::success("Se ha EDITADO ".$user->nombre." de forma exitosa");
