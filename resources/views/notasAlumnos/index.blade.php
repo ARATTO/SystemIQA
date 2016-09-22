@@ -29,7 +29,7 @@
 		<tbody>
 			{!!$Repeticion=0;!!}
 			@foreach($evaluaciones as $evaluacion)
-				@if(Repeticion != evaluacion->materia->id)
+				@if($Repeticion != $evaluacion->materia->id)
 				<tr>
 					<td>{{$evaluacion->id}} </td>
 					<td>{{$evaluacion->porcentaje}} </td>
@@ -41,7 +41,8 @@
 						<a href=" {{route('Pnotas.destroy',$evaluacion->materia_id)}}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger"><font color="black" size="2"> <b>Eliminar	</b>  </font></a>  
 					</td>
 				</tr>
-					{!!$Repeticion = evaluacion->materia->id;!!}
+
+					{!!$Repeticion = $evaluacion->materia->id;!!}
 				@endif
 			@endforeach
 		</tbody>

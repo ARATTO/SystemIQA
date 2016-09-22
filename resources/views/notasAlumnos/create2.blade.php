@@ -47,26 +47,31 @@
                 @endforeach
               </thead>
               <tbody>
-                @for($i=0; $i<3; $i++)
+              @foreach($materiaInscrita as $alumno)
                   <tr>
-                    <td> Rodrigo Daniel</td>
-                     @foreach($evaluacion as $porcentaje)
+                      <td>{{$alumno->estudiante->apellido}}  {{$alumno->estudiante->nombre}}</td>
+                   
+                    @foreach($evaluacion as $porcentaje)
 
-                      @if($porcentaje->materia->id == $materiaSeleccionada)
-           
-                       <td><input type="number" name="{{$i. $porcentaje->descripcion}}" value="0.0" min="0.0" max="10"></td> 
-                      @endif
-            
+                      @foreach($join as $calificacion)
+                            @if($porcentaje->materia->id == $materiaSeleccionada)
+
+                                @if($calificacion->evaluacion_id == $porcentaje->id && $alumno->estudiante->id == $calificacion->estudiante_id)
+                 
+                                  <td><input type="number" name="{{$calificacion->id}}" value="{{$calificacion->nota_final}}" min="0.0" max="10"></td> 
+                                @endif
+                            @endif
+                      @endforeach
                     @endforeach
 
                   </tr>
-                @endfor
+              @endforeach
                 
               </tbody>
               
 
             </table>
-
+              
         </div>  
 
             

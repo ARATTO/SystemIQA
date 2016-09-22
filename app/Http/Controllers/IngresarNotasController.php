@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 use App\Http\Requests;
 use App\Materia;
 use App\Carrera;
 use App\Evaluacion;
+use App\MateriaInscrita;
+use App\Nota;
 
 class IngresarNotasController extends Controller
 {
@@ -37,7 +40,7 @@ class IngresarNotasController extends Controller
         $carreraElejida = $request->carreraElejida;
 
 
-        $evaluacion = Evaluacion::orderBy('id','ASC')->paginate(10);
+        $evaluacion = Evaluacion::all();
 
        $evaluacion->each(function($evaluacion){
             $evaluacion->materia;
@@ -54,11 +57,38 @@ class IngresarNotasController extends Controller
                
             }
 
+        $materiaInscrita = MateriaInscrita::where("materia_id", "=",$materiaSeleccionada)->paginate(1000);
+
+        $materiaInscrita->each(function($materiaInscrita){
+            $materiaInscrita->estudiante;
+        } );
+
+
+        $nota = Nota::orderBy('id','ASC')->paginate(1000);
+
+        $nota->each(function($nota){
+                $nota->materiaInscrita;
+        } );
+
+
+        $join = DB::table('estudiantes')
+    ->join('materias_inscritas', 'estudiantes.id', '=', 'materias_inscritas.estudiante_id')
+    ->join('notas', 'materias_inscritas.id', '=', 'notas.materiaInscrita_id' )
+                    ->get();
+
+        //dd($join);
+
+                    //oin('orders', 'users.id', '=', 'orders.user_id')
+
         //dd($request);
-        // dd($materiaSeleccionada);
+        //dd($materiaSeleccionada);
+       
         return view('notasAlumnos.create2')
         ->with('evaluacion',$evaluacion)
-        ->with('materiaSeleccionada',$materiaSeleccionada);    
+        ->with('materiaSeleccionada',$materiaSeleccionada)
+        ->with('nota',$nota)
+        ->with('join',$join)
+        ->with('materiaInscrita',$materiaInscrita);    
     	
     }
 
