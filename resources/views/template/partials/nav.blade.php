@@ -112,7 +112,7 @@
                 <i class="fa fa-fw fa-user-plus"></i> <span>Datos</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{ url('/cargar_usuarios') }} "><i class="fa fa-circle-o"></i>Cargar Datos Us. </a></li>
+                <li class="active"><a href="{{ url('/create') }} "><i class="fa fa-circle-o"></i>Cargar Datos Us. </a></li>
                 
               </ul>
             </li>

@@ -14,6 +14,8 @@ use App\Evaluacion;
 use App\Nota;
 use App\MateriaInscrita;
 use Illuminate\Support\Facades\Cache;
+use Laracasts\Flash\Flash;
+
 
 class FormulariosController extends Controller
 {
@@ -106,12 +108,58 @@ class FormulariosController extends Controller
 		        });
 
             });
-            return view("mensajes.msj_correcto")->with("msj","Estudiantes Cargados Correctamente");
+            Flash::success("Estudiantes Guardados");
+            $materias = Materia::all();
+
+            $materias->each(function($materias){
+                  $materias->carreras;
+                  //$materias->grupos;
+              });
+
+
+             /*$grupo = Grupo::all();
+
+             $grupo->each(function($grupo){
+                  $grupo->tipo_grupos;
+              });*/
+
+
+            $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+
+
+
+            return view('formularios.create')
+            ->with('carrera',$carrera)
+            ->with('materias',$materias);
+            
     	
        }
        else
        {
-       	    return view("mensajes.msj_rechazado")->with("msj","Error al subir el archivo");
+            Flash::error("Fatal Error");
+            $materias = Materia::all();
+
+            $materias->each(function($materias){
+                  $materias->carreras;
+                  //$materias->grupos;
+              });
+
+
+             /*$grupo = Grupo::all();
+
+             $grupo->each(function($grupo){
+                  $grupo->tipo_grupos;
+              });*/
+
+
+            $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+
+
+
+            return view('formularios.create')
+            ->with('carrera',$carrera)
+            ->with('materias',$materias);
+       	    //return view('mostrarForm');
        }
 
 	}

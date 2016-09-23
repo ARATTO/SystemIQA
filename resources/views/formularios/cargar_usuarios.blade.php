@@ -41,6 +41,8 @@
         <!-- contenido principal HACER INPUT Y HIDDEN -->
         <section class="content"  id="contenido_principal">
 
+        @include('flash::message')
+
           
 
           <div>

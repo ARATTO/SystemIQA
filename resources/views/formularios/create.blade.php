@@ -29,10 +29,12 @@
                 <div>
                   <h3>Seleccionar Materia</h3>
                 </div>
+
+
           
             </div>
 
-
+            @include('flash::message')
 
             <div class="panel-body">
                 <div>
