@@ -16,9 +16,11 @@
       </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
+          <!-- Messages: style can be found in dropdown.less
+            
+           Auth::user()->created_at
 
-          <!-- User Account: style can be found in dropdown.less -->
+          User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
@@ -33,7 +35,7 @@
                 <p>
                  Usuario SystemIQA
 
-                  <small>Miembro desde {{ Auth::user()->created_at }} </small>
+                  <small>Miembro desde {{Auth::user()->created_at}} </small>
 
                 </p>
               </li>
@@ -157,9 +159,7 @@
         <!--  Fin Panel de Materias      -->
 
         <!--Alam-->
-            <li><a href=" {{ url('/home') }} "><i class="fa fa-circle-o"></i>Algo principal </a></li>
-          </ul>
-        </li>
+            
         <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>TUTORES</span> <i class="fa fa-angle-left pull-right"></i>

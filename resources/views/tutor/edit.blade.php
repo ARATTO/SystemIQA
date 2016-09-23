@@ -10,11 +10,11 @@
         <section class="content-header">
           <h1>
             Tutor
-            <small> Editar</small>
+            <small> Editar {{$tutor->nombre . ' ' . $tutor->apellido}}</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="{{ url('tutor') }}"><i class="fa fa-dashboard"></i>Tutor</a></li>
-            <li class="active">Editar</li>
+            <li class="active">Editar {{$tutor->nombre . ' ' . $tutor->apellido}}</li>
           </ol>
         </section>
 
@@ -30,7 +30,7 @@
               <div class="col-xs-12">
                 <div class="panel panel-info">
                   <!-- Default panel contents -->
-                  <div class="panel-heading">Formulario Editar</div>
+                  <div class="panel-heading">Formulario Editar {{$tutor->nombre . ' ' . $tutor->apellido}}</div>
 
                   <!-- Table -->
                   <table class="table">

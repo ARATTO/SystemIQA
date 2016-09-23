@@ -35,7 +35,7 @@
 <h3 class="box-little">Tutores encontrados</h3>
 </div>
 
-<div class="box-body">
+<div class="box-body" style="overflow-x: auto;">
 	
 <table class="table table-stripped">
 	<thead>
@@ -43,7 +43,6 @@
 		<th>Nombre</th>
 		<th>Apellido</th>
 		<th>Telefono</th>
-		<th>Usuario_id</th>
 		<th>Acción</th>
 	</thead>
 	<tbody>
@@ -53,7 +52,7 @@
 				<td>{{ $tutor->nombre }}</td>
 				<td>{{ $tutor->apellido }}</td>
 				<td>{{ $tutor->telefono }}</td>
-				<td>{{ $tutor->usuario_id }}</td>
+				
 				<td><a href="{{ route('tutor.destroy', $tutor->id) }}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a> 
 				<a href="{{ route('tutor.edit', $tutor->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a></td>
 			</tr>

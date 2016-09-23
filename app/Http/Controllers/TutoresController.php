@@ -9,14 +9,23 @@ use View;
 use App\Tutor;
 use App\User;
 use Laracasts\Flash\Flash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Query\Builder;
 
 class TutoresController extends Controller
 {
+
+	public function __construct()
+   	{
+   		$this->middleware('auth');
+   	}
+
 	public function index()
 	{
 		$tutors = Tutor::orderBy('id', 'ASC')->paginate(4);
+		$users = User::all();
 
-		return view('tutor.index')->with('tutors', $tutors);
+		return view('tutor.index')->with(['users'=>$users,'tutors'=>$tutors]);
 	}
 
     //
@@ -28,8 +37,12 @@ class TutoresController extends Controller
 	public function store(Request $request)
 	{
 		$tutor = new Tutor($request->all());
+		$user = Auth::user();
+
+		$tutor->usuario_id = $user->id;
+
 		$tutor -> save(); 
-		dd('Usuario creado');
+		return redirect()->route('tutor.index');
 	}	
 
 	public function destroy($id)
