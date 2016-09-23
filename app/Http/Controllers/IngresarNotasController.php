@@ -124,11 +124,14 @@ class IngresarNotasController extends Controller
                     $nota->save();
                     
                     $materiaInscrita = $nota->materiaInscrita_id;
+
                     $materia = MateriaInscrita::find($materiaInscrita);
-                    $materia->nota_final = $notaFinal;
+                    $materia->nota_final = $materia->nota_final + $notaFinal;
                     $materia->save();
          
                 }
+
+                $notaFinal = 0;
 
             }
 
