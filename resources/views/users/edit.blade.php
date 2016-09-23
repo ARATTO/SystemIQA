@@ -33,7 +33,17 @@
 
                   <!-- Table -->
                   <table class="table">
-
+                    <div class="col-xs-12">
+                      @if(count($errors) > 0)
+                        <hr>
+                        <div class="alert alert-danger" role="alert">
+                          @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                          @endforeach
+                        </div>
+                        <hr>
+                      @endif
+                    </div>
                     <div class="col-xs-12">
                         {!! Form::open(['route' => ['users.update', $user], 'method' => 'PUT', 'files' => true]) !!}
                         <br>
@@ -126,5 +136,6 @@
                       	{!! form::close() !!}
 
             </section>
+
 
 @endsection

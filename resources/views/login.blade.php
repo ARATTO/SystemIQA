@@ -6,8 +6,8 @@
   </head>
   <body class="hold-transition login-page">
     <div class="login-box">
-      <div class="login-logo">
-        <a href="#"><b>Bienvenido</b><br>SystemIQA</a>
+      <div class="login-logo" style="color:white;">
+        <b>Bienvenido</b><br>SystemIQA
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Ingrese al sistema</p>
@@ -30,7 +30,7 @@
             {!! session('flash_notification.message') !!}
           </div>
           @endif
-        
+
 
 
 

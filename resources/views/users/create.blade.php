@@ -33,11 +33,20 @@
 
                   <!-- Table -->
                   <table class="table">
-
-                    <div class="col-xs-12">
-                        {!! Form::open(['route' => 'users.store', 'method' => 'POST', 'files' => true]) !!}
-                          <br>
+                      <div class="col-xs-12">
+                        @if(count($errors) > 0)
                           <hr>
+                          <div class="alert alert-danger" role="alert">
+                            @foreach($errors->all() as $error)
+                              <li>{{$error}}</li>
+                            @endforeach
+                          </div>
+                          <hr>
+                        @endif
+                      </div>
+                    <div class="col-xs-12">
+                        {!! Form::open(['route' => 'users.store', 'method' => 'POST', 'onSubmit'=>'return validar_clave()', 'files' => true]) !!}
+                          <br>
                           <div class="row">
                             <div class="col-xs-6">
                               <div class="input-group col-xs-12">
@@ -153,6 +162,18 @@
           </div>
         </section>
 
+        <script type="text/javascript">
+          function validar_clave(){
+            var p1 = document.getElementById("password").value;
+            var p2 = document.getElementById("passwordConf").value;
 
+            if (p1 != p2) {
+              alert("Las Contraseñas NO coinciden");
+              return false;
+            }
+
+          }
+
+        </script>
 
 @endsection
