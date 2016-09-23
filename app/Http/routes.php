@@ -66,6 +66,11 @@ Route::put('cambiar/{Pnotas}',[
 		'as' => 'Pnotas.update'
 		]);
 
+Route::get('mostrarPorcenjate/{pnotas}/ver', [
+	'uses' => 'PorcentajeNotasController@verPorcentajes', 
+	'as'	=> 'Pnotas.ver'
+	]);
+
 
 
 /*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/

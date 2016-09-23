@@ -66,7 +66,7 @@
 
          <div id ="1" style='display:block;' class="panel-body">
              {!! form::label('Evaluacion1', 'Porcentaje evaluacion 1') !!}
-              {!! form::number('Evaluacion1',  null, ['class' => 'form-control ', 'placeholder'=> '10', 'required']) !!}
+              {!! form::number('Evaluacion1',  null, ['class' => 'form-control ', 'placeholder'=> '10',  'min' => '0', 'max' => '100', 'step'=> 'any','required']) !!}
               <br>
               {!! form::label('descripcion1', 'Descripcion de la evaluacion 1') !!}
               {!! form::text('descripcion1',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial', 'required']) !!}
@@ -77,7 +77,7 @@
 
          <div id ="2" style='display:block;' class="panel-body">
               {!! form::label('Evaluacion2', 'Porcentaje evaluacion 2') !!}
-              {!! form::number('Evaluacion2',  null, ['class' => 'form-control ', 'placeholder'=> '10', 'required']) !!}
+              {!! form::number('Evaluacion2',  null, ['class' => 'form-control ', 'placeholder'=> '10',  'min' => '0', 'max' => '100', 'step'=> 'any','required']) !!}
               <br>
              {!! form::label('descripcion2', 'Descripcion de la evaluacion 2') !!}
               {!! form::text('descripcion2',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial', 'required']) !!}
@@ -88,7 +88,7 @@
 
          <div id ="3" style='display:block;' class="panel-body">
               {!! form::label('Evaluacion3', 'Porcentaje evaluacion 3') !!}
-              {!! form::number('Evaluacion3',  null, ['class' => 'form-control ', 'placeholder'=> '10', 'required']) !!}
+              {!! form::number('Evaluacion3',  null, ['class' => 'form-control ', 'placeholder'=> '10',  'min' => '0', 'max' => '100', 'step'=> 'any','required']) !!}
               <br>
              {!! form::label('descripcion3', 'Descripcion de la evaluacion 3') !!}
               {!! form::text('descripcion3',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial', 'required']) !!}
@@ -97,7 +97,7 @@
 
          <div id ="4" style='display:none;' class="panel-body">
               {!! form::label('Evaluacion4', 'Porcentaje evaluacion 4') !!}
-              {!! form::number('Evaluacion4',  null, ['class' => 'form-control ', 'placeholder'=> '10']) !!}
+              {!! form::number('Evaluacion4',  null, ['class' => 'form-control ', 'placeholder'=> '10',  'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
                <br>
               {!! form::label('descripcion4', 'Descripcion de la evaluacion 4') !!}
               {!! form::text('descripcion4',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
@@ -106,7 +106,7 @@
 
          <div id ="5" style='display:none;' class="panel-body">
               {!! form::label('Evaluacion5', 'Porcentaje evaluacion 5') !!}
-              {!! form::number('Evaluacion5',  null, ['class' => 'form-control ', 'placeholder'=> '10']) !!}
+              {!! form::number('Evaluacion5',  null, ['class' => 'form-control ', 'placeholder'=> '10',  'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
                <br>
              {!! form::label('descripcion5', 'Descripcion de la evaluacion 5') !!}
               {!! form::text('descripcion5',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
@@ -115,7 +115,7 @@
 
          <div id ="6" style='display:none;' class="panel-body">
               {!! form::label('Evaluacion6', 'Porcentaje evaluacion 6') !!}
-              {!! form::number('Evaluacion6',  null, ['class' => 'form-control ', 'placeholder'=> '10']) !!}
+              {!! form::number('Evaluacion6',  null, ['class' => 'form-control ', 'placeholder'=> '10',  'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
                <br>
               {!! form::label('descripcion6', 'Descripcion de la evaluacion 6') !!}
               {!! form::text('descripcion6',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
@@ -126,7 +126,7 @@
 
          <div id ="7" style='display:none;' class="panel-body">
               {!! form::label('Evaluacion7', 'Porcentaje evaluacion 7') !!}
-              {!! form::number('Evaluacion7',  null, ['class' => 'form-control ', 'placeholder'=> '10']) !!}
+              {!! form::number('Evaluacion7',  null, ['class' => 'form-control ', 'placeholder'=> '10',  'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
                  <br>
                 {!! form::label('descripcio7', 'Descripcion de la evaluacion 7') !!}
               {!! form::text('descripcion7',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
@@ -136,7 +136,7 @@
 
          <div id ="8" style='display:none;' class="panel-body">
               {!! form::label('Evaluacion8', 'Porcentaje evaluacion 8') !!}
-              {!! form::number('Evaluacion8',  null, ['class' => 'form-control ', 'placeholder'=> '10']) !!}
+              {!! form::number('Evaluacion8',  null, ['class' => 'form-control ', 'placeholder'=> '10',  'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
               <br>
               {!! form::label('descripcion8', 'Descripcion de la evaluacion 8') !!}
               {!! form::text('descripcion8',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
@@ -147,7 +147,7 @@
 
          <div id ="9" style='display:none;' class="panel-body">
               {!! form::label('Evaluacion9', 'Porcentaje evaluacion 8') !!}
-              {!! form::number('Evaluacion9',  null, ['class' => 'form-control ', 'placeholder'=> '10']) !!}
+              {!! form::number('Evaluacion9',  null, ['class' => 'form-control ', 'placeholder'=> '10',  'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
               <br>
               {!! form::label('descripcion9', 'Descripcion de la evaluacion 9') !!}
               {!! form::text('descripcion9',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
@@ -157,7 +157,7 @@
 
          <div id ="10" style='display:none;' class="panel-body">
               {!! form::label('Evaluacion10', 'Porcentaje evaluacion 9') !!}
-              {!! form::number('Evaluacion10',  null, ['class' => 'form-control ', 'placeholder'=> '10']) !!}
+              {!! form::number('Evaluacion10',  null, ['class' => 'form-control ', 'placeholder'=> '10',  'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
                             <br>
               {!! form::label('descripcion10', 'Descripcion de la evaluacion 10') !!}
               {!! form::text('descripcion10',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}

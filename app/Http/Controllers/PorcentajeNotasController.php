@@ -120,18 +120,30 @@ class PorcentajeNotasController extends Controller
     //funcion de visualizacion
     public function index(){
 
-        //$materia = Materia::orderBy('id','ASC')->lists('nombre', 'id');        
-
-        //$materia = Materia::find(1);
     	$evaluacion = Evaluacion::orderBy('id','ASC')->paginate(10);
 
         $evaluacion->each(function($evaluacion){
             $evaluacion->materia;
-            //dd($evaluacion->materia->nombre);
+  
         });
 
+        $materia=0;
+        $evaluaciones = array();
+
+        foreach ($evaluacion as $key => $value) {
+
+            if ($materia != $value->materia->id) {
+                $materia = $value->materia->id;
+
+                $evaluaciones[]  = $value;
+            }
+
+        }
+
+        //$evaluaciones = $evaluaciones->paginate(10);
+
     
-        return view('Pnotas.index')->with('evaluaciones',$evaluacion);
+        return view('Pnotas.index')->with('evaluaciones',$evaluaciones);
 
     }
 
@@ -164,10 +176,7 @@ class PorcentajeNotasController extends Controller
         $evaluacion->each(
             function($evaluacion){
                 $evaluacion->materia;
-                }
-
-            //dd($evaluacion);                
-        );
+        } );
 
         foreach ($evaluacion as $ev) {
             $numeroEvaluaciones+=1;
@@ -267,6 +276,36 @@ class PorcentajeNotasController extends Controller
         flash("se ha actualizado de forma exitosa", 'warning');
         return redirect()->route('Pnotas.index');
    } 
+
+
+
+
+   public function verPorcentajes($id){
+
+        $evaluacion = Evaluacion::where('materia_id', "=", $id)->paginate(10);
+
+        $evaluacion->each(function($evaluacion){
+            $evaluacion->materia;
+  
+        });
+
+        $materia=0;
+        $evaluaciones = array();
+
+        foreach ($evaluacion as $key => $value) {
+
+            if ($materia != $value->materia->id) {
+                $materia = $value->materia->id;
+
+                $evaluaciones[]  = $value;
+            }
+
+        }
+
+
+    
+        return view('Pnotas.ver')->with('evaluaciones',$evaluacion);
+   }
 
 
 }
