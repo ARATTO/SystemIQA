@@ -22,8 +22,6 @@
         <section class="content"  id="contenido_principal">
 
 
-
-
           <div class="row">
             <div class="col-md-6">
               <!-- AREA CHART -->

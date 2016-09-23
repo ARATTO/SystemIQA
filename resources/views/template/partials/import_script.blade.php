@@ -64,7 +64,13 @@
 </script>
 
 
+<script type="text/javascript">
+	function alerta($texto) {
+		alert($texto);
+	}
+</script>
 
+>>>>>>> origin/rodrigo
 <!-- javascript de formularios de elias -->
  <script>
 
@@ -85,9 +91,5 @@ $('#codigo-mat').change(function(){
 
 <!--  FIN javascript de formularios de elias -->
 
-<script type="text/javascript">
-	function alerta($texto) {
-		alert($texto);
-	}
-</script>
+
 

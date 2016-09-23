@@ -1,3 +1,4 @@
+
 <div class="wrapper">
 
   <header class="main-header">
@@ -199,7 +200,6 @@
 <!--FIN ALAM-->
 
 
-
               <!--RODRIGO-->
         <li class="active treeview">
           <a href="#">
@@ -223,10 +223,11 @@
         </li>
 
 
+
       </ul>
     </section>
     <!-- /.sidebar -->
-<<<<<<< HEAD
+
 
   </aside>
 
@@ -416,7 +417,6 @@
       </div>
       <!-- /.tab-pane -->
     </div>
+
   </aside>
-=======
-  </aside>
->>>>>>> origin/rodrigo
+

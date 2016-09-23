@@ -107,22 +107,43 @@ class IngresarNotasController extends Controller
 
            // dd($resultado);
             $cuenta = count($resultado);
-  
+            
+            $notaFinal=0;
+            $materiaInscrita=0;
+            $llaveAnterior=0;
 
             foreach($resultado as $key => $value){
                 $mykey = $key;
-                echo "llave: ".$mykey;
-                echo "  nota: ".$value. "<br>";
 
                 $nota = Nota::find($mykey);
 
                 if ($nota != null) {
-                    $nota->nota_final = $value;
 
+                    $nota->nota_evaluacion = $value;
+                    $evaluacion = Evaluacion::find($nota->evaluacion_id);
+                    $notaFinal+= ( ( ($evaluacion->porcentaje)/100 ) * $value);
                     $nota->save();
+
+                            
+                    $materiaInscrita = $nota->materiaInscrita_id;
+                    
+                    if($llaveAnterior != $materiaInscrita){
+                        $llaveAnterior = $materiaInscrita;
+                        $notaFinal = 0;
+                        $notaFinal+= ( ( ($evaluacion->porcentaje)/100 ) * $value);
+                    }
+                    
+
+                    $materia = MateriaInscrita::find($materiaInscrita);
+                    $materia->nota_final = $notaFinal;
+                    $materia->save();
+        
                 }
 
+
             }
+
+
 
 
         $materias = Materia::all();

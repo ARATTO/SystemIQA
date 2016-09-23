@@ -58,7 +58,7 @@
 
                                 @if($calificacion->evaluacion_id == $porcentaje->id && $alumno->estudiante->id == $calificacion->estudiante_id)
                  
-                                  <td><input type="number" name="{{$calificacion->id}}" value="{{$calificacion->nota_final}}" min="0.0" max="10" step="0.01"></td> 
+                                  <td><input type="number" name="{{$calificacion->id}}" value="{{$calificacion->nota_evaluacion}}" min="0.0" max="10" step="0.01"></td> 
                                 @endif
                             @endif
                       @endforeach
