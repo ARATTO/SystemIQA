@@ -27,5 +27,6 @@
 
 	@yield('js')
 
+
 </body>
 </html>

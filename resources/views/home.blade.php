@@ -23,6 +23,7 @@
 
 
 
+
           <div class="row">
             <div class="col-md-6">
               <!-- AREA CHART -->
@@ -337,9 +338,5 @@
 
 
           <!-- Page script -->
-
-
-
-
         </section>
 @endsection

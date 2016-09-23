@@ -24,6 +24,72 @@ Route::get('home', function () {
 });*/
 
 
+/*Route::group(['prefix' => 'mat'], function(){
+	
+	Route::get('Pnotas/{id}/destroy',[
+		'uses' => 'PorcentajeNotasController@destroy', //uses va por default para que reconosca la ruta
+		'as' => 'mat.Pnotas.destroy'
+		]);
+
+});*/
+
+
+
+/*RUTAS RODRIGO*/
+Route::get('elejirCarrera', 'PorcentajeNotasController@create');
+Route::post('guardar', 'PorcentajeNotasController@show');
+
+
+Route::post('store',[
+		'uses' => 'PorcentajeNotasController@store', 
+		'as' => 'Pnotas.create2'
+		]);
+
+Route::get('verPorcentajes',[
+		'uses' => 'PorcentajeNotasController@index',
+		'as' => 'Pnotas.index'
+		]);
+
+Route::get('verPorcentajes/{id}/destroy',[
+		'uses' => 'PorcentajeNotasController@destroy',
+		'as' => 'Pnotas.destroy'
+		]);
+
+
+Route::get('editar/{pnotas}/edit',[
+		'uses' => 'PorcentajeNotasController@edit', 
+		'as' => 'Pnotas.edit'
+		]);
+
+Route::put('cambiar/{Pnotas}',[
+		'uses' => 'PorcentajeNotasController@update', 
+		'as' => 'Pnotas.update'
+		]);
+
+Route::get('mostrarPorcenjate/{pnotas}/ver', [
+	'uses' => 'PorcentajeNotasController@verPorcentajes', 
+	'as'	=> 'Pnotas.ver'
+	]);
+
+
+
+/*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
+
+Route::get('ingresarNotas/seleccionar', [
+	'uses' => 'IngresarNotasController@create',
+	'as' => 'notasAlumnos.create'
+	]);
+
+Route::post('guardarNota', 'IngresarNotasController@show');
+
+Route::post('ingresarNotas/crearNotas',[
+		'uses' => 'IngresarNotasController@store', 
+		'as' => 'notasAlumnos.create2'
+		]);
+
+
+
+/*RUTAS RODRIGO*/
 
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
@@ -78,16 +144,3 @@ Route::get('tutor/{id}/destroy',[
     'as' => 'tutor.destroy'
 ]);
 //Fin Rutas Alam Lopez
-/*
-Route::get('users', [
-  'as' => 'users/index',
-  'uses' => 'UserController@index'
-]);
-
-Route::group(['prefix' => 'admin'], function(){
-
-	Route::resource('users','UsersController');
-
-});
-*/
-
