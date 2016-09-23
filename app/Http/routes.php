@@ -34,7 +34,9 @@ Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
 //LOBOS
+Route::post('mostrarForm', 'FormulariosController@show');
 Route::get('cargar_usuarios', 'FormulariosController@form_cargar_datos_usuarios');
+Route::get('create', 'FormulariosController@create');
 Route::post('cargar_datos_usuarios', 'FormulariosController@cargar_datos_usuarios');
 // FIN LOBOS
 

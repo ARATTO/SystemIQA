@@ -15,6 +15,6 @@ class TipoGrupo extends Model
     ];
 
     public function grupo(){
-      return $this->hasMany('App\Grupo');
+      return $this->belongsTo('App\Grupo');
     }
 }
