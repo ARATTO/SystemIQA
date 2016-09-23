@@ -23,7 +23,7 @@ class Materia extends Model
     }
 
     public function grupos(){
-      return $this->belongsTo('App\Grupo');
+      return $this->hasMany('App\Grupo');
     }
 
     public function users(){

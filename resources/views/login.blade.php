@@ -2,11 +2,12 @@
 <html>
   <head>
     @include('template.partials.head')
+    <link rel="shortcut icon" href="{{ asset('dist/img/systemiqa/eternoslimpio.jpg') }}">
   </head>
   <body class="hold-transition login-page">
     <div class="login-box">
-      <div class="login-logo">
-        <a href="#"><b>Bienvenido</b><br>SystemIQA</a>
+      <div class="login-logo" style="color:white;">
+        <b>Bienvenido</b><br>SystemIQA
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Ingrese al sistema</p>
@@ -16,22 +17,29 @@
 
           <div class="form-group has-feedback">
 
-                <input type="email" class="form-control" name="email" >
+                <input type="email" class="form-control" name="email" required>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" name="password">
+            <input type="password" class="form-control" name="password" required>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
+          @if (session()->has('flash_notification.message'))
+          <div class="alert alert-{{ session('flash_notification.level') }}">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {!! session('flash_notification.message') !!}
+          </div>
+          @endif
 
-          <div class="row">
 
 
 
-            <div class="col-xs-4">
+            <div class="col-xs-12">
               <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
             </div><!-- /.col -->
           </div>
+
+
         </form>
 
 

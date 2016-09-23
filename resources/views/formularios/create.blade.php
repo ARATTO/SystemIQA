@@ -46,12 +46,12 @@
 
                 <hr>
 
-                <div id="1" class="form-grup" style="display:none">
+                <div id="2" class="form-grup" style="display:none">
                    {!! form::label('nombre', 'Materia Alimentos') !!}
                   <select name="materiasAlimentos" id="materiasAlimentos" class="form-control selectpicker">
                     @foreach($materias as $materia)
                         @foreach ($materia->carreras as $v)
-                            @if($v->id == 1)
+                            @if($v->id == 2)
                               <option id="hola" value= {{$materia->id}} > {{$materia->nombre}} </option>
                             @endif  
                         @endforeach
@@ -61,12 +61,12 @@
                               
 
                 <hr>
-               <div id="2" class="form-grup" style="display:none">
+               <div id="1" class="form-grup" style="display:none">
                    {!! form::label('nombre', 'Materia Quimica') !!}
                   <select name="materiasQuimica" id="materiasQuimica" class="form-control selectpicker">
                     @foreach($materias as $materia)
                         @foreach ($materia->carreras as $v)
-                            @if($v->id == 2)
+                            @if($v->id == 1)
                               <option  id="valor" value= {{$materia->id}} > {{$materia->nombre}} </option>
                             @endif  
                         @endforeach
@@ -137,11 +137,11 @@
                // alert( document.getElementById('CarreraElejida').value );
 
                 if(document.getElementById('CarreraElejida').value == 1){
-                  document.getElementById(2).style.display = 'block'; 
-                  document.getElementById(1).style.display = 'none';  
+                  document.getElementById(1).style.display = 'block'; 
+                  document.getElementById(2).style.display = 'none';  
                 }else{
-                  document.getElementById(2).style.display = 'none'; 
-                  document.getElementById(1).style.display = 'block';  
+                  document.getElementById(1).style.display = 'none'; 
+                  document.getElementById(2).style.display = 'block';  
                 }
              
 

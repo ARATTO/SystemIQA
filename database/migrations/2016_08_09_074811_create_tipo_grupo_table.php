@@ -14,6 +14,7 @@ class CreateTipoGrupoTable extends Migration
     {
         Schema::create('tipo_grupos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
             $table->text('descripcion');
             $table->timestamps();
         });

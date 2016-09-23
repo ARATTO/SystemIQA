@@ -60,7 +60,7 @@
           <div class="box-body" style="overflow-x: auto;">
             <table class="table table-striped" >
               <thead>
-                <th>ID</th>
+                <th>Perfil</th>
                 <th>Carnet</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
@@ -71,7 +71,13 @@
               <tbody>
                 @foreach($users as $user)
                   <tr>
-                    <td>{{$user->id}} </td>
+                    <td>
+                      <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                          <img src="{{ asset('dist/img/systemiqa/fotosPerfil/' . $user->foto)}}" class="user-image" alt="User Image">
+                        </li>
+                      </ul>
+                    </td>
                     <td>{{$user->carnet}} </td>
                     <td>{{$user->nombre}} </td>
                     <td>{{$user->apellido}} </td>

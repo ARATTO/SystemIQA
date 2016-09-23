@@ -72,7 +72,7 @@ class FormulariosController extends Controller
                   $estudiante->save();
                   $estudiante->carreras()->attach($carrera_cache);
 	                }
-
+                  $carnetestudiante=Estudiante::where("carnet","=",$fila->car)->first();
                   $materiainscrita=MateriaInscrita::where("estudiante_id","=",$carnetestudiante->id)->first();
                   
                   if(count($materiainscrita) == 0){
@@ -92,7 +92,7 @@ class FormulariosController extends Controller
                       {
 
                             $nota=new Nota;
-                            $nota->nota_final=0.0;
+                            $nota->nota_evaluacion=0.0;
                             $nota->evaluacion()->associate($eva);
                             $nota->materiaInscrita()->associate($materiaInscrita);
 

@@ -1,21 +1,38 @@
-﻿function cargarformulario(arg){
+function cargarformulario(arg){
 //funcion que carga todos los formularios del sistema
 
-		if(arg==1){ var url = "form_nuevo_usuario"; }
-    if(arg==2){ var url = "cargar_usuarios"; }
+  if(arg==1){ var url = "form_nuevo_usuario"; }
+  if(arg==15){ var url = "materias/materias"; }
+  if(arg==16){ var url = "materias/materias/create"; }
+  if(arg==17){ var url =""}
 
 		$("#contenido_principal").html($("#cargador_empresa").html());
-		   
-		$.get(url,function(resul){
-      $("#contenido_principal").html(resul);
-    })
-        
 
+		$.get(url,function(resul)
+
+			{
+				$("#contenido_principal").html(resul);
+      })
+         
+}
+
+function cargarformulario2(arg , id){
+//funcion que carga todos los formularios del sistema
+
+  if(arg==17){ var url ="materias/materias/"+id+"/edit"}
+
+    $("#contenido_principal").html($("#cargador_empresa").html());
+
+    $.get(url,function(resul)
+
+      {
+        $("#contenido_principal").html(resul);
+      })
+         
 }
 
 
-
-
+//////////////////-----------------------------------------------------------------
 
 function cargarlistado(listado){
 
@@ -28,12 +45,15 @@ $("#contenido_principal").html($("#cargador_empresa").html());
     $.get(url,function(resul){
 
         $("#contenido_principal").html(resul); 
-   })
+   });
 
 
 
 }
 
+function selected(){
+  alert('uno');
+}
 
 
 
