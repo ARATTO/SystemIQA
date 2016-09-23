@@ -74,8 +74,10 @@ class AuthController extends Controller
     {
         return view("home");
     }
+
     Flash::error("Credenciales Incorrectas");
     return redirect("login");
+
 
     }
 

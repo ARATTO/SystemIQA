@@ -60,7 +60,7 @@
                               <div class="input-group col-xs-12">
                                 <div class="form-group">
                                     {!! form::label('foto','Foto de Perfil') !!}
-                                    {!! form::file('foto', ['class' => 'form-control'])!!}
+                                    {!! form::file('foto', ['class' => 'form-control','data-max-size'=>'2048'])!!}
                                 </div>
                               </div><!-- /input-group -->
                             </div><!-- /.col-lg-6 -->

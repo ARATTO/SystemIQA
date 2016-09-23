@@ -1,4 +1,5 @@
 @extends('template.main')
+@section('title', 'SYSTEMIQA')
 
 @section('title')
 
@@ -19,15 +20,6 @@
 
         <!-- contenido principal -->
         <section class="content"  id="contenido_principal">
-
-
-
-
-
-
-
-
-
 
 
 

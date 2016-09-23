@@ -14,6 +14,7 @@ class Tutor extends Model
         'nombre',
         'apellido',
         'telefono',
+        'usuario_id'
     ];
 
     public function user(){

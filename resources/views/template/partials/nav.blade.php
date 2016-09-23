@@ -16,13 +16,16 @@
       </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
+          <!-- Messages: style can be found in dropdown.less
 
-          <!-- User Account: style can be found in dropdown.less -->
+           Auth::user()->created_at
+
+          User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{ asset('dist/img/systemiqa/fotosPerfil/' . Auth::user()->foto)}}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ Auth::user()->nombre }}</span>
+
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -94,7 +97,6 @@
       <ul class="sidebar-menu">
         <li class="header">MENÚ</li>
 
-
         <!--MOTTO-->
         <li class="active treeview">
           <a href="#">
@@ -107,15 +109,63 @@
         </li>
 
 
+        <!-- FIN MOTTO -->
+
+        <!--Lobos-->
+        <li class="treeview">
+              <a href="#">
+                <i class="fa fa-fw fa-user-plus"></i> <span>Datos</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="{{ url('/cargar_usuarios') }} "><i class="fa fa-circle-o"></i>Cargar Datos Us. </a></li>
+
+              </ul>
+            </li>
+            <!-- FIN  LOBOS -->
+
+
+         <!--  Panel de Materias  -Elias   -->
+        <li class="active treeview" id="lista_elias">
+          <a href="#">
+            <i class="glyphicon glyphicon-book"></i>
+            <span>Asignaturas</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{route('materias.index')}}" >
+                <i class="fa fa-circle-o"></i>Listado Asignaturas</a>
+            </li>
+            <li class="active"><a href="{{route('materias.create')}}"  >
+                <i class="fa fa-circle-o"></i>Agregar Asignatura</a>
+            </li>
+          </ul>
+        </li>
+        <!--  Fin Panel de Materias      -->
+
+        <!--Alam-->
+
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>TUTORES</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=" {{ url('/tutor') }} "><i class="fa fa-circle-o"></i>Ver</a></li>
+            <li><a href=" {{ url('tutor/create') }} "><i class="fa fa-circle-o"></i>Agregar</a></li>
+          </ul>
+        </li>
+<!--FIN ALAM-->
+
+
       </ul>
     </section>
     <!-- /.sidebar -->
+
   </aside>
 
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      
+
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
