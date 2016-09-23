@@ -14,7 +14,7 @@ class CreateNotaTable extends Migration
     {
         Schema::create('notas', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('nota_final');
+            $table->float('nota_evaluacion');
             $table->timestamps();
         });
     }

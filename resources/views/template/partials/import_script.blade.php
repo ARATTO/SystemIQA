@@ -49,6 +49,7 @@
 <script src="{{ asset('code.jquery.com/jquery.js') }}"></script>
 <script src="{{ asset('maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js') }}"></script>
 
+
 <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
 <!-- script de materias  **Elias -->
 <script src="{{ asset('dist/js/materias.js') }}"></script>
@@ -82,3 +83,4 @@ $('#codigo-mat').change(function(){
  </script>
 
 <!--  FIN javascript de formularios de elias -->
+

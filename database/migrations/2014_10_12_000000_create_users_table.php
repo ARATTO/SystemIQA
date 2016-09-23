@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('email')->unique();
             $table->string('telefono');
+            $table->string('foto');
             //Pienso aqui debe ir los roles por enum
                 /*
             $table->string('codigo_id'); //Codigo de materias

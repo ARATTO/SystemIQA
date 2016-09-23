@@ -11,7 +11,7 @@ class Nota extends Model
 
     protected $fillable = [
         'id',
-        'valor_nota',
+        'nota_evaluacion',
     ];
 
     public function evaluacion(){

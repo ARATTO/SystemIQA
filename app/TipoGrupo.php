@@ -15,7 +15,9 @@ class TipoGrupo extends Model
         'nombre',
     ];
 
+
     public function grupos(){
       return $this->hasMany('App\Grupo');
+
     }
 }
