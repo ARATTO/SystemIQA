@@ -18,7 +18,6 @@ class Estudiante extends Model
         'CUM',
         'anio_ingreso',
         'promedio_ciclo',
-        'descripcion',
     ];
 
     public function grupo_tutorias(){

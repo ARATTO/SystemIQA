@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Session;
+use Laracasts\Flash\Flash;
 
 class AuthController extends Controller
 {
@@ -76,8 +77,9 @@ class AuthController extends Controller
         return view("home");
     }
 
-    return view("login")->with("msjerror","credenciales incorrectas");
-    //return view("home");
+    Flash::error("Credenciales Incorrectas");
+    return redirect("login");
+
 
     }
 

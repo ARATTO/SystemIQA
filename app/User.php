@@ -20,7 +20,7 @@ class User extends Authenticatable
         'apellido',
         'email',
         'telefono',
-
+        'foto',
         'rol_id',
         'created_at',
     ];

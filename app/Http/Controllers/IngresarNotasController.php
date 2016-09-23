@@ -111,13 +111,11 @@ class IngresarNotasController extends Controller
 
             foreach($resultado as $key => $value){
                 $mykey = $key;
-                echo "llave: ".$mykey;
-                echo "  nota: ".$value. "<br>";
 
                 $nota = Nota::find($mykey);
 
                 if ($nota != null) {
-                    $nota->nota_final = $value;
+                    $nota->nota_evaluacion = $value;
 
                     $nota->save();
                 }
