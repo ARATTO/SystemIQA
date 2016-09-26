@@ -14,9 +14,9 @@ class Tutor extends Model
         'nombre',
         'apellido',
         'telefono',
+        'usuario_id'
     ];
-<<<<<<< HEAD
-=======
+
 
     public function user(){
       return $this->hasMany('App\User');
@@ -25,5 +25,5 @@ class Tutor extends Model
     public function grupo_tutorias(){
       return $this->belongsTo('App\GrupoTutorias');
     }
->>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
+
 }

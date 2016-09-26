@@ -33,22 +33,40 @@
 
                   <!-- Table -->
                   <table class="table">
-
-                    <div class="col-xs-12">
-                        {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
-                          <br>
+                      <div class="col-xs-12">
+                        @if(count($errors) > 0)
                           <hr>
+                          <div class="alert alert-danger" role="alert">
+                            @foreach($errors->all() as $error)
+                              <li>{{$error}}</li>
+                            @endforeach
+                          </div>
+                          <hr>
+                        @endif
+                      </div>
+                    <div class="col-xs-12">
+                        {!! Form::open(['route' => 'users.store', 'method' => 'POST', 'onSubmit'=>'return validar_clave()', 'files' => true]) !!}
+                          <br>
                           <div class="row">
                             <div class="col-xs-6">
                               <div class="input-group col-xs-12">
                                 <div class="form-group">
-                                  {!! form::label('carnet','Carnet') !!}
-                                  {!! form::text('carnet', null, ['class' => 'form-control', 'placeholder'=> 'Carnet de Usuario', 'required']) !!}
+                                    {!! form::label('carnet','Carnet') !!}
+                                    {!! form::text('carnet', null, ['class' => 'form-control', 'placeholder'=> 'Carnet de Usuario', 'required']) !!}
                                 </div>
                               </div><!-- /input-group -->
                             </div><!-- /.col-lg-6 -->
-                          </div>
+                            <div class="col-xs-6">
+                              <div class="input-group col-xs-12">
+                                <div class="form-group">
+                                    {!! form::label('foto','Foto de Perfil') !!}
+                                    {!! form::file('foto', ['class' => 'form-control','data-max-size'=>'2048'])!!}
+                                </div>
+                              </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                          </div><!-- /.row -->
                           <br>
+                          <hr>
                           <div class="row">
                             <div class="col-xs-6">
                               <div class="input-group col-xs-12">
@@ -85,7 +103,8 @@
                               <div class="input-group col-xs-12">
                                 <div class="form-group">
                                   {!! form::label('rol_id', 'Tipo de Usuario') !!}
-                                  <select name="rol_id" id="rol_id" class="form-control selectpicker">
+                                  <select name="rol_id" id="rol_id" class="form-control selectpicker" required>
+                                    <option selected="selected" value="">Seleccione un Rol</option>
                                     @foreach($rols as $rol)
                                         <option value= {{$rol->id}} > {{$rol->nombre}} </option>
                                     @endforeach
@@ -143,6 +162,18 @@
           </div>
         </section>
 
+        <script type="text/javascript">
+          function validar_clave(){
+            var p1 = document.getElementById("password").value;
+            var p2 = document.getElementById("passwordConf").value;
 
+            if (p1 != p2) {
+              alert("Las Contraseñas NO coinciden");
+              return false;
+            }
+
+          }
+
+        </script>
 
 @endsection

@@ -10,10 +10,7 @@ class Materia extends Model
     protected $table = 'materias';
 
     protected $fillable = [
-<<<<<<< HEAD
-=======
         'id',
->>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
         'codigo',
         'nombre',
         'unidades_valorativas',
@@ -21,14 +18,12 @@ class Materia extends Model
         'numero_retiros',
     ];
 
-<<<<<<< HEAD
-=======
     public function evaluaciones(){
       return $this->hasMany('App\Evaluacion');
     }
 
     public function grupos(){
-      return $this->belongsTo('App\Grupo');
+      return $this->hasMany('App\Grupo');
     }
 
     public function users(){
@@ -47,5 +42,4 @@ class Materia extends Model
       return $this->hasMany('App\MateriaInscrita');
     }
 
->>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
 }

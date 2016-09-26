@@ -14,20 +14,15 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $fillable = [
-<<<<<<< HEAD
-=======
         'id',
->>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
         'carnet',
         'nombre',
         'apellido',
         'email',
         'telefono',
-<<<<<<< HEAD
-=======
+        'foto',
         'rol_id',
         'created_at',
->>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
     ];
 
     /**
@@ -52,7 +47,9 @@ class User extends Authenticatable
       return $this->belongsToMany('App\Materia')->withTimestamps();
     }
 
-    public function scopeCarnet($query, $carnet){
+
+   public function scopeCarnet($query, $carnet){
           return $query->where('carnet', 'LIKE' , '%'.$carnet.'%');
     }
+
 }

@@ -8,6 +8,8 @@
 
 2. $composer install
 
+2.5 $php artisan config:cache
+
 3. $php artisan key:generate
 
 4.
@@ -21,3 +23,5 @@ ELSE
 5. $composer update
 
 6. $php artisan serve
+
+abc123

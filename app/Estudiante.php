@@ -18,10 +18,8 @@ class Estudiante extends Model
         'CUM',
         'anio_ingreso',
         'promedio_ciclo',
-        'descripcion',
     ];
-<<<<<<< HEAD
-=======
+
 
     public function grupo_tutorias(){
       return $this->belongsTo('App\GrupoTutoria');
@@ -31,8 +29,9 @@ class Estudiante extends Model
       return $this->belongsToMany('App\Carrera')->withTimestamps();
     }
 
+
     public function materiaInscrita(){
       return $this->hasMany('App\MateriaInscrita');
     }
->>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
+
 }

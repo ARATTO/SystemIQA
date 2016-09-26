@@ -24,20 +24,109 @@ Route::get('home', function () {
 });*/
 
 
+/*Route::group(['prefix' => 'mat'], function(){
+
+	Route::get('Pnotas/{id}/destroy',[
+		'uses' => 'PorcentajeNotasController@destroy', //uses va por default para que reconosca la ruta
+		'as' => 'mat.Pnotas.destroy'
+		]);
+
+});*/
+
+
+
+/*RUTAS RODRIGO*/
+Route::get('elejirCarrera', 'PorcentajeNotasController@create');
+Route::post('guardar', 'PorcentajeNotasController@show');
+
+
+Route::post('store',[
+		'uses' => 'PorcentajeNotasController@store',
+		'as' => 'Pnotas.create2'
+		]);
+
+Route::get('verPorcentajes',[
+		'uses' => 'PorcentajeNotasController@index',
+		'as' => 'Pnotas.index'
+		]);
+
+Route::get('verPorcentajes/{id}/destroy',[
+		'uses' => 'PorcentajeNotasController@destroy',
+		'as' => 'Pnotas.destroy'
+		]);
+
+
+Route::get('editar/{pnotas}/edit',[
+		'uses' => 'PorcentajeNotasController@edit',
+		'as' => 'Pnotas.edit'
+		]);
+
+Route::put('cambiar/{Pnotas}',[
+		'uses' => 'PorcentajeNotasController@update',
+		'as' => 'Pnotas.update'
+		]);
+
+Route::get('mostrarPorcenjate/{pnotas}/ver', [
+	'uses' => 'PorcentajeNotasController@verPorcentajes',
+	'as'	=> 'Pnotas.ver'
+	]);
+
+
+
+/*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
+
+Route::get('ingresarNotas/seleccionar', [
+	'uses' => 'IngresarNotasController@create',
+	'as' => 'notasAlumnos.create'
+	]);
+
+Route::post('guardarNota', 'IngresarNotasController@show');
+
+Route::post('ingresarNotas/crearNotas',[
+		'uses' => 'IngresarNotasController@store',
+		'as' => 'notasAlumnos.create2'
+		]);
+
+
+
+/*RUTAS RODRIGO*/
 
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
 // Registration routes...
-<<<<<<< HEAD
-Route::get('register', 'Auth\AuthController@getRegister');
-Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
+
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
-=======
-Route::get('/', 'HomeController@index');
-Route::get('home', 'HomeController@index');
+
+
+
+//rutas Elias
+			//--Materias
+
+Route::resource('materias','MateriasController');
+Route::get('materias/filtrar/{id}',	['as'=>'materias.filtrar','uses'=>'MateriasController@filtrarMaterias']);
+Route::get('materias/destroy/{id}',['as'=>'materias.destroy','uses'=>'MateriasController@eliminar']);
+
+
+			//--Carreras
+Route::resource('carreras','CarrerasController');
+Route::get('carreras/destroy/{id}',['as'=>'carreras.destroy','uses'=>'CarrerasController@destroy']);
+
+			//--Grupos
+Route::resource('grupos','GruposController');
+Route::get('grupos/destroy/{id}',['as'=>'grupos.destroy','uses'=>'GruposController@destroy']);
+//FIN rutas Elias
+
+
+//LOBOS
+Route::post('mostrarForm', 'FormulariosController@show');
+Route::get('cargar_usuarios', 'FormulariosController@form_cargar_datos_usuarios');
+Route::get('create', 'FormulariosController@create');
+Route::post('cargar_datos_usuarios', 'FormulariosController@cargar_datos_usuarios');
+// FIN LOBOS
+
 
 //MOTTO
 Route::resource('users','UserController');
@@ -47,16 +136,12 @@ Route::get('users/{id}/destroy', [
   'uses' => 'UserController@destroy'
 ]);
 //FIN MOTTO
-/*
-Route::get('users', [
-  'as' => 'users/index',
-  'uses' => 'UserController@index'
+
+//Rutas Alam Lopez
+Route::resource('tutor','TutoresController');
+
+Route::get('tutor/{id}/destroy',[
+    'uses' => 'TutoresController@destroy',
+    'as' => 'tutor.destroy'
 ]);
-
-Route::group(['prefix' => 'admin'], function(){
-
-	Route::resource('users','UsersController');
-
-});
-*/
->>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
+//Fin Rutas Alam Lopez

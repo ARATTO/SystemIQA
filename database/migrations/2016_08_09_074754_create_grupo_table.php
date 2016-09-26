@@ -13,7 +13,8 @@ class CreateGrupoTable extends Migration
     public function up()
     {
         Schema::create('grupos', function (Blueprint $table) {
-            $table->string('codigo')->primary();
+            $table->increments('id');
+            $table->string('codigo');
             $table->time('horario');
             $table->integer('cantidad_estudiante');
 
