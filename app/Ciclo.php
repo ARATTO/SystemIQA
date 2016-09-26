@@ -16,4 +16,11 @@ class Ciclo extends Model
         'fecha_inicio',
         'fecha_fin',
     ];
+<<<<<<< HEAD
+=======
+
+    public function materias(){
+      return $this->belongsToMany('App\Materia')->withTimestamps();
+    }
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
 }

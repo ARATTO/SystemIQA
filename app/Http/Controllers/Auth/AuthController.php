@@ -25,7 +25,11 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+<<<<<<< HEAD
 
+=======
+    protected $redirectTo = '/';
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
 
     /**
      * Create a new authentication controller instance.
@@ -60,17 +64,25 @@ class AuthController extends Controller
 
         public function postLogin(Request $request)
    {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
     $this->validate($request, [
         'email' => 'required',
         'password' => 'required',
     ]);
 
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
 
     $credentials = $request->only('email', 'password');
 
     if ($this->auth->attempt($credentials, $request->has('remember')))
+<<<<<<< HEAD
     {
         return view("home");
     }
@@ -102,14 +114,41 @@ class AuthController extends Controller
     }
 
 
+=======
+    {
+        return view("home");
+    }
+
+    return view("login")->with("msjerror","credenciales incorrectas");
+    //return view("home");
+
+    }
+
+
+//login
+
+ //registro
+
+
+        protected function getRegister()
+    {
+        return view("registro");
+    }
+
+
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
 
 
         protected function postRegister(Request $request)
 
    {
     $this->validate($request, [
+<<<<<<< HEAD
         'carnet' => 'required',
         'nombre' => 'required',
+=======
+        'name' => 'required',
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
         'email' => 'required',
         'password' => 'required',
     ]);
@@ -119,11 +158,17 @@ class AuthController extends Controller
 
 
     $user=new User;
+<<<<<<< HEAD
     $user->carnet=$data['carnet'];
     $user->nombre=$data['nombre'];
     $user->email=$data['email'];
     //$user->password=bcrypt($data['password']);
     $user->password=$data['password'];
+=======
+    $user->name=$data['name'];
+    $user->email=$data['email'];
+    $user->password=bcrypt($data['password']);
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
 
 
     if($user->save()){
@@ -145,7 +190,11 @@ protected function getLogout()
 
         Session::flush();
 
+<<<<<<< HEAD
         return redirect('login');
+=======
+        return redirect()->route('login');;
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
     }
 
 

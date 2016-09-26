@@ -31,6 +31,7 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Registro en el sistema</p>
+<<<<<<< HEAD
 
         <form action="register" method="post">
       <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
@@ -41,6 +42,12 @@
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
 
+=======
+       
+        <form action="register" method="post">
+      <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">   
+          
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
           <div class="form-group has-feedback">
             <label>nombre</label>
             <input type="text" class="form-control" name="name" >
@@ -61,19 +68,32 @@
           </div>
 
 
+<<<<<<< HEAD
 
           <div class="row">
 
 
 
+=======
+         
+          <div class="row">
+            
+
+            
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
             <div class="col-xs-4">
               <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
             </div><!-- /.col -->
           </div>
         </form>
 
+<<<<<<< HEAD
 
 
+=======
+     
+       
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
@@ -84,10 +104,17 @@
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <!-- iCheck -->
     <script src="../../plugins/iCheck/icheck.min.js"></script>
+<<<<<<< HEAD
 
 
     <script>
 
+=======
+   
+
+    <script>
+      
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
       $(function () {
         $('input').iCheck({
           checkboxClass: 'icheckbox_square-blue',
@@ -97,6 +124,10 @@
       });
     </script>
 
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
   </body>
 </html>

@@ -30,7 +30,33 @@ Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
 // Registration routes...
+<<<<<<< HEAD
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
+=======
+Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
+
+//MOTTO
+Route::resource('users','UserController');
+Route::get('users/create','UserController@create');
+Route::get('users/{id}/destroy', [
+  'as' => 'users.destroy',
+  'uses' => 'UserController@destroy'
+]);
+//FIN MOTTO
+/*
+Route::get('users', [
+  'as' => 'users/index',
+  'uses' => 'UserController@index'
+]);
+
+Route::group(['prefix' => 'admin'], function(){
+
+	Route::resource('users','UsersController');
+
+});
+*/
+>>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452

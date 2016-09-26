@@ -14,8 +14,8 @@ class RshpGrupo extends Migration
     {
         //
         Schema::table('grupos', function(Blueprint $table){
-          $table->string('materia_id');
-          $table->foreign('materia_id')->references('codigo')->on('materias')->onDelete('cascade');
+          $table->integer('materia_id')->unsigned();
+          $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
         });
     }
 
