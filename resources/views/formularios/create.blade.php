@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Crear porcentaje de notas')
+@section('title', 'Subir Archivos')
 
 @section('content')
 

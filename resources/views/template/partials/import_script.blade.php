@@ -70,7 +70,6 @@
 	}
 </script>
 
->>>>>>> origin/rodrigo
 <!-- javascript de formularios de elias -->
  <script>
 
