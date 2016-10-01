@@ -20,6 +20,7 @@ class User extends Authenticatable
         'apellido',
         'email',
         'telefono',
+        'foto',
         'rol_id',
         'created_at',
     ];
@@ -46,7 +47,9 @@ class User extends Authenticatable
       return $this->belongsToMany('App\Materia')->withTimestamps();
     }
 
-    public function scopeCarnet($query, $carnet){
+
+   public function scopeCarnet($query, $carnet){
           return $query->where('carnet', 'LIKE' , '%'.$carnet.'%');
     }
+
 }

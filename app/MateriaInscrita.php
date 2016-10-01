@@ -12,6 +12,7 @@ class MateriaInscrita extends Model
   protected $fillable = [
       'id',
       'cursada',
+      'nota_final',
   ];
 
   public function notas(){

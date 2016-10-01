@@ -11,7 +11,7 @@ class Nota extends Model
 
     protected $fillable = [
         'id',
-        'valor_nota',
+        'nota_evaluacion',
     ];
 
     public function evaluacion(){
@@ -19,7 +19,7 @@ class Nota extends Model
     }
 
     public function materiaInscrita(){
-      return $this->belongsTo('App\MateriaInscrita');
+      return $this->belongsTo('App\MateriaInscrita','materiaInscrita_id');
     }
 
 }
