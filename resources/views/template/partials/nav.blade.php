@@ -107,7 +107,7 @@
         <!--MOTTO-->
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>USUARIOS</span> <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-dashboard"></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             <li><a href=" {{ url('/users') }} "><i class="fa fa-circle-o"></i>Ver</a></li>
@@ -190,7 +190,7 @@
 
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>TUTORES</span> <i class="fa fa-angle-left pull-right"></i>
+            <i class="glyphicon glyphicon-book"></i> <span>Tutores</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             <li><a href=" {{ url('/tutor') }} "><i class="fa fa-circle-o"></i>Ver</a></li>
@@ -215,10 +215,19 @@
         <!--RODRIGO-->
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Ingresar notas</span> <i class="fa fa-angle-left pull-right"></i>
+            <i class="glyphicon glyphicon-list-alt"></i> <span>Ingresar notas</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             <li><a href=" {{ url('/ingresarNotas/seleccionar') }} "><i class="fa fa-circle-o"></i>Agregar notas</a></li>
+          </ul>
+        </li>
+
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Verificar Estado de Alumnos</a></li>
           </ul>
         </li>
 

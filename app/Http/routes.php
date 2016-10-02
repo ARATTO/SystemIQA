@@ -124,6 +124,7 @@ Route::post('mostrarForm', 'FormulariosController@show');
 Route::get('cargar_usuarios', 'FormulariosController@form_cargar_datos_usuarios');
 Route::get('create', 'FormulariosController@create');
 Route::post('cargar_datos_usuarios', 'FormulariosController@cargar_datos_usuarios');
+
 // FIN LOBOS
 
 
@@ -144,3 +145,9 @@ Route::get('tutor/{id}/destroy',[
     'as' => 'tutor.destroy'
 ]);
 //Fin Rutas Alam Lopez
+
+//EstadoEstudiante
+//Route::resource('estado','EstudianteController');
+Route::get('estado/create','EstudianteController@create');
+Route::post('estado/show','EstudianteController@show');
+
