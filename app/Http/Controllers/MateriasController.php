@@ -12,6 +12,11 @@ use App\Carrera;
 
 class MateriasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
    public function index(){
    		$mats = Materia::orderBy('codigo')->paginate(5);
         $carreras = Carrera::orderBy('id')->lists('nombre','id');

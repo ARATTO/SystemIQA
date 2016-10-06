@@ -5,5 +5,9 @@ $(".select-carrera").chosen({
         no_results_text:' No se encontraron carreras'
       });
 
+$('#horario').bootstrapMaterialDatePicker({ date: false });
+$('#time').bootstrapMaterialDatePicker({ date: false });
+
+
 
 // FIN javascript de formularios de elias -->

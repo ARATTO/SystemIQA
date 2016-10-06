@@ -20,6 +20,9 @@ class RshpGrupo extends Migration
           $table->integer('tipoGrupo_id')->unsigned();
           $table->foreign('tipoGrupo_id')->references('id')->on('tipo_grupos')->onDelete('cascade');
         });
+
+        
+        
     }
 
     /**

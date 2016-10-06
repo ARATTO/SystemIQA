@@ -1,3 +1,4 @@
+
 <div class="wrapper">
 
   <header class="main-header">
@@ -18,6 +19,7 @@
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less
 
+
            Auth::user()->created_at
 
           User Account: style can be found in dropdown.less -->
@@ -26,14 +28,17 @@
               <img src="{{ asset('dist/img/systemiqa/fotosPerfil/' . Auth::user()->foto)}}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ Auth::user()->nombre }}</span>
 
+
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <img src="{{ asset('dist/img/systemiqa/fotosPerfil/' . Auth::user()->foto)}}" class="img-circle" alt="User Image">
                 <p>
+
                  {{ Auth::user()->nombre }}{{ ' ' . Auth::user()->apellido }}
                   <small>Miembro desde {{ Auth::user()->created_at }} </small>
+
                 </p>
               </li>
               <!-- Menu Body -->
@@ -56,7 +61,9 @@
                   <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
+
                   <a href="{{ url('/logout') }}" class="btn btn-danger btn-flat">SALIR</a>
+
                 </div>
               </li>
             </ul>
@@ -100,7 +107,7 @@
         <!--MOTTO-->
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>USUARIOS</span> <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-dashboard"></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             <li><a href=" {{ url('/users') }} "><i class="fa fa-circle-o"></i>Ver</a></li>
@@ -117,12 +124,30 @@
                 <i class="fa fa-fw fa-user-plus"></i> <span>Datos</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{ url('/cargar_usuarios') }} "><i class="fa fa-circle-o"></i>Cargar Datos Us. </a></li>
+
+                <li class="active"><a href="{{ url('/create') }} "><i class="fa fa-circle-o"></i>Cargar Datos Us. </a></li>
 
               </ul>
             </li>
             <!-- FIN  LOBOS -->
 
+          <!--  Panel de Grupos  -Elias   -->
+        <li class="active treeview" id="lista_elias">
+          <a href="#">
+            <i class="glyphicon glyphicon-list-alt"></i>
+            <span>Grupos</span> 
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{route('grupos.index')}}" >
+                <i class="fa fa-circle-o"></i>Listado Grupos</a>
+            </li>
+            <li class="active"><a href="{{route('grupos.create')}}"  >
+                <i class="fa fa-circle-o"></i>Agregar Grupo</a>
+            </li>
+          </ul>
+        </li> 
+        <!--  Fin Panel de Grupos      -->
 
          <!--  Panel de Materias  -Elias   -->
         <li class="active treeview" id="lista_elias">
@@ -142,11 +167,30 @@
         </li>
         <!--  Fin Panel de Materias      -->
 
+
+         <!--  Panel de Carreras  -Elias   -->
+        <li class="active treeview" id="lista_elias">
+          <a href="#">
+            <i class="glyphicon glyphicon-education"></i>
+            <span>Carreras Universitarias</span> 
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{route('carreras.index')}}" >
+                <i class="fa fa-circle-o"></i>Listado Carreras</a>
+            </li>
+            <li class="active"><a href="{{route('carreras.create')}}"  >
+                <i class="fa fa-circle-o"></i>Agregar Carrera</a>
+            </li>
+          </ul>
+        </li> 
+        <!--  Fin Panel de Carreras      -->
+
         <!--Alam-->
 
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>TUTORES</span> <i class="fa fa-angle-left pull-right"></i>
+            <i class="glyphicon glyphicon-book"></i> <span>Tutores</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             <li><a href=" {{ url('/tutor') }} "><i class="fa fa-circle-o"></i>Ver</a></li>
@@ -156,9 +200,43 @@
 <!--FIN ALAM-->
 
 
+              <!--RODRIGO-->
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Porcentaje de las notas</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=" {{ url('/elejirCarrera') }} "><i class="fa fa-circle-o"></i>Agregar porcentaje</a></li>
+            <li><a href=" {{ url('/verPorcentajes') }} "><i class="fa fa-circle-o"></i>ver Porcentajes</a></li>
+          </ul>
+        </li>
+
+
+        <!--RODRIGO-->
+        <li class="active treeview">
+          <a href="#">
+            <i class="glyphicon glyphicon-list-alt"></i> <span>Ingresar notas</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=" {{ url('/ingresarNotas/seleccionar') }} "><i class="fa fa-circle-o"></i>Agregar notas</a></li>
+          </ul>
+        </li>
+
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Verificar Estado de Alumnos</a></li>
+          </ul>
+        </li>
+
+
+
       </ul>
     </section>
     <!-- /.sidebar -->
+
 
   </aside>
 
@@ -348,4 +426,6 @@
       </div>
       <!-- /.tab-pane -->
     </div>
+
   </aside>
+

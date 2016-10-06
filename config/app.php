@@ -168,8 +168,10 @@ return [
 
         /*Providers instalados*/
         Collective\Html\HtmlServiceProvider::class,
-        Laracasts\Flash\FlashServiceProvider::class,
 
+
+        /*provider para flash*/
+        Laracasts\Flash\FlashServiceProvider::class,
     ],
 
     /*
@@ -223,9 +225,5 @@ return [
 
         'Form'=> Collective\Html\FormFacade::class,
         'Html'=> Collective\Html\HtmlFacade::class,
-
-        'Flash'=> Laracasts\Flash\Flash::class,
-
-    ],
 
 ];

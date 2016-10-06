@@ -24,5 +24,8 @@
 	@include('template.partials.import_script')
 	@include('template.partials.load')
 
+	@yield('js')
+
+
 </body>
 </html>

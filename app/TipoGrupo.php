@@ -12,9 +12,11 @@ class TipoGrupo extends Model
     protected $fillable = [
         'id',
         'descripcion',
+        'nombre',
     ];
 
-    public function grupo(){
-      return $this->belongsTo('App\Grupo');
+    public function grupos(){
+      return $this->hasMany('App\Grupo');
+
     }
 }

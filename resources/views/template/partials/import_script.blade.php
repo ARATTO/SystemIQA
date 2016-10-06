@@ -55,6 +55,7 @@
 <script src="{{ asset('dist/js/materias.js') }}"></script>
 <!-- script de mensajes de confirmacion **Elias -->
 <script src="{{ asset('dist/js/bootbox.js') }}"></script>
+<!-- script de time picker **Elias -->
 
 
 
@@ -63,12 +64,19 @@
 </script>
 
 
+<script type="text/javascript">
+	function alerta($texto) {
+		alert($texto);
+	}
+</script>
+
 <!-- javascript de formularios de elias -->
  <script>
+
 $('#codigo-mat').change(function(){     
         if($('#codigo-mat').val()){
 
-        	jAlert('hi');
+        	
 
        $url= "{{route('materias.index')}}"+"/filtrar/"+$("#codigo-mat").val();  
        		window.location.href=$url;//."/filtrar/".$url;
@@ -76,8 +84,11 @@ $('#codigo-mat').change(function(){
           window.location.href="{{route('materias.index')}}";
           }
         });
+
+
  </script>
 
 <!--  FIN javascript de formularios de elias -->
+
 
 
