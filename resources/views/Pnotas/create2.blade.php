@@ -70,28 +70,28 @@
               </thead>
               <tbody>
                 <tr>
-                    <td><input type="number" name="nota"  style="width: 90px;"> </td>
-                    <td><input type="number" name="nota"  style="width: 90px;"> </td>
-                    <td><input type="number" name="nota"  style="width: 90px;"> </td>
-                    <td><input type="number" name="nota"  style="width: 90px;"> </td>
-                    <td><input type="number" name="nota"  style="width: 90px;"> </td>
-                    <td><input type="number" name="nota"  style="width: 90px;"> </td>
-                    <td><input type="number" name="nota"  style="width: 90px;"> </td>
-                    <td><input type="number" name="nota"  style="width: 90px;"> </td>
-                    <td><input type="number" name="nota"  style="width: 90px;"> </td>
-                    <td><input type="number" name="nota"  style="width: 90px;"> </td>
+                    <td><input class="form-control" type="number" name="nota"  min="1" max="100" style="width: 90px;"> </td>
+                    <td><input class="form-control" type="number" name="nota"  min="1" max="100" style="width: 90px;"> </td>
+                    <td><input class="form-control" type="number" name="nota"  min="1" max="100" style="width: 90px;"> </td>
+                    <td><input class="form-control" type="number" name="nota"  min="1" max="100" style="width: 90px;"> </td>
+                    <td><input class="form-control" type="number" name="nota"  min="1" max="100" style="width: 90px;"> </td>
+                    <td><input class="form-control" type="number" name="nota"  min="1" max="100" style="width: 90px;"> </td>
+                    <td><input class="form-control" type="number" name="nota"  min="1" max="100" style="width: 90px;"> </td>
+                    <td><input class="form-control" type="number" name="nota"  min="1" max="100" style="width: 90px;"> </td>
+                    <td><input class="form-control" type="number" name="nota"  min="1" max="100" style="width: 90px;"> </td>
+                    <td><input class="form-control" type="number" name="nota"  min="1" max="100" style="width: 90px;"> </td>
                 </tr>
                    <tr>
-                    <td><input type="text" name="Descr" placeholder="Descripcion nota"  style="width: 90px;"> </td>
-                    <td><input type="text" name="Descr" placeholder="Descripcion nota"  style="width: 90px;"> </td>
-                    <td><input type="text" name="Descr" placeholder="Descripcion nota"  style="width: 90px;"> </td>
-                    <td><input type="text" name="Descr" placeholder="Descripcion nota"  style="width: 90px;"> </td>
-                    <td><input type="text" name="Descr" placeholder="Descripcion nota"  style="width: 90px;"> </td>
-                    <td><input type="text" name="Descr" placeholder="Descripcion nota"  style="width: 90px;"> </td>
-                    <td><input type="text" name="Descr" placeholder="Descripcion nota"  style="width: 90px;"> </td>
-                    <td><input type="text" name="Descr" placeholder="Descripcion nota"  style="width: 90px;"> </td>
-                    <td><input type="text" name="Descr" placeholder="Descripcion nota"  style="width: 90px;"> </td>
-                    <td><input type="text" name="Descr" placeholder="Descripcion nota"  style="width: 90px;"> </td>
+                    <td><input class="form-control" type="text" name="Descr" placeholder="Descripcion"  style="width: 90px;"> </td>
+                    <td><input class="form-control" type="text" name="Descr" placeholder="Descripcion"  style="width: 90px;"> </td>
+                    <td><input class="form-control" type="text" name="Descr" placeholder="Descripcion"  style="width: 90px;"> </td>
+                    <td><input class="form-control" type="text" name="Descr" placeholder="Descripcion"  style="width: 90px;"> </td>
+                    <td><input class="form-control" type="text" name="Descr" placeholder="Descripcion"  style="width: 90px;"> </td>
+                    <td><input class="form-control" type="text" name="Descr" placeholder="Descripcion"  style="width: 90px;"> </td>
+                    <td><input class="form-control" type="text" name="Descr" placeholder="Descripcion"  style="width: 90px;"> </td>
+                    <td><input class="form-control" type="text" name="Descr" placeholder="Descripcion"  style="width: 90px;"> </td>
+                    <td><input class="form-control" type="text" name="Descr" placeholder="Descripcion"  style="width: 90px;"> </td>
+                    <td><input class="form-control" type="text" name="Descr" placeholder="Descripcion"  style="width: 90px;"> </td>
                 </tr>
              </tbody>
             </table>
