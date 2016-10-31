@@ -102,131 +102,143 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
+
         <li class="header">MENÚ</li>
 
-        <!--MOTTO-->
-        <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>USUARIOS</span> <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href=" {{ url('/users') }} "><i class="fa fa-circle-o"></i>Ver</a></li>
-            <li><a href=" {{ url('users/create') }} "><i class="fa fa-circle-o"></i>Agregar</a></li>
-          </ul>
-        </li>
+              
+                
+                <!--MOTTO-->
+                <li class="active treeview">
+                  <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href=" {{ url('/users') }} "><i class="fa fa-circle-o"></i>Ver</a></li>
+                    <li><a href=" {{ url('users/create') }} "><i class="fa fa-circle-o"></i>Agregar</a></li>
+                  </ul>
+                </li>
 
 
-        <!-- FIN MOTTO -->
+                <!-- FIN MOTTO -->
 
-        <!--Lobos-->
-        <li class="treeview">
-              <a href="#">
-                <i class="fa fa-fw fa-user-plus"></i> <span>Datos</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
+                <!--Lobos-->
+                <li class="treeview">
+                      <a href="#">
+                        <i class="fa fa-fw fa-user-plus"></i> <span>Datos de Estudiantes</span> <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
 
-                <li class="active"><a href="{{ url('/create') }} "><i class="fa fa-circle-o"></i>Cargar Datos Us. </a></li>
+                        <li class="active"><a href="{{ url('/create') }} "><i class="fa fa-circle-o"></i>Cargar Estudiantes. </a></li>
 
-              </ul>
-            </li>
-            <!-- FIN  LOBOS -->
+                      </ul>
+                    </li>
+                    <!-- FIN  LOBOS -->
 
-          <!--  Panel de Grupos  -Elias   -->
-        <li class="active treeview" id="lista_elias">
-          <a href="#">
-            <i class="glyphicon glyphicon-list-alt"></i>
-            <span>Grupos</span> 
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="{{route('grupos.index')}}" >
-                <i class="fa fa-circle-o"></i>Listado Grupos</a>
-            </li>
-            <li class="active"><a href="{{route('grupos.create')}}"  >
-                <i class="fa fa-circle-o"></i>Agregar Grupo</a>
-            </li>
-          </ul>
-        </li> 
-        <!--  Fin Panel de Grupos      -->
+                  <!--  Panel de Grupos  -Elias   -->
+                <li class="active treeview" id="lista_elias">
+                  <a href="#">
+                    <i class="glyphicon glyphicon-list-alt"></i>
+                    <span>Grupos</span> 
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li class="active"><a href="{{route('grupos.index')}}" >
+                        <i class="fa fa-circle-o"></i>Listado Grupos</a>
+                    </li>
+                    <li class="active"><a href="{{route('grupos.create')}}"  >
+                        <i class="fa fa-circle-o"></i>Agregar Grupo</a>
+                    </li>
+                  </ul>
+                </li> 
+                <!--  Fin Panel de Grupos      -->
 
-         <!--  Panel de Materias  -Elias   -->
-        <li class="active treeview" id="lista_elias">
-          <a href="#">
-            <i class="glyphicon glyphicon-book"></i>
-            <span>Asignaturas</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="{{route('materias.index')}}" >
-                <i class="fa fa-circle-o"></i>Listado Asignaturas</a>
-            </li>
-            <li class="active"><a href="{{route('materias.create')}}"  >
-                <i class="fa fa-circle-o"></i>Agregar Asignatura</a>
-            </li>
-          </ul>
-        </li>
-        <!--  Fin Panel de Materias      -->
-
-
-         <!--  Panel de Carreras  -Elias   -->
-        <li class="active treeview" id="lista_elias">
-          <a href="#">
-            <i class="glyphicon glyphicon-education"></i>
-            <span>Carreras Universitarias</span> 
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="{{route('carreras.index')}}" >
-                <i class="fa fa-circle-o"></i>Listado Carreras</a>
-            </li>
-            <li class="active"><a href="{{route('carreras.create')}}"  >
-                <i class="fa fa-circle-o"></i>Agregar Carrera</a>
-            </li>
-          </ul>
-        </li> 
-        <!--  Fin Panel de Carreras      -->
-
-        <!--Alam-->
-
-        <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>TUTORES</span> <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href=" {{ url('/tutor') }} "><i class="fa fa-circle-o"></i>Ver</a></li>
-            <li><a href=" {{ url('tutor/create') }} "><i class="fa fa-circle-o"></i>Agregar</a></li>
-          </ul>
-        </li>
-<!--FIN ALAM-->
+                 <!--  Panel de Materias  -Elias   -->
+                <li class="active treeview" id="lista_elias">
+                  <a href="#">
+                    <i class="glyphicon glyphicon-book"></i>
+                    <span>Asignaturas</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li class="active"><a href="{{route('materias.index')}}" >
+                        <i class="fa fa-circle-o"></i>Listado Asignaturas</a>
+                    </li>
+                    <li class="active"><a href="{{route('materias.create')}}"  >
+                        <i class="fa fa-circle-o"></i>Agregar Asignatura</a>
+                    </li>
+                  </ul>
+                </li>
+                <!--  Fin Panel de Materias      -->
 
 
-              <!--RODRIGO-->
-        <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Porcentaje de las notas</span> <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href=" {{ url('/elejirCarrera') }} "><i class="fa fa-circle-o"></i>Agregar porcentaje</a></li>
-            <li><a href=" {{ url('/verPorcentajes') }} "><i class="fa fa-circle-o"></i>ver Porcentajes</a></li>
-          </ul>
-        </li>
+                 <!--  Panel de Carreras  -Elias   -->
+                <li class="active treeview" id="lista_elias">
+                  <a href="#">
+                    <i class="glyphicon glyphicon-education"></i>
+                    <span>Carreras Universitarias</span> 
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li class="active"><a href="{{route('carreras.index')}}" >
+                        <i class="fa fa-circle-o"></i>Listado Carreras</a>
+                    </li>
+                    <li class="active"><a href="{{route('carreras.create')}}"  >
+                        <i class="fa fa-circle-o"></i>Agregar Carrera</a>
+                    </li>
+                  </ul>
+                </li> 
+                <!--  Fin Panel de Carreras      -->
+
+                <!--Alam-->
+
+                <li class="active treeview">
+                  <a href="#">
+                    <i class="glyphicon glyphicon-book"></i> <span>Tutores</span> <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href=" {{ url('/tutor') }} "><i class="fa fa-circle-o"></i>Ver</a></li>
+                    <li><a href=" {{ url('tutor/create') }} "><i class="fa fa-circle-o"></i>Agregar</a></li>
+                  </ul>
+                </li>
+                <!--FIN ALAM-->
 
 
-        <!--RODRIGO-->
-        <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Ingresar notas</span> <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href=" {{ url('/ingresarNotas/seleccionar') }} "><i class="fa fa-circle-o"></i>Agregar notas</a></li>
-          </ul>
-        </li>
+                      <!--RODRIGO-->
+                <li class="active treeview">
+                  <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Porcentaje de las notas</span> <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href=" {{ url('/elejirCarrera') }} "><i class="fa fa-circle-o"></i>Agregar porcentaje</a></li>
+                    <li><a href=" {{ url('/verPorcentajes') }} "><i class="fa fa-circle-o"></i>ver Porcentajes</a></li>
+                  </ul>
+                </li>
 
+
+                <!--RODRIGO-->
+                <li class="active treeview">
+                  <a href="#">
+                    <i class="glyphicon glyphicon-list-alt"></i> <span>Ingresar notas</span> <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href=" {{ url('/ingresarNotas/seleccionar') }} "><i class="fa fa-circle-o"></i>Agregar notas</a></li>
+                  </ul>
+                </li>
+
+                <li class="active treeview">
+                  <a href="#">
+                    <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Verificar Estado de Alumnos</a></li>
+                  </ul>
+                </li>
 
 
       </ul>
     </section>
     <!-- /.sidebar -->
+
 
   </aside>
 
@@ -416,4 +428,6 @@
       </div>
       <!-- /.tab-pane -->
     </div>
+
   </aside>
+
