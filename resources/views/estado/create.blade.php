@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Subir Archivos')
+@section('title', 'Estado Estudiante')
 
 @section('content')
 
@@ -16,7 +16,7 @@
         </section>
 
 
-        {!! Form::open(['action'=>'FormulariosController@show']) !!}
+        {!! Form::open(['action'=>'EstudianteController@show']) !!}
 
 
           <!-- contenido principal -->
@@ -152,3 +152,4 @@
   </script>
 
 @endsection('js')
+
