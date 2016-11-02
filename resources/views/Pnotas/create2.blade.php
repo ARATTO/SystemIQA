@@ -67,9 +67,9 @@
               </thead>
               <tbody>
                 <tr>
-                    <td><input class="form-control columna1" type="number" name="nota1"  min="1" max="100" ></td>
-                    <td><input class="form-control columna2" type="number" name="nota2"  min="1" max="100" ></td>
-                    <td><input class="form-control columna3" type="number" name="nota3"  min="1" max="100" ></td>
+                    <td><input class="form-control columna1" type="number" name="nota1"  min="1" max="100" required="true"></td>
+                    <td><input class="form-control columna2" type="number" name="nota2"  min="1" max="100"  required="true"></td>
+                    <td><input class="form-control columna3" type="number" name="nota3"  min="1" max="100"  required="true"></td>
                     <td><input class="form-control columna4" type="number" name="nota4"  min="1" max="100" ></td>
                     <td><input class="form-control columna5" type="number" name="nota5"  min="1" max="100" ></td>
                     <td><input class="form-control columna6" type="number" name="nota6"  min="1" max="100" ></td>
@@ -163,18 +163,22 @@
            //codigo para cuando aumente las evaluaciones
         var au = document.getElementById('aumento').value;
         var v = document.getElementById('numeroDeEvaluaciones').value;
+
+        var cantidad = parseInt(v) ;
         
 
-        if (v<3 || v>10) {
+        if (cantidad<3 || cantidad>10) {
             alert("El numero minimo de evaluaciones es 3 y el maximo 10");
         }else{
+           
+            if (au <= cantidad ) {
 
-            if (au <= v ) {
               document.getElementById('aumento').value = v;
         
                 var t = 300 - (v*21);
 
-                 for (var i = 1; i <= v; i++) {
+                 for (var i = 1; i <=cantidad; i++) {
+
                    if(i<4){         
                         $(".columna"+i).css("width", t+"px");     
                   }else{
@@ -196,7 +200,7 @@
                 document.getElementById('aumento').value = v;
                 var t = 90 + ((10-v) *21);
 
-                    for (var i = 10; i >v; i--) {
+                    for (var i = 10; i >cantidad; i--) {
                       var c = 11-i;
                    if(i<4){         
                         $(".columna"+c).css("width", t+"px");     
@@ -218,7 +222,10 @@
                 //alert("entro en dismuncion"); 
                 }
       }
-    }   
+    }
+
+
+    function    
 
   </script>
 
