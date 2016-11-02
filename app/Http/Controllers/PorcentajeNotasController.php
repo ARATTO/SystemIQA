@@ -9,7 +9,10 @@ use App\Http\Requests;
 use App\Materia;
 use App\Evaluacion;
 use App\Carrera;
+use App\MateriaInscrita;
 use App\Http\Requests\PorcentajeNotasRequest;
+
+use DB;
 
 class PorcentajeNotasController extends Controller
 {
@@ -48,6 +51,12 @@ class PorcentajeNotasController extends Controller
     public function store(PorcentajeNotasRequest $request){
 
 
+       /* $prueba = DB::table('materias_inscritas') 
+       -> where('nota_final', '>', '0')
+       ->where('materia_id', '=', '1')
+       ->count();*/
+
+
         $evaluacion[0] = $request->nota1;
         $evaluacion[1] = $request->nota2;
         $evaluacion[2] = $request->nota3;
@@ -80,7 +89,7 @@ class PorcentajeNotasController extends Controller
 
 
         if ($porcentaje == 100) {
-            ///dd($request->all());
+    
                 for ($i=0; $i<10 ; $i++) { 
                     
                     if ($evaluacion[$i] != "" && $evaluacion[$i]>0) {
@@ -94,7 +103,7 @@ class PorcentajeNotasController extends Controller
                     }
                 }
 
-            flash('Se han creado los porcentajes ccon exito');
+            flash('Se han creado los porcentajes con exito', 'success');
 
             return redirect()->route('Pnotas.index');
 
@@ -108,13 +117,12 @@ class PorcentajeNotasController extends Controller
 
         $mis_materias = $carrera->materias->lists('nombre','id')->ToArray();
 
-        return view('Pnotas.create2')
-        ->with('carrera',$carrera)
-        ->with('mis_materias',$mis_materias);
+
 
         }
 
-    }
+
+    } // final del metodo store
 
 
     //funcion de visualizacion
@@ -253,7 +261,7 @@ class PorcentajeNotasController extends Controller
 
                 }
 
-            flash('Se han actualizado los porcentajes ccon exito');
+            flash('Se han actualizado los porcentajes ccon exito', 'success');
 
             return redirect()->route('Pnotas.index');
 
