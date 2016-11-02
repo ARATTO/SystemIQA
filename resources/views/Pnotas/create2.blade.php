@@ -46,6 +46,7 @@
               <input name="numeroDeEvaluacones" type="number" value="3" id="numeroDeEvaluaciones" class="form-control"  placeholder="5" min="3" max="10" onchange="mostrar(this.value)" />
 
               <input type="hidden" name="aumento" id="aumento" value="0">
+              <input type="hidden" name="porcentaje" id="porcentaje" value="0">
 
           </div> 
 
@@ -67,16 +68,35 @@
               </thead>
               <tbody>
                 <tr>
-                    <td><input class="form-control columna1" type="number" name="nota1"  min="1" max="100" required="true"></td>
-                    <td><input class="form-control columna2" type="number" name="nota2"  min="1" max="100"  required="true"></td>
-                    <td><input class="form-control columna3" type="number" name="nota3"  min="1" max="100"  required="true"></td>
-                    <td><input class="form-control columna4" type="number" name="nota4"  min="1" max="100" ></td>
-                    <td><input class="form-control columna5" type="number" name="nota5"  min="1" max="100" ></td>
-                    <td><input class="form-control columna6" type="number" name="nota6"  min="1" max="100" ></td>
-                    <td><input class="form-control columna7" type="number" name="nota7"  min="1" max="100" ></td>
-                    <td><input class="form-control columna8" type="number" name="nota8"  min="1" max="100" ></td>
-                    <td><input class="form-control columna9" type="number" name="nota9"  min="1" max="100"></td>
-                    <td><input class="form-control columna10" type="number" name="nota10"  min="1" max="100"></td>
+                    <td><input class="form-control columna1" type="number" name="nota1" id="nota1" 
+                    min="1" max="100" required="true" onchange="calcular(this.value)"></td>
+
+                    <td><input class="form-control columna2" type="number" name="nota2" id="nota2"
+                     min="1" max="100" required="true" onchange="calcular(this.value)"></td>
+
+                    <td><input class="form-control columna3" type="number" name="nota3" id="nota3"
+                    min="1" max="100" required="true" onchange="calcular(this.value)"></td>
+
+                    <td><input class="form-control columna4" type="number" name="nota4" id="nota4" 
+                    min="1" max="100" onchange="calcular(this.value)" ></td>
+
+                    <td><input class="form-control columna5" type="number" name="nota5" id="nota5"
+                    min="1" max="100" onchange="calcular(this.value)" ></td>
+
+                    <td><input class="form-control columna6" type="number" name="nota6" id="nota6" 
+                    min="1" max="100" onchange="calcular(this.value)" ></td>
+
+                    <td><input class="form-control columna7" type="number" name="nota7" id="nota7" 
+                    min="1" max="100" onchange="calcular(this.value)"></td>
+
+                    <td><input class="form-control columna8" type="number" name="nota8" id="nota8" 
+                    min="1" max="100" onchange="calcular(this.value)" ></td>
+
+                    <td><input class="form-control columna9" type="number" name="nota9" id="nota9"  
+                    min="1" max="100" onchange="calcular(this.value)"></td>
+
+                    <td><input class="form-control columna10" type="number" name="nota10" id="nota10"  
+                    min="1" max="100" onchange="calcular(this.value)"></td>
                 </tr>
                    <tr>
                     <td><input class="form-control columna1" type="text" name="Descr1" placeholder="Descripcion" ></td>
@@ -102,8 +122,11 @@
 
         
 
-            
-        <div class="panel-body">
+        
+        <input type="text" class="form-control" id="mensaje" name="" style="display: block;" value="EL BOTON DE GUARDADO APARECERA CUANDO LA SUMATORIA DE LOS PORCENTAJE SEA DE 100" >
+
+        <div class="panel-body" id="guardar" style="display: none;">
+
                {!! form::submit('Guardar', ['class'=> 'btn-primary' ]) !!}  
          </div>
               
@@ -225,7 +248,31 @@
     }
 
 
-    function    
+    function calcular($valor) {
+        
+      var por =0.0;
+      
+        for(i=1; i<=10; i++){
+         var porcen  =    document.getElementById("nota"+i).value;
+         var numero = parseInt(porcen);
+
+         if (numero >0) {
+            por = por + numero;
+         }
+          
+
+        }
+
+        
+        if (por==100) {
+          document.getElementById('guardar').style.display = 'block';
+          document.getElementById('mensaje').style.display = 'none';
+        }else{
+          document.getElementById('guardar').style.display = 'none';
+          document.getElementById('mensaje').style.display = 'block';
+        }
+
+    }
 
   </script>
 
