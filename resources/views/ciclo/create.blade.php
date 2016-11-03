@@ -109,12 +109,18 @@
 			var finicio = document.getElementById('fechaInicio').value;
 			var ffin= document.getElementById('fechaFin').value;
 
-			var numero = ffin - finicio;
-			
-			if (ffin>finicio) {
-				alert(numero);
-			}
+				var fecha1 = new Date(finicio);
+				var fecha2 = new Date(ffin);
 
+				var fecha3 = fecha2 - fecha1;
+
+				var fecha = (((fecha3/1000.0)/60.0)/60)/24.0;
+				
+
+				if (fecha<112) {
+					alert("Favor revisar no se cumplen las 16 semanas de un ciclo normal")
+				}
+				//112 dias 16 semanas 
 		}
 
 	</script>
