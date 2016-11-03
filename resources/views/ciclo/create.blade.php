@@ -76,6 +76,10 @@
 	              
               </div>
 
+              <div class="alert alert-warning" style="display: none" id="alertaCiclo">
+              	<p><strong><font color="black">El ciclo no posee 16 semanas por favor revise las fechas</font> </strong> </p>
+              </div>
+
 
               <div class="panel-body" disabled="false">
 
@@ -118,9 +122,12 @@
 				
 
 				if (fecha<112) {
-					alert("Favor revisar no se cumplen las 16 semanas de un ciclo normal")
+					document.getElementById('alertaCiclo').style.display = 'block';
+					
+				}else{
+					document.getElementById('alertaCiclo').style.display = 'none';
 				}
-				//112 dias 16 semanas 
+				
 		}
 
 	</script>
