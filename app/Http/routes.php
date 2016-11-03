@@ -40,7 +40,7 @@ Route::get('elejirCarrera', 'PorcentajeNotasController@create');
 Route::post('guardar', 'PorcentajeNotasController@show');
 
 
-Route::post('store',[
+Route::post('guardarPorcentajes',[
 		'uses' => 'PorcentajeNotasController@store', 
 		'as' => 'Pnotas.create2'
 		]);
@@ -80,11 +80,25 @@ Route::get('ingresarNotas/seleccionar', [
 	'as' => 'notasAlumnos.create'
 	]);
 
-Route::post('guardarNota', 'IngresarNotasController@show');
+Route::get('guardarNota', 'IngresarNotasController@show');
 
 Route::post('ingresarNotas/crearNotas',[
 		'uses' => 'IngresarNotasController@store', 
 		'as' => 'notasAlumnos.create2'
+		]);
+
+/*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
+
+Route::get('crearCiclo', 'CicloController@create');
+
+Route::post('guardarCiclo',[
+		'uses' => 'CicloController@store', 
+		'as' => 'ciclo.create'
+		]);
+
+Route::get('verCiclos',[
+		'uses' => 'CicloController@index',
+		'as' => 'ciclo.index'
 		]);
 
 

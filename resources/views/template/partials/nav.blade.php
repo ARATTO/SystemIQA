@@ -225,6 +225,17 @@
                   </ul>
                 </li>
 
+                <!--RODRIGO-->
+                  <li class="active treeview">
+                  <a href="#">
+                    <i class="glyphicon glyphicon-list-alt"></i> <span>Ciclo</span> <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href=" {{ url('/crearCiclo') }} "><i class="fa fa-circle-o"></i>Agregar ciclo</a></li>
+                  </ul>
+                </li>
+          
+
                 <li class="active treeview">
                   <a href="#">
                     <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>

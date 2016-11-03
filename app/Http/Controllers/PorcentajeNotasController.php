@@ -56,6 +56,7 @@ class PorcentajeNotasController extends Controller
        ->where('materia_id', '=', '1')
        ->count();*/
 
+       
 
         $evaluacion[0] = $request->nota1;
         $evaluacion[1] = $request->nota2;
@@ -117,6 +118,9 @@ class PorcentajeNotasController extends Controller
 
         $mis_materias = $carrera->materias->lists('nombre','id')->ToArray();
 
+        return view('Pnotas.create2')
+        ->with('carrera',$carrera)
+        ->with('mis_materias',$mis_materias);
 
 
         }
@@ -208,27 +212,27 @@ class PorcentajeNotasController extends Controller
    public function update(Request $request, $id){
 
 
-        $evaluacion[0] = $request->Evaluacion1;
-        $evaluacion[1] = $request->Evaluacion2;
-        $evaluacion[2] = $request->Evaluacion3;
-        $evaluacion[3] = $request->Evaluacion4;
-        $evaluacion[4] = $request->Evaluacion5;
-        $evaluacion[5] = $request->Evaluacion6;
-        $evaluacion[6] = $request->Evaluacion7;
-        $evaluacion[7] = $request->Evaluacion8;
-        $evaluacion[8] = $request->Evaluacion9;
-        $evaluacion[9] = $request->Evaluacion10;
+        $evaluacion[0] = $request->nota1;
+        $evaluacion[1] = $request->nota2;
+        $evaluacion[2] = $request->nota3;
+        $evaluacion[3] = $request->nota4;
+        $evaluacion[4] = $request->nota5;
+        $evaluacion[5] = $request->nota6;
+        $evaluacion[6] = $request->nota7;
+        $evaluacion[7] = $request->nota8;
+        $evaluacion[8] = $request->nota9;
+        $evaluacion[9] = $request->nota10;
 
-        $descripcion[0] = $request->descripcion1;
-        $descripcion[1] = $request->descripcion2;
-        $descripcion[2] = $request->descripcion3;
-        $descripcion[3] = $request->descripcion4;
-        $descripcion[4] = $request->descripcion5;
-        $descripcion[5] = $request->descripcion6;
-        $descripcion[6] = $request->descripcion7;
-        $descripcion[7] = $request->descripcion8;
-        $descripcion[8] = $request->descripcion9;
-        $descripcion[9] = $request->descripcion10;
+        $descripcion[0] = $request->Descr1;
+        $descripcion[1] = $request->Descr2;
+        $descripcion[2] = $request->Descr3;
+        $descripcion[3] = $request->Descr4;
+        $descripcion[4] = $request->Descr5;
+        $descripcion[5] = $request->Descr6;
+        $descripcion[6] = $request->Descr7;
+        $descripcion[7] = $request->Descr8;
+        $descripcion[8] = $request->Descr9;
+        $descripcion[9] = $request->Descr10;
 
 
         $NuEva = $request->NERE;
