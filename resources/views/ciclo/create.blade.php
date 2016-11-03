@@ -44,11 +44,11 @@
           </div>
 
           <div class="panel-body">
-          	{!! Form::open(['action' => 'CicloController@store']) !!}
+   			{!! Form::open(['action' => 'CicloController@store']) !!}  
    				
 	   			<div class="form-group">
 		            {!! Form::label('codigo','Código') !!}
-		            {!! Form::text('codigo',null,['class'=>'form-control','placeholder'=>'C0I2016','pattern'=>'[A-Za-z]{3}-[0-9]{5}','title'=>'QUR-115','required'])!!}
+		            {!!Form::text('codigo',null,['class'=>'form-control','placeholder'=>'C0I2016','required'])!!}
 	          	</div>
 
 	            <div class="form-group">
@@ -64,20 +64,20 @@
 
           		<div>
 	          		{!! form::label('fechaInicio', 'Fecha de inicio') !!}<br>
-		              <form id="fechaInicio" name="fechaInicio">
-		              	<input class="form-control" name="fechaInicio" data-provide="datepicker" placeholder="mes/dia/año" required="true"><br>
-		              </form>		
+		              
+		              	<input class="form-control" id="fechaInicio" name="fechaInicio" data-provide="datepicker" placeholder="mes/dia/año" required="true" onchange="compararFechas()"><br>
+		              
           		</div>
               
       			<div>              	
               {!! form::label('fechaFin', 'Fecha de fin') !!}<br>
-	              <form id="fechaFin" name="fechaFin">
-	              	<input class="form-control" name="fechaFin" data-provide="datepicker" placeholder="mes/dia/año" required="true"><br>
-	              </form>
+	              
+	              	<input class="form-control" id="fechaFin" name="fechaFin" data-provide="datepicker" placeholder="mes/dia/año" required="true"  onchange="compararFechas()"><br>
+	              
               </div>
 
 
-              <div class="panel-body">
+              <div class="panel-body" disabled="false">
 
                {!! Form::submit('Guardar', ['class'=> 'btn-primary' ]) !!}  
          	</div>
@@ -85,6 +85,7 @@
 
 
           {!! Form::close()!!}
+
       </div>
 
          </div>
@@ -102,6 +103,20 @@
 		$('.datepicker').datepicker({
         startDate: '-3d'
     	});
+
+
+		function compararFechas() {
+			var finicio = document.getElementById('fechaInicio').value;
+			var ffin= document.getElementById('fechaFin').value;
+
+			var numero = ffin - finicio;
+			
+			if (ffin>finicio) {
+				alert(numero);
+			}
+
+		}
+
 	</script>
 	
       
