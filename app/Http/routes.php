@@ -102,6 +102,21 @@ Route::get('verCiclos',[
 		]);
 
 
+Route::get('update/{ciclo}/edit',[
+		'uses' => 'CicloController@edit', 
+		'as' => 'ciclo.edit'
+		]);
+
+Route::put('modificar/{ciclo}',[
+		'uses' => 'CicloController@update', 
+		'as' => 'ciclo.update'
+		]);
+
+Route::get('verCiclos/{id}/destroy',[
+		'uses' => 'CicloController@destroy',
+		'as' => 'ciclo.destroy'
+		]);
+
 
 /*RUTAS RODRIGO*/
 

@@ -48,31 +48,31 @@
    				
 	   			<div class="form-group">
 		            {!! Form::label('codigo','Código') !!}
-		            {!!Form::text('codigo',null,['class'=>'form-control','placeholder'=>'C0I2016','required'])!!}
+		            {!!Form::text('codigo',null,['class'=>'form-control','placeholder'=>'C0I2016 CII20116','required' ])!!}
 	          	</div>
 
 	            <div class="form-group">
             		{!! Form::label('ciclo','Ciclo') !!}
-            		{!! Form::text('ciclo',null,['class'=>'form-control','placeholder'=>' Ciclo I','required'])!!}  
+            		{!! Form::text('ciclo',null,['class'=>'form-control','placeholder'=>' Ciclo I','required','pattern' => '[A-Za-z ]+' ])!!}  
           		</div>
 
           		<div class="form-group">
             		{!! Form::label('anio','Año') !!}
-            		{!! Form::number('anio',null,['class'=>'form-control','placeholder'=>' 2016','required', 'min'=>'2000', 'required'  ])!!}  
+            		{!! Form::number( 'anio',null,['class'=>'form-control','placeholder'=>' 2016','required', 'min'=>'2000', 'required'  ]) !!}  
           		</div>
 
 
           		<div>
 	          		{!! form::label('fechaInicio', 'Fecha de inicio') !!}<br>
 		              
-		              	<input class="form-control" id="fechaInicio" name="fechaInicio" data-provide="datepicker" placeholder="mes/dia/año" required="true" onchange="compararFechas()"><br>
+		              	<input type="date" class="form-control" id="fechaInicio" name="fechaInicio" data-provide="datepicker" placeholder="mes/dia/año" required="true" onchange="compararFechas()"><br>
 		              
           		</div>
               
       			<div>              	
               {!! form::label('fechaFin', 'Fecha de fin') !!}<br>
 	              
-	              	<input class="form-control" id="fechaFin" name="fechaFin" data-provide="datepicker" placeholder="mes/dia/año" required="true"  onchange="compararFechas()"><br>
+	              	<input type="date" class="form-control" id="fechaFin" name="fechaFin" data-provide="datepicker" placeholder="mes/dia/año" required="true"  onchange="compararFechas()"><br>
 	              
               </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Ciclo;
 
 class CicloController extends Controller
 {
@@ -15,7 +16,15 @@ class CicloController extends Controller
      */
     public function index()
     {
-        //
+        $ciclos = Ciclo::orderBy('id','ASC')->paginate(10);
+
+     
+
+        //$evaluaciones = $evaluaciones->paginate(10);
+
+    
+        return view('ciclo.index')->with('ciclos',$ciclos);
+
     }
 
     /**
@@ -36,7 +45,20 @@ class CicloController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        dd($request->all());
+        $ciclo = new Ciclo();
+
+        $ciclo->codigo =  $request->codigo;
+        $ciclo->ciclo_academico = $request->ciclo;
+        $ciclo->anio_academico = $request->anio;
+        $ciclo->fecha_inicio = $request->fechaInicio;
+        //date_format(, 'm/d/y');
+        $ciclo->fecha_fin = $request->fechaFin;
+
+        $ciclo->save();
+
+        flash('Se ha creado el ciclo con exito', 'success');
+
         
         return redirect()->route('ciclo.index');
     }
