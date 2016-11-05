@@ -65,20 +65,29 @@
           		<div>
 	          		{!! form::label('fechaInicio', 'Fecha de inicio') !!}<br>
 		              
-		              	<input type="date" class="form-control" id="fechaInicio" name="fechaInicio" data-provide="datepicker" placeholder="mes/dia/año" required="true" onchange="compararFechas()"><br>
+		              	<input type="date" class="form-control" id="fechaInicio" name="fechaInicio" data-provide="datepicker" placeholder="mes/dia/año" required="true" data-date-format="yyyy-mm-dd" onchange="compararFechas()"><br>
 		              
           		</div>
               
       			<div>              	
-              {!! form::label('fechaFin', 'Fecha de fin') !!}<br>
+              		{!! form::label('fechaFin', 'Fecha de fin') !!}<br>
 	              
-	              	<input type="date" class="form-control" id="fechaFin" name="fechaFin" data-provide="datepicker" placeholder="mes/dia/año" required="true"  onchange="compararFechas()"><br>
+	              	<input type="date" class="form-control" id="fechaFin" name="fechaFin" data-provide="datepicker" placeholder="mes/dia/año" required="true"  data-date-format="yyyy-mm-dd" onchange="compararFechas()"><br>
 	              
               </div>
 
               <div class="alert alert-warning" style="display: none" id="alertaCiclo">
               	<p><strong><font color="black">El ciclo no posee 16 semanas por favor revise las fechas</font> </strong> </p>
               </div>
+
+
+              <div>
+              		{!! form::label('cicloActivo', 'Ciclo activo') !!}<br>
+              		<p>{!!Form::radio('cicloActivo', '1', true)!!} Si  <br>
+              		{!!Form::radio('cicloActivo', '0', false)!!} No </p>
+              </div>
+
+          
 
 
               <div class="panel-body" disabled="false">

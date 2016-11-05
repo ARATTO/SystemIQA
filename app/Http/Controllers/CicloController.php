@@ -45,15 +45,27 @@ class CicloController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
+
+
         $ciclo = new Ciclo();
+
+        $fecha = '';    
+
 
         $ciclo->codigo =  $request->codigo;
         $ciclo->ciclo_academico = $request->ciclo;
         $ciclo->anio_academico = $request->anio;
         $ciclo->fecha_inicio = $request->fechaInicio;
-        //date_format(, 'm/d/y');
+        
         $ciclo->fecha_fin = $request->fechaFin;
+
+       // $ciclo->fecha_inicio =  str_replace("/", "-", $request->fechaInicio);
+       // $ciclo->fecha_fin =  str_replace("/", "-", $request->fechaFin);       
+
+
+        
+        //$ciclo->activo = $request->cicloActivo;
 
         $ciclo->save();
 
@@ -105,6 +117,12 @@ class CicloController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $ciclo = Ciclo::where('id', '=', $id)->delete();
+
+        flash('Se han borrado el ciclo', 'danger' );
+
+        return redirect()->route('ciclo.index');
+
     }
 }
