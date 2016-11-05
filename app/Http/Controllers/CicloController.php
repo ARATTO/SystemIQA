@@ -94,7 +94,16 @@ class CicloController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ciclo = Ciclo::find($id);
+        
+ 
+       //dd($evaluacion);
+
+        return view('ciclo.edit')
+       ->with('ciclo',$ciclo);
+       
+        
+
     }
 
     /**
@@ -106,7 +115,23 @@ class CicloController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ciclo = Ciclo::find($id);
+        
+
+        $ciclo->codigo =  $request->codigo;
+        $ciclo->ciclo_academico = $request->ciclo;
+        $ciclo->anio_academico = $request->anio;
+        $ciclo->fecha_inicio = $request->fechaInicio;
+        $ciclo->fecha_fin = $request->fechaFin;
+
+        
+
+        $ciclo->save();
+
+        flash('Se ha actualizado el ciclo con exito', 'success');
+
+        
+        return redirect()->route('ciclo.index');
     }
 
     /**

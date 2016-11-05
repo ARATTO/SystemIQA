@@ -232,6 +232,7 @@
                   </a>
                   <ul class="treeview-menu">
                     <li><a href=" {{ url('/crearCiclo') }} "><i class="fa fa-circle-o"></i>Agregar ciclo</a></li>
+                    <li><a href=" {{ url('/verCiclos') }} "><i class="fa fa-circle-o"></i>Ver ciclos</a></li>
                   </ul>
                 </li>
           
