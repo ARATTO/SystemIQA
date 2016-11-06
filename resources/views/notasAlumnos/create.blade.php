@@ -41,7 +41,7 @@
                 <hr>
 
                 <div id="1" class="form-grup" style="display:none">
-                   {!! form::label('nombre', 'Materia Alimentos') !!}
+                   {!! form::label('nombre', 'Materia Quimica') !!}
                   <select name="materiasAlimentos" id="materiasAlimentos" class="form-control selectpicker">
                     @foreach($materias as $materia)
                         @foreach ($materia->carreras as $v)
@@ -56,7 +56,7 @@
 
                 <hr>
                <div id="2" class="form-grup" style="display:none">
-                   {!! form::label('nombre', 'Materia Quimica') !!}
+                   {!! form::label('nombre', 'Materia Alimentos') !!}
                   <select name="materiasQuimica" id="materiasQuimica" class="form-control selectpicker">
                     @foreach($materias as $materia)
                         @foreach ($materia->carreras as $v)
