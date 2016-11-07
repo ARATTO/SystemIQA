@@ -15,6 +15,7 @@ class Ciclo extends Model
         'anio_academico',
         'fecha_inicio',
         'fecha_fin',
+        'activa',
     ];
 
 
@@ -22,4 +23,9 @@ class Ciclo extends Model
       return $this->belongsToMany('App\Materia')->withTimestamps();
     }
 
+    
+    public function materias_inscritas(){
+      return $this->hasOne('App\MateriaInscrita');
+    }
+    
 }

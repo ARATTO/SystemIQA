@@ -16,6 +16,7 @@ class Evaluacion extends Model
         'porcentaje',
         'descripcion',
         'materia_id',
+        'activa',
     ];
 
     /*public function materia(){

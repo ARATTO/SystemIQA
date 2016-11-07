@@ -18,6 +18,9 @@ class RshpMateriasInscritas extends Migration
 
         $table->integer('materia_id')->unsigned();
         $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
+        
+        $table->integer('ciclo_id')->unsigned();
+        $table->foreign('ciclo_id')->references('id')->on('ciclos')->onDelete('cascade');
       });
     }
 
@@ -31,6 +34,7 @@ class RshpMateriasInscritas extends Migration
       Schema::table('notas', function(Blueprint $table){
         $table->dropForeign(['estudiante_id']);
         $table->dropForeign(['materia_id']);
+        $table->dropForeign(['ciclo_id']);
       });
     }
 }
