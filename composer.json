@@ -8,8 +8,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "5.2.*",
-        "genealabs/bones-flash": "*",
-        "laracasts/flash": "^2.0"
+        "maatwebsite/excel": "~2.1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -34,7 +33,7 @@
     },
     "scripts": {
         "post-root-package-install": [
-            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "php -r \"copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
             "php artisan key:generate"

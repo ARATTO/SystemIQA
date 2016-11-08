@@ -43,37 +43,92 @@ class CicloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         //dd($request->all());
 
-
+        $activo = Ciclo::where('activa', '=', 1)->get();
+        $activa = 0;
         $ciclo = new Ciclo();
 
-        $fecha = '';    
+
+        foreach ($activo as $ac) {
+            $activa+=1;
+        }
 
 
-        $ciclo->codigo =  $request->codigo;
-        $ciclo->ciclo_academico = $request->ciclo;
-        $ciclo->anio_academico = $request->anio;
-        $ciclo->fecha_inicio = $request->fechaInicio;
-        
-        $ciclo->fecha_fin = $request->fechaFin;
-
-       // $ciclo->fecha_inicio =  str_replace("/", "-", $request->fechaInicio);
-       // $ciclo->fecha_fin =  str_replace("/", "-", $request->fechaFin);       
+        if($activa = 0 && ($request->cicloActivo) == 1){
+           
+            $fecha = '';    
 
 
-        
-        //$ciclo->activo = $request->cicloActivo;
+            $ciclo->codigo =  $request->codigo;
+            $ciclo->ciclo_academico = $request->ciclo;
+            $ciclo->anio_academico = $request->anio;
+            $ciclo->fecha_inicio = $request->fechaInicio;
+            
+            $ciclo->fecha_fin = $request->fechaFin;
 
-        $ciclo->save();
+           // $ciclo->fecha_inicio =  str_replace("/", "-", $request->fechaInicio);
+           // $ciclo->fecha_fin =  str_replace("/", "-", $request->fechaFin);       
 
-        flash('Se ha creado el ciclo con exito', 'success');
+            $ciclo->activa = $request->cicloActivo;
 
-        
-        return redirect()->route('ciclo.index');
-    }
+            $ciclo->save();
+
+            flash('Se ha creado el ciclo con exito', 'success');
+
+            
+            return redirect()->route('ciclo.index');
+        }elseif ($activa = 0 && $request->cicloActivo == 0) {
+            
+            $fecha = '';    
+
+
+            $ciclo->codigo =  $request->codigo;
+            $ciclo->ciclo_academico = $request->ciclo;
+            $ciclo->anio_academico = $request->anio;
+            $ciclo->fecha_inicio = $request->fechaInicio;
+            
+            $ciclo->fecha_fin = $request->fechaFin;
+
+           // $ciclo->fecha_inicio =  str_replace("/", "-", $request->fechaInicio);
+           // $ciclo->fecha_fin =  str_replace("/", "-", $request->fechaFin);       
+
+            $ciclo->activa = $request->cicloActivo;
+
+            $ciclo->save();
+
+            flash('Se ha creado el ciclo con exito', 'success');
+
+        }elseif ($activa > 0 && $request->cicloActivo == 0) {
+           
+            $fecha = '';    
+
+
+            $ciclo->codigo =  $request->codigo;
+            $ciclo->ciclo_academico = $request->ciclo;
+            $ciclo->anio_academico = $request->anio;
+            $ciclo->fecha_inicio = $request->fechaInicio;
+            
+            $ciclo->fecha_fin = $request->fechaFin;
+
+           // $ciclo->fecha_inicio =  str_replace("/", "-", $request->fechaInicio);
+           // $ciclo->fecha_fin =  str_replace("/", "-", $request->fechaFin);       
+
+            $ciclo->activa = $request->cicloActivo;
+
+            $ciclo->save();
+
+            flash('Se ha creado el ciclo con exito', 'success');
+        }else{
+
+            flash('Ya existe un ciclo activo por favor asegurese de haber finalizado ciclos anteriores', 'warning');
+
+            //return redirect()->route('ciclo.index');
+            return redirect()->route('ciclo.index');
+        }
+
+    }//fin del metodo store
 
     /**
      * Display the specified resource.
