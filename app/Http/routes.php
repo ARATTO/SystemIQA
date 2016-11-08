@@ -25,7 +25,7 @@ Route::get('home', function () {
 
 
 /*Route::group(['prefix' => 'mat'], function(){
-
+	
 	Route::get('Pnotas/{id}/destroy',[
 		'uses' => 'PorcentajeNotasController@destroy', //uses va por default para que reconosca la ruta
 		'as' => 'mat.Pnotas.destroy'
@@ -39,8 +39,6 @@ Route::get('home', function () {
 Route::get('elejirCarrera', 'PorcentajeNotasController@create');
 Route::post('guardar', 'PorcentajeNotasController@show');
 
-Route::post('store',[
-		'uses' => 'PorcentajeNotasController@store',
 
 Route::post('guardarPorcentajes',[
 		'uses' => 'PorcentajeNotasController@store', 
@@ -59,17 +57,17 @@ Route::get('verPorcentajes/{id}/destroy',[
 
 
 Route::get('editar/{pnotas}/edit',[
-		'uses' => 'PorcentajeNotasController@edit',
+		'uses' => 'PorcentajeNotasController@edit', 
 		'as' => 'Pnotas.edit'
 		]);
 
 Route::put('cambiar/{Pnotas}',[
-		'uses' => 'PorcentajeNotasController@update',
+		'uses' => 'PorcentajeNotasController@update', 
 		'as' => 'Pnotas.update'
 		]);
 
 Route::get('mostrarPorcenjate/{pnotas}/ver', [
-	'uses' => 'PorcentajeNotasController@verPorcentajes',
+	'uses' => 'PorcentajeNotasController@verPorcentajes', 
 	'as'	=> 'Pnotas.ver'
 	]);
 
@@ -85,7 +83,7 @@ Route::get('ingresarNotas/seleccionar', [
 Route::get('guardarNota', 'IngresarNotasController@show');
 
 Route::post('ingresarNotas/crearNotas',[
-		'uses' => 'IngresarNotasController@store',
+		'uses' => 'IngresarNotasController@store', 
 		'as' => 'notasAlumnos.create2'
 		]);
 
@@ -127,7 +125,6 @@ Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
 // Registration routes...
-
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
@@ -182,4 +179,3 @@ Route::get('tutor/{id}/destroy',[
 //Route::resource('estado','EstudianteController');
 Route::get('estado/create','EstudianteController@create');
 Route::post('estado/show','EstudianteController@show');
-
