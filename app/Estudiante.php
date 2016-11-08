@@ -20,7 +20,6 @@ class Estudiante extends Model
         'promedio_ciclo',
     ];
 
-
     public function grupo_tutorias(){
       return $this->belongsTo('App\GrupoTutoria');
     }

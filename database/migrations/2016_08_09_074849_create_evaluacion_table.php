@@ -18,6 +18,7 @@ class CreateEvaluacionTable extends Migration
             $table->float('nota');
             $table->float('porcentaje');
             $table->text('descripcion');
+            $table->integer('activa');
             $table->timestamps();
         });
     }

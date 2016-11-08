@@ -15,7 +15,6 @@ class Carrera extends Model
         'descripcion',
     ];
 
-
     public function estudiantes(){
       return $this->belongsToMany('App\Estudiante')->withTimestamps();
     }
@@ -23,5 +22,4 @@ class Carrera extends Model
     public function materias(){
       return $this->belongsToMany('App\Materia')->withTimestamps();
     }
-
 }

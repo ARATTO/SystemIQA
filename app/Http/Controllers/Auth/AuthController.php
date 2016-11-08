@@ -30,7 +30,6 @@ class AuthController extends Controller
     protected $redirectTo = '/';
 
 
-
     /**
      * Create a new authentication controller instance.
      *
@@ -64,52 +63,16 @@ class AuthController extends Controller
 
         public function postLogin(Request $request)
    {
-
     $this->validate($request, [
         'email' => 'required',
         'password' => 'required',
     ]);
 
-/*
-=======
 
->>>>>>> 306af1106b3fbd6ee19e8feb91235927940aa452
 
     $credentials = $request->only('email', 'password');
 
     if ($this->auth->attempt($credentials, $request->has('remember')))
-<<<<<<< HEAD
-    {
-        return view("home");
-    }
-
-    //return view()->with("msjerror","credenciales incorrectas");
-    return view("login");
-    //return view("home");
-*/
-    $user = User::find("email");
-
-    if($user->password == $request->password){
-        return view("home");
-    }else{
-      return view("login");
-    }
-
-
-    }
-
-
-//login
-
- //registro
-
-
-        protected function getRegister()
-    {
-        return view("registro");
-    }
-
-
     {
         return view("home");
     }
@@ -138,9 +101,7 @@ class AuthController extends Controller
 
    {
     $this->validate($request, [
-
-        'carnet' => 'required',
-        'nombre' => 'required',
+        'name' => 'required',
         'email' => 'required',
         'password' => 'required',
     ]);
@@ -150,12 +111,9 @@ class AuthController extends Controller
 
 
     $user=new User;
-    $user->carnet=$data['carnet'];
-    $user->nombre=$data['nombre'];
+    $user->name=$data['name'];
     $user->email=$data['email'];
-    //$user->password=bcrypt($data['password']);
-    $user->password=$data['password'];
-
+    $user->password=bcrypt($data['password']);
 
 
     if($user->save()){
@@ -177,9 +135,7 @@ protected function getLogout()
 
         Session::flush();
 
-
         return redirect()->route('login');;
-
     }
 
 

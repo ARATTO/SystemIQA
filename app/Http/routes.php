@@ -25,7 +25,7 @@ Route::get('home', function () {
 
 
 /*Route::group(['prefix' => 'mat'], function(){
-
+	
 	Route::get('Pnotas/{id}/destroy',[
 		'uses' => 'PorcentajeNotasController@destroy', //uses va por default para que reconosca la ruta
 		'as' => 'mat.Pnotas.destroy'
@@ -40,8 +40,8 @@ Route::get('elejirCarrera', 'PorcentajeNotasController@create');
 Route::post('guardar', 'PorcentajeNotasController@show');
 
 
-Route::post('store',[
-		'uses' => 'PorcentajeNotasController@store',
+Route::post('guardarPorcentajes',[
+		'uses' => 'PorcentajeNotasController@store', 
 		'as' => 'Pnotas.create2'
 		]);
 
@@ -57,17 +57,17 @@ Route::get('verPorcentajes/{id}/destroy',[
 
 
 Route::get('editar/{pnotas}/edit',[
-		'uses' => 'PorcentajeNotasController@edit',
+		'uses' => 'PorcentajeNotasController@edit', 
 		'as' => 'Pnotas.edit'
 		]);
 
 Route::put('cambiar/{Pnotas}',[
-		'uses' => 'PorcentajeNotasController@update',
+		'uses' => 'PorcentajeNotasController@update', 
 		'as' => 'Pnotas.update'
 		]);
 
 Route::get('mostrarPorcenjate/{pnotas}/ver', [
-	'uses' => 'PorcentajeNotasController@verPorcentajes',
+	'uses' => 'PorcentajeNotasController@verPorcentajes', 
 	'as'	=> 'Pnotas.ver'
 	]);
 
@@ -80,13 +80,42 @@ Route::get('ingresarNotas/seleccionar', [
 	'as' => 'notasAlumnos.create'
 	]);
 
-Route::post('guardarNota', 'IngresarNotasController@show');
+Route::get('guardarNota', 'IngresarNotasController@show');
 
 Route::post('ingresarNotas/crearNotas',[
-		'uses' => 'IngresarNotasController@store',
+		'uses' => 'IngresarNotasController@store', 
 		'as' => 'notasAlumnos.create2'
 		]);
 
+/*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
+
+Route::get('crearCiclo', 'CicloController@create');
+
+Route::post('guardarCiclo',[
+		'uses' => 'CicloController@store', 
+		'as' => 'ciclo.create'
+		]);
+
+Route::get('verCiclos',[
+		'uses' => 'CicloController@index',
+		'as' => 'ciclo.index'
+		]);
+
+
+Route::get('update/{ciclo}/edit',[
+		'uses' => 'CicloController@edit', 
+		'as' => 'ciclo.edit'
+		]);
+
+Route::put('modificar/{ciclo}',[
+		'uses' => 'CicloController@update', 
+		'as' => 'ciclo.update'
+		]);
+
+Route::get('verCiclos/{id}/destroy',[
+		'uses' => 'CicloController@destroy',
+		'as' => 'ciclo.destroy'
+		]);
 
 
 /*RUTAS RODRIGO*/
@@ -96,7 +125,6 @@ Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
 // Registration routes...
-
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
@@ -125,6 +153,7 @@ Route::post('mostrarForm', 'FormulariosController@show');
 Route::get('cargar_usuarios', 'FormulariosController@form_cargar_datos_usuarios');
 Route::get('create', 'FormulariosController@create');
 Route::post('cargar_datos_usuarios', 'FormulariosController@cargar_datos_usuarios');
+
 // FIN LOBOS
 
 
@@ -145,3 +174,9 @@ Route::get('tutor/{id}/destroy',[
     'as' => 'tutor.destroy'
 ]);
 //Fin Rutas Alam Lopez
+
+//EstadoEstudiante
+//Route::resource('estado','EstudianteController');
+Route::get('estado/create','EstudianteController@create');
+Route::post('estado/show','EstudianteController@show');
+

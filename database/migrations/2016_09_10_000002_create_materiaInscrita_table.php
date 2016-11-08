@@ -16,6 +16,7 @@ class CreateMateriaInscritaTable extends Migration
           $table->increments('id');
           $table->string('cursada');
           $table->float('nota_final');
+          $table->integer('activa');
           $table->timestamps();
       });
     }

@@ -67,7 +67,7 @@
              <label>Agregar Archivo de Excel </label>
               <input name="archivo" id="archivo" type="file"   class="archivo form-control"  required/><br /><br />
       </div>
-      <div class="box-footer">
+      <div class="box-footer" style='display:none;'>
                   
                   {!! Form::submit('exito', ['id'=>'f_cargar_datos_usuarios', 'name'=>'f_cargar_datos_usuarios', 'method'=>'post', 'class'=>'formarchivo', 'enctype'=>'multipart/form-data' ]) !!}
                   {!! Form::token()!!}

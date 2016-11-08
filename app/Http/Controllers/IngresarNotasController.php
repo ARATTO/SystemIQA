@@ -84,10 +84,6 @@ class IngresarNotasController extends Controller
 
         //dd($join);
 
-                    //oin('orders', 'users.id', '=', 'orders.user_id')
-
-        //dd($request);
-        //dd($materiaSeleccionada);
        
         return view('notasAlumnos.create2')
         ->with('evaluacion',$evaluacion)
@@ -156,7 +152,7 @@ class IngresarNotasController extends Controller
          
         $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
 
-        flash('Se han guardado las notas con exito');
+        flash('Se han guardado las notas con exito', 'success');
 
         return redirect()->route('notasAlumnos.create')
         ->with('carrera',$carrera)

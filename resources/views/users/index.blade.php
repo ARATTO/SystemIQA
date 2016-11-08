@@ -42,7 +42,7 @@
                     <div class="input-group">
 
                       {{Form::model(Request::all(), ['route' => 'users.index' , 'method' => 'GET']) }}
-                        {!! form::text('carnet', null, ['class' => 'form-control', 'placeholder'=> 'Buscar Usuarios', 'required']) !!}
+                        {!! form::text('carnet', null, ['class' => 'form-control', 'placeholder'=> 'Buscar Usuarios']) !!}
                         <button type="submit" class="glyphicon glyphicon-search btn btn-info"></button>
                       {!! Form::close() !!}
 
