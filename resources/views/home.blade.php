@@ -108,6 +108,14 @@
             </div>
             <!-- /.col (RIGHT) -->
           </div>
+          <!-- ./wrapper -->
 
+          
+
+
+          
+
+
+          <!-- Page script -->
         </section>
 @endsection
