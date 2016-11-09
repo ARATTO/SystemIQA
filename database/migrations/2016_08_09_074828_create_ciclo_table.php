@@ -19,6 +19,7 @@ class CreateCicloTable extends Migration
             $table->integer('anio_academico');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
+            $table->integer('activa');
             $table->timestamps();
         });
     }

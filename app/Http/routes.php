@@ -40,7 +40,7 @@ Route::get('elejirCarrera', 'PorcentajeNotasController@create');
 Route::post('guardar', 'PorcentajeNotasController@show');
 
 
-Route::post('store',[
+Route::post('guardarPorcentajes',[
 		'uses' => 'PorcentajeNotasController@store', 
 		'as' => 'Pnotas.create2'
 		]);
@@ -80,13 +80,42 @@ Route::get('ingresarNotas/seleccionar', [
 	'as' => 'notasAlumnos.create'
 	]);
 
-Route::post('guardarNota', 'IngresarNotasController@show');
+Route::get('guardarNota', 'IngresarNotasController@show');
 
 Route::post('ingresarNotas/crearNotas',[
 		'uses' => 'IngresarNotasController@store', 
 		'as' => 'notasAlumnos.create2'
 		]);
 
+/*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
+
+Route::get('crearCiclo', 'CicloController@create');
+
+Route::post('guardarCiclo',[
+		'uses' => 'CicloController@store', 
+		'as' => 'ciclo.create'
+		]);
+
+Route::get('verCiclos',[
+		'uses' => 'CicloController@index',
+		'as' => 'ciclo.index'
+		]);
+
+
+Route::get('update/{ciclo}/edit',[
+		'uses' => 'CicloController@edit', 
+		'as' => 'ciclo.edit'
+		]);
+
+Route::put('modificar/{ciclo}',[
+		'uses' => 'CicloController@update', 
+		'as' => 'ciclo.update'
+		]);
+
+Route::get('verCiclos/{id}/destroy',[
+		'uses' => 'CicloController@destroy',
+		'as' => 'ciclo.destroy'
+		]);
 
 
 /*RUTAS RODRIGO*/
@@ -150,4 +179,3 @@ Route::get('tutor/{id}/destroy',[
 //Route::resource('estado','EstudianteController');
 Route::get('estado/create','EstudianteController@create');
 Route::post('estado/show','EstudianteController@show');
-

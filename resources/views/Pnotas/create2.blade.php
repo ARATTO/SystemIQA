@@ -27,141 +27,106 @@
          @include('flash::message')
 
         <div id="panel" class="panel panel-primary">
-          <div class="panel-heading">
-              <div>
-                <h3>{{'Crear porcentaje de notas de '.$carrera->nombre}}</h3>
-              </div>
-        
+            <div class="panel-heading">
+                <div>
+                  <h3>{{'Crear porcentaje de notas de '.$carrera->nombre}}</h3>
+                </div>
+          
+            </div>
+
+
+           <div class="panel-body">
+                {!! form::label('id', 'Materias') !!}
+                {!! form::select('id', $mis_materias, null, ['class' => 'form-control ', 'placeholder'=> 'Seleccione una materia', 'required']) !!}
+          </div>  
+
+
+           <div id ="NumeroEvaluaciones"  class="panel-body">
+                {!! form::label('numeroDeEvaluaciones', 'Numero de evaluaciones') !!}
+              <input name="numeroDeEvaluacones" type="number" value="3" id="numeroDeEvaluaciones" class="form-control"  placeholder="5" min="3" max="10" onchange="mostrar(this.value)" />
+
+              <input type="hidden" name="aumento" id="aumento" value="0">
+              <input type="hidden" name="porcentaje" id="porcentaje" value="0">
+
+          </div> 
+
+
+          <div class="table-responsive">
+             <table class="table table-striped" > 
+
+              <thead>
+                <th id="1" style=" text-align: center;">Nota 1</th>
+                <th id="2" style="text-align: center;">Nota 2</th>
+                <th id="3" style=" text-align: center;">Nota 3</th>
+                <th id="4" style="visibility: hidden; text-align: center;">Nota 4</th>
+                <th id="5" style="visibility: hidden; text-align: center;">Nota 5</th>
+                <th id="6" style="visibility: hidden; text-align: center;">Nota 6</th>
+                <th id="7" style="visibility: hidden; text-align: center;">Nota 7</th>
+                <th id="8" style="visibility: hidden; text-align: center;">Nota 8</th>
+                <th id="9" style="visibility: hidden; text-align: center;">Nota 9</th>
+                <th id="10" style="visibility: hidden; text-align: center;">Nota 10</th>
+              </thead>
+              <tbody>
+                <tr>
+                    <td><input class="form-control columna1" type="number" name="nota1" id="nota1" 
+                    min="1" max="100" step="any" required="true" onchange="calcular(this.value)"></td>
+
+                    <td><input class="form-control columna2" type="number" name="nota2" id="nota2"
+                     min="1" max="100" step="any" required="true" onchange="calcular(this.value)"></td>
+
+                    <td><input class="form-control columna3" type="number" name="nota3" id="nota3"
+                    min="1" max="100" step="any" required="true" onchange="calcular(this.value)"></td>
+
+                    <td><input class="form-control columna4" type="number" name="nota4" id="nota4" 
+                    min="1" max="100" step="any" onchange="calcular(this.value)" ></td>
+
+                    <td><input class="form-control columna5" type="number" name="nota5" id="nota5"
+                    min="1" max="100" step="any" onchange="calcular(this.value)" ></td>
+
+                    <td><input class="form-control columna6" type="number" name="nota6" id="nota6" 
+                    min="1" max="100" step="any" onchange="calcular(this.value)" ></td>
+
+                    <td><input class="form-control columna7" type="number" name="nota7" id="nota7" 
+                    min="1" max="100" step="any" onchange="calcular(this.value)"></td>
+
+                    <td><input class="form-control columna8" type="number" name="nota8" id="nota8" 
+                    min="1" max="100" step="any" onchange="calcular(this.value)" ></td>
+
+                    <td><input class="form-control columna9" type="number" name="nota9" id="nota9"  
+                    min="1" max="100" step="any" onchange="calcular(this.value)"></td>
+
+                    <td><input class="form-control columna10" type="number" name="nota10" id="nota10"  
+                    min="1" max="100" step="any" onchange="calcular(this.value)"></td>
+                </tr>
+                   <tr>
+                    <td><input class="form-control columna1" type="text" name="Descr1" placeholder="Descripcion" ></td>
+                    <td><input class="form-control columna2" type="text" name="Descr2" placeholder="Descripcion" ></td>
+                    <td><input class="form-control columna3" type="text" name="Descr3" placeholder="Descripcion" ></td>
+                    <td><input class="form-control columna4" type="text" name="Descr4" placeholder="Descripcion"></td>
+                    <td><input class="form-control columna5" type="text" name="Descr5" placeholder="Descripcion"></td>
+                    <td><input class="form-control columna6" type="text" name="Descr6" placeholder="Descripcion"></td>
+                    <td><input class="form-control columna7" type="text" name="Descr7" placeholder="Descripcion"></td>
+                    <td><input class="form-control columna8" type="text" name="Descr8" placeholder="Descripcion"></td>
+                    <td><input class="form-control columna9" type="text" name="Descr9" placeholder="Descripcion"></td>
+                    <td><input class="form-control columna10" type="text" name="Descr10" placeholder="Descripcion"></td>
+                </tr>
+             </tbody>
+            </table>
+            
           </div>
 
-
-         <div class="panel-body">
-              {!! form::label('id', 'Materias') !!}
-              {!! form::select('id', $mis_materias, null, ['class' => 'form-control ', 'placeholder'=> 'Seleccione una materia', 'required']) !!}
-        </div>  
-
-
-         <div id ="NumeroEvaluaciones"  class="panel-body">
-              {!! form::label('numeroDeEvaluaciones', 'Numero de evaluaciones') !!}
-            <input name="numeroDeEvaluacones" type="number" id="numeroDeEvaluaciones" value="3"  class="form-control"  placeholder="5" />
-
-        </div> 
-
-
-        <div class="form-group">
-            <input type="button" value="Añadir" onclick="mostrar()" class="btn-primary"> 
-        </div>
-
-
-
-         <div id ="1" style='display:block;' class="panel-body">
-             {!! form::label('Evaluacion1', 'Porcentaje evaluacion 1') !!}
-              {!! form::number('Evaluacion1',  null, ['class' => 'form-control ', 'placeholder'=> '10', 'min' => '0', 'max' => '100', 'step'=> 'any', 'required' ]) !!}
-              <br>
-              {!! form::label('descripcion1', 'Descripcion de la evaluacion 1') !!}
-              {!! form::text('descripcion1',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial', 'required']) !!}
-              <hr>
-
-        </div> 
-
-
-         <div id ="2" style='display:block;' class="panel-body">
-              {!! form::label('Evaluacion2', 'Porcentaje evaluacion 2') !!}
-              {!! form::number('Evaluacion2',  null, ['class' => 'form-control ', 'placeholder'=> '10',  'min' => '0', 'max' => '100', 'step'=> 'any',  'required']) !!}
-              <br>
-             {!! form::label('descripcion2', 'Descripcion de la evaluacion 2') !!}
-              {!! form::text('descripcion2',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial', 'required']) !!}
-              <hr>
-
-        </div> 
-
-
-         <div id ="3" style='display:block;' class="panel-body">
-              {!! form::label('Evaluacion3', 'Porcentaje evaluacion 3') !!}
-              {!! form::number('Evaluacion3',  null, ['class' => 'form-control ', 'placeholder'=> '10', 'min' => '0', 'max' => '100', 'step'=> 'any' ,'required']) !!}
-              <br>
-             {!! form::label('descripcion3', 'Descripcion de la evaluacion 3') !!}
-              {!! form::text('descripcion3',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial', 'required']) !!}
-              <hr>
-        </div> 
-
-         <div id ="4" style='display:none;' class="panel-body">
-              {!! form::label('Evaluacion4', 'Porcentaje evaluacion 4') !!}
-              {!! form::number('Evaluacion4',  null, ['class' => 'form-control ', 'placeholder'=> '10', 'min' => '0', 'max' => '100' , 'step'=> 'any']) !!}
-               <br>
-              {!! form::label('descripcion4', 'Descripcion de la evaluacion 4') !!}
-              {!! form::text('descripcion4',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
-              <hr>
-        </div> 
-
-         <div id ="5" style='display:none;' class="panel-body">
-              {!! form::label('Evaluacion5', 'Porcentaje evaluacion 5') !!}
-              {!! form::number('Evaluacion5',  null, ['class' => 'form-control ', 'placeholder'=> '10' , 'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
-               <br>
-             {!! form::label('descripcion5', 'Descripcion de la evaluacion 5') !!}
-              {!! form::text('descripcion5',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
-              <hr>
-        </div> 
-
-         <div id ="6" style='display:none;' class="panel-body">
-              {!! form::label('Evaluacion6', 'Porcentaje evaluacion 6') !!}
-              {!! form::number('Evaluacion6',  null, ['class' => 'form-control ', 'placeholder'=> '10' , 'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
-               <br>
-              {!! form::label('descripcion6', 'Descripcion de la evaluacion 6') !!}
-              {!! form::text('descripcion6',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
-              <hr>
-        </div> 
-
-
-
-         <div id ="7" style='display:none;' class="panel-body">
-              {!! form::label('Evaluacion7', 'Porcentaje evaluacion 7') !!}
-              {!! form::number('Evaluacion7',  null, ['class' => 'form-control ', 'placeholder'=> '10' , 'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
-                 <br>
-                {!! form::label('descripcio7', 'Descripcion de la evaluacion 7') !!}
-              {!! form::text('descripcion7',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
-              <hr>
-
-        </div> 
-
-         <div id ="8" style='display:none;' class="panel-body">
-              {!! form::label('Evaluacion8', 'Porcentaje evaluacion 8') !!}
-              {!! form::number('Evaluacion8',  null, ['class' => 'form-control ', 'placeholder'=> '10' , 'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
-              <br>
-              {!! form::label('descripcion8', 'Descripcion de la evaluacion 8') !!}
-              {!! form::text('descripcion8',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
-              <hr>
-
-        </div>                                         
-
-
-         <div id ="9" style='display:none;' class="panel-body">
-              {!! form::label('Evaluacion9', 'Porcentaje evaluacion 8') !!}
-              {!! form::number('Evaluacion9',  null, ['class' => 'form-control ', 'placeholder'=> '10' , 'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
-              <br>
-              {!! form::label('descripcion9', 'Descripcion de la evaluacion 9') !!}
-              {!! form::text('descripcion9',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
-              <hr>
-
-        </div> 
-
-         <div id ="10" style='display:none;' class="panel-body">
-              {!! form::label('Evaluacion10', 'Porcentaje evaluacion 9') !!}
-              {!! form::number('Evaluacion10',  null, ['class' => 'form-control ', 'placeholder'=> '10' , 'min' => '0', 'max' => '100', 'step'=> 'any']) !!}
-                            <br>
-              {!! form::label('descripcion10', 'Descripcion de la evaluacion 10') !!}
-              {!! form::text('descripcion10',  null, ['class' => 'form-control ', 'placeholder'=> 'Examen parcial']) !!}
-              <hr>
-
-
+           
 
         </div>  
 
 
         
 
-            
-        <div class="panel-body">
+        
+        <input type="text" class="form-control" id="mensaje" name="" style="display: block;" value="EL BOTON DE GUARDADO APARECERA CUANDO LA SUMATORIA DE LOS PORCENTAJE SEA DE 100" >
+
+        <div class="panel-body" id="guardar" style="display: none;">
+
                {!! form::submit('Guardar', ['class'=> 'btn-primary' ]) !!}  
          </div>
               
@@ -215,23 +180,99 @@
 
 @section('js')
   <script type="text/javascript">
-      function mostrar($id){
 
-        
+  
+  function mostrar($id){   
+           //codigo para cuando aumente las evaluaciones
+        var au = document.getElementById('aumento').value;
         var v = document.getElementById('numeroDeEvaluaciones').value;
-         
-        if (v<3 || v>10) {
-            //alert("El numero minimo de evaluaciones es 3 y el maximo 10");
+
+        var cantidad = parseInt(v) ;
+        
+
+        if (cantidad<3 || cantidad>10) {
+            alert("El numero minimo de evaluaciones es 3 y el maximo 10");
         }else{
-            for (paso = 1; paso <=v; paso++) {
-            document.getElementById(paso).style.display = 'block';
-          }
+           
+            if (au <= cantidad ) {
+
+              document.getElementById('aumento').value = v;
+        
+                var t = 300 - (v*21);
+
+                 for (var i = 1; i <=cantidad; i++) {
+
+                   if(i<4){         
+                        $(".columna"+i).css("width", t+"px");     
+                  }else{
+                        $(".columna"+i).css("width", t+"px");
+
+                        var z = $(".columna"+i).css("display");                          
+                          if (z == "block") {
+
+                          }else{
+                            $(".columna"+i).css("display", "block");
+                            document.getElementById(i).style.visibility = 'visible';
+                          }
+                                          
+                    
+                  }
+                }
+                //alert("entro en aumento");   
+              }else{//aca termina la parte de aumento
+                document.getElementById('aumento').value = v;
+                var t = 90 + ((10-v) *21);
+
+                    for (var i = 10; i >cantidad; i--) {
+                      var c = 11-i;
+                   if(i<4){         
+                        $(".columna"+c).css("width", t+"px");     
+                    }else{
+                        $(".columna"+c).css("width", t+"px");
+
+                        var z = $(".columna"+i).css("display");                          
+                          if (z == "none") {
+
+                          }else{
+                            $(".columna"+i).css("display", "none");
+                            document.getElementById(i).style.visibility = 'hidden';
+                          }
+                                          
+                    
+                  }
+                     
+                }
+                //alert("entro en dismuncion"); 
+                }
+      }
+    }
+
+
+    function calcular($valor) {
+        
+      var por =0.0;
+      
+        for(i=1; i<=10; i++){
+         var porcen  =    document.getElementById("nota"+i).value;
+         var numero = parseFloat(porcen);
+
+         if (numero >0) {
+            por = por + numero;
+         }
+          
+
         }
 
-      
-      };
-      
+        
+        if (por==100) {
+          document.getElementById('guardar').style.display = 'block';
+          document.getElementById('mensaje').style.display = 'none';
+        }else{
+          document.getElementById('guardar').style.display = 'none';
+          document.getElementById('mensaje').style.display = 'block';
+        }
 
+    }
 
   </script>
 

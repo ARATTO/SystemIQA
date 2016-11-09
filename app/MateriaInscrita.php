@@ -13,6 +13,7 @@ class MateriaInscrita extends Model
       'id',
       'cursada',
       'nota_final',
+      'activa',
   ];
 
   public function notas(){
@@ -25,6 +26,10 @@ class MateriaInscrita extends Model
 
   public function materia(){
     return $this->belongsTo('App\Materia');
+  }
+  
+  public function ciclo(){
+    return $this->belongsTo('App\Ciclo');
   }
 
 }

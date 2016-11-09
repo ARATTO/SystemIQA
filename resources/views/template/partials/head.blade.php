@@ -33,13 +33,16 @@
 <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 
-<link rel="stylesheet" href="{{ asset('css/sistemalaravel.cs') }}">
+<link rel="stylesheet" href="{{ asset('css/sistemalaravel.css') }}">
 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <!-- Elias -->
 <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
 <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
+
+<!--Rodrigo-->
+<link rel="stylesheet" href="{{ asset('css/porcentajenotas.css') }}">
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
