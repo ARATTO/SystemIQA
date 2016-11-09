@@ -65,6 +65,12 @@ class IngresarNotasController extends Controller
 
         $materiaInscrita = MateriaInscrita::where("materia_id", "=",$materiaSeleccionada)->paginate(1000);
 
+        //si el activa es cero entonces no ingresa notas
+        if(){
+
+        }
+
+
         $materiaInscrita->each(function($materiaInscrita){
             $materiaInscrita->estudiante;
         } );
