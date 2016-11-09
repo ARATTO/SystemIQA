@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Ciclo;
+use App\Evaluacion;
+use App\MateriaInscrita;
 
 class CicloController extends Controller
 {
@@ -56,7 +58,7 @@ class CicloController extends Controller
         }
 
 
-        if($activa = 0 && ($request->cicloActivo) == 1){
+        if($activa == 0 && ($request->cicloActivo) == 1){
            
             $fecha = '';    
 
@@ -79,7 +81,7 @@ class CicloController extends Controller
 
             
             return redirect()->route('ciclo.index');
-        }elseif ($activa = 0 && $request->cicloActivo == 0) {
+        }elseif ($activa == 0 && $request->cicloActivo == 0) {
             
             $fecha = '';    
 
@@ -99,6 +101,7 @@ class CicloController extends Controller
             $ciclo->save();
 
             flash('Se ha creado el ciclo con exito', 'success');
+            return redirect()->route('ciclo.index');
 
         }elseif ($activa > 0 && $request->cicloActivo == 0) {
            
@@ -120,6 +123,7 @@ class CicloController extends Controller
             $ciclo->save();
 
             flash('Se ha creado el ciclo con exito', 'success');
+            return redirect()->route('ciclo.index');
         }else{
 
             flash('Ya existe un ciclo activo por favor asegurese de haber finalizado ciclos anteriores', 'warning');
@@ -168,8 +172,9 @@ class CicloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
+        dd($request->all());
+
         $ciclo = Ciclo::find($id);
         
 
@@ -178,15 +183,53 @@ class CicloController extends Controller
         $ciclo->anio_academico = $request->anio;
         $ciclo->fecha_inicio = $request->fechaInicio;
         $ciclo->fecha_fin = $request->fechaFin;
+        $ciclo->activa = $request->cicloActivo;
+
+        $estado = $request->estadoAnterior;
+
+
+        $activo = Ciclo::where('activa', '=', 1)->get();
+        $activa = 0;
+        $ciclo = new Ciclo();
+
+
+        foreach ($activo as $ac) {
+            $activa+=1;
+        }
+
+
+        if ($estadoAnterior >= $request->cicloActivo) {
+            //codigo para cuando el ciclo se cerro 
+
+            $materia = MateriaInscrita::where('ciclo_id', '=', $id)->get();
+
+            foreach ($materia as $mat) {
+                $mat->activa = 0;
+
+                $mat->save();
+            }
+
+            $ciclo->save();
+
+            flash('Se ha actualizado el ciclo con exito', 'success');
+
+            return redirect()->route('ciclo.index');
+       
+
+
+        }else{
+            //codigo para cuando se activa el ciclo
+
+
+        }
+
+      
+            
+
 
         
 
-        $ciclo->save();
 
-        flash('Se ha actualizado el ciclo con exito', 'success');
-
-        
-        return redirect()->route('ciclo.index');
     }
 
     /**
