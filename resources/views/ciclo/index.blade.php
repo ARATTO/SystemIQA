@@ -33,7 +33,12 @@
 					<td>{{$ciclo->anio_academico}} </td>
           <td>{{$ciclo->fecha_inicio}} </td>
           <td>{{$ciclo->fecha_fin}} </td>
-          <td> <p>:v </p> </td>
+
+          @if( $ciclo->activa == 1 )
+            <td> <p>SI</p>  </td>
+          @else
+            <td> <p>NO</p>  </td>
+          @endif
 					<td> 
 						<a href="{{route('ciclo.edit',$ciclo->id)}}" class="btn btn-warning"> <font color="black" size="2"> <b>Editar</b> </font>  </a>  
 						<a href="{{route('ciclo.destroy',$ciclo->id)}}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger"><font color="black" size="2"> <b>Eliminar	</b>  </font></a>  
