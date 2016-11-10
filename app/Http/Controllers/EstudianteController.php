@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Cache;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use App\MateriaInscrita;
+use App\Ciclo;
 
 class EstudianteController extends Controller
 {
@@ -44,7 +45,14 @@ class EstudianteController extends Controller
                 $materiaSeleccionada = $request->materiasAlimentos; 
             }
 
-        $materiaInscrita = MateriaInscrita::where("materia_id", "=",$materiaSeleccionada)->paginate(1000);
+        $CA = Ciclo::where('activa', '=', 1)->first();
+
+        $materiaInscrita = MateriaInscrita::where("materia_id", "=",$materiaSeleccionada)
+        ->where('activa', '=', 1)
+        ->where('ciclo_id', '=', $CA->id)
+        ->orderBy('nota_final', 'asc')
+        ->paginate(1000);
+
 
         $materiaInscrita->each(function($materiaInscrita){
             $materiaInscrita->estudiante;

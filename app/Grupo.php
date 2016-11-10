@@ -20,8 +20,8 @@ class Grupo extends Model
 
     ];
 
-    public function materia(){
-      return $this->belongsTo('App\Materia');
+    public function materia_inscrita(){
+      return $this->belongsTo('App\MateriaInscrita');
     }
 
     public function tipo_grupo(){
