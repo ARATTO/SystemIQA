@@ -78,9 +78,9 @@ class IngresarNotasController extends Controller
 
 
         $join = DB::table('estudiantes')
-    ->join('materias_inscritas', 'estudiantes.id', '=', 'materias_inscritas.estudiante_id')
-    ->join('notas', 'materias_inscritas.id', '=', 'notas.materiaInscrita_id' )
-                    ->get();
+        ->join('materias_inscritas', 'estudiantes.id', '=', 'materias_inscritas.estudiante_id')
+        ->join('notas', 'materias_inscritas.id', '=', 'notas.materiaInscrita_id' )
+        ->get();
 
         //dd($join);
 
