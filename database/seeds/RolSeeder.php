@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+
 use Illuminate\Database\Eloquent\Model;
+
 
 class RolSeeder extends Seeder
 {
@@ -36,5 +38,6 @@ class RolSeeder extends Seeder
             'nombre' => 'Secretaria',
             'descripcion' => 'Es la secretaria de la escuela.',
         ]);
+
     }
 }

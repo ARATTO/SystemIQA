@@ -61,6 +61,6 @@ class UserSeeder extends Seeder
             'foto' => 'eternoslimpio.jpg',
             'rol_id' => '1',
         ]);
-        
+
     }
 }
