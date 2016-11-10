@@ -36,7 +36,7 @@
                   </div>
 
                   <!-- Aqui se mostrara el mensaje -->
-                  @include('template.partials.mensaje')
+                   @include('flash::message')
 	
 
               </div>
@@ -85,6 +85,10 @@
               		{!! form::label('cicloActivo', 'Ciclo activo') !!}<br>
               		<p>{!!Form::radio('cicloActivo', '1', true)!!} Si  <br>
               		{!!Form::radio('cicloActivo', '0', false)!!} No </p>
+              </div>
+
+              <div style="display: none;">
+                    {!! Form::number( 'estadoAnterior',$ciclo->activa) !!}  
               </div>
 
           

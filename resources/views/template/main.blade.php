@@ -8,7 +8,6 @@
         @include('template.partials.nav')
 
 
-
         <section>
 
             @yield('content')

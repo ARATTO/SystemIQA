@@ -36,7 +36,7 @@
                   </div>
 
                   <!-- Aqui se mostrara el mensaje -->
-                  @include('template.partials.mensaje')
+                   @include('flash::message')
 	
 
               </div>
