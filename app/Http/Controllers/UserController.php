@@ -10,7 +10,6 @@ use App\User;
 use App\Rol;
 use Laracasts\Flash\Flash;
 
-
 class UserController extends Controller
 {
     /**

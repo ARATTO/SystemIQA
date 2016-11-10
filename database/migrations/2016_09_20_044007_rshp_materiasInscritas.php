@@ -31,7 +31,7 @@ class RshpMateriasInscritas extends Migration
      */
     public function down()
     {
-      Schema::table('materias_inscritas', function(Blueprint $table){
+      Schema::table('notas', function(Blueprint $table){
         $table->dropForeign(['estudiante_id']);
         $table->dropForeign(['materia_id']);
         $table->dropForeign(['ciclo_id']);
