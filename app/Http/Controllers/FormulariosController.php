@@ -12,6 +12,7 @@ use App\Grupo;
 use App\Materia;
 use App\Evaluacion;
 use App\Nota;
+//use App\Ciclo;
 use App\MateriaInscrita;
 use Illuminate\Support\Facades\Cache;
 use Laracasts\Flash\Flash;
@@ -74,6 +75,13 @@ class FormulariosController extends Controller
 	                }
                   $carnetestudiante=Estudiante::where("carnet","=",$fila->car)->first();
                   $materiainscrita=MateriaInscrita::where("estudiante_id","=",$carnetestudiante->id)->first();
+                  //$activo = Ciclo::where('activa','=',1)->get();
+
+                  if($activo==null){
+                    //mensaje error
+                  }else{
+                    //guarda
+                  }
                   
                   if(count($materiainscrita) == 0){
 
@@ -82,6 +90,8 @@ class FormulariosController extends Controller
                       $materiaInscrita->nota_final=0.0;
                       $materiaInscrita->estudiante()->associate($carnetestudiante);
                       $materiaInscrita->materia()->associate($materia);
+                      //$materiaInscrita->ciclo_id=$activo->id;
+                      //$materiaInscrita->activa=1;
                       $materiaInscrita->save();
 
                       
