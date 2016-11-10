@@ -38,6 +38,10 @@ class RolSeeder extends Seeder
             'nombre' => 'Secretaria',
             'descripcion' => 'Es la secretaria de la escuela.',
         ]);
+        DB::table('rols')->insert([
+            'nombre' => 'Asesor',
+            'descripcion' => 'Asesora a un grupo de estudiantes en su trabajo de graduacion.',
+        ]);
 
     }
 }
