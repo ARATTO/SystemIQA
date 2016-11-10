@@ -104,8 +104,10 @@
             <ul class="sidebar-menu">
 
                 <li class="header">MENÚ</li>
-
                 
+                <!-- Menus de Jefe Escuela-->
+                @if(Auth::user()->rol_id == 1) 
+
                 <!--MOTTO-->
                 <li class="active treeview">
                     <a href="#">
@@ -116,41 +118,7 @@
                         <li><a href=" {{ url('users/create') }} "><i class="fa fa-circle-o"></i>Agregar</a></li>
                     </ul>
                 </li>
-
-
                 <!-- FIN MOTTO -->
-
-                <!--Lobos-->
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-fw fa-user-plus"></i> <span>Datos de Estudiantes</span> <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-
-                        <li class="active"><a href="{{ url('/create') }} "><i class="fa fa-circle-o"></i>Cargar Estudiantes. </a></li>
-
-                    </ul>
-                </li>
-                <!-- FIN  LOBOS -->
-
-                <!--  Panel de Grupos  -Elias   -->
-                <li class="active treeview" id="lista_elias">
-                    <a href="#">
-                        <i class="glyphicon glyphicon-list-alt"></i>
-                        <span>Grupos</span> 
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="active"><a href="{{route('grupos.index')}}" >
-                                <i class="fa fa-circle-o"></i>Listado Grupos</a>
-                        </li>
-                        <li class="active"><a href="{{route('grupos.create')}}"  >
-                                <i class="fa fa-circle-o"></i>Agregar Grupo</a>
-                        </li>
-                    </ul>
-                </li> 
-                <!--  Fin Panel de Grupos      -->
-
                 <!--  Panel de Materias  -Elias   -->
                 <li class="active treeview" id="lista_elias">
                     <a href="#">
@@ -168,8 +136,6 @@
                     </ul>
                 </li>
                 <!--  Fin Panel de Materias      -->
-
-
                 <!--  Panel de Carreras  -Elias   -->
                 <li class="active treeview" id="lista_elias">
                     <a href="#">
@@ -187,7 +153,6 @@
                     </ul>
                 </li> 
                 <!--  Fin Panel de Carreras      -->
-
                 <!--Alam-->
 
                 <li class="active treeview">
@@ -200,30 +165,6 @@
                     </ul>
                 </li>
                 <!--FIN ALAM-->
-
-
-                <!--RODRIGO-->
-                <li class="active treeview">
-                    <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>Porcentaje de las notas</span> <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href=" {{ url('/elejirCarrera') }} "><i class="fa fa-circle-o"></i>Agregar porcentaje</a></li>
-                        <li><a href=" {{ url('/verPorcentajes') }} "><i class="fa fa-circle-o"></i>ver Porcentajes</a></li>
-                    </ul>
-                </li>
-
-
-                <!--RODRIGO-->
-                <li class="active treeview">
-                    <a href="#">
-                        <i class="glyphicon glyphicon-list-alt"></i> <span>Ingresar notas</span> <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href=" {{ url('/ingresarNotas/seleccionar') }} "><i class="fa fa-circle-o"></i>Agregar notas</a></li>
-                    </ul>
-                </li>
-
                 <!--RODRIGO-->
                 <li class="active treeview">
                     <a href="#">
@@ -234,17 +175,132 @@
                         <li><a href=" {{ url('/verCiclos') }} "><i class="fa fa-circle-o"></i>Ver ciclos</a></li>
                     </ul>
                 </li>
-
-
-                <li class="active treeview">
-                    <a href="#">
-                        <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Verificar Estado de Alumnos</a></li>
-                    </ul>
-                </li>
                 
+                @endif
+                <!-- FIN Menus de Jefe Escuela-->
+                 
+                <!-- Menus de Docente-->
+                @if(Auth::user()->rol_id == 2 | Auth::user()->rol_id == 3 | Auth::user()->rol_id == 4 | Auth::user()->rol_id == 5 | Auth::user()->rol_id == 7) 
+
+                        <!--Lobos-->
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-fw fa-user-plus"></i> <span>Datos de Estudiantes</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+
+                                <li class="active"><a href="{{ url('/create') }} "><i class="fa fa-circle-o"></i>Cargar Estudiantes. </a></li>
+
+                            </ul>
+                        </li>
+                        <!-- FIN  LOBOS -->
+                        <!--RODRIGO-->
+                        <li class="active treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Porcentaje de las notas</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/elejirCarrera') }} "><i class="fa fa-circle-o"></i>Agregar porcentaje</a></li>
+                                <li><a href=" {{ url('/verPorcentajes') }} "><i class="fa fa-circle-o"></i>ver Porcentajes</a></li>
+                            </ul>
+                        </li>
+
+
+                        <!--RODRIGO-->
+                        <li class="active treeview">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-list-alt"></i> <span>Ingresar notas</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/ingresarNotas/seleccionar') }} "><i class="fa fa-circle-o"></i>Agregar notas</a></li>
+                            </ul>
+                        </li>
+                        <li class="active treeview">
+                            <a href="#">
+                                <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Verificar Estado de Alumnos</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Menus de Coordinador Catedra-->
+                        @if(Auth::user()->rol_id == 3) 
+
+                        <!--  Panel de Grupos  -Elias   -->
+                        <li class="active treeview" id="lista_elias">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-list-alt"></i>
+                                <span>Grupos</span> 
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="active"><a href="{{route('grupos.index')}}" >
+                                        <i class="fa fa-circle-o"></i>Listado Grupos</a>
+                                </li>
+                                <li class="active"><a href="{{route('grupos.create')}}"  >
+                                        <i class="fa fa-circle-o"></i>Agregar Grupo</a>
+                                </li>
+                            </ul>
+                        </li> 
+                        <!--  Fin Panel de Grupos      -->
+
+                        @endif
+                        <!-- FIN Menus de Coordinador Catedra-->
+                        
+                        <!-- Menus de Coordinador Proyecto Graduacion-->
+                        @if(Auth::user()->rol_id == 4) 
+
+
+
+                        @endif
+                        <!-- FIN Menus de Coordinador Proyecto Graduacion-->
+                        
+                        <!-- Menus de Coordinador Proyeccion Social-->
+                        @if(Auth::user()->rol_id == 5) 
+
+
+
+                        @endif
+                        <!-- FIN Menus de Coordinador Proyeccion Social-->
+                        
+                        <!-- Menus de Asesor-->
+                        @if(Auth::user()->rol_id == 7) 
+
+
+
+                        @endif
+                        <!-- FIN Menus de Asesor-->
+
+
+                
+                @endif
+                <!-- FIN Menu Docente-->
+
+                <!-- Menus de Secretaria-->
+                @if(Auth::user()->rol_id == 6) 
+
+
+
+                @endif
+                <!-- FIN Menus de Secretaria-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

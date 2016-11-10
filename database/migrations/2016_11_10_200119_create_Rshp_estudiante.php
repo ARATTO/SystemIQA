@@ -14,7 +14,7 @@ class CreateRshpEstudiante extends Migration
     {
         Schema::table('estudiantes', function(Blueprint $table) {
             $table->integer('grupoAsesoria_id')->unsigned();
-            $table->foreign('grupoAsesoria_id')->references('id')->on('grupo_asesoria')->onDelete('cascade');
+            $table->foreign('grupoAsesoria_id')->references('id')->on('grupo_asesoria')->nullable()->onDelete('cascade');
         });
     }
 

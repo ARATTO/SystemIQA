@@ -35,9 +35,6 @@
 
 Route::group(['middleware' => ['auth']], function() {
     
-    
-    
-
     Route::group(['middleware' => ['Docente']], function() { //Solo para Docente
         /////////////////////////////////////////////////////////////////////////
         //FIN rutas Elias
@@ -179,6 +176,10 @@ Route::group(['middleware' => ['auth']], function() {
         });
 
         Route::group(['middleware' => ['CoorSocial']], function() { //Solo para Coordinador de Proyeccion Social
+        });
+        
+        Route::group(['middleware' => ['Asesor']], function() { //Solo para Asesores
+            
         });
     });
 

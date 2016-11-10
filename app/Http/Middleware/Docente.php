@@ -30,6 +30,9 @@ class Docente {
             case 5:
                 return $next($request);
                 break;
+            case 7:
+                return $next($request);
+                break;
             default :
                 abort(401);
         }
