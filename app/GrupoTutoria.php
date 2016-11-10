@@ -15,6 +15,7 @@ class GrupoTutoria extends Model
         'fecha_grupo',
     ];
 
+
     public function tutor(){
       return $this->hasMany('App\Tutor');
     }
@@ -22,4 +23,5 @@ class GrupoTutoria extends Model
     public function estudiante(){
       return $this->hasMany('App\Estudiante');
     }
+    
 }

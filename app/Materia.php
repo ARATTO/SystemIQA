@@ -18,13 +18,9 @@ class Materia extends Model
         'numero_retiros',
     ];
 
-
-
-
     public function evaluaciones(){
       return $this->hasMany('App\Evaluacion');
     }
-
 
     public function grupos(){
       return $this->hasMany('App\Grupo');
@@ -41,7 +37,6 @@ class Materia extends Model
     public function carreras(){
       return $this->belongsToMany('App\Carrera')->withTimestamps();
     }
-
 
     public function materiaInscrita(){
       return $this->hasMany('App\MateriaInscrita');

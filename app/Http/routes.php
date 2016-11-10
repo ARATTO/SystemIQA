@@ -179,4 +179,3 @@ Route::get('tutor/{id}/destroy',[
 //Route::resource('estado','EstudianteController');
 Route::get('estado/create','EstudianteController@create');
 Route::post('estado/show','EstudianteController@show');
-

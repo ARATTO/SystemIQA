@@ -87,6 +87,7 @@
               		{!!Form::radio('cicloActivo', '0', false)!!} No </p>
               </div>
 
+      
               <div style="display: none;">
                     {!! Form::number( 'estadoAnterior',$ciclo->activa) !!}  
               </div>

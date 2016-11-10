@@ -17,7 +17,7 @@ class Grupo extends Model
         'cantidad_estudiante',
         'tipoGrupo_id',
         'materia_id',
-        
+
     ];
 
     public function materia(){
@@ -29,4 +29,5 @@ class Grupo extends Model
 
 
     }
+
 }
