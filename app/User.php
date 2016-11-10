@@ -51,5 +51,9 @@ class User extends Authenticatable
    public function scopeCarnet($query, $carnet){
           return $query->where('carnet', 'LIKE' , '%'.$carnet.'%');
     }
-
+    
+    public function tipoUsuario(){
+        
+        return $this->rol_id;
+    }
 }
