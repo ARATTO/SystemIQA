@@ -41,11 +41,22 @@ class GruposController extends Controller
     }
 
     public function store(Request $request){
+        //dd($request->all());
+
     	$grupo = new Grupo($request->all());
         
     	$grupo->save();
-    	Flash::success("El grupo : ".$grupo->nombre." se ha registrado exitosamente."  ); 
-    	return redirect()->route('grupos.index');
+    	Flash::success("El grupo : ".$grupo->codigo." se ha registrado exitosamente."  ); 
+
+
+        $grupos = Grupo::orderBy('codigo')->paginate(5);
+        //dd($grupos);
+        $grupos->each(function($grupos){
+            $grupos->materia;
+            $grupos->tipo_grupo;
+        });        
+        //dd($grupos);
+        return redirect()->route('grupos.index')->with('grupos',$grupos);
     }
 
 
@@ -72,14 +83,33 @@ class GruposController extends Controller
         
 
         Flash::success("El grupo:  ".$grupo->codigo." se ha modificado exitosamente.");
-        return redirect()->route('grupos.index');
+
+        $grupos = Grupo::orderBy('codigo')->paginate(5);
+        //dd($grupos);
+        $grupos->each(function($grupos){
+            $grupos->materia;
+            $grupos->tipo_grupo;
+        });        
+        //dd($grupos);
+        return redirect()->route('grupos.index')->with('grupos',$grupos);
+
     }
 
     public function destroy($id){
         $grupo = Grupo::find($id);
         $grupo->delete();
         Flash::success("El grupo: ".$grupo->codigo." se ha eliminado exitosamente.");
-        return redirect()->route('grupos.index');
+
+
+        $grupos = Grupo::orderBy('codigo')->paginate(5);
+        //dd($grupos);
+        $grupos->each(function($grupos){
+            $grupos->materia;
+            $grupos->tipo_grupo;
+        });        
+        //dd($grupos);
+        return redirect()->route('grupos.index')->with('grupos',$grupos);
+
     }
 
 }

@@ -234,7 +234,15 @@ class CicloController extends Controller
                 $mat->activa = 0;
 
                 $mat->save();
-            }             
+            } 
+
+            $evaluacion = Evaluacion::where('activa', '=', 1)->get();
+
+            foreach ($evaluacion as $eva) {
+                $eva->activa = 0;
+
+                $eva->save();
+            } 
 
             $ciclo->activa = $request->cicloActivo;
             $ciclo->save();

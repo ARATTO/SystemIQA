@@ -38,4 +38,8 @@ class Materia extends Model
       return $this->hasMany('App\MateriaInscrita');
     }
 
+      public function grupos(){
+      return $this->hasMany('App\Grupo');
+  }
+
 }

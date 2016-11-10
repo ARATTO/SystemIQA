@@ -25,5 +25,9 @@ class Ciclo extends Model
     public function materias_inscritas(){
       return $this->hasOne('App\MateriaInscrita');
     }
+
+     public function grupo(){
+      return $this->hasOne('App\Grupo');
+    }
     
 }

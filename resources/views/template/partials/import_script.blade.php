@@ -57,7 +57,9 @@
 <script src="{{ asset('dist/js/bootbox.js') }}"></script>
 <!-- script de time picker **Elias -->
 
-<script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
+<script src="{{ asset('dist/js/bootstrap-clockpicker.min.js') }}"></script>
+
+
 
 
  <script>

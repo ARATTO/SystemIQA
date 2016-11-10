@@ -50,10 +50,8 @@
 
 			</thead>
 			<tbody>
-					
 				@foreach ($grupos as $grupo) 
 				<tr>
-					
 					<td>{{ $grupo->codigo }}</td>
 					<td>{{ $grupo->materia->nombre}}</td>
 					<td>{{ $grupo->tipo_grupo->nombre }}</td>
