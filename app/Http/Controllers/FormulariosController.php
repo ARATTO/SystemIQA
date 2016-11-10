@@ -22,19 +22,19 @@ use DB;
 class FormulariosController extends Controller
 {
    
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
 
 
     public function form_cargar_datos_usuarios(){
 
        return view("formularios.cargar_usuarios");
 
-	}
+  }
 
-	public function cargar_datos_usuarios(Request $request){
+  public function cargar_datos_usuarios(Request $request){
 
     $activo = Ciclo::where('activa', '=', 1)->get();
     $acumuladorDeciclo=0;
@@ -224,9 +224,9 @@ class FormulariosController extends Controller
 
   }//FIN DEL METODO CARGAR_DATOS_USUARIOS    
 
-	
+  
 
-	public function create(){
+  public function create(){
 
        $materias = Materia::all();
 
@@ -243,13 +243,13 @@ class FormulariosController extends Controller
         });*/
 
 
-	    $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+      $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
 
 
 
-	    return view('formularios.create')
-	    ->with('carrera',$carrera)
-	    ->with('materias',$materias);
+      return view('formularios.create')
+      ->with('carrera',$carrera)
+      ->with('materias',$materias);
 
 
     }
@@ -285,12 +285,8 @@ class FormulariosController extends Controller
 
 
 
-    	
+      
     }
-
-
-
-
 
 
 }
