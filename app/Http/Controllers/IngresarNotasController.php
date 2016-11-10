@@ -53,6 +53,8 @@ class IngresarNotasController extends Controller
             //dd($evaluacion);
         });
 
+      // $CE = Carrera::where('id', '=', $carreraElejida)->get();
+
 
         $materiaSeleccionada;
 
@@ -62,6 +64,7 @@ class IngresarNotasController extends Controller
                 $materiaSeleccionada = $request->materiasAlimentos;
                
             }
+
 
         $materiaInscrita = MateriaInscrita::where("materia_id", "=",$materiaSeleccionada)->paginate(1000);
 
