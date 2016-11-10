@@ -80,7 +80,7 @@ Route::get('ingresarNotas/seleccionar', [
 	'as' => 'notasAlumnos.create'
 	]);
 
-Route::get('guardarNota', 'IngresarNotasController@show');
+Route::post('guardarNota', 'IngresarNotasController@show');
 
 Route::post('ingresarNotas/crearNotas',[
 		'uses' => 'IngresarNotasController@store', 

@@ -95,7 +95,7 @@ class IngresarNotasController extends Controller
         ->with('join',$join)
         ->with('materiaInscrita',$materiaInscrita);    
     	
-    }
+    }//FIN DEL METODO SHOW
 
 
 
