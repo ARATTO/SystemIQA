@@ -25,11 +25,11 @@ Route::get('home', function () {
 
 
 /*Route::group(['prefix' => 'mat'], function(){
-	
-	Route::get('Pnotas/{id}/destroy',[
-		'uses' => 'PorcentajeNotasController@destroy', //uses va por default para que reconosca la ruta
-		'as' => 'mat.Pnotas.destroy'
-		]);
+    
+    Route::get('Pnotas/{id}/destroy',[
+        'uses' => 'PorcentajeNotasController@destroy', //uses va por default para que reconosca la ruta
+        'as' => 'mat.Pnotas.destroy'
+        ]);
 
 });*/
 
@@ -41,81 +41,81 @@ Route::post('guardar', 'PorcentajeNotasController@show');
 
 
 Route::post('guardarPorcentajes',[
-		'uses' => 'PorcentajeNotasController@store', 
-		'as' => 'Pnotas.create2'
-		]);
+        'uses' => 'PorcentajeNotasController@store', 
+        'as' => 'Pnotas.create2'
+        ]);
 
 Route::get('verPorcentajes',[
-		'uses' => 'PorcentajeNotasController@index',
-		'as' => 'Pnotas.index'
-		]);
+        'uses' => 'PorcentajeNotasController@index',
+        'as' => 'Pnotas.index'
+        ]);
 
 Route::get('verPorcentajes/{id}/destroy',[
-		'uses' => 'PorcentajeNotasController@destroy',
-		'as' => 'Pnotas.destroy'
-		]);
+        'uses' => 'PorcentajeNotasController@destroy',
+        'as' => 'Pnotas.destroy'
+        ]);
 
 
 Route::get('editar/{pnotas}/edit',[
-		'uses' => 'PorcentajeNotasController@edit', 
-		'as' => 'Pnotas.edit'
-		]);
+        'uses' => 'PorcentajeNotasController@edit', 
+        'as' => 'Pnotas.edit'
+        ]);
 
 Route::put('cambiar/{Pnotas}',[
-		'uses' => 'PorcentajeNotasController@update', 
-		'as' => 'Pnotas.update'
-		]);
+        'uses' => 'PorcentajeNotasController@update', 
+        'as' => 'Pnotas.update'
+        ]);
 
 Route::get('mostrarPorcenjate/{pnotas}/ver', [
-	'uses' => 'PorcentajeNotasController@verPorcentajes', 
-	'as'	=> 'Pnotas.ver'
-	]);
+    'uses' => 'PorcentajeNotasController@verPorcentajes', 
+    'as'    => 'Pnotas.ver'
+    ]);
 
 
 
 /*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
 
 Route::get('ingresarNotas/seleccionar', [
-	'uses' => 'IngresarNotasController@create',
-	'as' => 'notasAlumnos.create'
-	]);
+    'uses' => 'IngresarNotasController@create',
+    'as' => 'notasAlumnos.create'
+    ]);
 
-Route::get('guardarNota', 'IngresarNotasController@show');
+Route::post('guardarNota', 'IngresarNotasController@show');
 
 Route::post('ingresarNotas/crearNotas',[
-		'uses' => 'IngresarNotasController@store', 
-		'as' => 'notasAlumnos.create2'
-		]);
+        'uses' => 'IngresarNotasController@store', 
+        'as' => 'notasAlumnos.create2'
+        ]);
 
 /*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
 
 Route::get('crearCiclo', 'CicloController@create');
 
 Route::post('guardarCiclo',[
-		'uses' => 'CicloController@store', 
-		'as' => 'ciclo.create'
-		]);
+        'uses' => 'CicloController@store', 
+        'as' => 'ciclo.create'
+        ]);
 
 Route::get('verCiclos',[
-		'uses' => 'CicloController@index',
-		'as' => 'ciclo.index'
-		]);
+        'uses' => 'CicloController@index',
+        'as' => 'ciclo.index'
+        ]);
 
 
 Route::get('update/{ciclo}/edit',[
-		'uses' => 'CicloController@edit', 
-		'as' => 'ciclo.edit'
-		]);
+        'uses' => 'CicloController@edit', 
+        'as' => 'ciclo.edit'
+        ]);
 
 Route::put('modificar/{ciclo}',[
-		'uses' => 'CicloController@update', 
-		'as' => 'ciclo.update'
-		]);
+        'uses' => 'CicloController@update', 
+        'as' => 'ciclo.update'
+        ]);
 
 Route::get('verCiclos/{id}/destroy',[
-		'uses' => 'CicloController@destroy',
-		'as' => 'ciclo.destroy'
-		]);
+        'uses' => 'CicloController@destroy',
+        'as' => 'ciclo.destroy'
+        ]);
 
 
 /*RUTAS RODRIGO*/
@@ -131,18 +131,18 @@ Route::get('home', 'HomeController@index');
 
 
 //rutas Elias
-			//--Materias
+            //--Materias
 
 Route::resource('materias','MateriasController');
-Route::get('materias/filtrar/{id}',	['as'=>'materias.filtrar','uses'=>'MateriasController@filtrarMaterias']);
+Route::get('materias/filtrar/{id}', ['as'=>'materias.filtrar','uses'=>'MateriasController@filtrarMaterias']);
 Route::get('materias/destroy/{id}',['as'=>'materias.destroy','uses'=>'MateriasController@eliminar']);
 
 
-			//--Carreras
+            //--Carreras
 Route::resource('carreras','CarrerasController');
 Route::get('carreras/destroy/{id}',['as'=>'carreras.destroy','uses'=>'CarrerasController@destroy']);
 
-			//--Grupos
+            //--Grupos
 Route::resource('grupos','GruposController');
 Route::get('grupos/destroy/{id}',['as'=>'grupos.destroy','uses'=>'GruposController@destroy']);
 //FIN rutas Elias

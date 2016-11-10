@@ -53,12 +53,8 @@
         <td>{{ $mat->estudiante->carnet }}</td>
         <td>{{ $mat->estudiante->nombre }}</td>
         <td>{{ $mat->estudiante->apellido }}</td>
-         @if($mat->estudiante->promedio_ciclo >= 6)
-                 
-                                  <td><div  name="confirmo"  >APROBADO</div></td> 
-                                  @else
-                                  <td><div  name="confirmo"  >REPROBADO</div></td>
-                                @endif 
+        <td>{{ $mat->nota_final}}</td>
+
         @if($mat->estudiante->CUM >= 6)
                                   <td><div  name="confirmo"  >APROBADO</div></td> 
                                 @else

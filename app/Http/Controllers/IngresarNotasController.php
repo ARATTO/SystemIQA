@@ -11,6 +11,7 @@ use App\Carrera;
 use App\Evaluacion;
 use App\MateriaInscrita;
 use App\Nota;
+use App\Ciclo;
 
 class IngresarNotasController extends Controller
 {
@@ -53,6 +54,8 @@ class IngresarNotasController extends Controller
             //dd($evaluacion);
         });
 
+      // $CE = Carrera::where('id', '=', $carreraElejida)->get();
+
 
         $materiaSeleccionada;
 
@@ -63,36 +66,71 @@ class IngresarNotasController extends Controller
                
             }
 
-        $materiaInscrita = MateriaInscrita::where("materia_id", "=",$materiaSeleccionada)->paginate(1000);
+        $CA = Ciclo::where('activa', '=', 1)->first();
 
-        $materiaInscrita->each(function($materiaInscrita){
-            $materiaInscrita->estudiante;
-        } );
+        $materiaInscrita = MateriaInscrita::where("materia_id", "=",$materiaSeleccionada)
+        ->where('activa', '=', 1)
+        ->where('ciclo_id', '=', $CA->id)
+        ->paginate(1000);
 
+        /*$materiaInscrita = DB::table('materias_inscritas') 
+        ->where('materia_id', '=', $materiaSeleccionada)
+        ->where('activa', '=', 1)
+        ->paginate(1000);*/
 
-        $nota = Nota::orderBy('id','ASC')->paginate(1000);
-
-        $nota->each(function($nota){
-                $nota->materiaInscrita;
-        } );
-
-
-        $join = DB::table('estudiantes')
-    ->join('materias_inscritas', 'estudiantes.id', '=', 'materias_inscritas.estudiante_id')
-    ->join('notas', 'materias_inscritas.id', '=', 'notas.materiaInscrita_id' )
-                    ->get();
-
-        //dd($join);
+        //dd($materiaInscrita);
 
        
-        return view('notasAlumnos.create2')
-        ->with('evaluacion',$evaluacion)
-        ->with('materiaSeleccionada',$materiaSeleccionada)
-        ->with('nota',$nota)
-        ->with('join',$join)
-        ->with('materiaInscrita',$materiaInscrita);    
+        if (count($materiaInscrita)>0) {
+
+
+            $materiaInscrita->each(function($materiaInscrita){
+                $materiaInscrita->estudiante;
+            });
+
+
+            $nota = Nota::orderBy('id','ASC')->paginate(1000);
+
+            $nota->each(function($nota){
+                    $nota->materiaInscrita;
+            } );
+
+
+            $join = DB::table('estudiantes')
+            ->join('materias_inscritas', 'estudiantes.id', '=', 'materias_inscritas.estudiante_id')
+            ->join('notas', 'materias_inscritas.id', '=', 'notas.materiaInscrita_id' )
+            ->get();
+
+            //dd($join);
+
+           
+            return view('notasAlumnos.create2')
+            ->with('evaluacion',$evaluacion)
+            ->with('materiaSeleccionada',$materiaSeleccionada)
+            ->with('nota',$nota)
+            ->with('join',$join)
+            ->with('materiaInscrita',$materiaInscrita);   
+        }//comrueba si existe materia activa
+        else{
+
+            flash('No existe un ciclo activo','danger');
+            $materias = Materia::all();
+
+           $materias->each(function($materias){
+                $materias->carreras;
+            });
+
+                
+             
+            $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+
+            return view('notasAlumnos.create')
+            ->with('carrera',$carrera)
+            ->with('materias',$materias);
+        }
+ 
     	
-    }
+    }//FIN DEL METODO SHOW
 
 
 

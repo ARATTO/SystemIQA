@@ -12,169 +12,221 @@ use App\Grupo;
 use App\Materia;
 use App\Evaluacion;
 use App\Nota;
-//use App\Ciclo;
 use App\MateriaInscrita;
+use App\Ciclo;
 use Illuminate\Support\Facades\Cache;
 use Laracasts\Flash\Flash;
+use DB;
 
 
 class FormulariosController extends Controller
 {
    
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
 
 
     public function form_cargar_datos_usuarios(){
 
        return view("formularios.cargar_usuarios");
 
-	}
+  }
 
-	public function cargar_datos_usuarios(Request $request)
-	{
-		//dd($request);
+  public function cargar_datos_usuarios(Request $request){
 
-    $Carrera=$request->carrera;
-    $Materia=$request->materia;
+    $activo = Ciclo::where('activa', '=', 1)->get();
+    $acumuladorDeciclo=0;
 
-    Cache::put('carrera',$Carrera,5);
-    Cache::put('materia',$Materia,5);
 
-	   $archivo = $request->file('archivo');
+    foreach($activo as $Ac){
+      $acumuladorDeciclo+=1;
+    }
+
+
+    if ($acumuladorDeciclo>0) {
+      
+     $Carrera=$request->carrera;
+     $Materia=$request->materia;
+
+     Cache::put('carrera',$Carrera,5);
+     Cache::put('materia',$Materia,5);
+
+     $archivo = $request->file('archivo');
      
      $nombre_original=$archivo->getClientOriginalName();
-     
-	   $extension=$archivo->getClientOriginalExtension();
-       $r1=Storage::disk('archivos')->put($nombre_original, \File::get($archivo) );
-       $ruta  =  storage_path('archivos') ."/". $nombre_original;
-       if($r1){
-       	    $ct=0;
-            Excel::selectSheetsByIndex(0)->load($ruta, function($hoja) {
-		        $hoja->each(function($fila) {
-              $materia_cache=Cache::get('materia');
-              $carrera_cache=Cache::get('carrera');
-              $materia=Materia::find($materia_cache);
-			        $carnetestudiante=Estudiante::where("carnet","=",$fila->car)->first();
+
+     $extension=$archivo->getClientOriginalExtension();
+     $r1=Storage::disk('archivos')->put($nombre_original, \File::get($archivo) );
+     $ruta  =  storage_path('archivos') ."/". $nombre_original;
+
+    if($r1){
+    $ct=0;
+    Excel::selectSheetsByIndex(0)->load($ruta, function($hoja) {
+    $hoja->each(function($fila) {
+      $materia_cache=Cache::get('materia');
+      $carrera_cache=Cache::get('carrera');
+      $materia=Materia::find($materia_cache);
+      $carnetestudiante=Estudiante::where("carnet","=",$fila->car)->first();
+
+      
+      if(count($carnetestudiante)==0){
+          $estudiante=new Estudiante;
+          $estudiante->carnet= $fila->car;
+          $estudiante->nombre= $fila->nom;
+          $estudiante->apellido= $fila->apell;
+          $estudiante->materias_ganadas= $fila->mateg;
+          $estudiante->materias_reprobadas= $fila->matr;
+          $estudiante->CUM= $fila->cum;
+          $estudiante->anio_ingreso= $fila->anio;
+          $estudiante->promedio_ciclo= $fila->prom;
+          //guardando estudiante
+          $estudiante->save();
+          $estudiante->carreras()->attach($carrera_cache);
+          } //fin del metro que guarda al estudiante
+
+
+          $carnetestudiante=Estudiante::where("carnet","=",$fila->car)->first();
+          $CA = Ciclo::where('activa', '=', 1)->first();
+          //$materiainscrita=MateriaInscrita::where("estudiante_id","=",$carnetestudiante->id)->first();
+
+
+
+          $materiainscrita = DB::table('materias_inscritas') 
+          ->where('estudiante_id', '=', $carnetestudiante->id)
+          ->where('materia_id', "=", $materia->id)
+          ->where('ciclo_id', '=', $CA->id)
+          ->count();
+       
+          if($materiainscrita == 0 ){
+
+              $materiaInscrita=new MateriaInscrita;
+              $materiaInscrita->cursada=$fila->matricula;
+              $materiaInscrita->nota_final=0.0;
+              $materiaInscrita->estudiante()->associate($carnetestudiante);
+              $materiaInscrita->materia()->associate($materia);
+
+              $activo = Ciclo::where('activa', '=', 1)->get();
+
+              $idCiclo;
+
+              foreach ($activo as $Ac) {
+                $idCiclo = $Ac->id;
+              }
+  
+             //dd($idCiclo);
+              $materiaInscrita->ciclo_id = $idCiclo;
+              $materiaInscrita->activa = 1;
+
+              $materiaInscrita->save();
+
               
-			        if(count($carnetestudiante)==0){
-    			      	$estudiante=new Estudiante;
-    			      	$estudiante->carnet= $fila->car;
-    			        $estudiante->nombre= $fila->nom;
-    			        $estudiante->apellido= $fila->apell;
-    			        $estudiante->materias_ganadas= $fila->mateg;
-    			        $estudiante->materias_reprobadas= $fila->matr;
-    			        $estudiante->CUM= $fila->cum;
-    			        $estudiante->anio_ingreso= $fila->anio;
-    			        $estudiante->promedio_ciclo= $fila->prom;
-                  //guardando estudiante
-                  $estudiante->save();
-                  $estudiante->carreras()->attach($carrera_cache);
-	                }
-                  $carnetestudiante=Estudiante::where("carnet","=",$fila->car)->first();
-                  $materiainscrita=MateriaInscrita::where("estudiante_id","=",$carnetestudiante->id)->first();
-                  //$activo = Ciclo::where('activa','=',1)->get();
 
-                  if($activo==null){
-                    //mensaje error
-                  }else{
-                    //guarda
-                  }
+              $evaluacion=Evaluacion::where("materia_id","=",$materia_cache)->paginate(11);
+
+              foreach ($evaluacion as $eva)
+              {
+
+                    $nota=new Nota;
+                    $nota->nota_evaluacion=0.0;
+                    $nota->evaluacion()->associate($eva);
+                    $nota->materiaInscrita()->associate($materiaInscrita);
+
                   
-                  if(count($materiainscrita) == 0){
 
-                      $materiaInscrita=new MateriaInscrita;
-                      $materiaInscrita->cursada=$fila->matricula;
-                      $materiaInscrita->nota_final=0.0;
-                      $materiaInscrita->estudiante()->associate($carnetestudiante);
-                      $materiaInscrita->materia()->associate($materia);
-                      //$materiaInscrita->ciclo_id=$activo->id;
-                      //$materiaInscrita->activa=1;
-                      $materiaInscrita->save();
-
-                      
-
-                      $evaluacion=Evaluacion::where("materia_id","=",$materia_cache)->paginate(11);
-
-                      foreach ($evaluacion as $eva)
-                      {
-
-                            $nota=new Nota;
-                            $nota->nota_evaluacion=0.0;
-                            $nota->evaluacion()->associate($eva);
-                            $nota->materiaInscrita()->associate($materiaInscrita);
-
-                          
-
-                            $nota->save();
-                      }
-                  }
+                    $nota->save();
+              }
+          }
 
 
-	            
-		     
-		        });
+      
+ 
+    });
 
+    }); //cierre de metodo recorrido de archivo
+
+
+    Flash::success("Estudiantes Guardados");
+    $materias = Materia::all();
+
+    $materias->each(function($materias){
+          $materias->carreras;
+          //$materias->grupos;
+      });
+
+
+     /*$grupo = Grupo::all();
+
+     $grupo->each(function($grupo){
+          $grupo->tipo_grupos;
+      });*/
+
+
+    $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+
+
+
+    return view('formularios.create')
+    ->with('carrera',$carrera)
+    ->with('materias',$materias);
+    
+
+  }else{
+      Flash::error("Fatal Error");
+      $materias = Materia::all();
+
+      $materias->each(function($materias){
+            $materias->carreras;
+            //$materias->grupos;
+        });
+
+
+       /*$grupo = Grupo::all();
+
+       $grupo->each(function($grupo){
+            $grupo->tipo_grupos;
+        });*/
+
+
+      $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+
+
+
+      return view('formularios.create')
+      ->with('carrera',$carrera)
+      ->with('materias',$materias);
+      //return view('mostrarForm');
+  }
+    }//FIN DEL IF QUE COMPRUEBA SI EXISTE UN CICLO ACTIVO
+    else{
+      // no hayciclo activo asi que no debe guardar
+          flash("NO existe un ciclo activo",'danger');
+          $materias = Materia::all();
+
+          $materias->each(function($materias){
+                $materias->carreras;
+                //$materias->grupos;
             });
-            Flash::success("Estudiantes Guardados");
-            $materias = Materia::all();
-
-            $materias->each(function($materias){
-                  $materias->carreras;
-                  //$materias->grupos;
-              });
 
 
-             /*$grupo = Grupo::all();
+          $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
 
-             $grupo->each(function($grupo){
-                  $grupo->tipo_grupos;
-              });*/
+          //return view('formularios.create')
+          return view('formularios.create')
+          ->with('carrera',$carrera)
+          ->with('materias',$materias);
 
-
-            $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+    }
 
 
 
-            return view('formularios.create')
-            ->with('carrera',$carrera)
-            ->with('materias',$materias);
-            
-    	
-       }
-       else
-       {
-            Flash::error("Fatal Error");
-            $materias = Materia::all();
 
-            $materias->each(function($materias){
-                  $materias->carreras;
-                  //$materias->grupos;
-              });
+  }//FIN DEL METODO CARGAR_DATOS_USUARIOS    
 
+  
 
-             /*$grupo = Grupo::all();
-
-             $grupo->each(function($grupo){
-                  $grupo->tipo_grupos;
-              });*/
-
-
-            $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
-
-
-
-            return view('formularios.create')
-            ->with('carrera',$carrera)
-            ->with('materias',$materias);
-       	    //return view('mostrarForm');
-       }
-
-	}
-
-	public function create(){
+  public function create(){
 
        $materias = Materia::all();
 
@@ -191,13 +243,13 @@ class FormulariosController extends Controller
         });*/
 
 
-	    $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+      $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
 
 
 
-	    return view('formularios.create')
-	    ->with('carrera',$carrera)
-	    ->with('materias',$materias);
+      return view('formularios.create')
+      ->with('carrera',$carrera)
+      ->with('materias',$materias);
 
 
     }
@@ -233,12 +285,8 @@ class FormulariosController extends Controller
 
 
 
-    	
+      
     }
-
-
-
-
 
 
 }

@@ -22,10 +22,6 @@ class Materia extends Model
       return $this->hasMany('App\Evaluacion');
     }
 
-    public function grupos(){
-      return $this->hasMany('App\Grupo');
-    }
-
     public function users(){
       return $this->belongsToMany('App\Materia')->withTimestamps();
     }

@@ -20,14 +20,14 @@
 	  @include('flash::message')
 	<table class="table table-striped" > 
 		<thead>
-			<th>ID</th>
+      <th>Codigo</th>
 			<th>Materia</th>
 			<th>Accion</th>
 		</thead>
 		<tbody>
 			@foreach($evaluaciones as $evaluacion)
 				<tr>
-					<td>{{$evaluacion->id}} </td>
+          <td>{{$evaluacion->materia->codigo}} </td>
 					<td>{{$evaluacion->materia->nombre}} </td>
 					<td> 
             <a href=" {{route('Pnotas.ver',$evaluacion->materia_id)}}" class="btn btn-success"> <font color="black" size="2"> <b>ver Porcentajes</b> </font>  </a>  
