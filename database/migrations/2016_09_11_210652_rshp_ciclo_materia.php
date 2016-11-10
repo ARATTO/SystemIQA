@@ -17,7 +17,7 @@ class RshpCicloMateria extends Migration
           $table->increments('id');
 
           $table->integer('materia_id')->unsigned();
-          $table->foreign('materia_id')->references('id')->on('materias_inscritas')->onDelete('cascade');
+          $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
 
           $table->integer('ciclo_id')->unsigned();
           $table->foreign('ciclo_id')->references('id')->on('ciclos')->onDelete('cascade');
