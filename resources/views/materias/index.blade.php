@@ -54,8 +54,7 @@
 				<th>Código</th>
 				<th>Nombre</th>
 				<th>Unidades Valorativas</th>
-				<th>Estudiantes Matriculados</th>
-				<th>Estudiantes Retirados</th>
+
 			</thead>
 			<tbody>
 					
@@ -65,8 +64,7 @@
 					<td>{{ $mat->codigo }}</td>
 					<td>{{ $mat->nombre }}</td>
 					<td>{{ $mat->unidades_valorativas }}</td>
-					<td>{{ $mat->matricula }}</td>
-					<td>{{ $mat->numero_retiros }}</td>
+
 					
 					<td>
 						<a href=" {{route('materias.edit',$mat)}}"class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>

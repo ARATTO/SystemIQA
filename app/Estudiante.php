@@ -21,10 +21,6 @@ class Estudiante extends Model
     ];
 
 
-    public function grupo_tutorias(){
-      return $this->belongsTo('App\GrupoTutoria');
-    }
-
     public function carreras(){
       return $this->belongsToMany('App\Carrera')->withTimestamps();
     }
@@ -32,6 +28,10 @@ class Estudiante extends Model
 
     public function materiaInscrita(){
       return $this->hasMany('App\MateriaInscrita');
+    }
+
+   public function grupo_tutorias(){
+      return $this->hasMany('App\GrupoTutoria');
     }
 
 }
