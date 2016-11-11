@@ -129,6 +129,7 @@
 
 </div>
 </div>
+
  {!! Form::close()!!}
 
 @endsection
@@ -147,3 +148,4 @@
     $('.clockpicker').clockpicker();
   </script>
 @endsection('js')
+
