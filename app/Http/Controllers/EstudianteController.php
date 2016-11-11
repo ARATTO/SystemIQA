@@ -7,7 +7,7 @@ use Storage;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-
+use DB;
 use App\Carrera;
 
 use App\Materia;
@@ -84,11 +84,47 @@ class EstudianteController extends Controller
         ->with('materias',$materias);
     }
 
+    public function create2(){
+
+        $materias = Materia::all();
+
+        $materias->each(function($materias){
+            $materias->carreras;
+        });
+
+        $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+
+        return view('estado.create2')
+        ->with('carrera',$carrera)
+        ->with('materias',$materias);
+    }
+
+    public function show2(Request $request){
+
+        $carreraElejida = $request->CarreraElejida;
+
+        $estudiantes = Estudiante::all();
 
 
 
+        $estudiantes->each(function($estudiantes){
+            $estudiantes->carreras;
+        });
+
+        $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
 
 
+            $Estudents = DB::table('carrera_estudiante')
+            ->join("estudiantes","carrera_estudiante.estudiante_id","=","estudiantes.id")
+            ->where("carrera_id","=",$carreraElejida)
+            ->get();
 
-    
+        
+        //dd($request);
+        // dd($materiaSeleccionada);
+        return view('estado.estado_global_estudiante')
+        ->with('estudiantes',$Estudents);
+        //->with('grupoSeleccionado',$grupoElejido);
+    }
+
 }

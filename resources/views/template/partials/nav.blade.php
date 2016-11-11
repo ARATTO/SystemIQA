@@ -243,6 +243,9 @@
                     <ul class="treeview-menu">
                         <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Verificar Estado de Alumnos</a></li>
                     </ul>
+                    <ul class="treeview-menu">
+                        <li><a href=" {{ url('/estado/create2') }} "><i class="fa fa-circle-o"></i>Verificar Estado Global de Alumnos</a></li>
+                    </ul>
                 </li>
                 
 
