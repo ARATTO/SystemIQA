@@ -164,18 +164,26 @@ class EstudianteController extends Controller
 
         $grupoTutoria->save();
 
+
+        $GT= GrupoTutoria::all();
+        $GTU = $GT->last();
+
+        
         foreach ($input as $tutoria) {
             
             if ($i>4) {
-                $estu = Estudiante::where('carnet', '=', $input)->first();
+                $estu = Estudiante::where('carnet', '=', $tutoria)->first();
+          
+                $estu->grupoTutoria_id = $GTU->id;
 
-                
+                $estu->save();
 
             }
             $i++;
         }
     
-      dd($input);
+      
+      dd($GTU);
 
     
     }
