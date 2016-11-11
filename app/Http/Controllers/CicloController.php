@@ -9,6 +9,7 @@ use App\Ciclo;
 use App\Evaluacion;
 use App\MateriaInscrita;
 use App\Nota;
+use App\Estudiante;
 
 
 class CicloController extends Controller
@@ -244,6 +245,40 @@ class CicloController extends Controller
                 $eva->save();
             } 
 
+            $estudiante = Estudiante::all();
+
+
+            foreach ($estudiante as $estu) {
+
+                $unidadesMerito=0;
+                $unidadesValorativas=0;
+                $uVAcum=0;
+                $promedio=0;
+                $materiasGanadas=0;
+                $materiasReprob=0;
+                $MateriaInscrita2 = MateriaInscrita::where('estudiante_id','=',$estu->id)->get();
+
+
+
+                foreach ($MateriaInscrita2 as $mate) {
+                    if ($mate->nota_final>= 5.96){
+                        $promedio = $mate->nota_final;
+                        $materia = Materia::where('id','=',$mate->materia_id)->get();
+                        $unidadesValorativas = $materia->unidades_valorativas;
+                        $uVAcum += $unidadesValorativas;
+                        $unidadesMerito += ($promedio*$unidadesValorativas);
+                        $materiasGanadas += 1;
+                    }else{
+                        $materiasReprob += 1;
+                    }
+                    
+                }
+
+                $cum = $unidadesMerito/$uVAcum;
+                $estu->CUM = $cum;
+                $estu->materias_ganadas = $materiasGanadas;
+                $estu->materias_reprobadas = $materiasReprob;
+            }
             $ciclo->activa = $request->cicloActivo;
             $ciclo->save();
             flash('Se ha actualizado el ciclo con exito', 'success');
