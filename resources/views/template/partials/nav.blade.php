@@ -247,6 +247,14 @@
                     <ul class="treeview-menu">
                         <li><a href=" {{ url('/estado/create2') }} "><i class="fa fa-circle-o"></i>Estado Global de Alumnos</a></li>
                     </ul>
+
+                    <ul class="treeview-menu">
+
+                        <li><a href=" {{ url('/Tutorias') }} "><i class="fa fa-circle-o"></i>Ver tutorias</a></li>
+                    </ul>
+                    <ul class="treeview-menu">
+                        <li><a href=" {{ url('/Asesorias') }} "><i class="fa fa-circle-o"></i>Ver Asesorias</a></li>
+                    </ul>
                 </li>
                 
 

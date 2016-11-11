@@ -27,7 +27,7 @@
           <div id="panel" class="panel panel-primary">
             <div class="panel-heading">
                 <div>
-                  <h3>Seleccionar Materia</h3>
+                  <h3>Seleccionar Carrera</h3>
                 </div>
 
 

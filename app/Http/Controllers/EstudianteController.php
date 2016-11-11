@@ -173,12 +173,15 @@ class EstudianteController extends Controller
 
                 $estu->save();
 
+                flash('Se ha guardado exitosamente', 'success' );
+
             }
             $i++;
         }
-    
+
+        
       
-      dd($GTU);
+      return redirect()->route('estado.index');
 
     
     }
@@ -208,6 +211,10 @@ class EstudianteController extends Controller
                     $estu->grupoAsesoria_id = $GAU->id;
 
                     $estu->save();
+
+                    flash('Se ha guardado exitosamente', 'success' );
+
+
                 }else{
                     flash("No cumple con el 100% de materias ganadas", 'danger');
                 }
@@ -215,9 +222,11 @@ class EstudianteController extends Controller
             }
             $i++;
         }
+
+        
     
       
-      dd($input);
+       return redirect()->route('estado.index2');
 
     
     }
