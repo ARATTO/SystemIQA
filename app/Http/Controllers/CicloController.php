@@ -49,7 +49,7 @@ class CicloController extends Controller
      */
     public function store(Request $request){
         //dd($request->all());
-
+        
         $activo = Ciclo::where('activa', '=', 1)->get();
         $activa = 0;
         $ciclo = new Ciclo();
@@ -234,7 +234,15 @@ class CicloController extends Controller
                 $mat->activa = 0;
 
                 $mat->save();
-            }             
+            } 
+
+            $evaluacion = Evaluacion::where('activa', '=', 1)->get();
+
+            foreach ($evaluacion as $eva) {
+                $eva->activa = 0;
+
+                $eva->save();
+            } 
 
             $ciclo->activa = $request->cicloActivo;
             $ciclo->save();

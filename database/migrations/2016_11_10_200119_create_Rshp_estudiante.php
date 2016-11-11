@@ -13,8 +13,11 @@ class CreateRshpEstudiante extends Migration
     public function up()
     {
         Schema::table('estudiantes', function(Blueprint $table) {
-            $table->integer('grupoAsesoria_id')->unsigned();
+            $table->integer('grupoAsesoria_id')->nullable()->unsigned();
             $table->foreign('grupoAsesoria_id')->references('id')->on('grupo_asesoria')->onDelete('cascade');
+
+            $table->integer('grupoTutoria_id')->nullable()->unsigned();
+            $table->foreign('grupoTutoria_id')->references('id')->on('grupo_tutorias')->onDelete('cascade');
         });
     }
 
@@ -27,6 +30,7 @@ class CreateRshpEstudiante extends Migration
     {
         Schema::table('estudiantes', function(Blueprint $table) {
             $table->dropForeign(['grupoAsesoria_id']);
+            $table->dropForeign(['grupoTutoria_id']);
         });
     }
 }

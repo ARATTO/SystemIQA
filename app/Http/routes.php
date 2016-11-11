@@ -180,4 +180,46 @@ Route::get('tutor/{id}/destroy',[
 Route::get('estado/create','EstudianteController@create');
 Route::post('estado/show','EstudianteController@show');
 Route::get('estado/create2','EstudianteController@create2');
+Route::get('Tutorias',[
+        'uses' => 'EstudianteController@index',
+        'as' => 'estado.index'
+        ]);
+
+Route::get('Asesorias',[
+        'uses' => 'EstudianteController@index2',
+        'as' => 'estado.index2'
+        ]);
+
+Route::get('mostrarEstudiantes/{estado}/vista', [
+    'uses' => 'EstudianteController@verEstTutorias', 
+    'as'    => 'estado.vista'
+    ]);
+
+Route::get('mostrarEstudiantes/{estado}/vista2', [
+    'uses' => 'EstudianteController@verEstAsesorias', 
+    'as'    => 'estado.vista2'
+    ]);
+
+Route::get('mostrarEstudiantes/{id}/destroy',[
+        'uses' => 'EstudianteController@destroy',
+        'as' => 'estado.destroy'
+        ]);
+
+Route::get('mostrarEstudiantes/{id}/destroy2',[
+        'uses' => 'EstudianteController@destroy2',
+        'as' => 'estado.destroy2'
+        ]);
+
+
 Route::post('estado/show2','EstudianteController@show2');
+
+Route::post('estado/guardarTutoria',[
+        'uses' => 'EstudianteController@guardarTutoria', 
+        'as' => 'estado.estado_estudiante'
+        ]);
+
+Route::post('estado/guardarAsesoria',[
+        'uses' => 'EstudianteController@guardarAsesoria', 
+        'as' => 'estado.estado_global_estudiante'
+        ]);
+

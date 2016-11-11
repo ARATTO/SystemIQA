@@ -73,7 +73,6 @@
               		{!! form::label('fechaFin', 'Fecha de fin') !!}<br>
 	              
 	              	<input type="date" class="form-control" id="fechaFin" name="fechaFin" data-provide="datepicker" placeholder="mes/dia/año" required="true"  data-date-format="yyyy-mm-dd" onchange="compararFechas()"><br>
-	              
               </div>
 
               <div class="alert alert-warning" style="display: none" id="alertaCiclo">

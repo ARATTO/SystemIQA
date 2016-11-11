@@ -34,6 +34,25 @@
 <h3 class="box-little">Estudiantes encontrados</h3>
 </div>
 
+
+  {!! Form::open(['action' => 'EstudianteController@guardarAsesoria']) !!} 
+
+<table class="table table-stripped">
+    <thead>
+      <th>
+        <div>
+          {!! Form::label('grupo', 'Seleccione el asesor') !!}
+          {!! form::select('asesor', $asesores, null, ['class' => 'form-control select-category', 'placeholder' => 'Seleccione un asesor', 'required']) !!}
+        </div>
+      </th>
+      <th><div></div></th>
+      <th>  
+        {!! Form::submit('Guardar', ['class'=> 'btn btn-primary' ]) !!}  
+      </th>
+
+    </thead>
+  </table>
+
 <div class="box-body" style="overflow-x: auto;">
   
 <table class="table table-stripped">
@@ -42,7 +61,9 @@
     <th>Nombre</th>
     <th>Apellido</th>
     <th>Estado Global</th>
-    <th>Estado de Carrera</th>
+
+    <th>Asignar Asesor</th>
+
     <th>Porcentaje</th>
     <th>Progreso de carrera</th>
   </thead>
@@ -53,16 +74,16 @@
         <td>{{ $mat->nombre }}</td>
         <td>{{ $mat->apellido }}</td>
 
-        @if($mat->CUM >= 6)
+
+        @if($mat->CUM >= 7)
+
                                   <td><div  name="confirmo"  >APROBADO</div></td> 
                                 @else
                                   <td><div  name="confirmo"  >P.E.R.A</div></td>
                                 @endif
-        @if(($mat->materias_ganadas/46)*100 >= 60)
-                                  <td><div  name="confirmo"  >APTO PARA SERVICIO SOCIAL</div></td> 
-                                @else
-                                  <td><div  name="confirmo"  >NO APTO PARA SERVICIO SOCIAL</div></td>
-                                @endif
+
+        <td>  <input style="text-align:center;" type="checkbox" name="{{ $mat->id}}" value="{{ $mat->carnet }}">  </td>
+
         <td>{{ round(($mat->materias_ganadas/46)*100, 2) }}%</td>
 
         @if(round(($mat->materias_ganadas/46)*100, 2) >= 60)
@@ -93,4 +114,7 @@
 
 </div>
 </div>
+
+ {!! Form::close()!!}
+
 @endsection

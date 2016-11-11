@@ -64,7 +64,20 @@ class PorcentajeNotasController extends Controller
             $activa+=1;
         }
 
-       if($activa>0){
+        $numEval=0;
+
+        $eval = Evaluacion::where('materia_id', '=',  $request->id)
+        ->where('activa', "=", 1)
+        ->get();
+
+        foreach ($eval as $ev) {
+            $numEval+=1;
+        }
+
+
+
+
+       if($activa>0 && $numEval==0){
         //encontro un ciclo activo
             $evaluacion[0] = $request->nota1;
             $evaluacion[1] = $request->nota2;
