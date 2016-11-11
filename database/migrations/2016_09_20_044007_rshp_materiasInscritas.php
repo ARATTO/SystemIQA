@@ -21,6 +21,9 @@ class RshpMateriasInscritas extends Migration
         
         $table->integer('ciclo_id')->unsigned();
         $table->foreign('ciclo_id')->references('id')->on('ciclos')->onDelete('cascade');
+
+        $table->integer('grupo_id')->unsigned();
+        $table->foreign('grupo_id')->references('id')->on('grupos')->onDelete('cascade');
       });
     }
 
@@ -35,6 +38,7 @@ class RshpMateriasInscritas extends Migration
         $table->dropForeign(['estudiante_id']);
         $table->dropForeign(['materia_id']);
         $table->dropForeign(['ciclo_id']);
+        $table->dropForeign(['grupo_id']);
       });
     }
 }

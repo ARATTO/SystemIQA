@@ -1,5 +1,5 @@
 
-<script src=" {{ asset('jquery/jquery-3.1.0.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('jquery/jquery1.8.2.js') }}"></script>
 <script src=" {{ asset('plugins/bootstrap/js/bootstrap.js') }}" ></script>
 
 <!-- jQuery 2.1.4 -->
@@ -13,8 +13,7 @@
 <!-- Bootstrap 3.3.5 -->
 <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="{{ asset('plugins/morris/morris.min.js') }}"></script>
+
 <!-- Sparkline -->
 <script src="{{ asset('plugins/sparkline/jquery.sparkline.min.js') }}"></script>
 <!-- jvectormap -->
@@ -34,7 +33,7 @@
 <!-- FastClick -->
 <script src="{{ asset('plugins/fastclick/fastclick.min.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset('dist/js/app.min.js') }}"></script>
+<script src="{{ asset('dist/js/app.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
@@ -90,5 +89,6 @@ $('#codigo-mat').change(function(){
 
 <!--  FIN javascript de formularios de elias -->
 
-
+<script src="{{ asset('highcharts/code/highcharts.js') }}"></script>
+<script src="{{ asset('highcharts/code/modules/exporting.js') }}"></script>
 

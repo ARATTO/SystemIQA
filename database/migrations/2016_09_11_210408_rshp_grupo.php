@@ -19,6 +19,9 @@ class RshpGrupo extends Migration
 
           $table->integer('tipoGrupo_id')->unsigned();
           $table->foreign('tipoGrupo_id')->references('id')->on('tipo_grupos')->onDelete('cascade');
+
+          $table->integer('ciclo_id')->unsigned();
+          $table->foreign('ciclo_id')->references('id')->on('ciclos')->onDelete('cascade');
         });
 
         
@@ -36,6 +39,7 @@ class RshpGrupo extends Migration
         Schema::table('grupos', function(Blueprint $table){
           $table->dropForeign(['materia_id']);
           $table->dropForeign(['tipoGrupo_id']);
+          $table->dropForeign(['ciclo_id']);
         });
     }
 }

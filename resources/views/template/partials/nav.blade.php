@@ -109,7 +109,7 @@
                 @if(Auth::user()->rol_id == 1) 
 
                 <!--MOTTO-->
-                <li class="active treeview">
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
@@ -120,7 +120,7 @@
                 </li>
                 <!-- FIN MOTTO -->
                 <!--  Panel de Materias  -Elias   -->
-                <li class="active treeview" id="lista_elias">
+                <li class="treeview" id="lista_elias">
                     <a href="#">
                         <i class="glyphicon glyphicon-book"></i>
                         <span>Asignaturas</span>
@@ -137,7 +137,7 @@
                 </li>
                 <!--  Fin Panel de Materias      -->
                 <!--  Panel de Carreras  -Elias   -->
-                <li class="active treeview" id="lista_elias">
+                <li class="treeview" id="lista_elias">
                     <a href="#">
                         <i class="glyphicon glyphicon-education"></i>
                         <span>Carreras Universitarias</span> 
@@ -155,7 +155,7 @@
                 <!--  Fin Panel de Carreras      -->
                 <!--Alam-->
 
-                <li class="active treeview">
+                <li class="treeview">
                     <a href="#">
                         <i class="glyphicon glyphicon-book"></i> <span>Tutores</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
@@ -166,7 +166,7 @@
                 </li>
                 <!--FIN ALAM-->
                 <!--RODRIGO-->
-                <li class="active treeview">
+                <li class="treeview">
                     <a href="#">
                         <i class="glyphicon glyphicon-list-alt"></i> <span>Ciclo</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
@@ -195,7 +195,7 @@
                         </li>
                         <!-- FIN  LOBOS -->
                         <!--RODRIGO-->
-                        <li class="active treeview">
+                        <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-dashboard"></i> <span>Porcentaje de las notas</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
@@ -207,7 +207,7 @@
 
 
                         <!--RODRIGO-->
-                        <li class="active treeview">
+                        <li class="treeview">
                             <a href="#">
                                 <i class="glyphicon glyphicon-list-alt"></i> <span>Ingresar notas</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
@@ -215,7 +215,7 @@
                                 <li><a href=" {{ url('/ingresarNotas/seleccionar') }} "><i class="fa fa-circle-o"></i>Agregar notas</a></li>
                             </ul>
                         </li>
-                        <li class="active treeview">
+                        <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
@@ -223,12 +223,23 @@
                                 <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Verificar Estado de Alumnos</a></li>
                             </ul>
                         </li>
-
+                        <!--MOTTO-->
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa glyphicon glyphicon-stats"></i> <span>Graficos</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Crear Consulta</a></li>
+                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Inventando</a></li>
+                            </ul>
+                        </li>
+                        <!-- FIN MOTTO -->
+                        
                         <!-- Menus de Coordinador Catedra-->
                         @if(Auth::user()->rol_id == 3) 
 
                         <!--  Panel de Grupos  -Elias   -->
-                        <li class="active treeview" id="lista_elias">
+                        <li class="treeview" id="lista_elias">
                             <a href="#">
                                 <i class="glyphicon glyphicon-list-alt"></i>
                                 <span>Grupos</span> 

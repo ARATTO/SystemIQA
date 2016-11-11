@@ -101,7 +101,14 @@ Route::group(['middleware' => ['auth']], function() {
         ]);
 
         /* OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO */
-
+        //MOTTO
+            Route::resource('graficos', 'GraficosController');
+            Route::get('graficos/create', 'GraficosController@create');
+            Route::get('graficos/{id}/destroy', [
+                'as' => 'graficos.destroy',
+                'uses' => 'GraficosController@destroy'
+            ]);
+            //FIN MOTTO
         /////////////////////////////////////////////////////////////////////////
 
 
@@ -161,6 +168,8 @@ Route::group(['middleware' => ['auth']], function() {
             //--Carreras
             Route::resource('carreras', 'CarrerasController');
             Route::get('carreras/destroy/{id}', ['as' => 'carreras.destroy', 'uses' => 'CarrerasController@destroy']);
+            
+            
         });
 
         
