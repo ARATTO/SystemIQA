@@ -80,7 +80,7 @@
     <th>Nombre</th>
     <th>Apellido</th>
     <th>Estado Actual</th>
-    <th>Asesoria</th>
+    <th>Tutoria</th>
     <th>Estado de Carrera</th>
     <th>Porcentaje</th>
     <th>Progreso de carrera</th>
