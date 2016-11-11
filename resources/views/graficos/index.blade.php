@@ -27,7 +27,353 @@
     <!-- contenido principal -->
     <section class="content"  id="contenido_principal">
        <script type="text/javascript" src="{{ asset('jquery/jquery1.8.2.js') }}"></script>
+       <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- AREA CHART -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Resultados de Materia</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="chart">
+
+                                <script type="text/javascript">
+                                    $(function () {
+
+                                        // Radialize the colors
+                                        Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
+                                            return {
+                                                radialGradient: {
+                                                    cx: 0.5,
+                                                    cy: 0.3,
+                                                    r: 0.7
+                                                },
+                                                stops: [
+                                                    [0, color],
+                                                    [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+                                                ]
+                                            };
+                                        });
+
+                                        // Build the chart
+                                        $('#container5').highcharts({
+                                            chart: {
+                                                plotBackgroundColor: null,
+                                                plotBorderWidth: null,
+                                                plotShadow: false,
+                                                type: 'pie'
+                                            },
+                                            title: {
+                                                text: 'Resultados Quimica Tecnica|2015'
+                                            },
+                                            tooltip: {
+                                                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                                            },
+                                            plotOptions: {
+                                                pie: {
+                                                    allowPointSelect: true,
+                                                    cursor: 'pointer',
+                                                    dataLabels: {
+                                                        enabled: true,
+                                                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                                        style: {
+                                                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                                        },
+                                                        connectorColor: 'silver'
+                                                    }
+                                                }
+                                            },
+                                            series: [{
+                                                name: 'Estado:',
+                                                data: [
+                                                    { name: 'APROBADO', y: 66.33 },
+                                                    {
+                                                        name: 'REPROBADO',
+                                                        y: 33.67,
+                                                        sliced: true,
+                                                        selected: true
+                                                    }
+                                                    
+                                                ]
+                                            }]
+                                        });
+                                    });
+                                    </script>
+                                
+                                <!-- Grafico-->
+                                <div id="container5" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                <!-- FIN Grafico-->
+                                
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col (RIGHT) -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+        
         <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- AREA CHART -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Alumnos en PERA</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="chart">
+
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#container4').highcharts({
+                                            chart: {
+                                                type: 'area'
+                                            },
+                                            title: {
+                                                text: 'Alumnos en PERA'
+                                            },
+                                            subtitle: {
+                                                text: 'Ultimos: 5 años '
+                                            },
+                                            xAxis: {
+                                                allowDecimals: false,
+                                                labels: {
+                                                    formatter: function () {
+                                                        return this.value; // clean, unformatted number for year
+                                                    }
+                                                }
+                                            },
+                                            yAxis: {
+                                                title: {
+                                                    text: 'Alumnos'
+                                                },
+                                                labels: {
+                                                    formatter: function () {
+                                                        return this.value;
+                                                    }
+                                                }
+                                            },
+                                            tooltip: {
+                                                pointFormat: '{series.name} son <b>{point.y:,.0f}</b><br/> en el año {point.x}'
+                                            },
+                                            plotOptions: {
+                                                area: {
+                                                    pointStart: 2012,
+                                                    marker: {
+                                                        enabled: false,
+                                                        symbol: 'circle',
+                                                        radius: 2,
+                                                        states: {
+                                                            hover: {
+                                                                enabled: true
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            series: [{
+                                                name: 'APROBADO',
+                                                data: [120.0, 139.0, 109.0, 99.0, 103.0]
+                                            }, {
+                                                name: 'PERA',
+                                                data: [50.0, 40.0, 20.0, 30.0, 45.0]
+                                            }]
+                                        });
+                                    });
+                                    </script>
+                                
+                                <!-- Grafico-->
+                                <div id="container4" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                <!-- FIN Grafico-->
+                                
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col (RIGHT) -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+        
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- AREA CHART -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Aprobados|Reprobados por Materia</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="chart">
+
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#container3').highcharts({
+                                            title: {
+                                                text: 'Ingenieria Quimica',
+                                                x: -20 //center
+                                            },
+                                            subtitle: {
+                                                text: 'Materia: Quimica Tecnica',
+                                                x: -20
+                                            },
+                                            xAxis: {
+                                                categories: ['2012', '2013', '2014', '2015', '2016']
+                                            },
+                                            yAxis: {
+                                                title: {
+                                                    text: 'Alumnos Aprobados|Reprobados'
+                                                },
+                                                plotLines: [{
+                                                        value: 0,
+                                                        width: 1,
+                                                        color: '#808080'
+                                                    }]
+                                            },
+                                            tooltip: {
+                                                valueSuffix: '#'
+                                            },
+                                            legend: {
+                                                layout: 'vertical',
+                                                align: 'right',
+                                                verticalAlign: 'middle',
+                                                borderWidth: 0
+                                            },
+                                            series: [{
+                                                    name: 'Aprobados',
+                                                    data: [120.0, 139.0, 109.0, 99.0, 103.0]
+                                                },{
+                                                    name: 'Reprobados',
+                                                    data: [50.0, 40.0, 20.0, 30.0, 45.0]
+                                                }]
+                                        });
+                                    });
+                                </script>
+                                
+                                <!-- Grafico-->
+                                <div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                <!-- FIN Grafico-->
+                                
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col (RIGHT) -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+        
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- AREA CHART -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Aprobados por Materia</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="chart">
+
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#container1').highcharts({
+                                            title: {
+                                                text: 'Ingenieria Quimica',
+                                                x: -20 //center
+                                            },
+                                            subtitle: {
+                                                text: 'Materia: Quimica Tecnica',
+                                                x: -20
+                                            },
+                                            xAxis: {
+                                                categories: ['2012', '2013', '2014', '2015', '2016']
+                                            },
+                                            yAxis: {
+                                                title: {
+                                                    text: 'Alumnos Aprobados'
+                                                },
+                                                plotLines: [{
+                                                        value: 0,
+                                                        width: 1,
+                                                        color: '#808080'
+                                                    }]
+                                            },
+                                            tooltip: {
+                                                valueSuffix: '#'
+                                            },
+                                            legend: {
+                                                layout: 'vertical',
+                                                align: 'right',
+                                                verticalAlign: 'middle',
+                                                borderWidth: 0
+                                            },
+                                            series: [{
+                                                    name: 'Quimica Tecnica',
+                                                    data: [120.0, 139.0, 109.0, 99.0, 103.0]
+                                                }]
+                                        });
+                                    });
+                                </script>
+                                
+                                <!-- Grafico-->
+                                <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                <!-- FIN Grafico-->
+                                
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col (RIGHT) -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+        
         <section class="content">
             <div class="row">
                 <div class="col-md-12">
@@ -45,11 +391,9 @@
                         <div class="box-body">
                             <div class="chart">
 
-                                
-
                                 <script type="text/javascript">
                                     $(function () {
-                                        $('#container1').highcharts({
+                                        $('#container2').highcharts({
                                             title: {
                                                 text: 'Monthly Average Temperature',
                                                 x: -20 //center
@@ -97,71 +441,7 @@
                                         });
                                     });
                                 </script>
-                                
-                                <!-- Grafico-->
-                                <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                                <!-- FIN Grafico-->
-                                
-                            </div>
-
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
-                <!-- /.col (RIGHT) -->
-            </div>
-            <!-- /.row -->
-        </section>
-        <!-- /.content -->
-        
-        <section class="content">
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- AREA CHART -->
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Area Chart</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                                
-                            </div>
-                        </div>
-                        <div class="box-body">
-                            <div class="chart">
-
-                              
-                                 <script type="text/javascript">
-                                    $(function () {
-
-                                        $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
-                                            // Create the chart
-                                            $('#container2').highcharts('StockChart', {
-
-
-                                                rangeSelector: {
-                                                    selected: 1
-                                                },
-
-                                                title: {
-                                                    text: 'AAPL Stock Price'
-                                                },
-
-                                                series: [{
-                                                    name: 'AAPL',
-                                                    data: data,
-                                                    tooltip: {
-                                                        valueDecimals: 2
-                                                    }
-                                                }]
-                                            });
-                                        });
-
-                                    });
-
-                                  </script>
+                                 
                                 
                                 <!-- Grafico-->
                                 <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
