@@ -51,7 +51,7 @@
                   <select name="materiasAlimentos" id="materiasAlimentos" class="form-control selectpicker">
                     @foreach($materias as $materia)
                         @foreach ($materia->carreras as $v)
-                            @if($v->id == 2)
+                            @if($v->id == 1)
                               <option id="hola" value= {{$materia->id}} > {{$materia->nombre}} </option>
                             @endif  
                         @endforeach
@@ -66,7 +66,7 @@
                   <select name="materiasQuimica" id="materiasQuimica" class="form-control selectpicker">
                     @foreach($materias as $materia)
                         @foreach ($materia->carreras as $v)
-                            @if($v->id == 1)
+                            @if($v->id == 2)
                               <option  id="valor" value= {{$materia->id}} > {{$materia->nombre}} </option>
                             @endif  
                         @endforeach
@@ -136,7 +136,7 @@
             function(){
                // alert( document.getElementById('CarreraElejida').value );
 
-                if(document.getElementById('CarreraElejida').value == 1){
+                if(document.getElementById('CarreraElejida').value == 2){
                   document.getElementById(1).style.display = 'block'; 
                   document.getElementById(2).style.display = 'none';  
                 }else{

@@ -8,6 +8,10 @@
 
 2. $composer install
 
+2.55 $composer dump-autoload
+
+2.555 $ php artisan db:sedd
+
 2.5 $php artisan config:cache
 
 3. $php artisan key:generate

@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Ciclo;
+use App\Evaluacion;
+use App\MateriaInscrita;
+use App\Nota;
+use App\Estudiante;
+
 
 class CicloController extends Controller
 {
@@ -45,7 +50,7 @@ class CicloController extends Controller
      */
     public function store(Request $request){
         //dd($request->all());
-
+        
         $activo = Ciclo::where('activa', '=', 1)->get();
         $activa = 0;
         $ciclo = new Ciclo();
@@ -56,7 +61,7 @@ class CicloController extends Controller
         }
 
 
-        if($activa = 0 && ($request->cicloActivo) == 1){
+        if($activa == 0 && ($request->cicloActivo) == 1){
            
             $fecha = '';    
 
@@ -79,7 +84,7 @@ class CicloController extends Controller
 
             
             return redirect()->route('ciclo.index');
-        }elseif ($activa = 0 && $request->cicloActivo == 0) {
+        }elseif ($activa == 0 && $request->cicloActivo == 0) {
             
             $fecha = '';    
 
@@ -99,6 +104,7 @@ class CicloController extends Controller
             $ciclo->save();
 
             flash('Se ha creado el ciclo con exito', 'success');
+            return redirect()->route('ciclo.index');
 
         }elseif ($activa > 0 && $request->cicloActivo == 0) {
            
@@ -120,6 +126,7 @@ class CicloController extends Controller
             $ciclo->save();
 
             flash('Se ha creado el ciclo con exito', 'success');
+            return redirect()->route('ciclo.index');
         }else{
 
             flash('Ya existe un ciclo activo por favor asegurese de haber finalizado ciclos anteriores', 'warning');
@@ -170,6 +177,8 @@ class CicloController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $ciclo = Ciclo::find($id);
         
 
@@ -179,14 +188,110 @@ class CicloController extends Controller
         $ciclo->fecha_inicio = $request->fechaInicio;
         $ciclo->fecha_fin = $request->fechaFin;
 
+        $estadoAnt = $request->estadoAnterior;
         
+        if ($estadoAnt < $request->cicloActivo) {
+            //caso cuando el estado anterior es 0 y pasa a 1
 
-        $ciclo->save();
+                $activo = Ciclo::where('activa', '=', 1)->get();
+                $activa = 0;
 
-        flash('Se ha actualizado el ciclo con exito', 'success');
+                foreach ($activo as $ac) {
+                    $activa+=1;
+                }
+
+                if ($activa>0) {
+                    flash('Ya existe un ciclo activo por favor asegurese de haber finalizado ciclos anteriores', 'warning');
+
+            //return redirect()->route('ciclo.index');
+                    return redirect()->route('ciclo.index');
+                }else{
+                    $matIns = MateriaInscrita::where('ciclo_id', '=', $id)->get();
+
+                    foreach ($matIns as $mat) {
+                        $mat->activa = 1;
+
+                        $mat->save();
+                    }
+
+                    $ciclo->activa = $request->cicloActivo;
+                    $ciclo->save();
+
+                    flash('Se ha actualizado el ciclo con exito', 'success');
 
         
-        return redirect()->route('ciclo.index');
+                    return redirect()->route('ciclo.index');
+
+                }
+
+        }else{
+            //caso cuando el estado es 1 y pasa a cero o es 0 y se queda en cero
+            
+             
+
+            $matIns = MateriaInscrita::where('ciclo_id', '=', $id)->get();
+
+            foreach ($matIns as $mat) {
+                $mat->activa = 0;
+
+                $mat->save();
+            } 
+
+            $evaluacion = Evaluacion::where('activa', '=', 1)->get();
+
+            foreach ($evaluacion as $eva) {
+                $eva->activa = 0;
+
+                $eva->save();
+            } 
+
+            $estudiante = Estudiante::all();
+
+
+            foreach ($estudiante as $estu) {
+
+                $unidadesMerito=0;
+                $unidadesValorativas=0;
+                $uVAcum=0;
+                $promedio=0;
+                $materiasGanadas=0;
+                $materiasReprob=0;
+                $MateriaInscrita2 = MateriaInscrita::where('estudiante_id','=',$estu->id)->get();
+
+
+
+                foreach ($MateriaInscrita2 as $mate) {
+                    if ($mate->nota_final>= 5.96){
+                        $promedio = $mate->nota_final;
+                        $materia = Materia::where('id','=',$mate->materia_id)->get();
+                        $unidadesValorativas = $materia->unidades_valorativas;
+                        $uVAcum += $unidadesValorativas;
+                        $unidadesMerito += ($promedio*$unidadesValorativas);
+                        $materiasGanadas += 1;
+                    }else{
+                        $materiasReprob += 1;
+                    }
+                    
+                }
+
+                $cum = $unidadesMerito/$uVAcum;
+                $estu->CUM = $cum;
+                $estu->materias_ganadas = $materiasGanadas;
+                $estu->materias_reprobadas = $materiasReprob;
+            }
+            $ciclo->activa = $request->cicloActivo;
+            $ciclo->save();
+            flash('Se ha actualizado el ciclo con exito', 'success');
+
+        
+            return redirect()->route('ciclo.index');
+        }
+
+
+
+
+
+
     }
 
     /**

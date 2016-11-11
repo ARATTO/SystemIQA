@@ -61,9 +61,12 @@
 
       <div class="box-body">
 
-     
-
-      <div class="form-group"  >
+      <div class="form-group" >
+        {!! Form::label('grupo', 'Seleccione el grupo teorico') !!}
+        {!! form::select('id', $grupos, null, ['class' => 'form-control select-category', 'placeholder' => 'Seleccione un grupo', 'required']) !!}
+      </div>
+          
+      <div  >
              <label>Agregar Archivo de Excel </label>
               <input name="archivo" id="archivo" type="file"   class="archivo form-control"  required/><br /><br />
       </div>

@@ -66,10 +66,17 @@
 
           <div class="form-group">
             {!! Form::label('horario','Horario') !!}
-            {!! Form::text('horario',null,['class'=>'form-control  time-clase','required'])!!}  
           </div>
 
+        <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+            <input type="time" class="form-control" value="6:20" name="horario">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-time"></span>
+            </span>
+        </div>
+
            <div class="form-group">
+           <br>
             {!! Form::label('cantidad_estudiante','Cantidad de Estudiantes') !!}
             {!! Form::number('cantidad_estudiante',0,['class'=>'form-control','min'=>0,'max'=>1000,'required']) !!}
           </div>
@@ -88,3 +95,11 @@
           </div>
 
 @endsection
+
+
+@section('js')
+
+<script type="text/javascript">
+    $('.clockpicker').clockpicker();
+    </script>
+@endsection('js')

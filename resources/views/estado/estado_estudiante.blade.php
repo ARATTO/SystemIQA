@@ -33,8 +33,46 @@
 <div class="box-header">
 <h3 class="box-little">Estudiantes encontrados</h3>
 </div>
+  {!! Form::open(['action' => 'EstudianteController@guardarTutoria']) !!} 
+
+  <table class="table table-stripped">
+    <thead>
+      <th>
+        <div>
+          {!! form::label('fechagrupo', 'Fecha de tutoria') !!}<br>
+            
+              <input type="date" class="form-control" id="fecha_grupo" name="fecha_grupo" data-provide="datepicker" placeholder="año/mes/dia" required="true" data-date-format="yyyy-mm-dd">
+            
+        </div>
+      </th>
+      <th>
+        <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+              {!! form::label('horagrupo', 'Hora de tutoria') !!}<br>
+              <input type="time" class="form-control" value="6:20" name="hora">  
+        </div>
+      <th>
+        <div>
+          {!! Form::label('tutor', 'Seleccione el tutor') !!}
+          {!! form::select('tutor', $tutores, null, ['class' => 'form-control select-category', 'placeholder' => 'Seleccione un tutor', 'required']) !!}
+      </div>
+      </th>
+      </th>
+
+      <th>  
+        {!! Form::submit('Guardar', ['class'=> 'btn btn-primary btn-lg' ]) !!}  
+      </th>
+
+    </thead>
+  </table>
+
+          <div class="form-group" style="display: none;">
+                {!! Form::text('materiaSeleccionada',$materiaSeleccionada,['class'=>'form-control']) !!}
+        </div>
+
+
 
 <div class="box-body" style="overflow-x: auto;">
+
   
 <table class="table table-stripped">
   <thead>
@@ -42,7 +80,7 @@
     <th>Nombre</th>
     <th>Apellido</th>
     <th>Estado Actual</th>
-    <th>Estado Global</th>
+    <th>Tutoria</th>
     <th>Estado de Carrera</th>
     <th>Porcentaje</th>
     <th>Progreso de carrera</th>
@@ -53,17 +91,9 @@
         <td>{{ $mat->estudiante->carnet }}</td>
         <td>{{ $mat->estudiante->nombre }}</td>
         <td>{{ $mat->estudiante->apellido }}</td>
-         @if($mat->estudiante->promedio_ciclo >= 6)
-                 
-                                  <td><div  name="confirmo"  >APROBADO</div></td> 
-                                  @else
-                                  <td><div  name="confirmo"  >REPROBADO</div></td>
-                                @endif 
-        @if($mat->estudiante->CUM >= 6)
-                                  <td><div  name="confirmo"  >APROBADO</div></td> 
-                                @else
-                                  <td><div  name="confirmo"  >P.E.R.A</div></td>
-                                @endif
+        <td>{{ $mat->nota_final }} </td>
+
+        <td>  <input type="checkbox" name="{{ $mat->estudiante->id}}" value="{{ $mat->estudiante->carnet }}">  </td>
         @if(($mat->estudiante->materias_ganadas/46)*100 >= 60)
                                   <td><div  name="confirmo"  >APTO PARA SERVICIO SOCIAL</div></td> 
                                 @else
@@ -99,4 +129,23 @@
 
 </div>
 </div>
+
+ {!! Form::close()!!}
+
 @endsection
+
+
+@section('js')
+
+
+  <script>
+    $('.datepicker').datepicker({
+        startDate: '-3d'
+      });
+  </script>
+
+  <script type="text/javascript">
+    $('.clockpicker').clockpicker();
+  </script>
+@endsection('js')
+

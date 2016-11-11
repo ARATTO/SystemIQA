@@ -22,8 +22,8 @@ class Tutor extends Model
       return $this->hasMany('App\User');
     }
 
-    public function grupo_tutorias(){
-      return $this->belongsTo('App\GrupoTutorias');
+    public function grupo_tutoria(){
+      return $this->hasMany('App\GrupoTutoria');
     }
 
 }
