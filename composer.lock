@@ -659,8 +659,6 @@
                 "storage"
             ],
             "time": "2016-10-19 20:38:46"
-<<<<<<< HEAD
-=======
         },
         {
             "name": "maatwebsite/excel",
@@ -728,7 +726,6 @@
                 "laravel"
             ],
             "time": "2016-09-15 21:03:21"
->>>>>>> origin/Lobos
         },
         {
             "name": "monolog/monolog",
@@ -3425,7 +3422,6 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2016-10-24 18:41:13"
-<<<<<<< HEAD
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -3473,8 +3469,6 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2015-12-08 16:14:14"
-=======
->>>>>>> origin/Lobos
         },
         {
             "name": "webmozart/assert",
