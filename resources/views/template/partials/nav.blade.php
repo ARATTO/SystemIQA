@@ -246,6 +246,7 @@
                     <ul class="treeview-menu">
                         <li><a href=" {{ url('/estado/create2') }} "><i class="fa fa-circle-o"></i>Verificar Estado Global de Alumnos</a></li>
                     </ul>
+<<<<<<< HEAD
                 </li>
                 
 
@@ -266,6 +267,10 @@
                   </ul>
                 </li>
                 <!--  Fin Panel de Reporte      -->
+=======
+                </li>
+                
+>>>>>>> origin/rodrigo
 
 
 
