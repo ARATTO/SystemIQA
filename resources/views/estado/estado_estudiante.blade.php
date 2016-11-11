@@ -52,7 +52,7 @@
         </div>
       <th>
         <div>
-          {!! Form::label('grupo', 'Seleccione el grupo teorico') !!}
+          {!! Form::label('grupo', 'Seleccione el tutor) !!}
           {!! form::select('tutor', $tutores, null, ['class' => 'form-control select-category', 'placeholder' => 'Seleccione un tutor', 'required']) !!}
       </div>
       </th>

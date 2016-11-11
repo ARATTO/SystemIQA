@@ -34,4 +34,8 @@ class Estudiante extends Model
       return $this->hasMany('App\GrupoTutoria');
     }
 
+        public function asesoria(){
+      return $this->belongsTo('App\GrupoAsesoria');
+    }
+
 }

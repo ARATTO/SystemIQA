@@ -19,6 +19,8 @@ use App\MateriaInscrita;
 use App\Ciclo;
 use App\Tutor;
 use App\GrupoTutoria;
+use App\User;
+use App\GrupoAsesoria;
 
 class EstudianteController extends Controller
 {
@@ -141,11 +143,12 @@ class EstudianteController extends Controller
             ->where("carrera_id","=",$carreraElejida)
             ->get();
 
-        
+        $asesores = User::where("rol_id","=",7)->lists('nombre','id');;
         //dd($request);
         // dd($materiaSeleccionada);
         return view('estado.estado_global_estudiante')
-        ->with('estudiantes',$Estudents);
+        ->with('estudiantes',$Estudents)
+        ->with('asesores',$asesores);
         //->with('grupoSeleccionado',$grupoElejido);
     }
 
@@ -184,6 +187,45 @@ class EstudianteController extends Controller
     
       
       dd($GTU);
+
+    
+    }
+
+
+    public function guardarAsesoria(Request $request){
+        $input = $request->all();
+        $i=0;
+    
+
+        $grupoAsesoria=new GrupoAsesoria;
+        
+        $grupoAsesoria->user_id = $request->asesor;
+
+        $grupoAsesoria->save();
+
+        $GA= grupoAsesoria::all();
+        $GAU = $GA->last();
+        
+        foreach ($input as $asesoria) {
+            
+            if ($i>1) {
+                $estu = Estudiante::where('carnet', '=', $asesoria)->first();
+            
+                if ($estu->materias_ganadas == 46) {
+                    
+                    $estu->grupoAsesoria_id = $GAU->id;
+
+                    $estu->save();
+                }else{
+                    flash("No cumple con el 100% de materias ganadas", 'danger');
+                }
+
+            }
+            $i++;
+        }
+    
+      
+      dd($input);
 
     
     }
