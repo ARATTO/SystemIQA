@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGrupoTutoriaTable extends Migration
+class CreateGrupoAsesoriaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,8 @@ class CreateGrupoTutoriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('grupo_tutorias', function (Blueprint $table) {
+        Schema::create('grupo_asesoria', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('fecha_grupo');
-            $table->time('hora');
-
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ class CreateGrupoTutoriaTable extends Migration
      */
     public function down()
     {
-        Schema::drop('grupo_tutorias');
+        Schema::drop('grupo_asesoria');
     }
 }

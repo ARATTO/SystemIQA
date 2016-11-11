@@ -145,6 +145,14 @@ Route::get('carreras/destroy/{id}',['as'=>'carreras.destroy','uses'=>'CarrerasCo
 			//--Grupos
 Route::resource('grupos','GruposController');
 Route::get('grupos/destroy/{id}',['as'=>'grupos.destroy','uses'=>'GruposController@destroy']);
+
+			//Reportes
+//Route::resource('reportes','ReportesController');
+Route::get('reportes/ListadoEstudiantes',['as'=>'reportes.listado_estudiantes','uses'=>'ReportesController@CrearListadoEstudiantes']);
+Route::get('reportes/GenerarPDFListadoEstudiantes',['as'=>'reportes.pdf_listado_estudiantes','uses'=>'ReportesController@GenerarPDFListadoEstudiantes']);
+
+
+
 //FIN rutas Elias
 
 

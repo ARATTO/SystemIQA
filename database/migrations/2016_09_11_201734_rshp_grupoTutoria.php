@@ -17,8 +17,11 @@ class RshpGrupoTutoria extends Migration
             $table->integer('tutor_id')->unsigned();
             $table->foreign('tutor_id')->references('id')->on('tutores')->onDelete('cascade');
 
-            $table->integer('estudiante_id')->unsigned();
-            $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
+            $table->integer('materia_id')->nullable()->unsigned();
+            $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
+
+            $table->integer('ciclo_id')->nullable()->unsigned();
+            $table->foreign('ciclo_id')->references('id')->on('ciclos')->onDelete('cascade');
         });
     }
 
@@ -32,7 +35,8 @@ class RshpGrupoTutoria extends Migration
         //
         Schema::table('grupo_tutorias', function (Blueprint $table) {
           $table->dropForeign(['tutor_id']);
-          $table->dropForeign(['estudiante_id']);
+          $table->dropForeign(['materia_id']);
+          $table->dropForeign(['ciclo_id']);
         });
     }
 }
