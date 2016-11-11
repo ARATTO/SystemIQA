@@ -29,5 +29,9 @@ class Ciclo extends Model
      public function grupo(){
       return $this->hasOne('App\Grupo');
     }
+
+    public function grupo_tutoria(){
+      return $this->belongsTo('App\GrupoTutoria');
+    }
     
 }

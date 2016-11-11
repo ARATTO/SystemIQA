@@ -13,9 +13,9 @@ class CreateGrupoTutoriaTable extends Migration
     public function up()
     {
         Schema::create('grupo_tutorias', function (Blueprint $table) {
-            $table->string('codigo')->primary();
-            $table->integer('numero_grupo');
+            $table->increments('id');
             $table->date('fecha_grupo');
+            $table->time('hora');
 
             $table->timestamps();
         });
