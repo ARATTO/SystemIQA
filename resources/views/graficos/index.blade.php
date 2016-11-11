@@ -26,7 +26,7 @@
 
     <!-- contenido principal -->
     <section class="content"  id="contenido_principal">
-        
+       <script type="text/javascript" src="{{ asset('jquery/jquery1.8.2.js') }}"></script>
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -45,11 +45,11 @@
                         <div class="box-body">
                             <div class="chart">
 
-                                <script type="text/javascript" src="{{ asset('jquery/jquery1.8.2.js') }}"></script>
+                                
 
                                 <script type="text/javascript">
                                     $(function () {
-                                        $('#container').highcharts({
+                                        $('#container1').highcharts({
                                             title: {
                                                 text: 'Monthly Average Temperature',
                                                 x: -20 //center
@@ -99,7 +99,7 @@
                                 </script>
                                 
                                 <!-- Grafico-->
-                                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                                 <!-- FIN Grafico-->
                                 
                             </div>
@@ -114,6 +114,70 @@
             <!-- /.row -->
         </section>
         <!-- /.content -->
+        
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- AREA CHART -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Area Chart</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="chart">
+
+                              
+                                 <script type="text/javascript">
+                                    $(function () {
+
+                                        $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+                                            // Create the chart
+                                            $('#container2').highcharts('StockChart', {
+
+
+                                                rangeSelector: {
+                                                    selected: 1
+                                                },
+
+                                                title: {
+                                                    text: 'AAPL Stock Price'
+                                                },
+
+                                                series: [{
+                                                    name: 'AAPL',
+                                                    data: data,
+                                                    tooltip: {
+                                                        valueDecimals: 2
+                                                    }
+                                                }]
+                                            });
+                                        });
+
+                                    });
+
+                                  </script>
+                                
+                                <!-- Grafico-->
+                                <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                <!-- FIN Grafico-->
+                                
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col (RIGHT) -->
+            </div>
+            <!-- /.row -->
+        </section>
     </section>
 </div>
 <!-- /.content-wrapper -->
