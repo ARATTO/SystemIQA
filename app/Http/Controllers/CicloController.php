@@ -49,7 +49,7 @@ class CicloController extends Controller
      */
     public function store(Request $request){
         //dd($request->all());
-
+        
         $activo = Ciclo::where('activa', '=', 1)->get();
         $activa = 0;
         $ciclo = new Ciclo();

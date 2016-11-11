@@ -69,7 +69,7 @@
           </div>
 
         <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
-            <input type="time" class="form-control" value="13:14" name="horario">
+            <input type="time" class="form-control" value="6:20" name="horario">
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-time"></span>
             </span>

@@ -19,6 +19,7 @@ use Laracasts\Flash\Flash;
 use DB;
 
 
+
 class FormulariosController extends Controller
 {
    
@@ -35,6 +36,9 @@ class FormulariosController extends Controller
   }
 
   public function cargar_datos_usuarios(Request $request){
+     $Carrera=$request->carrera;
+     $Materia=$request->materia;
+     $Grupo = $request->id;
 
     $activo = Ciclo::where('activa', '=', 1)->get();
     $acumuladorDeciclo=0;
@@ -44,14 +48,18 @@ class FormulariosController extends Controller
       $acumuladorDeciclo+=1;
     }
 
+    $parcial = Evaluacion::where('materia_id',"=",$Materia)
+    ->where("activa","=",1)
+    ->get();
 
-    if ($acumuladorDeciclo>0) {
+
+    if ($acumuladorDeciclo>0 && count($parcial)) {
       
-     $Carrera=$request->carrera;
-     $Materia=$request->materia;
+
 
      Cache::put('carrera',$Carrera,5);
      Cache::put('materia',$Materia,5);
+     Cache::put('grupo',$Grupo,5);
 
      $archivo = $request->file('archivo');
      
@@ -67,6 +75,7 @@ class FormulariosController extends Controller
     $hoja->each(function($fila) {
       $materia_cache=Cache::get('materia');
       $carrera_cache=Cache::get('carrera');
+      $grupo_cache=Cache::get('grupo');
       $materia=Materia::find($materia_cache);
       $carnetestudiante=Estudiante::where("carnet","=",$fila->car)->first();
 
@@ -106,7 +115,7 @@ class FormulariosController extends Controller
               $materiaInscrita->nota_final=0.0;
               $materiaInscrita->estudiante()->associate($carnetestudiante);
               $materiaInscrita->materia()->associate($materia);
-
+              $materiaInscrita->grupo_id = $grupo_cache;
               $activo = Ciclo::where('activa', '=', 1)->get();
 
               $idCiclo;
@@ -201,7 +210,7 @@ class FormulariosController extends Controller
     }//FIN DEL IF QUE COMPRUEBA SI EXISTE UN CICLO ACTIVO
     else{
       // no hayciclo activo asi que no debe guardar
-          flash("NO existe un ciclo activo",'danger');
+          flash("NO existe un ciclo activo, o no a ingresado las evaluaciones",'danger');
           $materias = Materia::all();
 
           $materias->each(function($materias){
@@ -244,7 +253,7 @@ class FormulariosController extends Controller
 
 
       $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
-
+      
 
 
       return view('formularios.create')
@@ -276,11 +285,13 @@ class FormulariosController extends Controller
                 $materiaSeleccionada = $request->materiasAlimentos; 
             }
 
+        $grupos = Grupo::where("materia_id","=",$materiaSeleccionada)->lists('codigo','id');;
         //dd($request);
         // dd($materiaSeleccionada);
         return view('formularios.cargar_usuarios')
         ->with('carreraSeleccionada',$carreraElejida)
-        ->with('materiaSeleccionada',$materiaSeleccionada); 
+        ->with('materiaSeleccionada',$materiaSeleccionada)
+        ->with('grupos',$grupos); 
         //->with('grupoSeleccionado',$grupoElejido);
 
 

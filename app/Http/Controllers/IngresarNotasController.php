@@ -101,6 +101,10 @@ class IngresarNotasController extends Controller
             ->join('notas', 'materias_inscritas.id', '=', 'notas.materiaInscrita_id' )
             ->get();
 
+
+
+            
+
             //dd($join);
 
            
