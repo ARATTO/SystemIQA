@@ -36,7 +36,7 @@ class RshpGrupoTutoria extends Migration
         Schema::table('grupo_tutorias', function (Blueprint $table) {
           $table->dropForeign(['tutor_id']);
           $table->dropForeign(['materia_id']);
-          $table->dropForeign(['ciclos_id']);
+          $table->dropForeign(['ciclo_id']);
         });
     }
 }

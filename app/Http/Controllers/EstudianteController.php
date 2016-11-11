@@ -17,6 +17,8 @@ use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use App\MateriaInscrita;
 use App\Ciclo;
+use App\Tutor;
+use App\GrupoTutoria;
 
 class EstudianteController extends Controller
 {
@@ -39,7 +41,7 @@ class EstudianteController extends Controller
 
         $materiaSeleccionada;
 
-            if($request->CarreraElejida == 1){
+            if($request->CarreraElejida == 2){
                 $materiaSeleccionada = $request->materiasQuimica; 
             }else{
                 $materiaSeleccionada = $request->materiasAlimentos; 
@@ -47,25 +49,45 @@ class EstudianteController extends Controller
 
         $CA = Ciclo::where('activa', '=', 1)->first();
 
-        $materiaInscrita = MateriaInscrita::where("materia_id", "=",$materiaSeleccionada)
-        ->where('activa', '=', 1)
-        ->where('ciclo_id', '=', $CA->id)
-        ->orderBy('nota_final', 'asc')
-        ->paginate(1000);
+        if (count($CA)==0) {
+            $materias = Materia::all();
+
+            $materias->each(function($materias){
+                $materias->carreras;
+            });
+
+            $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+
+            flash("NO existe un ciclo activo",'danger');
+
+            return view('estado.create')
+            ->with('carrera',$carrera)
+            ->with('materias',$materias);
+        }else{
+            $materiaInscrita = MateriaInscrita::where("materia_id", "=",$materiaSeleccionada)
+            ->where('activa', '=', 1)
+            ->where('ciclo_id', '=', $CA->id)
+            ->orderBy('nota_final', 'asc')
+            ->paginate(1000);
 
 
-        $materiaInscrita->each(function($materiaInscrita){
-            $materiaInscrita->estudiante;
-        } );
+            $materiaInscrita->each(function($materiaInscrita){
+                $materiaInscrita->estudiante;
+            } );
+
+            $tutores = Tutor::all()->lists('nombre','id');;
 
 
+            //dd($request);
+            // dd($materiaSeleccionada);
+            return view('estado.estado_estudiante')
+            ->with('estudiantes',$materiaInscrita) 
+            ->with('materiaSeleccionada',$materiaSeleccionada)
+            ->with('tutores',$tutores); 
+            //->with('grupoSeleccionado',$grupoElejido);
+        }
 
 
-        //dd($request);
-        // dd($materiaSeleccionada);
-        return view('estado.estado_estudiante')
-        ->with('estudiantes',$materiaInscrita); 
-        //->with('grupoSeleccionado',$grupoElejido);
     }
 
 
@@ -126,5 +148,37 @@ class EstudianteController extends Controller
         ->with('estudiantes',$Estudents);
         //->with('grupoSeleccionado',$grupoElejido);
     }
+
+
+    public function guardarTutoria(Request $request){
+      $input = $request->all();
+        $i=0;
+        $CA = Ciclo::where('activa', '=', 1)->first();
+
+        $grupoTutoria=new GrupoTutoria;
+        $grupoTutoria->fecha_grupo = $request->fecha_grupo;
+        $grupoTutoria->hora = $request->hora;
+        $grupoTutoria->tutor_id = $request->tutor;
+        $grupoTutoria->materia_id = $request->materiaSeleccionada;
+        $grupoTutoria->ciclo_id = $CA->id;
+
+        $grupoTutoria->save();
+
+        foreach ($input as $tutoria) {
+            
+            if ($i>4) {
+                $estu = Estudiante::where('carnet', '=', $input)->first();
+
+                
+
+            }
+            $i++;
+        }
+    
+      dd($input);
+
+    
+    }
+
 
 }

@@ -181,3 +181,10 @@ Route::get('estado/create','EstudianteController@create');
 Route::post('estado/show','EstudianteController@show');
 Route::get('estado/create2','EstudianteController@create2');
 Route::post('estado/show2','EstudianteController@show2');
+
+Route::post('estado/guardarAsesoria',[
+        'uses' => 'EstudianteController@guardarTutoria', 
+        'as' => 'estado.estado_estudiante'
+        ]);
+
+
