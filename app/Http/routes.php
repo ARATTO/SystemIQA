@@ -127,6 +127,20 @@ Route::group(['middleware' => ['auth']], function() {
                 'as' => 'graficos.destroy',
                 'uses' => 'GraficosController@destroy'
             ]);
+            Route::post('graficos/por_materia_actual', [
+                'uses' => 'GraficosController@PorMateriaActual',
+                'as' => 'graficos.actual'
+            ]);
+            Route::post('graficos/por_materia_ciclos', [
+                'uses' => 'GraficosController@PorMateriaCiclos',
+                'as' => 'graficos.ciclos'
+            ]);
+            
+            Route::post('graficos/global_pera', [
+                'uses' => 'GraficosController@GlobalPera',
+                'as' => 'graficos.pera'
+            ]);
+            
             //FIN MOTTO
         /////////////////////////////////////////////////////////////////////////
 

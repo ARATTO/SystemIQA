@@ -95,3 +95,5 @@ $('#codigo-mat').change(function(){
 <script src="{{ asset('highcharts/code/highcharts.js') }}"></script>
 <script src="{{ asset('highcharts/code/modules/exporting.js') }}"></script>
 
+<script src="{{ asset('highstock/code/highstock.js') }}"></script>
+<script src="{{ asset('highstock/code/modules/exporting.js') }}"></script>

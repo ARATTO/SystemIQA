@@ -12,7 +12,7 @@
             @yield('content')
 
         </section>
-
+      
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
                 <b>Version SystemIQA</b> 1.5

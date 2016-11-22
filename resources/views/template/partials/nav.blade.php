@@ -27,47 +27,18 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('dist/img/systemiqa/fotosPerfil/' . Auth::user()->foto)}}" class="user-image" alt="User Image">
                             <span class="hidden-xs">{{ Auth::user()->nombre }}</span>
-
-
                         </a>
-                        <ul class="dropdown-menu">
-                            <!-- User image -->
-                            <li class="user-header">
-                                <img src="{{ asset('dist/img/systemiqa/fotosPerfil/' . Auth::user()->foto)}}" class="img-circle" alt="User Image">
-                                <p>
-
-                                    {{ Auth::user()->nombre }}{{ ' ' . Auth::user()->apellido }}
-                                    <small>Miembro desde {{ Auth::user()->created_at }} </small>
-
-                                </p>
-                            </li>
-                            <!-- Menu Body -->
-                            <!--
-                            <li class="user-body">
-                              <div class="col-xs-4 text-center">
-                                <a href="#">Estadisticas</a>
-                              </div>
-                              <div class="col-xs-4 text-center">
-                                <a href="#">Perfil</a>
-                              </div>
-                              <div class="col-xs-4 text-center">
-                                <a href="#">Recientes</a>
-                              </div>
-                            </li>
-                            -->
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Perfil</a>
-                                </div>
-                                <div class="pull-right">
-
-                                    <a href="{{ url('/logout') }}" class="btn btn-danger btn-flat">SALIR</a>
-
-                                </div>
-                            </li>
-                        </ul>
                     </li>
+                    
+                    <li class="dropdown user user-menu">
+                        <a href="{{ url('/logout') }}" class="dropdown-toggle" data-toggle="dropdown">
+                            <button type="button" class="btn btn-primary btn-xs">
+                                <span class="hidden-xs glyphicon glyphicon-off"></span>
+                            </button>
+                            
+                         
+                        </a>
+                        </li>
                     <!-- Control Sidebar Toggle Button -->
                     <li>
                         <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
@@ -233,8 +204,20 @@
                                 <i class="fa glyphicon glyphicon-stats"></i> <span>Graficos</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Crear Consulta</a></li>
-                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Inventando</a></li>
+                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Estadisticos Puntuales</a></li>
+                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Estadisticos Globales</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Estado Actual de Alumnos</a></li>
+                            </ul>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/Tutorias') }} "><i class="fa fa-circle-o"></i>Ver tutorias</a></li>
                             </ul>
                         </li>
 
