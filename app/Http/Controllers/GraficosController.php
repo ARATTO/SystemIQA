@@ -164,6 +164,56 @@ class GraficosController extends Controller {
     }
     
     public function GlobalPera(Request $request) {
-        dd("Global PERA");
+            
+            //Carrera
+            $Carrera = $request->CarreraElejidaGlobal;
+            
+            //Ciclo
+            $CicloActual = DB::table('ciclos')->where('activa', '=', 1)->first();
+            $Ciclo = $CicloActual->id;
+             
+            //Notas
+            /*
+            $Notas = DB::table('materias_inscritas')
+                    ->join('carrera_materia', 'carrera_materia.materia_id', '=', 'materias_inscritas.materia_id')                 
+                    ->join('estudiantes', 'estudiantes.id', '=', 'materias_inscritas.estudiante_id')                   
+                    ->where('carrera_id', '=', $Carrera)
+                    ->where('ciclo_id', '=', $Ciclo)
+                    ->select('materias_inscritas.*', 'carrera_materia.*', 'estudiantes.*')
+                    ->orderBy('materias_inscritas.nota_final', 'desc')
+                    ->get();
+            */
+            $Notas = Db::table('estudiantes')
+                    ->join('carrera_estudiante', 'carrera_estudiante.estudiante_id', '=', 'estudiantes.id')
+                    ->where('carrera_id', '=', $Carrera)
+                    ->select('carrera_estudiante.*', 'estudiantes.*')
+                    ->get();
+            //dd($Notas);
+            
+            //Recorrido
+            $PERA = 0;
+            $Aprueba = 0;
+            $i = 0;
+            foreach ($Notas as $nota) {
+                if($nota->CUM > 7.0){
+                    $PERA++;
+                }else{
+                    $Aprueba++;
+                }
+                $i++;
+            }
+            //
+            $PorcPERA = $PERA / $i;
+            $PorcPERA = number_format($PorcPERA, 2, '.', '');
+            //
+            $PorcApro = 100 - $PorcPERA;
+            $PorcApro = number_format($PorcApro, 2, '.', '');
+            
+            //dd($Notas);
+            //dd("PERA" . $PorcPERA . "Aprobado" . $PorcApro);
+       
+            return view('graficos.grafico_pera')
+                    ->with('PERA', $PorcPERA)
+                    ->with('APROBADO', $PorcApro);
     }
 }

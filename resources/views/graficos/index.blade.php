@@ -158,7 +158,7 @@
                     </div><!-- /.content-wrapper -->
 
                     </section>
-
+                    @if(Auth::user()->rol_id == 1) 
                     <section class="row-border">
 
                         <div class="form-group ">
@@ -177,36 +177,7 @@
                                         {!! form::label('nombre', 'Carrera') !!}
                                         {!! form::select('id', $carrera, null, ['class' => 'form-control', 'name'=>'CarreraElejidaGlobal', 'id'=>'CarreraElejidaGlobal', 'placeholder'=>'Seleccione una carrera' , 'required']) !!}  
                                     </div>
-                                    <hr>
-                                    <div id="4" class="form-grup" style="display:none">
-                                        {!! form::label('nombre', 'Materia Alimentos') !!}
-                                        <select name="materiasAlimentos" id="materiasAlimentos" class="form-control selectpicker">
-                                            @foreach($materias as $materia)
-                                            @foreach ($materia->carreras as $vb)
-                                            @if($vb->id == 1)
-                                            <option id="hola" value= {{$materia->id}} > {{$materia->nombre}} </option>
-                                            @endif  
-                                            @endforeach
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <hr>
-                                    <div id="3" class="form-grup" style="display:none">
-                                        {!! form::label('nombre', 'Materia Quimica') !!}
-                                        <select name="materiasQuimica" id="materiasQuimica" class="form-control selectpicker">
-                                            @foreach($materias as $materia)
-                                            @foreach ($materia->carreras as $vb)
-                                            @if($vb->id == 2)
-                                            <option  id="valor" value= {{$materia->id}} > {{$materia->nombre}} </option>
-                                            @endif  
-                                            @endforeach
-                                            @endforeach
-                                        </select>
-                                    </div>
-
                                 </div>
-
-
 
                                 <div class="form-group">
                                     <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -219,10 +190,10 @@
                                 {!! Form::close() !!}
 
                             </div><!-- /.content-wrapper -->
-
+                            
                             
         </section>
-        
+        @endif
         
         
         
@@ -236,32 +207,7 @@
                     @endsection
 
                     @section('js')
-                    <script type="text/javascript">
-
-                        function cambio() {
-
-                            return document.getElementById('CarreraElejidaGlobal').value;
-                        }
-
-
-                        $("#CarreraElejidaGlobal").change(
-                                function () {
-                                    // alert( document.getElementById('CarreraElejida').value );
-
-                                    if (document.getElementById('CarreraElejidaGlobal').value == 2) {
-                                        document.getElementById(3).style.display = 'block';
-                                        document.getElementById(4).style.display = 'none';
-                                    } else {
-                                        document.getElementById(3).style.display = 'none';
-                                        document.getElementById(4).style.display = 'block';
-                                    }
-
-
-                                }
-
-                        );
-
-                    </script>
+                    
                     <script type="text/javascript">
 
                         function cambio() {
