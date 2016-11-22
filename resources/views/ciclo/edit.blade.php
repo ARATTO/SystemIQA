@@ -87,9 +87,11 @@
               		{!!Form::radio('cicloActivo', '0', false)!!} No </p>
               </div>
 
+              <div style="display: none;">
+                    {!! Form::number( 'estadoAnterior',$ciclo->activa) !!}  
+              </div>
+
           
-
-
               <div class="panel-body" disabled="false">
 
                {!! Form::submit('Guardar', ['class'=> 'btn-primary' ]) !!}  

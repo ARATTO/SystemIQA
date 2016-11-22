@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Estado Estudiante')
+@section('title', 'Estado Global Estudiante')
 
 @section('content')
 
@@ -16,7 +16,7 @@
         </section>
 
 
-        {!! Form::open(['action'=>'EstudianteController@show']) !!}
+        {!! Form::open(['action'=>'EstudianteController@show2']) !!}
 
 
           <!-- contenido principal -->
@@ -27,7 +27,7 @@
           <div id="panel" class="panel panel-primary">
             <div class="panel-heading">
                 <div>
-                  <h3>Seleccionar Materia</h3>
+                  <h3>Seleccionar Carrera</h3>
                 </div>
 
 
@@ -43,7 +43,7 @@
                 </div>
 
                 
-
+<!--
                 <hr>
 
                 <div id="2" class="form-grup" style="display:none">
@@ -51,7 +51,7 @@
                   <select name="materiasAlimentos" id="materiasAlimentos" class="form-control selectpicker">
                     @foreach($materias as $materia)
                         @foreach ($materia->carreras as $v)
-                            @if($v->id == 1)
+                            @if($v->id == 2)
                               <option id="hola" value= {{$materia->id}} > {{$materia->nombre}} </option>
                             @endif  
                         @endforeach
@@ -66,14 +66,14 @@
                   <select name="materiasQuimica" id="materiasQuimica" class="form-control selectpicker">
                     @foreach($materias as $materia)
                         @foreach ($materia->carreras as $v)
-                            @if($v->id == 2)
+                            @if($v->id == 1)
                               <option  id="valor" value= {{$materia->id}} > {{$materia->nombre}} </option>
                             @endif  
                         @endforeach
                     @endforeach
                 </select>
                 </div>     
-
+-->
                 
 
                 
@@ -136,7 +136,7 @@
             function(){
                // alert( document.getElementById('CarreraElejida').value );
 
-                if(document.getElementById('CarreraElejida').value == 2){
+                if(document.getElementById('CarreraElejida').value == 1){
                   document.getElementById(1).style.display = 'block'; 
                   document.getElementById(2).style.display = 'none';  
                 }else{
@@ -152,4 +152,3 @@
   </script>
 
 @endsection('js')
-

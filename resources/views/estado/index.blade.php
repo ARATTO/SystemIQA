@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'lista de porcentajes')
+@section('title', 'Alumnos en tutorias')
 
 @section('content')
 
@@ -14,30 +14,31 @@
             <li class="active">Dashboard</li>
           </ol>
         </section>
-
-  <a href="{{url('/elejirCarrera')}}" class="btn btn-info">Registrar nuevo porcentaje</a><hr>
-  
-    @include('flash::message')
-  <table class="table table-striped" > 
-    <thead>
-      <th>Codigo</th>
+	
+	  @include('flash::message')
+	<table class="table table-striped" > 
+		<thead>
       <th>Materia</th>
-      <th>Accion</th>
-    </thead>
-    <tbody>
-      @foreach($evaluaciones as $evaluacion)
-        <tr>
-          <td>{{$evaluacion->materia->codigo}} </td>
-          <td>{{$evaluacion->materia->nombre}} </td>
-          <td> 
-            <a href=" {{route('Pnotas.ver',$evaluacion->materia_id)}}" class="btn btn-success"> <font color="black" size="2"> <b>ver Porcentajes</b> </font>  </a>  
-            <a href=" {{route('Pnotas.edit',$evaluacion->materia_id)}}" class="btn btn-warning"> <font color="black" size="2"> <b>Editar</b> </font>  </a>  
-            <a href=" {{route('Pnotas.destroy',$evaluacion->materia_id)}}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger"><font color="black" size="2"> <b>Eliminar  </b>  </font></a>  
-          </td>
-        </tr>
-      @endforeach
-    </tbody>
-  </table>
+			<th>Tutor</th>
+			<th>Fecha</th>
+      <th>Hora</th>
+		</thead>
+		<tbody>
+			@foreach($tutorias as $tutoria)
+				<tr>
+          <td>{{$tutoria->materia->nombre}} </td>
+					<td>{{$tutoria->tutor->nombre}} </td>
+          <td>{{$tutoria->fecha_grupo}} </td>
+          <td>{{$tutoria->hora}} </td>
+
+					<td> 
+            <a href="{{route('estado.vista',$tutoria->id)}}" class="btn btn-success"> <font color="black" size="2"> <b>ver Estudiantes</b> </font>  </a> 
+            <a href=" {{route('estado.destroy',$tutoria->id)}}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger"><font color="black" size="2"> <b>Borrar</b>  </font></a> 
+						</td>
+				</tr>
+			@endforeach
+		</tbody>
+	</table>
 
 
 

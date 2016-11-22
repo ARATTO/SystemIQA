@@ -32,8 +32,10 @@
                     
                     <li class="dropdown user user-menu">
                         <a href="{{ url('/logout') }}" class="dropdown-toggle" data-toggle="dropdown">
-                           
-                            <span class="hidden-xs glyphicon glyphicon-off"></span>
+                            <button type="button" class="btn btn-primary btn-xs">
+                                <span class="hidden-xs glyphicon glyphicon-off"></span>
+                            </button>
+                            
                          
                         </a>
                         </li>
@@ -74,6 +76,13 @@
 
                 <li class="header">MENÚ</li>
                 
+                
+                
+                
+                 
+                <!-- Menus de Docente-->
+                @if(Auth::user()->rol_id == 1 | Auth::user()->rol_id == 2 | Auth::user()->rol_id == 3 | Auth::user()->rol_id == 4 | Auth::user()->rol_id == 5 | Auth::user()->rol_id == 7) 
+
                 <!-- Menus de Jefe Escuela-->
                 @if(Auth::user()->rol_id == 1) 
 
@@ -147,9 +156,6 @@
                 
                 @endif
                 <!-- FIN Menus de Jefe Escuela-->
-                 
-                <!-- Menus de Docente-->
-                @if(Auth::user()->rol_id == 2 | Auth::user()->rol_id == 3 | Auth::user()->rol_id == 4 | Auth::user()->rol_id == 5 | Auth::user()->rol_id == 7) 
 
                         <!--Lobos-->
                         <li class="treeview">
@@ -198,8 +204,20 @@
                                 <i class="fa glyphicon glyphicon-stats"></i> <span>Graficos</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Crear Consulta</a></li>
-                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Inventando</a></li>
+                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Estadisticos Puntuales</a></li>
+                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Estadisticos Globales</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Estado Actual de Alumnos</a></li>
+                            </ul>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/Tutorias') }} "><i class="fa fa-circle-o"></i>Ver tutorias</a></li>
                             </ul>
                         </li>
                         <!-- FIN MOTTO -->
@@ -231,13 +249,23 @@
                         <!-- Menus de Coordinador Proyecto Graduacion-->
                         @if(Auth::user()->rol_id == 4) 
 
-
-
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-fw fa-user-plus"></i> <span>Estado Global</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/estado/create2') }} "><i class="fa fa-circle-o"></i>Estado Global de Alumnos</a></li>
+                            </ul>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/Asesorias') }} "><i class="fa fa-circle-o"></i>Ver Asesorias</a></li>
+                            </ul>
+                        </li>
                         @endif
                         <!-- FIN Menus de Coordinador Proyecto Graduacion-->
                         
                         <!-- Menus de Coordinador Proyeccion Social-->
                         @if(Auth::user()->rol_id == 5) 
+
 
 
 
@@ -253,7 +281,6 @@
                         <!-- FIN Menus de Asesor-->
 
 
-                
                 @endif
                 <!-- FIN Menu Docente-->
 

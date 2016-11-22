@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'lista de porcentajes')
+@section('title', 'Estudiantes en Asesoria')
 
 @section('content')
 
@@ -15,29 +15,24 @@
           </ol>
         </section>
 
-  <a href="{{url('/elejirCarrera')}}" class="btn btn-info">Registrar nuevo porcentaje</a><hr>
-  
-    @include('flash::message')
-  <table class="table table-striped" > 
-    <thead>
-      <th>Codigo</th>
-      <th>Materia</th>
-      <th>Accion</th>
-    </thead>
-    <tbody>
-      @foreach($evaluaciones as $evaluacion)
-        <tr>
-          <td>{{$evaluacion->materia->codigo}} </td>
-          <td>{{$evaluacion->materia->nombre}} </td>
-          <td> 
-            <a href=" {{route('Pnotas.ver',$evaluacion->materia_id)}}" class="btn btn-success"> <font color="black" size="2"> <b>ver Porcentajes</b> </font>  </a>  
-            <a href=" {{route('Pnotas.edit',$evaluacion->materia_id)}}" class="btn btn-warning"> <font color="black" size="2"> <b>Editar</b> </font>  </a>  
-            <a href=" {{route('Pnotas.destroy',$evaluacion->materia_id)}}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger"><font color="black" size="2"> <b>Eliminar  </b>  </font></a>  
-          </td>
-        </tr>
-      @endforeach
-    </tbody>
-  </table>
+	
+	  @include('flash::message')
+	<table class="table table-striped" > 
+		<thead>
+      <th>Asesor</th>
+		</thead>
+		<tbody>
+			@foreach($asesorias as $asesoria)
+				<tr>
+          <td>{{$asesoria->user->nombre}} </td>
+					<td> 
+            <a href=" {{route('estado.vista2',$asesoria->id)}}" class="btn btn-success"> <font color="black" size="2"> <b>ver Estudiantes</b> </font>  </a>  
+						<a href=" {{route('estado.destroy2',$asesoria->id)}}" onclick="return confirm('¿Seguro que deseas eliminarlo?')" class="btn btn-danger"><font color="black" size="2"> <b>Borrar</b>  </font></a>
+            </td>
+				</tr>
+			@endforeach
+		</tbody>
+	</table>
 
 
 

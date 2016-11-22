@@ -32,4 +32,8 @@ class MateriaInscrita extends Model
     return $this->belongsTo('App\Ciclo');
   }
 
+  public function grupo(){
+    return $this->hasOne('App\Grupo');
+  }
+
 }

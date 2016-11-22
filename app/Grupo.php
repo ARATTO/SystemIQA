@@ -26,8 +26,14 @@ class Grupo extends Model
 
     public function tipo_grupo(){
       return $this->belongsTo('App\TipoGrupo','tipoGrupo_id');
+    }
 
+    public function materia_inscrita(){
+      return $this->belongsTo('App\MateriaInscrita');
+    }
 
+    public function ciclo(){
+      return $this->belongsTo('App\Ciclo');
     }
 
 }

@@ -56,4 +56,9 @@ class User extends Authenticatable
         
         return $this->rol_id;
     }
+
+
+    public function grupoAsesoria(){
+      return $this->hasOne('App\GrupoAsesoria');
+    }
 }

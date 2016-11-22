@@ -9,11 +9,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Asignatura
+            Carrera
             <small> Nuevo</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="{{route('carreras.index')}}"><i class="fa fa-dashboard"></i>Asignatura</a></li>
+            <li><a href="{{route('carreras.index')}}"><i class="fa fa-dashboard"></i>Carrera</a></li>
             <li class="active">Nuevo</li>
           </ol>
         </section>

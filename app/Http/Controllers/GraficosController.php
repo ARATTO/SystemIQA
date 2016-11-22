@@ -8,6 +8,8 @@ use App\Http\Requests\UserEditRequest;
 use App\User;
 use App\Rol;
 use Laracasts\Flash\Flash;
+use App\Carrera;
+use App\Materia;
 
 class GraficosController extends Controller {
 
@@ -21,7 +23,20 @@ class GraficosController extends Controller {
     }
 
     public function index(Request $request) {
-        return view('graficos.index');
+        
+        $materias = Materia::all();
+
+        $materias->each(function($materias){
+            $materias->carreras;
+        });
+
+        $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+
+        return view('graficos.index')
+        ->with('carrera',$carrera)
+        ->with('materias',$materias);
+        
+        //return view('graficos.index');
     }
 
     /**
@@ -40,7 +55,7 @@ class GraficosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-
+            dd($request);
     }
 
     /**
@@ -84,5 +99,33 @@ class GraficosController extends Controller {
 
         
     }
+    
+    
+    public function PorMateriaActual(Request $request) {
+        //dd($request);
+        //dd("Materia Actual");
+            $Carrera = $request->CarreraElejidaActual;
+            if($request->materiasAlimentos){
+                $Materia = $request->materiasAlimentos;
+            }else{
+                $Materia = $request->materiasQuimica;
+            }
+            
+            dd("Carrera" . $Carrera . "Materia" . $Materia);
+       
+            return redirect()->route('graficos.actual')->with($key);
 
+    }
+    
+    public function PorMateriaCiclos(Request $request) {
+        //dd($request);
+        dd("Materia Ciclos");
+        if($request->tipo_grafico == 1){
+            return redirect()->route('users/grafico_materia_actual');
+        }
+    }
+    
+    public function GlobalPera(Request $request) {
+        dd("Global PERA");
+    }
 }

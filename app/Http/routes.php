@@ -39,6 +39,25 @@ Route::group(['middleware' => ['auth']], function() {
         /////////////////////////////////////////////////////////////////////////
         //FIN rutas Elias
         //LOBOS
+        Route::get('estado/create','EstudianteController@create');
+        Route::post('estado/show','EstudianteController@show');
+        Route::get('Tutorias',[
+                'uses' => 'EstudianteController@index',
+                'as' => 'estado.index'
+                ]);
+        Route::get('mostrarEstudiantes/{estado}/vista', [
+            'uses' => 'EstudianteController@verEstTutorias', 
+            'as'    => 'estado.vista'
+            ]);
+        Route::get('mostrarEstudiantes/{id}/destroy',[
+                'uses' => 'EstudianteController@destroy',
+                'as' => 'estado.destroy'
+                ]);
+        Route::post('estado/guardarTutoria',[
+                'uses' => 'EstudianteController@guardarTutoria', 
+                'as' => 'estado.estado_estudiante'
+                ]);
+        
         Route::post('mostrarForm', 'FormulariosController@show');
         Route::get('cargar_usuarios', 'FormulariosController@form_cargar_datos_usuarios');
         Route::get('create', 'FormulariosController@create');
@@ -108,6 +127,20 @@ Route::group(['middleware' => ['auth']], function() {
                 'as' => 'graficos.destroy',
                 'uses' => 'GraficosController@destroy'
             ]);
+            Route::post('graficos/por_materia_actual', [
+                'uses' => 'GraficosController@PorMateriaActual',
+                'as' => 'graficos.actual'
+            ]);
+            Route::post('graficos/por_materia_ciclos', [
+                'uses' => 'GraficosController@PorMateriaCiclos',
+                'as' => 'graficos.ciclos'
+            ]);
+            
+            Route::post('graficos/global_pera', [
+                'uses' => 'GraficosController@GlobalPera',
+                'as' => 'graficos.pera'
+            ]);
+            
             //FIN MOTTO
         /////////////////////////////////////////////////////////////////////////
 
@@ -182,6 +215,32 @@ Route::group(['middleware' => ['auth']], function() {
         });
 
         Route::group(['middleware' => ['CoorGraduacion']], function() { //Solo para Coordinador de Proyecto Graduacion
+            Route::get('estado/create2','EstudianteController@create2');
+
+
+            Route::get('Asesorias',[
+                'uses' => 'EstudianteController@index2',
+                'as' => 'estado.index2'
+            ]);
+
+            Route::get('mostrarEstudiantes/{estado}/vista2', [
+                'uses' => 'EstudianteController@verEstAsesorias', 
+                'as'    => 'estado.vista2'
+            ]);
+
+            Route::get('mostrarEstudiantes/{id}/destroy2',[
+                'uses' => 'EstudianteController@destroy2',
+                'as' => 'estado.destroy2'
+            ]);
+
+            Route::post('estado/show2','EstudianteController@show2');
+
+            Route::post('estado/guardarAsesoria',[
+                'uses' => 'EstudianteController@guardarAsesoria', 
+                'as' => 'estado.estado_global_estudiante'
+            ]);
+
+
         });
 
         Route::group(['middleware' => ['CoorSocial']], function() { //Solo para Coordinador de Proyeccion Social
@@ -212,4 +271,9 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', ['as' => 'login', 'uses' => 'Auth\AuthController@postLogin']);
+
+//LLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLL
+
+
+
 
