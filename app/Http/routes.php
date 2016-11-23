@@ -270,7 +270,31 @@ Route::group(['middleware' => ['auth']], function() {
 /* RUTAS RODRIGO */
 
 Route::get('login', 'Auth\AuthController@getLogin');
+
 Route::post('login', ['as' => 'login', 'uses' => 'Auth\AuthController@postLogin']);
+
+Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
+Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
+
+// Registration routes...
+Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
+
+
+
+//rutas Elias
+
+			//Reportes
+//Route::resource('reportes','ReportesController');
+Route::get('reportes/ListadoEstudiantes',['as'=>'reportes.listado_estudiantes','uses'=>'ReportesController@CrearListadoEstudiantes']);
+Route::get('reportes/GenerarPDFListadoEstudiantes',['as'=>'reportes.pdf_listado_estudiantes','uses'=>'ReportesController@GenerarPDFListadoEstudiantes']);
+
+
+
+//FIN rutas Elias
+
+
+
 
 //LLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLL
 

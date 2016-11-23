@@ -280,6 +280,8 @@
 
 
 
+                
+
 
                         @endif
                         <!-- FIN Menus de Coordinador Proyeccion Social-->
@@ -299,7 +301,7 @@
                 <!-- Menus de Secretaria-->
                 @if(Auth::user()->rol_id == 6) 
 
-
+                
 
                 @endif
                 <!-- FIN Menus de Secretaria-->
@@ -307,7 +309,23 @@
 
 
 
-
+                <!--  Panel de Materias  -Reporte   -->
+                <li class="active treeview" id="lista_elias">
+                  <a href="#">
+                    <i class="glyphicon glyphicon-book"></i>
+                    <span>Reportería</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li class="active"><a href="{{route('reportes.listado_estudiantes')}}" >
+                        <i class="fa fa-circle-o"></i>Estudiantes por Materia</a>
+                    </li>
+                    <li class="active"><a href="{{route('materias.create')}}"  >
+                        <i class="fa fa-circle-o"></i>Otro Reporte</a>
+                    </li>
+                  </ul>
+                </li>
+                <!--  Fin Panel de Reporte      -->
 
 
 
