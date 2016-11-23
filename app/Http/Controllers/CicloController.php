@@ -10,6 +10,7 @@ use App\Evaluacion;
 use App\MateriaInscrita;
 use App\Nota;
 use App\Estudiante;
+use App\Materia;
 
 
 class CicloController extends Controller
