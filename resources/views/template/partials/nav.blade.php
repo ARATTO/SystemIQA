@@ -1,4 +1,3 @@
-
 <div class="wrapper">
 
     <header class="main-header">
@@ -219,12 +218,16 @@
                                 <li><a href=" {{ url('/ingresarNotas/seleccionar') }} "><i class="fa fa-circle-o"></i>Agregar notas</a></li>
                             </ul>
                         </li>
+                        
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Verificar Estado de Alumnos</a></li>
+                                <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Estado Actual de Alumnos</a></li>
+                            </ul>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/Tutorias') }} "><i class="fa fa-circle-o"></i>Ver tutorias</a></li>
                             </ul>
                         </li>
                         <!--MOTTO-->
@@ -237,18 +240,30 @@
                                 <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Inventando</a></li>
                             </ul>
                         </li>
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Estado Actual de Alumnos</a></li>
-                            </ul>
-                            <ul class="treeview-menu">
-                                <li><a href=" {{ url('/Tutorias') }} "><i class="fa fa-circle-o"></i>Ver tutorias</a></li>
-                            </ul>
-                        </li>
+                         <!--  Panel de Materias  -Reporte   -->
+                            <li class="active treeview" id="lista_elias">
+                              <a href="#">
+                                <i class="glyphicon glyphicon-book"></i>
+                                <span>Reportería</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                              </a>
+                              <ul class="treeview-menu">
+                                <li class="active"><a href="{{route('reportes.listado_estudiantes')}}" >
+                                    <i class="fa fa-circle-o"></i>Estudiantes por Materia</a>
+                                </li>
+                                <li class="active"><a href="{{route('materias.create')}}"  >
+                                    <i class="fa fa-circle-o"></i>Calificaciones</a>
+                                </li>
+                                <li class="active"><a href="{{route('reportes.pdf_listado_estudiantes_pera')}}"  target="_blank">
+                                    <i class="fa fa-circle-o"></i>CUM menor 7</a>
+                                </li>
+                                <li class="active"><a href="{{route('reportes.pdf_listado_estudiantes_ss')}}"  target="_blank">
+                                    <i class="fa fa-circle-o"></i>Servicio Social</a>
+                                </li>
+                              </ul>
+                            </li>
+                            <!--  Fin Panel de Reporte      -->
+                        
                         <!-- FIN MOTTO -->
                         
                         <!-- Menus de Coordinador Catedra-->
@@ -296,24 +311,6 @@
                         @if(Auth::user()->rol_id == 5) 
 
 
-
-                <!--  Panel de Materias  -Reporte   -->
-                <li class="active treeview" id="lista_elias">
-                  <a href="#">
-                    <i class="glyphicon glyphicon-book"></i>
-                    <span>Reportería</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li class="active"><a href="{{route('reportes.listado_estudiantes')}}" >
-                        <i class="fa fa-circle-o"></i>Estudiantes por Materia</a>
-                    </li>
-                    <li class="active"><a href="{{route('materias.create')}}"  >
-                        <i class="fa fa-circle-o"></i>Otro Reporte</a>
-                    </li>
-                  </ul>
-                </li>
-                <!--  Fin Panel de Reporte      -->
 
 
                         @endif
@@ -555,3 +552,4 @@
 
     </aside>
 
+               

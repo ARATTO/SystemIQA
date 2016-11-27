@@ -19,8 +19,9 @@
 		  <img src="./dist/img/systemiqa/UES.jpg" class="rounded mx-auto d-block" style="width: 100px" alt="Universidad de El Salvador Logo">
 		</div>
 		<h4>
-			Carrera: <small>{{$carrera->codigo}} {{$carrera->nombre}}</small>  
-			Materia: <small>{{$materia->codigo}} {{$materia->nombre}}</small> 
+			Estudiantes Con CUM menor a 7.0
+			<br>
+			<small>Peligro de incidir en PERA</small>
 		</h4>
 		
 	</div>
@@ -33,9 +34,6 @@
 				<th>Carnet</th>
 				<th>Apellidos</th>
 				<th>Nombres</th>
-				<th>Materias Ganadas</th>
-				<th>Materias Reprobadas</th>
-				<th>Promedio Ciclo</th>
 				<th>CUM</th>
 			</tr>
 		</thead>
@@ -45,10 +43,7 @@
 				<td>{{$estudiante->carnet}}</td>	
 				<td>{{$estudiante->apellido}}</td>
 				<td>{{$estudiante->nombre}}</td>
-				<td>{{$estudiante->materias_ganadas}}</td>
-				<td>{{$estudiante->materias_reprobadas}}</td>
-				<td>{{$estudiante->promedio_ciclo}}</td>
-				<td>{{$estudiante->CUM}}</td>
+				<td class="bg-danger">{{$estudiante->CUM}}</td>
 			</tr>
 			@endforeach		
 		</tbody>

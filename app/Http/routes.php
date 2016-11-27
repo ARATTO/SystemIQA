@@ -192,8 +192,8 @@ Route::group(['middleware' => ['auth']], function() {
             //Route::resource('reportes','ReportesController');
             Route::get('reportes/ListadoEstudiantes',['as'=>'reportes.listado_estudiantes','uses'=>'ReportesController@CrearListadoEstudiantes']);
             Route::get('reportes/GenerarPDFListadoEstudiantes',['as'=>'reportes.pdf_listado_estudiantes','uses'=>'ReportesController@GenerarPDFListadoEstudiantes']);
-
-            
+            Route::get('reportes/GenerarPDFListadoEstudiantesPera',['as'=>'reportes.pdf_listado_estudiantes_pera','uses'=>'ReportesController@GenerarPDFListadoEstudiantesPera']);
+            Route::get('reportes/GenerarPDFListadoEstudiantesServicioSocial',['as'=>'reportes.pdf_listado_estudiantes_ss','uses'=>'ReportesController@GenerarPDFListadoEstudiantesServicioSocial']);
         });
 
         
