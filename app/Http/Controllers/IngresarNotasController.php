@@ -44,7 +44,7 @@ class IngresarNotasController extends Controller
 
     public function show(Request $request){
 
-        //dd($request->all());
+        //  dd($request->all());
 
         $carreraElejida = $request->carreraElejida;
 
@@ -69,6 +69,27 @@ class IngresarNotasController extends Controller
             }
 
         $CA = Ciclo::where('activa', '=', 1)->first();
+
+        
+
+        if($CA==null){
+            $materias = Materia::all();
+
+           $materias->each(function($materias){
+                $materias->carreras;
+            });
+
+                
+             
+            $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+
+            flash('No existe un ciclo activo por favor verifique esto','danger');
+
+            return view('notasAlumnos.create')
+            ->with('carrera',$carrera)
+            ->with('materias',$materias);           
+
+        }
 
         $materiaInscrita = MateriaInscrita::where("materia_id", "=",$materiaSeleccionada)
         ->where('activa', '=', 1)
