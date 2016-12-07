@@ -42,8 +42,9 @@ class Materia extends Model
       return $this->hasMany('App\Grupo');
   }
 
-   public function grupo_tutoria(){
-      return $this->belongsTo('App\GrupoTutoria');
+
+    public function grupo_tutoria(){
+      return $this->hasMany('App\GrupoTutoria');
     }
 
 }

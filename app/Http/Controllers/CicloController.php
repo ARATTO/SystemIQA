@@ -9,7 +9,8 @@ use App\Ciclo;
 use App\Evaluacion;
 use App\MateriaInscrita;
 use App\Nota;
-
+use App\Estudiante;
+//use App\CicloController;
 
 class CicloController extends Controller
 {
@@ -22,11 +23,7 @@ class CicloController extends Controller
     {
         $ciclos = Ciclo::orderBy('id','ASC')->paginate(10);
 
-     
-
-        //$evaluaciones = $evaluaciones->paginate(10);
-
-    
+        
         return view('ciclo.index')->with('ciclos',$ciclos);
 
     }
@@ -174,8 +171,7 @@ class CicloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
 
 
         $ciclo = Ciclo::find($id);
@@ -188,9 +184,12 @@ class CicloController extends Controller
         $ciclo->fecha_fin = $request->fechaFin;
 
         $estadoAnt = $request->estadoAnterior;
+
+       // dd($estadoAnt);
         
         if ($estadoAnt < $request->cicloActivo) {
             //caso cuando el estado anterior es 0 y pasa a 1
+
 
                 $activo = Ciclo::where('activa', '=', 1)->get();
                 $activa = 0;
@@ -206,6 +205,16 @@ class CicloController extends Controller
                     return redirect()->route('ciclo.index');
                 }else{
                     $matIns = MateriaInscrita::where('ciclo_id', '=', $id)->get();
+
+                    if ($matIns == null) {
+                        $ciclo->activa = $request->cicloActivo;
+                        $ciclo->save();
+
+                        flash('Se ha actualizado el ciclo con exito', 'success');
+
+            
+                        return redirect()->route('ciclo.index');                        
+                    }
 
                     foreach ($matIns as $mat) {
                         $mat->activa = 1;
@@ -225,16 +234,30 @@ class CicloController extends Controller
 
         }else{
             //caso cuando el estado es 1 y pasa a cero o es 0 y se queda en cero
-            
-             
 
             $matIns = MateriaInscrita::where('ciclo_id', '=', $id)->get();
+
+            if ($matIns == null) {
+                $ciclo->activa = $request->cicloActivo;
+                $ciclo->save();
+                flash('Se ha actualizado el ciclo con exito', 'success');
+
+            return redirect()->route('ciclo.index');
+            }
+
 
             foreach ($matIns as $mat) {
                 $mat->activa = 0;
 
                 $mat->save();
-            } 
+            }
+
+
+            $matIns->each(function($matIns){
+                $matIns->estudiante;
+            });
+
+           //dd($matIns) ;
 
             $evaluacion = Evaluacion::where('activa', '=', 1)->get();
 
@@ -244,6 +267,50 @@ class CicloController extends Controller
                 $eva->save();
             } 
 
+
+
+            foreach ($matIns as $mate) {
+                $unidadesMerito=0;
+                $unidadesValorativas=0;
+                $uVAcumAnt = 0; //unidades valorativas acumuladas del ciclo pasado
+                $uVAcum=0; //unidades valorativas acumuladas
+                $promedio=0;//promedio final de la materia cursada
+                $materiasGanadas=0; // si paso la materia aumenta a uno
+                $materiasReprob=0; //si reprueba la materia aumenta a uno
+                
+                $estud = Estudiante::where('id', '=',$mate->estudiante->id)->get();
+
+                foreach ($estud as $E) {
+                    $estu = $E;
+                }
+               //dd($estu);
+
+                //dd($mate->estudiante->id);
+                if ($mate->nota_final>5.95) {
+                    $uVAcumAnt = $uVAcum = $estu->materias_ganadas; //obtengo las materias ganadas
+                    $promedio = $mate->nota_final; // obtengo con cuanto paso la materia
+                    $materia = Materia::where('id','=',$mate->materia_id)->get(); //busco esa materia para obtener sus unidades valorativas
+                    $unidadesValorativas = $materia->unidades_valorativas;//obtengo las unidades valorativas
+                    $uVAcum+= $unidadesValorativas; //acumulo el total de unidades valorativas
+                    $unidadesMerito += ($promedio*$unidadesValorativas);
+                    $materiasGanadas += 1;
+
+                    $cum = ((  ($mate->estudiante->CUM*$uVAcumAnt) + ($promedio * $unidades_valorativas)  ) /$uVAcum );
+                    $estu->CUM = $cum;
+                    $materiasGanadas= 1 + $mate->estudiante->materias_ganadas;
+
+                    $estu->materias_ganadas = $materiasGanadas;
+                    
+
+                }else{
+                    $materiasReprob = 1 + $mate->estudiante->materias_reprobadas;
+                    $estu->materias_reprobadas = $materiasReprob;
+                }
+
+                $estu->save();
+            
+                
+            }
             $ciclo->activa = $request->cicloActivo;
             $ciclo->save();
             flash('Se ha actualizado el ciclo con exito', 'success');
@@ -251,11 +318,6 @@ class CicloController extends Controller
         
             return redirect()->route('ciclo.index');
         }
-
-
-
-
-
 
     }
 
@@ -265,8 +327,7 @@ class CicloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
 
         $ciclo = Ciclo::where('id', '=', $id)->delete();
 
@@ -275,4 +336,7 @@ class CicloController extends Controller
         return redirect()->route('ciclo.index');
 
     }
+
+
 }
+

@@ -52,7 +52,7 @@
         </div>
       <th>
         <div>
-          {!! Form::label('grupo', 'Seleccione el tutor) !!}
+          {!! Form::label('tutor', 'Seleccione el tutor') !!}
           {!! form::select('tutor', $tutores, null, ['class' => 'form-control select-category', 'placeholder' => 'Seleccione un tutor', 'required']) !!}
       </div>
       </th>
@@ -80,7 +80,7 @@
     <th>Nombre</th>
     <th>Apellido</th>
     <th>Estado Actual</th>
-    <th>Asesoria</th>
+    <th>Tutoria</th>
     <th>Estado de Carrera</th>
     <th>Porcentaje</th>
     <th>Progreso de carrera</th>
@@ -129,6 +129,7 @@
 
 </div>
 </div>
+
  {!! Form::close()!!}
 
 @endsection
@@ -147,3 +148,4 @@
     $('.clockpicker').clockpicker();
   </script>
 @endsection('js')
+

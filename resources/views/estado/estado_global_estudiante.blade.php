@@ -33,6 +33,8 @@
 <div class="box-header">
 <h3 class="box-little">Estudiantes encontrados</h3>
 </div>
+
+
   {!! Form::open(['action' => 'EstudianteController@guardarAsesoria']) !!} 
 
 <table class="table table-stripped">
@@ -51,7 +53,6 @@
     </thead>
   </table>
 
-
 <div class="box-body" style="overflow-x: auto;">
   
 <table class="table table-stripped">
@@ -60,7 +61,9 @@
     <th>Nombre</th>
     <th>Apellido</th>
     <th>Estado Global</th>
+
     <th>Asignar Asesor</th>
+
     <th>Porcentaje</th>
     <th>Progreso de carrera</th>
   </thead>
@@ -71,12 +74,16 @@
         <td>{{ $mat->nombre }}</td>
         <td>{{ $mat->apellido }}</td>
 
+
         @if($mat->CUM >= 7)
+
                                   <td><div  name="confirmo"  >APROBADO</div></td> 
                                 @else
                                   <td><div  name="confirmo"  >P.E.R.A</div></td>
                                 @endif
+
         <td>  <input style="text-align:center;" type="checkbox" name="{{ $mat->id}}" value="{{ $mat->carnet }}">  </td>
+
         <td>{{ round(($mat->materias_ganadas/46)*100, 2) }}%</td>
 
         @if(round(($mat->materias_ganadas/46)*100, 2) >= 60)
@@ -107,5 +114,7 @@
 
 </div>
 </div>
+
  {!! Form::close()!!}
+
 @endsection

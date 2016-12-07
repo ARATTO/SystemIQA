@@ -15,22 +15,22 @@ class GrupoTutoria extends Model
     ];
 
 
-    public function tutor(){
-      return $this->hasMany('App\Tutor');
-    }
-
-
     public function estudiante(){
       return $this->belongsTo('App\Estudiante');
     }
 
 
-    public function materia(){
-      return $this->hasOne('App\Materia');
-    }
-
     public function ciclo(){
       return $this->hasOne('App\Ciclo');
+    }
+
+    public function materia(){
+      return $this->belongsTo('App\Materia');
+
+    }
+
+    public function tutor(){
+      return $this->belongsTo('App\Tutor');
     }
     
 }

@@ -17,7 +17,7 @@
 
 
         {!! Form::open(['action' => 'IngresarNotasController@show', $materias]) !!}
-       @include('flash::message')
+           @include('flash::message')
 
           <!-- contenido principal -->
           <section class="content"  id="contenido_principal">

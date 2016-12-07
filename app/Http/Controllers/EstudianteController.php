@@ -29,14 +29,6 @@ class EstudianteController extends Controller
         $this->middleware('auth');
     }*/
 
-    public function index(){
-    	//dd("buenas soluciones al reves senoiculos");
-
-
-        //$estudiante = Estudiante::orderBy('id')->paginate(5);
-    	//return view('estado.index')->with('estudiantes',$estudiante);           
-    }
-
     public function show(Request $request){
 
         $carreraElejida = $request->CarreraElejida;
@@ -181,12 +173,15 @@ class EstudianteController extends Controller
 
                 $estu->save();
 
+                flash('Se ha guardado exitosamente', 'success' );
+
             }
             $i++;
         }
-    
+
+        
       
-      dd($GTU);
+      return redirect()->route('estado.index');
 
     
     }
@@ -216,6 +211,10 @@ class EstudianteController extends Controller
                     $estu->grupoAsesoria_id = $GAU->id;
 
                     $estu->save();
+
+                    flash('Se ha guardado exitosamente', 'success' );
+
+
                 }else{
                     flash("No cumple con el 100% de materias ganadas", 'danger');
                 }
@@ -223,12 +222,90 @@ class EstudianteController extends Controller
             }
             $i++;
         }
+
+        
     
       
-      dd($input);
+       return redirect()->route('estado.index2');
 
     
     }
+
+    public function index(){
+        $grupoTutoria = GrupoTutoria::orderBy('id','ASC')->paginate(10);
+
+        $grupoTutoria->each(function($grupoTutoria){
+            $grupoTutoria->materia;
+            $grupoTutoria->tutor;
+        });
+
+
+        return view('estado.index')->with('tutorias',$grupoTutoria);
+    }
+
+    public function index2(){
+        $grupoAsesoria = GrupoAsesoria::orderBy('id','ASC')->paginate(10);
+
+        $grupoAsesoria->each(function($grupoAsesoria){
+            $grupoAsesoria->user;
+        });
+
+        return view('estado.index2')->with('asesorias',$grupoAsesoria);
+    }
+
+    public function verEstTutorias($id){
+        $estudiante = Estudiante::where("grupoTutoria_id","=",$id)->get();
+
+        return view('estado.vista')->with('estudiante',$estudiante);
+
+    }
+
+    public function verEstAsesorias($id){
+        $estudiante = Estudiante::where("grupoAsesoria_id","=",$id)->get();
+
+        return view('estado.vista2')->with('estudiante',$estudiante);
+
+    }
+
+    public function destroy($id){
+
+        $estudiante = Estudiante::where('grupoTutoria_id','=',$id)->get();
+
+        foreach ($estudiante as $estu) {
+            $estu->grupoTutoria_id=null;
+            $estu->save();
+        }
+
+        $grupoTutoria = GrupoTutoria::where('id', '=', $id)->delete();
+
+        flash('Se ha borrado el grupo de tutoria', 'danger' );
+
+        return redirect()->route('estado.index');
+
+    
+    }
+
+    public function destroy2($id){
+
+        $estudiante = Estudiante::where('grupoAsesoria_id','=',$id)->get();
+
+        foreach ($estudiante as $estu) {
+            $estu->grupoAsesoria_id=null;
+            $estu->save();
+        }
+
+        $grupoAsesoria = GrupoAsesoria::where('id', '=', $id)->delete();
+
+        flash('Se ha borrado el grupo de asesoria', 'danger' );
+
+        return redirect()->route('estado.index2');
+
+    
+    }
+
+
+
+
 
 
 }

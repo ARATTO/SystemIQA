@@ -44,6 +44,8 @@ class IngresarNotasController extends Controller
 
     public function show(Request $request){
 
+        //dd($request->all());
+
         $carreraElejida = $request->carreraElejida;
 
 

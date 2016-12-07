@@ -20,7 +20,6 @@ class JefeEscuela
             case 1:
                 return $next($request);
             break;
-   
             
         default :
             abort(401);
