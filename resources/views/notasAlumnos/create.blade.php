@@ -16,7 +16,7 @@
         </section>
 
 
-        {!! Form::open(['action' => 'IngresarNotasController@show', $materias]) !!}
+        {!! Form::open(['action' => 'IngresarNotasController@create2', $materias]) !!}
            @include('flash::message')
 
           <!-- contenido principal -->
@@ -31,6 +31,8 @@
                 </div>
           
             </div>
+
+
          
             <div class="panel-body">
                 <div>
@@ -53,6 +55,10 @@
                 </select>
                 </div>
                               
+            <div style="display: none">
+              <input type="text" name="docente" value="{{Auth::user()->id}}">
+            </div>
+
 
                 <hr>
                <div id="2" class="form-grup" style="display:none">

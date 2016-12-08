@@ -17,7 +17,7 @@ use App\Ciclo;
 use Illuminate\Support\Facades\Cache;
 use Laracasts\Flash\Flash;
 use DB;
-
+use App\User;
 
 
 class FormulariosController extends Controller
@@ -36,9 +36,12 @@ class FormulariosController extends Controller
   }
 
   public function cargar_datos_usuarios(Request $request){
+     //dd($request->all());
+
      $Carrera=$request->carrera;
      $Materia=$request->materia;
      $Grupo = $request->id;
+     $Docente = $request->docente;
 
     $activo = Ciclo::where('activa', '=', 1)->get();
     $acumuladorDeciclo=0;
@@ -60,6 +63,7 @@ class FormulariosController extends Controller
      Cache::put('carrera',$Carrera,5);
      Cache::put('materia',$Materia,5);
      Cache::put('grupo',$Grupo,5);
+     Cache::put('docente',$Docente,5);
 
      $archivo = $request->file('archivo');
      
@@ -76,6 +80,7 @@ class FormulariosController extends Controller
       $materia_cache=Cache::get('materia');
       $carrera_cache=Cache::get('carrera');
       $grupo_cache=Cache::get('grupo');
+      $docente_cache = Cache::get('docente');
       $materia=Materia::find($materia_cache);
       $carnetestudiante=Estudiante::where("carnet","=",$fila->car)->first();
 
@@ -116,6 +121,7 @@ class FormulariosController extends Controller
               $materiaInscrita->estudiante()->associate($carnetestudiante);
               $materiaInscrita->materia()->associate($materia);
               $materiaInscrita->grupo_id = $grupo_cache;
+              $materiaInscrita->user_id = $docente_cache;
               $activo = Ciclo::where('activa', '=', 1)->get();
 
               $idCiclo;
@@ -286,12 +292,15 @@ class FormulariosController extends Controller
             }
 
         $grupos = Grupo::where("materia_id","=",$materiaSeleccionada)->lists('codigo','id');;
+
+        $docentes = User::where("rol_id","=",2)->lists('nombre','id');;
         //dd($request);
         // dd($materiaSeleccionada);
         return view('formularios.cargar_usuarios')
         ->with('carreraSeleccionada',$carreraElejida)
         ->with('materiaSeleccionada',$materiaSeleccionada)
-        ->with('grupos',$grupos); 
+        ->with('grupos',$grupos)
+        ->with('docentes',$docentes);
         //->with('grupoSeleccionado',$grupoElejido);
 
 

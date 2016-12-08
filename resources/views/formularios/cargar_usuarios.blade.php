@@ -65,6 +65,11 @@
         {!! Form::label('grupo', 'Seleccione el grupo teorico') !!}
         {!! form::select('id', $grupos, null, ['class' => 'form-control select-category', 'placeholder' => 'Seleccione un grupo', 'required']) !!}
       </div>
+
+      <div  class="form-group">
+        {!! Form::label('docente', 'Seleccione el docente a impartir la materia') !!}
+        {!! form::select('docente', $docentes, null, ['class' => 'form-control select-category', 'placeholder' => 'Seleccione un docente', 'required']) !!}
+      </div>
           
       <div  >
              <label>Agregar Archivo de Excel </label>

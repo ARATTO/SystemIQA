@@ -36,6 +36,7 @@
             <table class="table table-striped" > 
 
               <thead>
+                <th>Carnet</th>
                 <th>Nombre</th>
                 @foreach($evaluacion as $porcentaje)
 
@@ -49,6 +50,7 @@
               <tbody>
               @foreach($materiaInscrita as $alumno)
                   <tr>
+                      <td>{{$alumno->estudiante->carnet}}</td>
                       <td>{{$alumno->estudiante->apellido}}  {{$alumno->estudiante->nombre}}</td>
                    
                     @foreach($evaluacion as $porcentaje)
@@ -72,7 +74,10 @@
 
             </table>
               
-        </div>  
+        </div>
+
+        {{$materiaInscrita->render()}}
+        
 
             
         <div class="panel-body">

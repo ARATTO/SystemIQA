@@ -12,6 +12,7 @@ use App\Evaluacion;
 use App\MateriaInscrita;
 use App\Nota;
 use App\Ciclo;
+use App\Grupo;
 
 class IngresarNotasController extends Controller
 {
@@ -40,11 +41,36 @@ class IngresarNotasController extends Controller
 
     }
 
+        public function create2(Request $request){
+
+        //dd($request->all());
+
+        $materiaSeleccionada;
+
+        if($request->CarreraElejida == 2){
+            $materiaSeleccionada = $request->materiasQuimica; 
+        }else{
+            $materiaSeleccionada = $request->materiasAlimentos;
+           
+        }
+
+        $grupos = Grupo::where('materia_id','=',$materiaSeleccionada)->lists('codigo','id');
+
+       // dd($grupos);
+
+        return view('notasAlumnos.grupo')
+        ->with('grupos',$grupos)
+        ->with('CarreraElejida',$request->CarreraElejida)
+        ->with('materiasAlimentos',$request->materiasAlimentos)
+        ->with('materiasQuimica',$request->materiasQuimica);
+        
+    }
+
 
 
     public function show(Request $request){
 
-        //  dd($request->all());
+       // dd($request->all());
 
         $carreraElejida = $request->carreraElejida;
 
@@ -94,7 +120,9 @@ class IngresarNotasController extends Controller
         $materiaInscrita = MateriaInscrita::where("materia_id", "=",$materiaSeleccionada)
         ->where('activa', '=', 1)
         ->where('ciclo_id', '=', $CA->id)
-        ->paginate(1000);
+        ->where('user_id','=',$request->docente)
+        ->where('grupo_id','=',$request->grupo)
+        ->paginate(150);
 
         /*$materiaInscrita = DB::table('materias_inscritas') 
         ->where('materia_id', '=', $materiaSeleccionada)
@@ -125,11 +153,8 @@ class IngresarNotasController extends Controller
             ->get();
 
 
-
-            
-
             //dd($join);
-
+            //dd($materiaInscrita);
            
             return view('notasAlumnos.create2')
             ->with('evaluacion',$evaluacion)
@@ -140,7 +165,7 @@ class IngresarNotasController extends Controller
         }//comrueba si existe materia activa
         else{
 
-            flash('No existe un ciclo activo','danger');
+            flash('No existe un ciclo activo, o no es su grupo teorico verifique por favor','danger');
             $materias = Materia::all();
 
            $materias->each(function($materias){

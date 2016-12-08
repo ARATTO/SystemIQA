@@ -112,6 +112,9 @@ Route::group(['middleware' => ['auth']], function() {
             'as' => 'notasAlumnos.create'
         ]);
 
+
+        Route::post('ingresarNotas/grupo', 'IngresarNotasController@create2');
+
         Route::post('guardarNota', 'IngresarNotasController@show');
 
         Route::post('ingresarNotas/crearNotas', [
