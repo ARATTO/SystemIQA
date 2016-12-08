@@ -189,6 +189,10 @@
                             <ul class="treeview-menu">
                                 <li><a href=" {{ url('/ingresarNotas/seleccionar') }} "><i class="fa fa-circle-o"></i>Agregar notas</a></li>
                             </ul>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/ingresarNotas/ver') }} "><i class="fa fa-circle-o"></i>Ver Estudiantes</a></li>
+                            </ul>                            
+                            
                         </li>
                         <li class="treeview">
                             <a href="#">

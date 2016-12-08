@@ -253,15 +253,153 @@ class IngresarNotasController extends Controller
     //funcion de visualizacion
     public function index(){
 
+    $materias = Materia::all();
 
+       $materias->each(function($materias){
+            $materias->carreras;
+        });
+
+            
+         
+        $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+
+        return view('notasAlumnos.create3')
+        ->with('carrera',$carrera)
+        ->with('materias',$materias);
 
     }
 
+    public function create3(Request $request){
+
+        //dd($request->all());
+
+        $materiaSeleccionada;
+
+        if($request->CarreraElejida == 2){
+            $materiaSeleccionada = $request->materiasQuimica; 
+        }else{
+            $materiaSeleccionada = $request->materiasAlimentos;
+           
+        }
+
+        $grupos = Grupo::where('materia_id','=',$materiaSeleccionada)->lists('codigo','id');
+
+       // dd($grupos);
+
+        return view('notasAlumnos.grupo2')
+        ->with('grupos',$grupos)
+        ->with('CarreraElejida',$request->CarreraElejida)
+        ->with('materiasAlimentos',$request->materiasAlimentos)
+        ->with('materiasQuimica',$request->materiasQuimica);
+        
+    }
+
+    public function show2(Request $request){
+
+
+        $carreraElejida = $request->carreraElejida;
+
+
+        $materiaSeleccionada;
+
+            if($request->CarreraElejida == 2){
+                $materiaSeleccionada = $request->materiasQuimica; 
+            }else{
+                $materiaSeleccionada = $request->materiasAlimentos;
+               
+            }
+
+        $CA = Ciclo::where('activa', '=', 1)->first();
+
+        
+
+        if($CA==null){
+            $materias = Materia::all();
+
+           $materias->each(function($materias){
+                $materias->carreras;
+            });
+
+                
+             
+            $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+
+            flash('No existe un ciclo activo por favor verifique esto','danger');
+
+            return view('notasAlumnos.create3')
+            ->with('carrera',$carrera)
+            ->with('materias',$materias);           
+
+        }
+
+        $materiaInscrita = MateriaInscrita::where("materia_id", "=",$materiaSeleccionada)
+        ->where('activa', '=', 1)
+        ->where('ciclo_id', '=', $CA->id)
+        ->where('user_id','=',$request->docente)
+        ->where('grupo_id','=',$request->grupo)
+        ->paginate(150);
+
+        /*$materiaInscrita = DB::table('materias_inscritas') 
+        ->where('materia_id', '=', $materiaSeleccionada)
+        ->where('activa', '=', 1)
+        ->paginate(1000);*/
+
+        //dd($materiaInscrita);
+
+       
+        if (count($materiaInscrita)>0) {
+
+
+            $materiaInscrita->each(function($materiaInscrita){
+                $materiaInscrita->estudiante;
+            });
+
+           
+            return view('notasAlumnos.eliminar')
+            ->with('materiaSeleccionada',$materiaSeleccionada)
+            ->with('materiaInscrita',$materiaInscrita);   
+        }//comrueba si existe materia activa
+        else{
+
+            flash('No existe un ciclo activo, o no es su grupo teorico verifique por favor','danger');
+            $materias = Materia::all();
+
+           $materias->each(function($materias){
+                $materias->carreras;
+            });
+
+                
+             
+            $carrera = Carrera::orderBy('nombre','ASC')->lists('nombre','id');
+
+            return view('notasAlumnos.create3')
+            ->with('carrera',$carrera)
+            ->with('materias',$materias);
+        }
+
+
+    }    
+
     //funcion de eliminacion
-    public function destroy($id){
+    public function destroy(Request $request){
 
+        $todo =  $request->all();
 
-    
+        $i=0;
+        foreach ($todo as $t) {
+         if($i==0){
+            $i++;
+         }else{
+            
+            $mat = MateriaInscrita::where('id', '=', $t)->delete();
+         }
+
+        }
+
+        flash('Se han eliminado los registros con exito','warning');
+        
+
+        return redirect('ingresarNotas/ver');
     }
 
 

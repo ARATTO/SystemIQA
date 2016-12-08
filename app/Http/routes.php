@@ -117,6 +117,15 @@ Route::group(['middleware' => ['auth']], function() {
 
         Route::post('guardarNota', 'IngresarNotasController@show');
 
+
+        Route::post('ingresarNotas/grupo2', 'IngresarNotasController@create3');
+
+        Route::post('ingresarNotas/eliminar', 'IngresarNotasController@show2');
+
+        Route::post('ingresarNotas/destroy', 'IngresarNotasController@destroy');
+
+        Route::get('ingresarNotas/ver','IngresarNotasController@index');
+
         Route::post('ingresarNotas/crearNotas', [
             'uses' => 'IngresarNotasController@store',
             'as' => 'notasAlumnos.create2'
