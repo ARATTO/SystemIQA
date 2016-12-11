@@ -196,7 +196,7 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-fw fa-user-plus"></i> <span>Estado Global de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Verificar Estado de Alumnos</a></li>
@@ -210,18 +210,6 @@
                             <ul class="treeview-menu">
                                 <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Estadisticos Puntuales</a></li>
                                 <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Estadisticos Globales</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-fw fa-user-plus"></i> <span>Estado de Alumnos</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href=" {{ url('/estado/create') }} "><i class="fa fa-circle-o"></i>Estado Actual de Alumnos</a></li>
-                            </ul>
-                            <ul class="treeview-menu">
-                                <li><a href=" {{ url('/Tutorias') }} "><i class="fa fa-circle-o"></i>Ver tutorias</a></li>
                             </ul>
                         </li>
 
