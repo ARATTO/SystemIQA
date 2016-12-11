@@ -63,7 +63,12 @@
 
       <div class="form-group" >
         {!! Form::label('grupo', 'Seleccione el grupo teorico') !!}
-        {!! form::select('id', $grupos, null, ['class' => 'form-control select-category', 'placeholder' => 'Seleccione un grupo', 'required']) !!}
+        {!! form::select('id', $grupos, null, ['class' => 'form-control select-category', 'placeholder' => 'Seleccione un grupo', 'required', 'id'=>'id']) !!}
+      </div>
+
+      <div  class="form-group">
+        {!! Form::label('docente', 'Seleccione el docente a impartir la materia') !!}
+        {!! form::select('docente', $docentes, null, ['class' => 'form-control select-category', 'placeholder' => 'Seleccione un docente', 'required']) !!}
       </div>
           
       <div  >
@@ -79,7 +84,7 @@
         {!! Form::close() !!}
 
       <div class="box-footer">
-                          <button type="submit" class="btn btn-primary">Cargar Datos</button>
+        <button type="submit" class="btn btn-primary" onclick="return confirm('¿los datos son correctos?'" >Cargar Datos</button>
       </div>
     
 

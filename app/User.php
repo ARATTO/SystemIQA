@@ -61,4 +61,9 @@ class User extends Authenticatable
     public function grupoAsesoria(){
       return $this->hasOne('App\GrupoAsesoria');
     }
+
+
+    public function materias_inscritas(){
+      return $this->hasMany('App\MateriaInscrita');
+    }
 }

@@ -112,7 +112,19 @@ Route::group(['middleware' => ['auth']], function() {
             'as' => 'notasAlumnos.create'
         ]);
 
-        Route::get('guardarNota', 'IngresarNotasController@show');
+
+        Route::post('ingresarNotas/grupo', 'IngresarNotasController@create2');
+
+        Route::post('guardarNota', 'IngresarNotasController@show');
+
+
+        Route::post('ingresarNotas/grupo2', 'IngresarNotasController@create3');
+
+        Route::post('ingresarNotas/eliminar', 'IngresarNotasController@show2');
+
+        Route::post('ingresarNotas/destroy', 'IngresarNotasController@destroy');
+
+        Route::get('ingresarNotas/ver','IngresarNotasController@index');
 
         Route::post('ingresarNotas/crearNotas', [
             'uses' => 'IngresarNotasController@store',
@@ -202,7 +214,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::resource('carreras', 'CarrerasController');
             Route::get('carreras/destroy/{id}', ['as' => 'carreras.destroy', 'uses' => 'CarrerasController@destroy']);
             
-            
+
         });
 
         
@@ -240,7 +252,7 @@ Route::group(['middleware' => ['auth']], function() {
                 'as' => 'estado.estado_global_estudiante'
             ]);
 
-
+           
         });
 
         Route::group(['middleware' => ['CoorSocial']], function() { //Solo para Coordinador de Proyeccion Social
@@ -270,34 +282,8 @@ Route::group(['middleware' => ['auth']], function() {
 /* RUTAS RODRIGO */
 
 Route::get('login', 'Auth\AuthController@getLogin');
-
 Route::post('login', ['as' => 'login', 'uses' => 'Auth\AuthController@postLogin']);
 
-Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
-Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
-
-// Registration routes...
-Route::get('/', 'HomeController@index');
-Route::get('home', 'HomeController@index');
-
-
-
-//rutas Elias
-
-			//Reportes
-//Route::resource('reportes','ReportesController');
-Route::get('reportes/ListadoEstudiantes',['as'=>'reportes.listado_estudiantes','uses'=>'ReportesController@CrearListadoEstudiantes']);
-Route::get('reportes/GenerarPDFListadoEstudiantes',['as'=>'reportes.pdf_listado_estudiantes','uses'=>'ReportesController@GenerarPDFListadoEstudiantes']);
-
-
-
-//FIN rutas Elias
-
-
-
-
 //LLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLL
-
-
 
 

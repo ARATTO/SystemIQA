@@ -10,7 +10,7 @@
 
 2.55 $composer dump-autoload
 
-2.555 $ php artisan db:sedd
+2.555 $ php artisan db:seed
 
 2.5 $php artisan config:cache
 
@@ -22,6 +22,9 @@ IF (Ya hay una base "systemiqa" en MySQL)
 	$php artisan migrate:refresh
 ELSE
 	$php artisan migrate
+
+
+4.5  php artisan migrate --seed
 
 
 5. $composer update

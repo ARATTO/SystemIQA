@@ -16,7 +16,7 @@
         </section>
 
 
-        {!! Form::open(['action' => 'IngresarNotasController@create2', $materias]) !!}
+        {!! Form::open(['action' => 'IngresarNotasController@create3', $materias]) !!}
            @include('flash::message')
 
           <!-- contenido principal -->
