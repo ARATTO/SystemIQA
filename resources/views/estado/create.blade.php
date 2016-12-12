@@ -47,8 +47,8 @@
                 <hr>
 
                 <div id="2" class="form-grup" style="display:none">
-                   {!! form::label('nombre', 'Materia Alimentos') !!}
-                  <select name="materiasAlimentos" id="materiasAlimentos" class="form-control selectpicker">
+                   {!! form::label('nombre', 'Materia Quimica') !!}
+                  <select name="materiasQuimica" id="materiasQuimica" class="form-control selectpicker">
                     @foreach($materias as $materia)
                         @foreach ($materia->carreras as $v)
                             @if($v->id == 1)
@@ -62,8 +62,8 @@
 
                 <hr>
                <div id="1" class="form-grup" style="display:none">
-                   {!! form::label('nombre', 'Materia Quimica') !!}
-                  <select name="materiasQuimica" id="materiasQuimica" class="form-control selectpicker">
+                   {!! form::label('nombre', 'Materia Alimentos') !!}
+                  <select name="materiasAlimentos" id="materiasAlimentos" class="form-control selectpicker">
                     @foreach($materias as $materia)
                         @foreach ($materia->carreras as $v)
                             @if($v->id == 2)
@@ -136,7 +136,7 @@
             function(){
                // alert( document.getElementById('CarreraElejida').value );
 
-                if(document.getElementById('CarreraElejida').value == 2){
+                if(document.getElementById('CarreraElejida').value == 1){
                   document.getElementById(1).style.display = 'block'; 
                   document.getElementById(2).style.display = 'none';  
                 }else{

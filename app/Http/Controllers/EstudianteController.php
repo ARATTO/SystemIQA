@@ -35,7 +35,7 @@ class EstudianteController extends Controller
 
         $materiaSeleccionada;
 
-            if($request->CarreraElejida == 2){
+            if($request->CarreraElejida == 1){
                 $materiaSeleccionada = $request->materiasQuimica; 
             }else{
                 $materiaSeleccionada = $request->materiasAlimentos; 

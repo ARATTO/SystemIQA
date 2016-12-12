@@ -12,16 +12,17 @@ class CarreraSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('carreras')->insert([
-            'codigo' => 'I10511',
-            'nombre' => 'Ingenieria en Alimentos',
-            'descripcion' => 'ingenieria de alimentos',
-            ]);
 
         DB::table('carreras')->insert([
             'codigo' => 'I10516',
             'nombre' => 'Ingenieria Quimica',
             'descripcion' => 'ingenieria quimica',
+            ]);
+
+        DB::table('carreras')->insert([
+            'codigo' => 'I10511',
+            'nombre' => 'Ingenieria en Alimentos',
+            'descripcion' => 'ingenieria de alimentos',
             ]);
 }
 

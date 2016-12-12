@@ -47,7 +47,7 @@ class IngresarNotasController extends Controller
 
         $materiaSeleccionada;
 
-        if($request->CarreraElejida == 2){
+        if($request->CarreraElejida == 1){
             $materiaSeleccionada = $request->materiasQuimica; 
         }else{
             $materiaSeleccionada = $request->materiasAlimentos;
@@ -87,7 +87,7 @@ class IngresarNotasController extends Controller
 
         $materiaSeleccionada;
 
-            if($request->CarreraElejida == 2){
+            if($request->CarreraElejida == 1){
                 $materiaSeleccionada = $request->materiasQuimica; 
             }else{
                 $materiaSeleccionada = $request->materiasAlimentos;
@@ -275,7 +275,7 @@ class IngresarNotasController extends Controller
 
         $materiaSeleccionada;
 
-        if($request->CarreraElejida == 2){
+        if($request->CarreraElejida == 1){
             $materiaSeleccionada = $request->materiasQuimica; 
         }else{
             $materiaSeleccionada = $request->materiasAlimentos;
@@ -302,7 +302,7 @@ class IngresarNotasController extends Controller
 
         $materiaSeleccionada;
 
-            if($request->CarreraElejida == 2){
+            if($request->CarreraElejida == 1){
                 $materiaSeleccionada = $request->materiasQuimica; 
             }else{
                 $materiaSeleccionada = $request->materiasAlimentos;

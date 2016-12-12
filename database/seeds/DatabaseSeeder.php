@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoGrupoSeed::class);
         $this->call(CarreraSeeder::class);
         $this->call(MateriaSeeder::class);
+        $this->call(CarreraMateriaSeeder::class);
         // $this->call(UsersTableSeeder::class);
     }
 }
