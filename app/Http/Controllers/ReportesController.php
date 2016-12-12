@@ -9,6 +9,8 @@ use App\Http\Requests;
 use App\Materia;
 use App\Carrera;
 use App\Estudiante;
+use App\MateriaInscrita;
+use App\Ciclo;
 use View;
 use PDF;
 
@@ -28,7 +30,7 @@ class ReportesController extends Controller
     }
     public function CrearListadoEstudiantes(Request $request){
 
-    	 $materias = Materia::all();
+    	 $materias = Materia::all(); 
 
        	 $materias->each(function($materias){
             $materias->carreras;
@@ -45,13 +47,44 @@ class ReportesController extends Controller
     public function GenerarPDFListadoEstudiantes(Request $request){
       $carrera = Carrera::find($request->CarreraElegida);
       $materia = Materia::find($request->materia_elegida);
-      $estudiantes = Estudiante::all();
+      $estudiantes = Estudiante::orderBy('carnet','ASC')->get();
       $data = ['estudiantes'=>$estudiantes,'carrera'=>$carrera,'materia'=>$materia];
 
       
 		  $pdf= PDF::loadView('reportes.pdfs.listado_estudiantes_pdf',$data);
-
 		  return $pdf->stream('Estudiantes.pdf');
+    }
+
+
+    public function GenerarPDFListadoEstudiantesPera(Request $request){
+
+      $estudiantes = Estudiante::where('CUM','<',7)->orderBy('carnet','ASC')->get();
+      $data = ['estudiantes'=>$estudiantes];
+
+      $pdf= PDF::loadView('reportes.pdfs.estudiantes_cum_bajo_pdf',$data);
+      return $pdf->stream('PeligroPERA.pdf');
+    }
+
+  public function GenerarPDFListadoEstudiantesServicioSocial(Request $request){
+
+      $CA = Ciclo::where('activa', '=', 1)->first();
+
+      $materiaInscrita = MateriaInscrita::where('activa', '=', 1)
+      ->where('ciclo_id', '=', $CA->id)
+      ->orderBy('nota_final', 'asc')
+      ->paginate(1000);
+
+
+      $materiaInscrita->each(function($materiaInscrita){
+          $materiaInscrita->estudiante;
+      } );
+ 
+
+      $data = ['estudiantes'=>$materiaInscrita];
+      $pdf= PDF::loadView('reportes.pdfs.estudiantes_aptos_servicio_social_pdf',$data);
+      return $pdf->stream('ServicioSocial.pdf');
 
     }
+    
+
 }

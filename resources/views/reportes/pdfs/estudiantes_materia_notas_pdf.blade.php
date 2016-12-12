@@ -33,9 +33,6 @@
 				<th>Carnet</th>
 				<th>Apellidos</th>
 				<th>Nombres</th>
-				<th>Materias Ganadas</th>
-				<th>Materias Reprobadas</th>
-				<th>Promedio Ciclo</th>
 				<th>CUM</th>
 			</tr>
 		</thead>
@@ -45,9 +42,6 @@
 				<td>{{$estudiante->carnet}}</td>	
 				<td>{{$estudiante->apellido}}</td>
 				<td>{{$estudiante->nombre}}</td>
-				<td>{{$estudiante->materias_ganadas}}</td>
-				<td>{{$estudiante->materias_reprobadas}}</td>
-				<td>{{$estudiante->promedio_ciclo}}</td>
 				<td>{{$estudiante->CUM}}</td>
 			</tr>
 			@endforeach		

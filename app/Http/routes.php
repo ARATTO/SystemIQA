@@ -215,6 +215,13 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('carreras/destroy/{id}', ['as' => 'carreras.destroy', 'uses' => 'CarrerasController@destroy']);
             
 
+                        //Reportes
+            //Route::resource('reportes','ReportesController');
+            Route::get('reportes/ListadoEstudiantes',['as'=>'reportes.listado_estudiantes','uses'=>'ReportesController@CrearListadoEstudiantes']);
+            Route::get('reportes/GenerarPDFListadoEstudiantes',['as'=>'reportes.pdf_listado_estudiantes','uses'=>'ReportesController@GenerarPDFListadoEstudiantes']);
+            Route::get('reportes/GenerarPDFListadoEstudiantesPera',['as'=>'reportes.pdf_listado_estudiantes_pera','uses'=>'ReportesController@GenerarPDFListadoEstudiantesPera']);
+            Route::get('reportes/GenerarPDFListadoEstudiantesServicioSocial',['as'=>'reportes.pdf_listado_estudiantes_ss','uses'=>'ReportesController@GenerarPDFListadoEstudiantesServicioSocial']);
+
         });
 
         
@@ -285,5 +292,4 @@ Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', ['as' => 'login', 'uses' => 'Auth\AuthController@postLogin']);
 
 //LLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLL
-
 
