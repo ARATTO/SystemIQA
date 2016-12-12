@@ -36,7 +36,7 @@ class FormulariosController extends Controller
   }
 
   public function cargar_datos_usuarios(Request $request){
-     dd($request->all());
+     
 
      $Carrera=$request->carrera;
      $Materia=$request->materia;

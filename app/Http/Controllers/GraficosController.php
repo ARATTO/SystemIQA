@@ -107,6 +107,7 @@ class GraficosController extends Controller {
         //dd($request);
         //dd("Materia Actual");
             //Carrera
+
             $Carrera = $request->CarreraElejidaActual;
             //Materia
             if($request->materiasAlimentos){
@@ -114,6 +115,10 @@ class GraficosController extends Controller {
             }else{
                 $Materia = $request->materiasQuimica;
             }
+            //dd($request->all());
+            //dd("Carrera" . $Carrera . "Materia" . $Materia);
+       
+       
             //Ciclo
             $CicloActual = DB::table('ciclos')->where('activa', '=', 1)->first();
             $Ciclo = $CicloActual->id;
@@ -124,7 +129,7 @@ class GraficosController extends Controller {
             $NCarrera = DB::table('carreras')->where('id', '=', $Carrera)->first();
             $NomCarrera = $NCarrera->nombre;
             
-             
+            
             //Notas
             $Notas = DB::table('materias_inscritas')
                     ->join('carrera_materia', 'carrera_materia.materia_id', '=', 'materias_inscritas.materia_id')                 
@@ -135,6 +140,7 @@ class GraficosController extends Controller {
                     ->orderBy('materias_inscritas.nota_final', 'desc')
                     ->get();
             
+       
             //Recorrido
           
             foreach ($Notas as $nota) {
@@ -145,8 +151,7 @@ class GraficosController extends Controller {
             }
             
             //dd($Notas);
-            //dd("Carrera" . $Carrera . "Materia" . $Materia);
-       
+            
             return view('graficos.grafico_materia_actual')
                     ->with('materia', $NomMateria)
                     ->with('carrera' , $NomCarrera)

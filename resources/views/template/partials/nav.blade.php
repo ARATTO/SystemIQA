@@ -211,8 +211,7 @@
                                 <i class="fa glyphicon glyphicon-stats"></i> <span>Graficos</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Estadisticos Puntuales</a></li>
-                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Estadisticos Globales</a></li>
+                                <li><a href=" {{ url('/graficos') }} "><i class="fa fa-circle-o"></i>Estadisticos </a></li>
                             </ul>
                         </li>
                          <!--  Panel de Materias  -Reporte   -->

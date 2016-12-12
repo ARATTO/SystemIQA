@@ -33,72 +33,9 @@
     <section class="content"  id="contenido_principal">
 
         <section class="row-border">
-
-            <div class="form-group ">
-                {!! Form::open(['action'=>'GraficosController@PorMateriaCiclos']) !!}
-                <div id="panel" class="panel panel-primary col-lg-5">
-                    <div class="panel-heading ">
-                        <div>
-                            <h3>Grafico Materia Ciclos</h3>
-                        </div>
-                    </div>
-
-                    @include('flash::message')
-
-                    <div class="panel-body">
-                        <div>
-                            {!! form::label('nombre', 'Carrera') !!}
-                            {!! form::select('id', $carrera, null, ['class' => 'form-control', 'name'=>'CarreraElejida', 'id'=>'CarreraElejida', 'placeholder'=>'Seleccione una carrera' , 'required']) !!}  
-                        </div>
-                        <hr>
-                        <div id="2" class="form-grup" style="display:none">
-                            {!! form::label('nombre', 'Materia Alimentos') !!}
-                            <select name="materiasAlimentos" id="materiasAlimentos" class="form-control selectpicker">
-                                @foreach($materias as $materia)
-                                @foreach ($materia->carreras as $v)
-                                @if($v->id == 1)
-                                <option id="hola" value= {{$materia->id}} > {{$materia->nombre}} </option>
-                                @endif  
-                                @endforeach
-                                @endforeach
-                            </select>
-                        </div>
-                        <hr>
-                        <div id="1" class="form-grup" style="display:none">
-                            {!! form::label('nombre', 'Materia Quimica') !!}
-                            <select name="materiasQuimica" id="materiasQuimica" class="form-control selectpicker">
-                                @foreach($materias as $materia)
-                                @foreach ($materia->carreras as $v)
-                                @if($v->id == 2)
-                                <option  id="valor" value= {{$materia->id}} > {{$materia->nombre}} </option>
-                                @endif  
-                                @endforeach
-                                @endforeach
-                            </select>
-                        </div>     
-
-                    </div>
-
-                    <div class="form-group">
-                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                            <div class="btn-group" role="group">
-                                {!! form::submit('GRAFICAR', ['class'=> 'btn btn-danger btn-lg']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    {!! Form::close() !!}
-
-                </div><!-- /.content-wrapper -->
-
-
-
-                <div class="col-md-1"></div>
-                <!-- /////////////////// -->
-
-
                 <div class="form-group ">
                     {!! Form::open(['action'=>'GraficosController@PorMateriaActual']) !!}
-                    <div id="panel" class="panel panel-primary col-lg-5">
+                    <div id="panel" class="panel panel-primary col-lg-11">
                         <div class="panel-heading ">
                             <div>
                                 <h3>Grafico Materia Actual</h3>
@@ -114,8 +51,8 @@
                             </div>
                             <hr>
                             <div id="6" class="form-grup" style="display:none">
-                                {!! form::label('nombre', 'Materia Alimentos') !!}
-                                <select name="materiasAlimentos" id="materiasAlimentos" class="form-control selectpicker">
+                                {!! form::label('nombre', 'Materia Quimica') !!}
+                                <select name="materiasQuimica" id="materiasQuimica" class="form-control selectpicker">
                                     @foreach($materias as $materia)
                                     @foreach ($materia->carreras as $va)
                                     @if($va->id == 1)
@@ -127,8 +64,8 @@
                             </div>
                             <hr>
                             <div id="5" class="form-grup" style="display:none">
-                                {!! form::label('nombre', 'Materia Quimica') !!}
-                                <select name="materiasQuimica" id="materiasQuimica" class="form-control selectpicker">
+                                {!! form::label('nombre', 'Materia Alimentos') !!}
+                                <select name="materiasAlimentos" id="materiasAlimentos" class="form-control selectpicker">
                                     @foreach($materias as $materia)
                                     @foreach ($materia->carreras as $va)
                                     @if($va->id == 2)

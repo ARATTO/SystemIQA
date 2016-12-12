@@ -136,7 +136,7 @@
             function(){
                // alert( document.getElementById('CarreraElejida').value );
 
-                if(document.getElementById('CarreraElejida').value == 1){
+                if(document.getElementById('CarreraElejida').value == 2){
                   document.getElementById(1).style.display = 'block'; 
                   document.getElementById(2).style.display = 'none';  
                 }else{
