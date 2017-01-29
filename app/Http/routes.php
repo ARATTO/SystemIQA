@@ -234,10 +234,10 @@ Route::group(['middleware' => ['auth']], function() {
         });
 
         Route::group(['middleware' => ['CoorGraduacion']], function() { //Solo para Coordinador de Proyecto Graduacion
-            Route::get('estado/create2','EstudianteController@create2');
+            //Route::get('estado/create2','EstudianteController@create2');
 
 
-            Route::get('Asesorias',[
+            /*Route::get('Asesorias',[
                 'uses' => 'EstudianteController@index2',
                 'as' => 'estado.index2'
             ]);
@@ -257,7 +257,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post('estado/guardarAsesoria',[
                 'uses' => 'EstudianteController@guardarAsesoria', 
                 'as' => 'estado.estado_global_estudiante'
-            ]);
+            ]);*/
 
            
         });
@@ -290,6 +290,29 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', ['as' => 'login', 'uses' => 'Auth\AuthController@postLogin']);
+Route::get('estado/create2','EstudianteController@create2');
+Route::get('Asesorias',[
+                'uses' => 'EstudianteController@index2',
+                'as' => 'estado.index2'
+            ]);
+
+            Route::get('mostrarEstudiantes/{estado}/vista2', [
+                'uses' => 'EstudianteController@verEstAsesorias', 
+                'as'    => 'estado.vista2'
+            ]);
+
+            Route::get('mostrarEstudiantes/{id}/destroy2',[
+                'uses' => 'EstudianteController@destroy2',
+                'as' => 'estado.destroy2'
+            ]);
+
+            Route::post('estado/show2','EstudianteController@show2');
+
+            Route::post('estado/guardarAsesoria',[
+                'uses' => 'EstudianteController@guardarAsesoria', 
+                'as' => 'estado.estado_global_estudiante'
+            ]);
+
 
 //LLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLL
 

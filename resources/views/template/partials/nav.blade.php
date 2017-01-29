@@ -204,6 +204,9 @@
                             <ul class="treeview-menu">
                                 <li><a href=" {{ url('/Tutorias') }} "><i class="fa fa-circle-o"></i>Ver tutorias</a></li>
                             </ul>
+                            <ul class="treeview-menu">
+                                <li><a href=" {{ url('/estado/create2') }} "><i class="fa fa-circle-o"></i>Global de Alumnos</a></li>
+                            </ul>
                         </li>
                         <!--MOTTO-->
                         <li class="treeview">
@@ -224,9 +227,6 @@
                               <ul class="treeview-menu">
                                 <li class="active"><a href="{{route('reportes.listado_estudiantes')}}" >
                                     <i class="fa fa-circle-o"></i>Estudiantes por Materia</a>
-                                </li>
-                                <li class="active"><a href="{{route('materias.create')}}"  >
-                                    <i class="fa fa-circle-o"></i>Calificaciones</a>
                                 </li>
                                 <li class="active"><a href="{{route('reportes.pdf_listado_estudiantes_pera')}}"  target="_blank">
                                     <i class="fa fa-circle-o"></i>CUM menor 7</a>
